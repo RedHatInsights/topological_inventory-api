@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   add_swagger_route 'POST', '/Fryguy/topological_inventory/0.0.1/providers', controller_name: 'admins', action_name: 'add_provider'
   add_swagger_route 'GET', '/Fryguy/topological_inventory/0.0.1/providers', controller_name: 'users', action_name: 'list_providers'
+  add_swagger_route 'GET', '/Fryguy/topological_inventory/0.0.1/service_offerings', controller_name: 'users', action_name: 'list_service_offerings'
 end
