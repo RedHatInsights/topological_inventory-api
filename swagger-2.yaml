@@ -92,6 +92,26 @@ paths:
               $ref: '#/definitions/ServiceOffering'
         400:
           description: bad input parameter
+  /service_parameters_sets:
+    get:
+      tags:
+      - users
+      summary: List ServiceParametersSets
+      operationId: listServiceParametersSets
+      description: Returns an array of ServiceParametersSet objects
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      responses:
+        200:
+          description: ServiceParametersSets info
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ServiceParametersSet'
+        400:
+          description: bad input parameter
 
 # define reusable parameters:
 parameters:
@@ -153,6 +173,30 @@ definitions:
         title: Verify Server Certificate
         description: Verify the servers certificate, you can disable it for servers with self signed certificates.
   ServiceOffering:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Provider
+        title: Name
+      description:
+        type: string
+        example: This is a sample description for a provider
+        title: Description
+      ems_ref:
+        type: string
+        example: object-12345_67890
+        title: EMS reference
+        description: The native reference used by the EMS to refer to this object
+      extra:
+        type: object
+        example: Extra information about this object in JSON format
+        title: Extra
+  ServiceParametersSet:
     type: object
     properties:
       id:
