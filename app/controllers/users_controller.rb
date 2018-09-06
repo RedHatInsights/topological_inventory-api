@@ -13,4 +13,12 @@ class UsersController < ApplicationController
   def list_providers
     render json: Provider.all
   end
+
+  def list_service_offerings
+    render json: ServiceOffering.all
+  end
+
+  def list_service_parameters_sets
+    render json: ServiceParametersSet.all
+  end
 end

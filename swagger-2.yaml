@@ -14,8 +14,8 @@ securityDefinitions:
   UserSecurity:
     type: basic
 security:
-  - UserSecurity: [] 
-  
+  - UserSecurity: []
+
 # tags are used for organizing operations
 tags:
 - name: admins
@@ -32,9 +32,9 @@ paths:
       operationId: listProviders
       description: |
         Returns an array of provider objects
-      produces: 
+      produces:
       - application/json
-      consumes: 
+      consumes:
       - application/json
       responses:
         200:
@@ -52,9 +52,9 @@ paths:
       operationId: addProvider
       description: |
         Returns the added provider object
-      produces: 
+      produces:
       - application/json
-      consumes: 
+      consumes:
       - application/json
       parameters:
       - name: body
@@ -62,7 +62,7 @@ paths:
         required: true
         schema:
             $ref: '#/definitions/Provider'
-        
+
       responses:
         200:
           description: Provider Info
@@ -70,6 +70,46 @@ paths:
             type: object
             items:
               $ref: '#/definitions/Provider'
+        400:
+          description: bad input parameter
+  /service_offerings:
+    get:
+      tags:
+      - users
+      summary: List ServiceOfferings
+      operationId: listServiceOfferings
+      description: Returns an array of ServiceOffering objects
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      responses:
+        200:
+          description: ServiceOffering info
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ServiceOffering'
+        400:
+          description: bad input parameter
+  /service_parameters_sets:
+    get:
+      tags:
+      - users
+      summary: List ServiceParametersSets
+      operationId: listServiceParametersSets
+      description: Returns an array of ServiceParametersSet objects
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      responses:
+        200:
+          description: ServiceParametersSets info
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ServiceParametersSet'
         400:
           description: bad input parameter
 
@@ -86,9 +126,9 @@ parameters:
     name: provider_id
     in: query
     description: The Provider ID
-    type: integer  
-    
-# define reusable definitions  
+    type: integer
+
+# define reusable definitions
 definitions:
   Provider:
     type: object
@@ -96,7 +136,7 @@ definitions:
     - name
     - url
     - token
-    
+
     properties:
       id:
         type: string
@@ -132,6 +172,55 @@ definitions:
         default: true
         title: Verify Server Certificate
         description: Verify the servers certificate, you can disable it for servers with self signed certificates.
+  ServiceOffering:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Provider
+        title: Name
+      description:
+        type: string
+        example: This is a sample description for a provider
+        title: Description
+      ems_ref:
+        type: string
+        example: object-12345_67890
+        title: EMS reference
+        description: The native reference used by the EMS to refer to this object
+      extra:
+        type: object
+        example: Extra information about this object in JSON format
+        title: Extra
+  ServiceParametersSet:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Provider
+        title: Name
+      description:
+        type: string
+        example: This is a sample description for a provider
+        title: Description
+      ems_ref:
+        type: string
+        example: object-12345_67890
+        title: EMS reference
+        description: The native reference used by the EMS to refer to this object
+      extra:
+        type: object
+        example: Extra information about this object in JSON format
+        title: Extra
+
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
 schemes:
