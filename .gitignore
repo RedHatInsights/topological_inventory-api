@@ -12,3 +12,5 @@
 /spec/reports/
 /tmp/
 /db/schema.rb
+/bundler.d/
+/.byebug_history
