@@ -1,0 +1,14 @@
+---
+sudo: false
+language: ruby
+cache: bundler
+rvm:
+- 2.4.4
+- 2.3.6
+addons:
+  postgresql: '9.5'
+before_install:
+- gem install bundler -v 1.16.4
+- psql -c "CREATE USER root SUPERUSER PASSWORD 'smartvm';" -U postgres
+before_script:
+- bundle exec rake spec:setup
