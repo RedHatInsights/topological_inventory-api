@@ -16,6 +16,10 @@ gem "puma", "~> 3.0"
 gem "jbuilder", "~> 2.5"
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
+# TopologicalInventory Persister
+gem "insights-topological_inventory-persister", :git => "https://github.com/agrare/insights-topological_inventory-persister", :branch => "master"
+# Need to include manageiq-messaging
+gem "manageiq-messaging", :git => "https://github.com/bzwei/manageiq-messaging"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
