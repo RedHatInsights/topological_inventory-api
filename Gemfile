@@ -18,9 +18,8 @@ gem "jbuilder", "~> 2.5"
 gem "bcrypt", "~> 3.1.7"
 # TopologicalInventory Persister
 gem "insights-topological_inventory-persister", :git => "https://github.com/agrare/insights-topological_inventory-persister", :branch => "master"
-# Need to include manageiq-messaging since it isn't a released gem yet
-gem "manageiq-messaging", :git => "https://github.com/bzwei/manageiq-messaging"
-# MiqPassword from gems-pending
+gem "inventory_refresh", :git => "https://github.com/ManageIQ/inventory_refresh", :branch => "master"
+gem "manageiq-messaging", :git => "https://github.com/bzwei/manageiq-messaging", :branch => "kafka"
 gem "manageiq-gems-pending", :git => "https://github.com/ManageIQ/manageiq-gems-pending"
 
 group :development, :test do
