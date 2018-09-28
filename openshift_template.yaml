@@ -1,0 +1,202 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: topological-inventory-api
+metadata:
+  name: topological-inventory-api
+  annotations:
+    iconClass: icon-rails
+objects:
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: "topological-inventory-api-secrets"
+  stringData:
+    pg-password: "${DATABASE_PASSWORD}"
+    secret-key: "${SECRET_KEY}"
+    encryption-key: "${ENCRYPTION_KEY}"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: "${DATABASE_SERVICE_NAME}"
+    annotations:
+      description: Exposes the database server
+  spec:
+    ports:
+    - name: postgresql
+      port: 5432
+      targetPort: 5432
+    selector:
+      name: "${DATABASE_SERVICE_NAME}"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: topological-inventory-api
+  spec:
+    ports:
+    - name: topological-inventory-api
+      port: 8080
+      targetPort: 3000
+    selector:
+      name: topological-inventory-api
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: "${DATABASE_SERVICE_NAME}"
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: "${DATABASE_VOLUME_CAPACITY}"
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    name: "${DATABASE_SERVICE_NAME}"
+    annotations:
+      description: Defines how to deploy the database
+  spec:
+    strategy:
+      type: Recreate
+    triggers:
+    - type: ConfigChange
+    replicas: 1
+    selector:
+      name: "${DATABASE_SERVICE_NAME}"
+    template:
+      metadata:
+        name: "${DATABASE_SERVICE_NAME}"
+        labels:
+          name: "${DATABASE_SERVICE_NAME}"
+      spec:
+        volumes:
+        - name: postgres-volume
+          persistentVolumeClaim:
+            claimName: "${DATABASE_SERVICE_NAME}"
+        containers:
+        - name: "${DATABASE_SERVICE_NAME}"
+          image: "${POSTGRESQL_IMG_NAME}:${POSTGRESQL_IMG_TAG}"
+          ports:
+          - containerPort: 5432
+          volumeMounts:
+          - name: postgres-volume
+            mountPath: "/var/lib/pgsql/data"
+          env:
+          - name: POSTGRESQL_USER
+            value: "${DATABASE_USER}"
+          - name: POSTGRESQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: "topological-inventory-api-secrets"
+                key: pg-password
+          - name: POSTGRESQL_DATABASE
+            value: "${DATABASE_NAME}"
+          - name: POSTGRESQL_MAX_CONNECTIONS
+            value: "${POSTGRESQL_MAX_CONNECTIONS}"
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    name: topological-inventory-api
+  spec:
+    replicas: 1
+    selector:
+      name: topological-inventory-api
+    template:
+      metadata:
+        name: topological-inventory-api
+        labels:
+          name: topological-inventory-api
+      spec:
+        containers:
+        - name: topological-inventory-api
+          image: topological-inventory-ci/topological-inventory-api:latest
+          ports:
+          - containerPort: 3000
+          env:
+          - name: DATABASE_USER
+            value: "${DATABASE_USER}"
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: topological-inventory-api-secrets
+                key: pg-password
+          - name: DATABASE_NAME
+            value: "${DATABASE_NAME}"
+          - name: DATABASE_HOST
+            value: "${DATABASE_SERVICE_NAME}"
+          - name: DATABASE_PORT
+            value: "5432"
+          - name: SECRET_KEY_BASE
+            valueFrom:
+              secretKeyRef:
+                name: topological-inventory-api-secrets
+                key: secret-key
+          - name: ENCRYPTION_KEY
+            valueFrom:
+              secretKeyRef:
+                name: topological-inventory-api-secrets
+                key: encryption-key
+          readinessProbe:
+            timeoutSeconds: 1
+            tcpSocket:
+              port: 3000
+    triggers:
+      - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - topological-inventory-api
+          from:
+            kind: ImageStreamTag
+            name: topological-inventory-api:latest
+parameters:
+- name: DATABASE_SERVICE_NAME
+  displayName: PostgreSQL Service Name
+  required: true
+  description: The name of the OpenShift Service exposed for the PostgreSQL container.
+  value: ti-postgresql
+- name: DATABASE_USER
+  displayName: PostgreSQL User
+  required: true
+  description: PostgreSQL user that will access the database.
+  value: root
+- name: DATABASE_PASSWORD
+  displayName: PostgreSQL Password
+  required: true
+  description: Password for the PostgreSQL user.
+  from: "[a-zA-Z0-9]{8}"
+  generate: expression
+- name: DATABASE_NAME
+  required: true
+  displayName: PostgreSQL Database Name
+  description: Name of the PostgreSQL database accessed.
+  value: topological_inventory_production
+- name: POSTGRESQL_MAX_CONNECTIONS
+  displayName: PostgreSQL Max Connections
+  description: PostgreSQL maximum number of database connections allowed.
+  value: '100'
+- name: POSTGRESQL_IMG_NAME
+  displayName: PostgreSQL Image Name
+  description: This is the PostgreSQL image name requested to deploy.
+  value: docker.io/manageiq/postgresql
+- name: POSTGRESQL_IMG_TAG
+  displayName: PostgreSQL Image Tag
+  description: This is the PostgreSQL image tag/version requested to deploy.
+  value: latest
+- name: DATABASE_VOLUME_CAPACITY
+  displayName: Database Volume Capacity
+  required: true
+  description: Volume space available for database.
+  value: 15Gi
+- name: SECRET_KEY
+  displayName: Secret Key
+  required: true
+  description: Rails SECRET_KEY_BASE
+  from: "[a-f0-9]{128}"
+  generate: expression
+- name: ENCRYPTION_KEY
+  displayName: Encryption Key
+  required: true
+  description: Encryption Key for Passwords
+  from: "[a-zA-Z0-9]{43}"
+  generate: expression
