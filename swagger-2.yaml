@@ -112,6 +112,26 @@ paths:
               $ref: '#/definitions/ServiceParametersSet'
         400:
           description: bad input parameter
+  /sources:
+    get:
+      tags:
+      - users
+      summary: List Sources
+      operationId: listSources
+      description: Returns an array of Source objects
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      responses:
+        200:
+          description: Sources info
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Source'
+        400:
+          description: bad input parameter
 
 # define reusable parameters:
 parameters:
@@ -220,6 +240,21 @@ definitions:
         type: object
         example: Extra information about this object in JSON format
         title: Extra
+  Source:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Provider
+        title: Name
+      external_uid:
+        type: string
+        readOnly: true
+        title: Unique ID of the inventory source installation
 
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
