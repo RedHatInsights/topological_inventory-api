@@ -112,6 +112,53 @@ paths:
               $ref: '#/definitions/ServiceParametersSet'
         400:
           description: bad input parameter
+  /sources/{sourceId}:
+    delete:
+      summary: Delete Source
+      operationId: deleteSource
+      description: Deletes a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      responses:
+        204:
+          description: Source deleted
+        404:
+          description: not found
+    get:
+      summary: Show Source
+      operationId: showSource
+      description: Returns a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      responses:
+        200:
+          description: Source info
+          schema:
+            $ref: '#/definitions/Source'
+        404:
+          description: not found
+    patch:
+      summary: Update Source
+      operationId: updateSource
+      description: Updates a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: name
+        in: name
+        schema:
+            $ref: '#/definitions/Source'
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: not found
   /sources:
     get:
       tags:
@@ -132,6 +179,29 @@ paths:
               $ref: '#/definitions/Source'
         400:
           description: bad input parameter
+    post:
+      tags:
+      - admins
+      summary: Create a Source
+      operationId: Source
+      description: Returns the created Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+            $ref: '#/definitions/Source'
+      responses:
+        201:
+          description: Source Info
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Source'
 
 # define reusable parameters:
 parameters:
@@ -156,7 +226,6 @@ definitions:
     - name
     - url
     - token
-
     properties:
       id:
         type: string
