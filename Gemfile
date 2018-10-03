@@ -34,14 +34,6 @@ group :development do
   gem 'listen', '~> 3.0.5'
 end
 
-#
-# Custom Gemfile modifications
-#
-# To develop a gem locally and override its source to a checked out repo
-#   you can use this helper method in Gemfile.dev.rb e.g.
-#
-# override_gem 'manageiq-ui-classic', :path => "../manageiq-ui-classic"
-#
 def override_gem(name, *args)
   if dependencies.any?
     raise "Trying to override unknown gem #{name}" unless (dependency = dependencies.find { |d| d.name == name })
@@ -51,6 +43,7 @@ def override_gem(name, *args)
     calling_dir  = File.dirname(calling_file)
 
     args.last[:path] = File.expand_path(args.last[:path], calling_dir) if args.last.kind_of?(Hash) && args.last[:path]
+    gem(name, *args)
   end
 end
 
