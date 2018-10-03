@@ -21,8 +21,4 @@ class UsersController < ApplicationController
   def list_service_parameters_sets
     render json: ServiceParametersSet.all
   end
-
-  def list_sources
-    render json: Source.all
-  end
 end
