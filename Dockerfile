@@ -15,6 +15,7 @@ RUN yum -y install centos-release-scl-rh && \
     yum clean all
 
 ENV WORKDIR /opt/insights-topological_inventory/
+ENV RAILS_ROOT $WORKDIR
 WORKDIR $WORKDIR
 
 COPY Gemfile $WORKDIR
