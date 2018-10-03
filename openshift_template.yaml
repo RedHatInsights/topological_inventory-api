@@ -10,7 +10,7 @@ objects:
 - apiVersion: v1
   kind: Secret
   metadata:
-    name: "topological-inventory-api-secrets"
+    name: "topological-inventory-secrets"
   stringData:
     pg-password: "${DATABASE_PASSWORD}"
     secret-key: "${SECRET_KEY}"
@@ -87,7 +87,7 @@ objects:
           - name: POSTGRESQL_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: "topological-inventory-api-secrets"
+                name: "topological-inventory-secrets"
                 key: pg-password
           - name: POSTGRESQL_DATABASE
             value: "${DATABASE_NAME}"
@@ -118,7 +118,7 @@ objects:
           - name: DATABASE_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: topological-inventory-api-secrets
+                name: topological-inventory-secrets
                 key: pg-password
           - name: DATABASE_NAME
             value: "${DATABASE_NAME}"
@@ -129,12 +129,12 @@ objects:
           - name: SECRET_KEY_BASE
             valueFrom:
               secretKeyRef:
-                name: topological-inventory-api-secrets
+                name: topological-inventory-secrets
                 key: secret-key
           - name: ENCRYPTION_KEY
             valueFrom:
               secretKeyRef:
-                name: topological-inventory-api-secrets
+                name: topological-inventory-secrets
                 key: encryption-key
           readinessProbe:
             timeoutSeconds: 1
