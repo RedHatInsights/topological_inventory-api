@@ -154,7 +154,7 @@ parameters:
   displayName: PostgreSQL Service Name
   required: true
   description: The name of the OpenShift Service exposed for the PostgreSQL container.
-  value: ti-postgresql
+  value: topological-inventory-postgresql
 - name: DATABASE_USER
   displayName: PostgreSQL User
   required: true
