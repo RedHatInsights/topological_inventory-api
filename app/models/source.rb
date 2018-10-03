@@ -1,6 +1,6 @@
 class Source < ApplicationRecord
   has_many :endpoints, :dependent => :destroy, :autosave => true
-  delegate :ipaddress, :ipaddress=, :ipv6address, :ipv6address=, :hostname, :hostname=, :port, :port=,
+  delegate :scheme, :scheme=, :host, :host=, :port, :port=, :path, :path=,
            :to => :default_endpoint, :allow_nil => true
 
   def default_endpoint
