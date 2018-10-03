@@ -110,6 +110,8 @@ objects:
         containers:
         - name: topological-inventory-api
           image: topological-inventory-ci/topological-inventory-api:latest
+          args:
+          - "/usr/bin/start_api_server"
           ports:
           - containerPort: 3000
           env:
@@ -147,6 +149,58 @@ objects:
           automatic: true
           containerNames:
             - topological-inventory-api
+          from:
+            kind: ImageStreamTag
+            name: topological-inventory-api:latest
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    name: topological-inventory-persister
+  spec:
+    replicas: 1
+    selector:
+      name: topological-inventory-persister
+    template:
+      metadata:
+        name: topological-inventory-persister
+        labels:
+          name: topological-inventory-persister
+      spec:
+        containers:
+        - name: topological-inventory-persister
+          image: topological-inventory-ci/topological-inventory-api:latest
+          args:
+          - "/usr/bin/start_persister"
+          env:
+          - name: DATABASE_USER
+            value: "${DATABASE_USER}"
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: topological-inventory-secrets
+                key: pg-password
+          - name: DATABASE_NAME
+            value: "${DATABASE_NAME}"
+          - name: DATABASE_HOST
+            value: "${DATABASE_SERVICE_NAME}"
+          - name: DATABASE_PORT
+            value: "5432"
+          - name: ENCRYPTION_KEY
+            valueFrom:
+              secretKeyRef:
+                name: topological-inventory-secrets
+                key: encryption-key
+          - name: QUEUE_HOST
+            value: "${KAFKA_HOST}"
+          - name: QUEUE_PORT
+            value: "${KAFKA_PORT}"
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - topological-inventory-persister
           from:
             kind: ImageStreamTag
             name: topological-inventory-api:latest
@@ -201,3 +255,13 @@ parameters:
   description: Encryption Key for Passwords
   from: "[a-zA-Z0-9]{43}"
   generate: expression
+- name: KAFKA_HOST
+  displayName: Kafka queue host
+  required: true
+  description: Hostname for the Kafka queue
+  value: kafka
+- name: KAFKA_PORT
+  displayName: Kafka queue port
+  required: true
+  description: Port for the Kafka queue
+  value: "9092"
