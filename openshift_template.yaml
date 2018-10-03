@@ -40,6 +40,17 @@ objects:
     selector:
       name: topological-inventory-api
 - apiVersion: v1
+  kind: Service
+  metadata:
+    name: topological-inventory-ingress
+  spec:
+    ports:
+    - name: topological-inventory-ingress
+      port: 4567
+      targetPort: 4567
+    selector:
+      name: topological-inventory-ingress
+- apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
     name: "${DATABASE_SERVICE_NAME}"
@@ -204,6 +215,44 @@ objects:
           from:
             kind: ImageStreamTag
             name: topological-inventory-api:latest
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    name: topological-inventory-ingress
+  spec:
+    replicas: 1
+    selector:
+      name: topological-inventory-ingress
+    template:
+      metadata:
+        name: topological-inventory-ingress
+        labels:
+          name: topological-inventory-ingress
+      spec:
+        containers:
+        - name: topological-inventory-ingress
+          image: topological-inventory-ci/topological-inventory-ingress:latest
+          ports:
+          - containerPort: 4567
+          readinessProbe:
+            initialDelaySeconds: 5
+            tcpSocket:
+              port: 4567
+          env:
+          - name: QUEUE_HOST
+            value: "${KAFKA_HOST}"
+          - name: QUEUE_PORT
+            value: "${KAFKA_PORT}"
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - topological-inventory-ingress
+          from:
+            kind: ImageStreamTag
+            name: topological-inventory-ingress:latest
 parameters:
 - name: DATABASE_SERVICE_NAME
   displayName: PostgreSQL Service Name
