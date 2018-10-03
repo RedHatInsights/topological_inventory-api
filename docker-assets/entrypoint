@@ -31,19 +31,4 @@ write_encryption_key
 # Wait for postgres to be ready
 check_svc_status $DATABASE_HOST $DATABASE_PORT
 
-bundle exec rake deployment_status
-case $? in
-  3) # new deployment
-    bundle exec rake db:create db:migrate
-  ;;
-  4) # upgrade
-    bundle exec rake db:migrate
-  ;;
-  5) # redeployment or new replica is a no-op
-  ;;
-  *)
-    echo "Could not find a suitable deployment type, exiting.."
-    exit 1
-esac
-
-bundle exec rails server
+exec "$@"

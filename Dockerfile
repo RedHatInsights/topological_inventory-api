@@ -29,10 +29,12 @@ RUN source /opt/rh/rh-postgresql95/enable && \
 
 COPY . $WORKDIR
 COPY docker-assets/entrypoint /usr/bin
+COPY docker-assets/start_api_server /usr/bin
+COPY docker-assets/start_persister /usr/bin
 
 RUN chgrp -R 0 $WORKDIR && \
     chmod -R g=u $WORKDIR
 
 EXPOSE 3000
 
-CMD ["entrypoint"]
+ENTRYPOINT ["entrypoint"]
