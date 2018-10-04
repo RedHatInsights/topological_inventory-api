@@ -16,9 +16,6 @@ gem "puma", "~> 3.0"
 gem "jbuilder", "~> 2.5"
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
-# TopologicalInventory Persister
-gem "insights-topological_inventory-persister", :git => "https://github.com/agrare/insights-topological_inventory-persister", :branch => "master"
-gem "insights-topological_inventory-api", :git => "https://github.com/agrare/insights-topological_inventory-api", :branch => "master"
 gem "inventory_refresh", :git => "https://github.com/ManageIQ/inventory_refresh", :branch => "master"
 gem "manageiq-messaging", :git => "https://github.com/ManageIQ/manageiq-messaging", :branch => "master"
 gem "manageiq-gems-pending", :git => "https://github.com/ManageIQ/manageiq-gems-pending"
