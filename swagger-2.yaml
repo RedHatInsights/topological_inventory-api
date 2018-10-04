@@ -45,33 +45,6 @@ paths:
               $ref: '#/definitions/Provider'
         400:
           description: bad input parameter
-    post:
-      tags:
-      - admins
-      summary: Add a Provider
-      operationId: addProvider
-      description: |
-        Returns the added provider object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-            $ref: '#/definitions/Provider'
-
-      responses:
-        200:
-          description: Provider Info
-          schema:
-            type: object
-            items:
-              $ref: '#/definitions/Provider'
-        400:
-          description: bad input parameter
   /service_offerings:
     get:
       tags:
