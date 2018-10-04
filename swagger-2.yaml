@@ -303,4 +303,4 @@ host: virtserver.swaggerhub.com
 schemes:
  - https
  - http
-basePath: /Fryguy/topological_inventory/0.0.1
+basePath: /api/0.0.1

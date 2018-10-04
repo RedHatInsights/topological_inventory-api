@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     match full_path, to: "#{opts.fetch(:controller_name)}##{opts[:action_name]}", via: http_method
   end
 
-  add_swagger_route 'GET', '/Fryguy/topological_inventory/0.0.1/providers', controller_name: 'users', action_name: 'list_providers'
-  add_swagger_route 'GET', '/Fryguy/topological_inventory/0.0.1/service_offerings', controller_name: 'users', action_name: 'list_service_offerings'
-  add_swagger_route 'GET', '/Fryguy/topological_inventory/0.0.1/service_parameters_sets', controller_name: 'users', action_name: 'list_service_parameters_sets'
+  add_swagger_route 'GET', '/0.0.1/providers', controller_name: 'users', action_name: 'list_providers'
+  add_swagger_route 'GET', '/0.0.1/service_offerings', controller_name: 'users', action_name: 'list_service_offerings'
+  add_swagger_route 'GET', '/0.0.1/service_parameters_sets', controller_name: 'users', action_name: 'list_service_parameters_sets'
   scope "api" do
     scope "0.0.1" do
       resources :sources, only: [:create, :destroy, :index, :show, :update]
