@@ -14,7 +14,7 @@ RUN yum -y install centos-release-scl-rh && \
                    && \
     yum clean all
 
-ENV WORKDIR /opt/topological_inventory/
+ENV WORKDIR /opt/topological_inventory-api/
 ENV RAILS_ROOT $WORKDIR
 WORKDIR $WORKDIR
 
@@ -29,8 +29,6 @@ RUN source /opt/rh/rh-postgresql95/enable && \
 
 COPY . $WORKDIR
 COPY docker-assets/entrypoint /usr/bin
-COPY docker-assets/start_api_server /usr/bin
-COPY docker-assets/start_persister /usr/bin
 
 RUN chgrp -R 0 $WORKDIR && \
     chmod -R g=u $WORKDIR
