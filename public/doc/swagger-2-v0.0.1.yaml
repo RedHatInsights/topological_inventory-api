@@ -16,13 +16,6 @@ securityDefinitions:
 security:
   - UserSecurity: []
 
-# tags are used for organizing operations
-tags:
-- name: admins
-  description: Secured Admin-only calls
-- name: users
-  description: Operations available to regular authenticated users
-
 paths:
   /providers:
     get:
@@ -43,8 +36,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Provider'
-        400:
-          description: bad input parameter
   /service_offerings:
     get:
       tags:
@@ -63,8 +54,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/ServiceOffering'
-        400:
-          description: bad input parameter
   /service_parameters_sets:
     get:
       tags:
@@ -83,98 +72,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/ServiceParametersSet'
-        400:
-          description: bad input parameter
-  /sources/{sourceId}:
-    delete:
-      summary: Delete Source
-      operationId: deleteSource
-      description: Deletes a Source object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      responses:
-        204:
-          description: Source deleted
-        404:
-          description: not found
-    get:
-      summary: Show Source
-      operationId: showSource
-      description: Returns a Source object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      responses:
-        200:
-          description: Source info
-          schema:
-            $ref: '#/definitions/Source'
-        404:
-          description: not found
-    patch:
-      summary: Update Source
-      operationId: updateSource
-      description: Updates a Source object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - name: name
-        in: name
-        schema:
-            $ref: '#/definitions/Source'
-      responses:
-        204:
-          description: Updated, no content
-        404:
-          description: not found
-  /sources:
-    get:
-      tags:
-      - users
-      summary: List Sources
-      operationId: listSources
-      description: Returns an array of Source objects
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      responses:
-        200:
-          description: Sources info
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Source'
-        400:
-          description: bad input parameter
-    post:
-      tags:
-      - admins
-      summary: Create a Source
-      operationId: Source
-      description: Returns the created Source object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-            $ref: '#/definitions/Source'
-      responses:
-        201:
-          description: Source Info
-          schema:
-            type: object
-            items:
-              $ref: '#/definitions/Source'
 
 # define reusable parameters:
 parameters:
@@ -282,25 +179,10 @@ definitions:
         type: object
         example: Extra information about this object in JSON format
         title: Extra
-  Source:
-    type: object
-    properties:
-      id:
-        type: string
-        readOnly: true
-        format: uuid
-      name:
-        type: string
-        example: Sample Provider
-        title: Name
-      external_uid:
-        type: string
-        readOnly: true
-        title: Unique ID of the inventory source installation
 
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
 schemes:
  - https
  - http
-basePath: /api/0.0.1
+basePath: /api/0.0
