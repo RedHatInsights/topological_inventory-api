@@ -1,0 +1,140 @@
+swagger: '2.0'
+info:
+  description: Topological Inventory
+  version: 1.0.0
+  title: Topological Inventory
+  # put the contact info for your development or API team
+  contact:
+    email: you@your-company.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+securityDefinitions:
+  UserSecurity:
+    type: basic
+security:
+  - UserSecurity: []
+
+paths:
+  /sources/{source_id}:
+    delete:
+      summary: Delete Source
+      operationId: deleteSource
+      description: Deletes a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/SourceID'
+      responses:
+        204:
+          description: Source deleted
+        404:
+          description: not found
+    get:
+      summary: Show Source
+      operationId: showSource
+      description: Returns a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/SourceID'
+      responses:
+        200:
+          description: Source info
+          schema:
+            $ref: '#/definitions/Source'
+        404:
+          description: not found
+    patch:
+      summary: Update Source
+      operationId: updateSource
+      description: Updates a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/SourceID'
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: not found
+  /sources:
+    get:
+      summary: List Sources
+      operationId: listSources
+      description: Returns an array of Source objects
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      responses:
+        200:
+          description: Sources info
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Source'
+        400:
+          description: bad input parameter
+    post:
+      summary: Create a Source
+      operationId: Source
+      description: Returns the created Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+            $ref: '#/definitions/Source'
+      responses:
+        201:
+          description: Source Info
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Source'
+
+parameters:
+  SourceID:
+    name: source_id
+    in: path
+    description: The Source ID
+    required: true
+    type: string
+    format: uuid
+
+# define reusable definitions
+definitions:
+  Source:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Provider
+        title: Name
+      external_uid:
+        type: string
+        readOnly: true
+        title: Unique ID of the inventory source installation
+
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+schemes:
+ - https
+ - http
+basePath: /api/1.0

@@ -16,13 +16,6 @@ securityDefinitions:
 security:
   - UserSecurity: []
 
-# tags are used for organizing operations
-tags:
-- name: admins
-  description: Secured Admin-only calls
-- name: users
-  description: Operations available to regular authenticated users
-
 paths:
   /providers:
     get:
@@ -43,35 +36,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Provider'
-        400:
-          description: bad input parameter
-    post:
-      tags:
-      - admins
-      summary: Add a Provider
-      operationId: addProvider
-      description: |
-        Returns the added provider object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-            $ref: '#/definitions/Provider'
-
-      responses:
-        200:
-          description: Provider Info
-          schema:
-            type: object
-            items:
-              $ref: '#/definitions/Provider'
-        400:
-          description: bad input parameter
   /service_offerings:
     get:
       tags:
@@ -90,8 +54,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/ServiceOffering'
-        400:
-          description: bad input parameter
   /service_parameters_sets:
     get:
       tags:
@@ -110,28 +72,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/ServiceParametersSet'
-        400:
-          description: bad input parameter
-  /sources:
-    get:
-      tags:
-      - users
-      summary: List Sources
-      operationId: listSources
-      description: Returns an array of Source objects
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      responses:
-        200:
-          description: Sources info
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Source'
-        400:
-          description: bad input parameter
 
 # define reusable parameters:
 parameters:
@@ -156,7 +96,6 @@ definitions:
     - name
     - url
     - token
-
     properties:
       id:
         type: string
@@ -240,25 +179,10 @@ definitions:
         type: object
         example: Extra information about this object in JSON format
         title: Extra
-  Source:
-    type: object
-    properties:
-      id:
-        type: string
-        readOnly: true
-        format: uuid
-      name:
-        type: string
-        example: Sample Provider
-        title: Name
-      external_uid:
-        type: string
-        readOnly: true
-        title: Unique ID of the inventory source installation
 
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
 schemes:
  - https
  - http
-basePath: /Fryguy/topological_inventory/0.0.1
+basePath: /api/0.0
