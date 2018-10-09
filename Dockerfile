@@ -6,6 +6,8 @@ RUN yum -y install centos-release-scl-rh && \
                    gcc-c++ \
                    # For git based gems
                    git \
+                   # For checking service status
+                   nmap-ncat \
                    # To compile pg gem
                    rh-postgresql95-postgresql-devel \
                    rh-postgresql95-postgresql-libs \
