@@ -2,7 +2,7 @@ module Api
   module V0
     class ProvidersController < ApplicationController
       def index
-        render json: Legacy::Provider.all
+        render json: Source.all
       end
     end
   end
