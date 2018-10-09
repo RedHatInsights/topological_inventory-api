@@ -22,14 +22,14 @@ default: &default
 
 development:
   <<: *default
-  database: api_demo_development
+  database: topological_inventory_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: api_demo_test
+  database: topological_inventory_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -52,6 +52,6 @@ test:
 #
 production:
   <<: *default
-  database: api_demo_production
-  username: api_demo
-  password: <%= ENV['API_DEMO_DATABASE_PASSWORD'] %>
+  database: topological_inventory_production
+  username: <%= ENV['TOPOLOGICAL_INVENTORY_DATABASE_USERNAME'] %>
+  password: <%= ENV['TOPOLOGICAL_INVENTORY_DATABASE_PASSWORD'] %>
