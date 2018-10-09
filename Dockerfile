@@ -35,4 +35,4 @@ RUN chgrp -R 0 $WORKDIR && \
 
 EXPOSE 3000
 
-CMD ["entrypoint"]
+ENTRYPOINT ["entrypoint"]
