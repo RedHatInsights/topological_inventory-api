@@ -1,24 +1,25 @@
-# README
+# Swagger for Rails 5
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a project to provide Swagger support inside the [Ruby on Rails](http://rubyonrails.org/) framework.
 
-Things you may want to cover:
+## Prerequisites
+You need to install ruby >= 2.2.2 and run:
 
-* Ruby version
+```
+bundle install
+```
 
-* System dependencies
+## Getting started
 
-* Configuration
+This sample was generated with the [swagger-codegen](https://github.com/swagger-api/swagger-codegen) project.
 
-* Database creation
+```
+bin/rake db:create db:migrate
+bin/rails s
+```
 
-* Database initialization
+To list all your routes, use:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+bin/rake routes
+```
