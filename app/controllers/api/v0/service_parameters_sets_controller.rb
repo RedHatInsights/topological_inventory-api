@@ -2,7 +2,7 @@ module Api
   module V0
     class ServiceParametersSetsController < ApplicationController
       def index
-        render json: Legacy::ServiceParametersSet.all
+        render json: ServiceParametersSet.all
       end
     end
   end
