@@ -1,10 +1,10 @@
 module Api
-  module V1
+  module V0
     class SourcesController < ApplicationController
       def create
         body = JSON.parse(request.body.read)
         source = Source.create!(:name => body["name"])
-        render :json => source, :status => :created, :location => api_v1x0_source_url(source.id)
+        render :json => source, :status => :created, :location => api_v0x0_source_url(source.id)
       end
 
       def destroy
