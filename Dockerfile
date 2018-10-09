@@ -4,6 +4,8 @@ RUN yum -y install centos-release-scl-rh && \
     yum -y install --setopt=tsflags=nodocs \
                    # To compile native gem extensions
                    gcc-c++ \
+                   # For git based gems
+                   git \
                    # To compile pg gem
                    rh-postgresql95-postgresql-devel \
                    rh-postgresql95-postgresql-libs \
