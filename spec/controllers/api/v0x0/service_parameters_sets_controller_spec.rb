@@ -19,9 +19,4 @@ RSpec.describe Api::V0x0::ServiceParametersSetsController, type: :controller do
     expect(response.status).to eq(200)
     expect(JSON.parse(response.parsed_body)).to match(a_hash_including("id" => service_parameters_set.id.to_s))
   end
-
-  def get_path(path)
-    parsed_params = Rails.application.routes.recognize_path(path)
-    get(parsed_params[:action], :params => parsed_params.except(:action, :controller))
-  end
 end
