@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 2.0'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "topological_inventory", :git => "https://github.com/agrare/topological_inventory", :branch => "master"
+gem "topological_inventory-core", :git => "https://github.com/ManageIQ/topological_inventory-core", :branch => "master"
 gem "inventory_refresh", :git => "https://github.com/ManageIQ/inventory_refresh", :branch => "master"
 gem "manageiq-gems-pending", :git => "https://github.com/ManageIQ/manageiq-gems-pending"
 
