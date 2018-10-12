@@ -17,6 +17,47 @@ security:
   - UserSecurity: []
 
 paths:
+  /container_projects/{container_project_id):
+    get:
+      tags:
+      - users
+      summary: Show a Container Project
+      operationId: showContainerProject
+      description: Returns a container project
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/ContainerProjectID'
+      responses:
+        200:
+          description: Container Project info
+          schema:
+            $ref: '#/definitions/ContainerProject'
+        404:
+          description: not found
+  /container_projects:
+    get:
+      tags:
+      - users
+      summary: List Container Projects
+      operationId: listContainerProjects
+      description: |
+        Returns an array of container project objects
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      responses:
+        200:
+          description: Container Project Info
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ContainerProject'
+        400:
+          description: bad input parameter
   /sources/{source_id}:
     delete:
       summary: Delete Source
@@ -106,6 +147,14 @@ paths:
               $ref: '#/definitions/Source'
 
 parameters:
+  ContainerProjectID:
+    name: container_project_id
+    in: path
+    description: The Container Project ID
+    required: true
+    type: string
+    format: uuid
+
   SourceID:
     name: source_id
     in: path
@@ -116,6 +165,26 @@ parameters:
 
 # define reusable definitions
 definitions:
+  ContainerProject:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Project
+        title: Name
+      display_name:
+        type: string
+        example: This is a sample display name for a project
+        title: Display Name
+      source_ref:
+        type: string
+        example: object-12345_67890
+        title: Source reference
+        description: The native reference used by the source to refer to this object
   Source:
     type: object
     properties:
