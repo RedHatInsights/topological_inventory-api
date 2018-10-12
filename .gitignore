@@ -13,3 +13,4 @@
 /spec/reports/
 /tmp/
 db/schema.rb
+/bundler.d/*
