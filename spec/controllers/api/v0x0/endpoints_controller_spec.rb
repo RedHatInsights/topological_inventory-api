@@ -50,24 +50,4 @@ RSpec.describe Api::V0x0::EndpointsController, type: :controller do
     expect(response.location).to match(a_string_ending_with("api/v0.0/endpoints/#{endpoint.id}"))
     expect(JSON.parse(response.parsed_body)).to include("host" => "example.com", "id" => endpoint.id.to_s)
   end
-
-  def delete_path(path)
-    parsed_params = Rails.application.routes.recognize_path(path, :method => "DELETE")
-    delete(parsed_params[:action], :params => parsed_params.except(:action, :controller))
-  end
-
-  def get_path(path)
-    parsed_params = Rails.application.routes.recognize_path(path)
-    get(parsed_params[:action], :params => parsed_params.except(:action, :controller))
-  end
-
-  def patch_path(path, params)
-    parsed_params = Rails.application.routes.recognize_path(path, :method => "PATCH")
-    patch(parsed_params[:action], :params => params[:params].merge(parsed_params.except(:action, :controller)))
-  end
-
-  def post_path(path, options)
-    parsed_params = Rails.application.routes.recognize_path(path, :method => "POST")
-    post(parsed_params[:action], options)
-  end
 end
