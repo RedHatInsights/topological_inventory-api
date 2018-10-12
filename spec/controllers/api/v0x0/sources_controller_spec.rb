@@ -1,6 +1,8 @@
 RSpec.describe Api::V0x0::SourcesController, type: :controller do
+  let(:tenant) { Tenant.create! }
+
   it "delete /sources/:id deletes a Source" do
-    source = Source.create!(:name => "test_source")
+    source = Source.create!(:tenant => tenant, :name => "test_source")
 
     delete_path(api_v0x0_source_url(source.id))
 
@@ -11,7 +13,7 @@ RSpec.describe Api::V0x0::SourcesController, type: :controller do
   end
 
   it "get /sources lists all Sources" do
-    source = Source.create!(:name => "test_source")
+    source = Source.create!(:tenant => tenant, :name => "test_source")
 
     get_path(api_v0x0_sources_url)
 
@@ -20,7 +22,7 @@ RSpec.describe Api::V0x0::SourcesController, type: :controller do
   end
 
   it "get /sources/:id lists all Sources" do
-    source = Source.create!(:name => "test_source")
+    source = Source.create!(:tenant => tenant, :name => "test_source")
 
     get_path(api_v0x0_source_url(source.id))
 
@@ -29,7 +31,7 @@ RSpec.describe Api::V0x0::SourcesController, type: :controller do
   end
 
   it "patch /sources/:id updates a Source" do
-    source = Source.create!(:name => "abc")
+    source = Source.create!(:tenant => tenant, :name => "abc")
 
     patch_path(api_v0x0_source_url(source.id), :params => {:name => "xyz"})
 
@@ -40,7 +42,7 @@ RSpec.describe Api::V0x0::SourcesController, type: :controller do
   end
 
   it "post /sources creates a Source" do
-    post_path(api_v0x0_sources_url, :body => {:name => "abc"}.to_json, :format => :json)
+    post_path(api_v0x0_sources_url, :body => {:tenant_id => tenant.id.to_s, :name => "abc"}.to_json, :format => :json)
 
     source = Source.first
 

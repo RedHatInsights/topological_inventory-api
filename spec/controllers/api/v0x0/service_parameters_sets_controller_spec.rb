@@ -1,9 +1,9 @@
 RSpec.describe Api::V0x0::ServiceParametersSetsController, type: :controller do
-  let(:service_offering) { ServiceOffering.create!(:source => source) }
-  let(:source) { Source.create! }
-
+  let(:service_offering) { ServiceOffering.create!(:source => source, :tenant => tenant) }
+  let(:source) { Source.create!(:tenant => tenant) }
+  let(:tenant) { Tenant.create! }
   it "get /service_parameters_sets lists all ServiceParametersSets" do
-    service_parameters_set = ServiceParametersSet.create!(:service_offering => service_offering, :source => source)
+    service_parameters_set = ServiceParametersSet.create!(:service_offering => service_offering, :source => source, :tenant => tenant)
 
     get_path(api_v0x0_service_parameters_sets_url)
 
@@ -12,7 +12,7 @@ RSpec.describe Api::V0x0::ServiceParametersSetsController, type: :controller do
   end
 
   it "get /service_parameters_sets/:id lists all ServiceParametersSets" do
-    service_parameters_set = ServiceParametersSet.create!(:service_offering => service_offering, :source => source)
+    service_parameters_set = ServiceParametersSet.create!(:service_offering => service_offering, :source => source, :tenant => tenant)
 
     get_path(api_v0x0_service_parameters_set_url(service_parameters_set.id))
 
