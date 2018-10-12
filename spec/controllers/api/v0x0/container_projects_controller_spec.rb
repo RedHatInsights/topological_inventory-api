@@ -1,6 +1,9 @@
 RSpec.describe Api::V0x0::ContainerProjectsController, type: :controller do
+  let(:source) { Source.create!(:tenant => tenant) }
+  let(:tenant) { Tenant.create! }
+
   it "get /container_projects lists all Container Projects" do
-    project = ContainerProject.create!(:name => "test_container_project")
+    project = ContainerProject.create!(:tenant => tenant, :source => source, :name => "test_container_project")
 
     get_path(api_v0x0_container_projects_url)
 
@@ -9,7 +12,7 @@ RSpec.describe Api::V0x0::ContainerProjectsController, type: :controller do
   end
 
   it "get /container_projects/:id returns a Container Project" do
-    project = ContainerProject.create!(:name => "test_container_project")
+    project = ContainerProject.create!(:tenant => tenant, :source => source, :name => "test_container_project")
 
     get_path(api_v0x0_container_project_url(project.id))
 

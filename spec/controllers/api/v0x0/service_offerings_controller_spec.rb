@@ -1,7 +1,9 @@
 RSpec.describe Api::V0x0::ServiceOfferingsController, type: :controller do
-  let(:source) { Source.create! }
+  let(:source) { Source.create!(:tenant => tenant) }
+  let(:tenant) { Tenant.create! }
+
   it "get /service_offerings lists all ServiceOfferings" do
-    service_offering = ServiceOffering.create!(:source => source)
+    service_offering = ServiceOffering.create!(:source => source, :tenant => tenant)
 
     get_path(api_v0x0_service_offerings_url)
 
@@ -10,7 +12,7 @@ RSpec.describe Api::V0x0::ServiceOfferingsController, type: :controller do
   end
 
   it "get /service_offerings/:id lists all ServiceOfferings" do
-    service_offering = ServiceOffering.create!(:source => source)
+    service_offering = ServiceOffering.create!(:source => source, :tenant => tenant)
 
     get_path(api_v0x0_service_offering_url(service_offering.id))
 

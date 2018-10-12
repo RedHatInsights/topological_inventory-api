@@ -3,7 +3,7 @@ module Api
     class SourcesController < ApplicationController
       def create
         body = JSON.parse(request.body.read)
-        source = Source.create!(:name => body["name"])
+        source = Source.create!(:tenant_id => body["tenant_id"], :name => body["name"])
         render :json => source, :status => :created, :location => api_v0x0_source_url(source.id)
       end
 

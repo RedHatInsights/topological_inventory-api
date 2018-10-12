@@ -1,8 +1,9 @@
 RSpec.describe Api::V0x0::EndpointsController, type: :controller do
-  let(:source) { Source.create! }
+  let(:source) { Source.create!(:tenant => tenant) }
+  let(:tenant) { Tenant.create! }
 
   it "delete /endpoints/:id deletes an Endpoint" do
-    endpoint = Endpoint.create!(:source => source)
+    endpoint = Endpoint.create!(:source => source, :tenant => tenant)
 
     delete_path(api_v0x0_endpoint_url(endpoint.id))
 
@@ -13,7 +14,7 @@ RSpec.describe Api::V0x0::EndpointsController, type: :controller do
   end
 
   it "get /endpoints lists all Endpoints" do
-    endpoint = Endpoint.create!(:source => source)
+    endpoint = Endpoint.create!(:source => source, :tenant => tenant)
 
     get_path(api_v0x0_endpoints_url)
 
@@ -22,7 +23,7 @@ RSpec.describe Api::V0x0::EndpointsController, type: :controller do
   end
 
   it "get /endpoints/:id lists all Endpoints" do
-    endpoint = Endpoint.create!(:source => source)
+    endpoint = Endpoint.create!(:source => source, :tenant => tenant)
 
     get_path(api_v0x0_endpoint_url(endpoint.id))
 
@@ -31,7 +32,7 @@ RSpec.describe Api::V0x0::EndpointsController, type: :controller do
   end
 
   it "patch /endpoints/:id updates an Endpoint" do
-    endpoint = Endpoint.create!(:source => source, :host => "example.com")
+    endpoint = Endpoint.create!(:source => source, :tenant => tenant, :host => "example.com")
 
     patch_path(api_v0x0_endpoint_url(endpoint.id), :params => {:host => "example.org"})
 
@@ -42,7 +43,7 @@ RSpec.describe Api::V0x0::EndpointsController, type: :controller do
   end
 
   it "post /endpoints creates an Endpoint" do
-    post_path(api_v0x0_endpoints_url, :body => {:host => "example.com", :source_id => source.id.to_s}.to_json, :format => :json)
+    post_path(api_v0x0_endpoints_url, :body => {:host => "example.com", :source_id => source.id.to_s, :tenant_id => tenant.id.to_s}.to_json, :format => :json)
 
     endpoint = Endpoint.first
 
