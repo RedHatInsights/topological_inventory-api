@@ -3,10 +3,8 @@ info:
   description: Topological Inventory
   version: 0.0.1
   title: Topological Inventory
-  # put the contact info for your development or API team
   contact:
     email: you@your-company.com
-
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -14,88 +12,484 @@ securityDefinitions:
   UserSecurity:
     type: basic
 security:
-  - UserSecurity: []
-
+- UserSecurity: []
 paths:
-  /providers:
+  "/container_groups":
     get:
-      tags:
-      - users
-      summary: List Providers
-      operationId: listProviders
-      description: |
-        Returns an array of provider objects
+      summary: List ContainerGroups
+      operationId: listContainerGroups
+      description: Returns an array of ContainerGroup objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerGroups array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerGroup"
+  "/container_groups/{id}":
+    get:
+      summary: Show an existing ContainerGroup
+      operationId: showContainerGroup
+      description: Returns a ContainerGroup object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: ContainerGroup info
+          schema:
+            "$ref": "#/definitions/ContainerGroup"
+        404:
+          description: Not found
+  "/container_nodes":
+    get:
+      summary: List ContainerNodes
+      operationId: listContainerNodes
+      description: Returns an array of ContainerNode objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerNodes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerNode"
+  "/container_nodes/{id}":
+    get:
+      summary: Show an existing ContainerNode
+      operationId: showContainerNode
+      description: Returns a ContainerNode object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: ContainerNode info
+          schema:
+            "$ref": "#/definitions/ContainerNode"
+        404:
+          description: Not found
+  "/container_projects":
+    get:
+      summary: List ContainerProjects
+      operationId: listContainerProjects
+      description: Returns an array of ContainerProject objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerProjects array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerProject"
+  "/container_projects/{id}":
+    get:
+      summary: Show an existing ContainerProject
+      operationId: showContainerProject
+      description: Returns a ContainerProject object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: ContainerProject info
+          schema:
+            "$ref": "#/definitions/ContainerProject"
+        404:
+          description: Not found
+  "/container_templates":
+    get:
+      summary: List ContainerTemplates
+      operationId: listContainerTemplates
+      description: Returns an array of ContainerTemplate objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerTemplates array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerTemplate"
+  "/container_templates/{id}":
+    get:
+      summary: Show an existing ContainerTemplate
+      operationId: showContainerTemplate
+      description: Returns a ContainerTemplate object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: ContainerTemplate info
+          schema:
+            "$ref": "#/definitions/ContainerTemplate"
+        404:
+          description: Not found
+  "/endpoints":
+    get:
+      summary: List Endpoints
+      operationId: listEndpoints
+      description: Returns an array of Endpoint objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Endpoints array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Endpoint"
+    post:
+      summary: Create a new Endpoint
+      operationId: createEndpoint
+      description: Creates a Endpoint object
       produces:
       - application/json
       consumes:
       - application/json
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/Id"
+      responses:
+        201:
+          description: Endpoint info
+          schema:
+            type: object
+            items:
+              "$ref": "#/definitions/Endpoint"
+  "/endpoints/{id}":
+    get:
+      summary: Show an existing Endpoint
+      operationId: showEndpoint
+      description: Returns a Endpoint object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
       responses:
         200:
-          description: Provider Info
+          description: Endpoint info
+          schema:
+            "$ref": "#/definitions/Endpoint"
+        404:
+          description: Not found
+    patch:
+      summary: Update an existing Endpoint
+      operationId: updateEndpoint
+      description: Updates a Endpoint object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: Not found
+    put:
+      summary: Replace an existing Endpoint
+      operationId: replaceEndpoint
+      description: Replaces a Endpoint object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: Not found
+    delete:
+      summary: Delete an existing Endpoint
+      operationId: deleteEndpoint
+      description: Deletes a Endpoint object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        204:
+          description: Endpoint deleted
+        404:
+          description: Not found
+  "/service_instances":
+    get:
+      summary: List ServiceInstances
+      operationId: listServiceInstances
+      description: Returns an array of ServiceInstance objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceInstances array
           schema:
             type: array
             items:
-              $ref: '#/definitions/Provider'
-  /service_offerings:
+              "$ref": "#/definitions/ServiceInstance"
+  "/service_instances/{id}":
     get:
-      tags:
-      - users
+      summary: Show an existing ServiceInstance
+      operationId: showServiceInstance
+      description: Returns a ServiceInstance object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: ServiceInstance info
+          schema:
+            "$ref": "#/definitions/ServiceInstance"
+        404:
+          description: Not found
+  "/service_offerings":
+    get:
       summary: List ServiceOfferings
       operationId: listServiceOfferings
       description: Returns an array of ServiceOffering objects
       produces:
       - application/json
-      consumes:
+      responses:
+        200:
+          description: ServiceOfferings array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceOffering"
+  "/service_offerings/{id}":
+    get:
+      summary: Show an existing ServiceOffering
+      operationId: showServiceOffering
+      description: Returns a ServiceOffering object
+      produces:
       - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
       responses:
         200:
           description: ServiceOffering info
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/ServiceOffering'
-  /service_parameters_sets:
+            "$ref": "#/definitions/ServiceOffering"
+        404:
+          description: Not found
+  "/service_parameters_sets":
     get:
-      tags:
-      - users
       summary: List ServiceParametersSets
       operationId: listServiceParametersSets
       description: Returns an array of ServiceParametersSet objects
       produces:
       - application/json
-      consumes:
-      - application/json
       responses:
         200:
-          description: ServiceParametersSets info
+          description: ServiceParametersSets array
           schema:
             type: array
             items:
-              $ref: '#/definitions/ServiceParametersSet'
-
-# define reusable parameters:
-parameters:
-  ProviderID:
-    name: provider_id
-    in: path
-    description: The Provider ID
-    required: true
-    type: string
-    format: uuid
-  OptionalProviderID:
-    name: provider_id
-    in: query
-    description: The Provider ID
-    type: integer
-
-# define reusable definitions
+              "$ref": "#/definitions/ServiceParametersSet"
+  "/service_parameters_sets/{id}":
+    get:
+      summary: Show an existing ServiceParametersSet
+      operationId: showServiceParametersSet
+      description: Returns a ServiceParametersSet object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: ServiceParametersSet info
+          schema:
+            "$ref": "#/definitions/ServiceParametersSet"
+        404:
+          description: Not found
+  "/sources":
+    get:
+      summary: List Sources
+      operationId: listSources
+      description: Returns an array of Source objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Sources array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Source"
+    post:
+      summary: Create a new Source
+      operationId: createSource
+      description: Creates a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/Id"
+      responses:
+        201:
+          description: Source info
+          schema:
+            type: object
+            items:
+              "$ref": "#/definitions/Source"
+  "/sources/{id}":
+    get:
+      summary: Show an existing Source
+      operationId: showSource
+      description: Returns a Source object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: Source info
+          schema:
+            "$ref": "#/definitions/Source"
+        404:
+          description: Not found
+    patch:
+      summary: Update an existing Source
+      operationId: updateSource
+      description: Updates a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: Not found
+    put:
+      summary: Replace an existing Source
+      operationId: replaceSource
+      description: Replaces a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: Not found
+    delete:
+      summary: Delete an existing Source
+      operationId: deleteSource
+      description: Deletes a Source object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        204:
+          description: Source deleted
+        404:
+          description: Not found
 definitions:
-  Provider:
+  ContainerGroup:
     type: object
-    required:
-    - name
-    - url
-    - token
     properties:
       id:
         type: string
@@ -103,34 +497,220 @@ definitions:
         format: uuid
       name:
         type: string
-        example: Sample Provider
+        example: Sample Group
         title: Name
-      description:
+        readOnly: true
+      ipaddress:
         type: string
-        example: This is a sample description for a provider
-        title: Description
-      url:
+        example: 192.0.2.1
+        title: IP Address
+        readOnly: true
+      source_created_at:
         type: string
-        format: url
-        example: The REST API end point for the provider
-        title: Provider URL
-      user:
+        format: date-time
+        readOnly: true
+      source_deleted_at:
         type: string
-        title: User
-        description: The user used to connect to the provider
-      password:
+        format: date-time
+        readOnly: true
+      container_node_id:
         type: string
-        title: Password
-        description: The password used to connect to the provider
-      token:
+        readOnly: true
+        format: uuid
+      container_project_id:
         type: string
-        title: Token
-        description: The token used to connect to the provider
-      verify_ssl:
+        readOnly: true
+        format: uuid
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
+  ContainerNode:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Group
+        title: Name
+        readOnly: true
+      cpus:
+        type: integer
+        example: 4
+        readOnly: true
+      memory:
+        type: integer
+        example: 4294967296
+        readOnly: true
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
+  ContainerProject:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Project
+        title: Name
+      display_name:
+        type: string
+        example: This is a sample display name for a project
+        title: Display Name
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
+  ContainerTemplate:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Project
+        title: Name
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
+      container_project_id:
+        type: string
+        readOnly: true
+        format: uuid
+  Endpoint:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      default:
         type: boolean
-        default: true
-        title: Verify Server Certificate
-        description: Verify the servers certificate, you can disable it for servers with self signed certificates.
+      host:
+        type: string
+        example: www.example.com
+        description: URI host component
+      path:
+        type: string
+        example: "/api/v1"
+        description: URI path component
+      port:
+        type: integer
+        minimum: 0
+        maximum: 65534
+        example: 80
+        description: URI port component
+      scheme:
+        type: string
+        example: https
+        description: URI scheme component
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
+  Id:
+    type: string
+    format: uuid
+  ServiceInstance:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample ServiceInstance
+        title: Name
+      extra:
+        type: object
+        readOnly: true
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
+      service_offering_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
   ServiceOffering:
     type: object
     properties:
@@ -155,6 +735,26 @@ definitions:
         type: object
         example: Extra information about this object in JSON format
         title: Extra
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
   ServiceParametersSet:
     type: object
     properties:
@@ -170,19 +770,55 @@ definitions:
         type: string
         example: This is a sample description for a provider
         title: Description
-      ems_ref:
-        type: string
-        example: object-12345_67890
-        title: EMS reference
-        description: The native reference used by the EMS to refer to this object
       extra:
         type: object
         example: Extra information about this object in JSON format
         title: Extra
-
-# Added by API Auto Mocking Plugin
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
+      service_offering_id:
+        type: string
+        readOnly: true
+        format: uuid
+  Source:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Provider
+        title: Name
+      uid:
+        type: string
+        readOnly: true
+        title: Unique ID of the inventory source installation
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
 host: virtserver.swaggerhub.com
 schemes:
- - https
- - http
-basePath: /api/0.0
+- https
+- http
+basePath: "/api/v0.0"
