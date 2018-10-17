@@ -2,12 +2,7 @@ module Api
   module V0
     class ContainerGroupsController < ApplicationController
       include Api::Mixins::IndexMixin
-
-      def show
-        render json: ContainerGroup.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
-      end
+      include Api::Mixins::ShowMixin
 
       private
 

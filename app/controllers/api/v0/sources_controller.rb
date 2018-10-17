@@ -2,6 +2,7 @@ module Api
   module V0
     class SourcesController < ApplicationController
       include Api::Mixins::IndexMixin
+      include Api::Mixins::ShowMixin
 
       def create
         body = JSON.parse(request.body.read)
@@ -12,12 +13,6 @@ module Api
       def destroy
         Source.destroy(params[:id])
         head :no_content
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
-      end
-
-      def show
-        render json: Source.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         head :not_found
       end

@@ -2,6 +2,7 @@ module Api
   module V0
     class EndpointsController < ApplicationController
       include Api::Mixins::IndexMixin
+      include Api::Mixins::ShowMixin
 
       def create
         endpoint = Endpoint.create!(create_params)
@@ -11,12 +12,6 @@ module Api
       def destroy
         Endpoint.destroy(params[:id])
         head :no_content
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
-      end
-
-      def show
-        render json: Endpoint.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         head :not_found
       end
