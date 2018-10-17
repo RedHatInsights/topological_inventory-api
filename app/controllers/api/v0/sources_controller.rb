@@ -1,6 +1,7 @@
 module Api
   module V0
     class SourcesController < ApplicationController
+      include Api::Mixins::DestroyMixin
       include Api::Mixins::IndexMixin
       include Api::Mixins::ShowMixin
 
@@ -10,12 +11,6 @@ module Api
         render :json => source, :status => :created, :location => api_v0x0_source_url(source.id)
       end
 
-      def destroy
-        Source.destroy(params[:id])
-        head :no_content
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
-      end
 
       def update
         Source.update(params[:id], :name => params[:name])

@@ -1,19 +1,13 @@
 module Api
   module V0
     class EndpointsController < ApplicationController
+      include Api::Mixins::DestroyMixin
       include Api::Mixins::IndexMixin
       include Api::Mixins::ShowMixin
 
       def create
         endpoint = Endpoint.create!(create_params)
         render :json => endpoint, :status => :created, :location => api_v0x0_endpoint_url(endpoint.id)
-      end
-
-      def destroy
-        Endpoint.destroy(params[:id])
-        head :no_content
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
       end
 
       def update
