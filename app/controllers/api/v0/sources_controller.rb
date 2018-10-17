@@ -15,7 +15,7 @@ module Api
       end
 
       def index
-        render json: Source.all
+        render json: Source.where(list_params)
       end
 
       def show
@@ -29,6 +29,12 @@ module Api
         head :no_content
       rescue ActiveRecord::RecordNotFound
         head :not_found
+      end
+
+      private
+
+      def list_params
+        params.permit(:tenant_id)
       end
     end
   end

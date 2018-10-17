@@ -5,7 +5,7 @@ describe "Swagger stuff" do
       next if r.internal? # Don't display rails routes
       next if r.engine? # Don't care right now...
 
-      array << {:verb => r.verb, :path => r.path.split("(").first}
+      array << {:verb => r.verb, :path => r.path.split("(").first.sub(/:[_a-z]*id/, ":id")}
     end
   end
 

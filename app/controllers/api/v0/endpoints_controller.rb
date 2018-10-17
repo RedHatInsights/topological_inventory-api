@@ -14,7 +14,7 @@ module Api
       end
 
       def index
-        render json: Endpoint.all
+        render json: Endpoint.where(list_params)
       end
 
       def show
@@ -38,6 +38,10 @@ module Api
 
       def update_params
         params.permit(:role, :port, :source_id, :default, :scheme, :host, :path)
+      end
+
+      def list_params
+        params.permit(:source_id, :tenant_id)
       end
     end
   end
