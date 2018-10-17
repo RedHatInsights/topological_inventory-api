@@ -1,9 +1,7 @@
 module Api
   module V0
     class ServiceParametersSetsController < ApplicationController
-      def index
-        render json: ServiceParametersSet.where(list_params)
-      end
+      include Api::Mixins::IndexMixin
 
       def show
         render json: ServiceParametersSet.find(params[:id])
@@ -15,6 +13,10 @@ module Api
 
       def list_params
         params.permit(:source_id, :tenant_id, :service_offering_id)
+      end
+
+      def model
+        ServiceParametersSet
       end
     end
   end

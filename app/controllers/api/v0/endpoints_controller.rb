@@ -1,6 +1,8 @@
 module Api
   module V0
     class EndpointsController < ApplicationController
+      include Api::Mixins::IndexMixin
+
       def create
         endpoint = Endpoint.create!(create_params)
         render :json => endpoint, :status => :created, :location => api_v0x0_endpoint_url(endpoint.id)
@@ -11,10 +13,6 @@ module Api
         head :no_content
       rescue ActiveRecord::RecordNotFound
         head :not_found
-      end
-
-      def index
-        render json: Endpoint.where(list_params)
       end
 
       def show
@@ -42,6 +40,10 @@ module Api
 
       def list_params
         params.permit(:source_id, :tenant_id)
+      end
+
+      def model
+        Endpoint
       end
     end
   end

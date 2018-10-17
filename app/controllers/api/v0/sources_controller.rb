@@ -1,6 +1,8 @@
 module Api
   module V0
     class SourcesController < ApplicationController
+      include Api::Mixins::IndexMixin
+
       def create
         body = JSON.parse(request.body.read)
         source = Source.create!(:tenant_id => body["tenant_id"], :name => body["name"])
@@ -12,10 +14,6 @@ module Api
         head :no_content
       rescue ActiveRecord::RecordNotFound
         head :not_found
-      end
-
-      def index
-        render json: Source.where(list_params)
       end
 
       def show
@@ -35,6 +33,10 @@ module Api
 
       def list_params
         params.permit(:tenant_id)
+      end
+
+      def model
+        Source
       end
     end
   end

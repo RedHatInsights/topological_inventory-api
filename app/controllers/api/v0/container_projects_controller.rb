@@ -1,9 +1,7 @@
 module Api
   module V0
     class ContainerProjectsController < ApplicationController
-      def index
-        render json: ContainerProject.where(list_params)
-      end
+      include Api::Mixins::IndexMixin
 
       def show
         render json: ContainerProject.find(params[:id])
@@ -15,6 +13,10 @@ module Api
 
       def list_params
         params.permit(:source_id, :tenant_id)
+      end
+
+      def model
+        ContainerProject
       end
     end
   end

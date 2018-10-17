@@ -1,9 +1,7 @@
 module Api
   module V0
     class ContainerNodesController < ApplicationController
-      def index
-        render json: ContainerNode.where(list_params)
-      end
+      include Api::Mixins::IndexMixin
 
       def show
         render json: ContainerNode.find(params[:id])
@@ -15,6 +13,10 @@ module Api
 
       def list_params
         params.permit(:source_id, :tenant_id)
+      end
+
+      def model
+        ContainerNode
       end
     end
   end
