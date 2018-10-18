@@ -49,6 +49,27 @@ paths:
             "$ref": "#/definitions/ContainerGroup"
         404:
           description: Not found
+  "/container_nodes/{id}/container_groups":
+    get:
+      summary: List ContainerGroups for ContainerNode
+      operationId: listContainerNodeContainerGroups
+      description: Returns an array of ContainerGroup objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerGroups array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerGroup"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
   "/container_nodes":
     get:
       summary: List ContainerNodes
@@ -84,6 +105,48 @@ paths:
             "$ref": "#/definitions/ContainerNode"
         404:
           description: Not found
+  "/container_projects/{id}/container_groups":
+    get:
+      summary: List ContainerGroups for ContainerProject
+      operationId: listContainerProjectContainerGroups
+      description: Returns an array of ContainerGroup objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerGroups array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerGroup"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+  "/container_projects/{id}/container_templates":
+    get:
+      summary: List ContainerTemplates for ContainerProject
+      operationId: listContainerProjectContainerTemplates
+      description: Returns an array of ContainerTemplate objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerTemplates array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerTemplate"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
   "/container_projects":
     get:
       summary: List ContainerProjects
@@ -303,6 +366,48 @@ paths:
             "$ref": "#/definitions/ServiceInstance"
         404:
           description: Not found
+  "/service_offerings/{id}/service_instances":
+    get:
+      summary: List ServiceInstances for ServiceOffering
+      operationId: listServiceOfferingServiceInstances
+      description: Returns an array of ServiceInstance objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceInstances array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceInstance"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+  "/service_offerings/{id}/service_parameters_sets":
+    get:
+      summary: List ServiceParametersSets for ServiceOffering
+      operationId: listServiceOfferingServiceParametersSets
+      description: Returns an array of ServiceParametersSet objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceParametersSets array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceParametersSet"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
   "/service_offerings":
     get:
       summary: List ServiceOfferings
@@ -338,6 +443,27 @@ paths:
             "$ref": "#/definitions/ServiceOffering"
         404:
           description: Not found
+  "/service_parameters_sets/{id}/service_instances":
+    get:
+      summary: List ServiceInstances for ServiceParametersSet
+      operationId: listServiceParametersSetServiceInstances
+      description: Returns an array of ServiceInstance objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceInstances array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceInstance"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
   "/service_parameters_sets":
     get:
       summary: List ServiceParametersSets
@@ -373,6 +499,174 @@ paths:
             "$ref": "#/definitions/ServiceParametersSet"
         404:
           description: Not found
+  "/sources/{id}/container_groups":
+    get:
+      summary: List ContainerGroups for Source
+      operationId: listSourceContainerGroups
+      description: Returns an array of ContainerGroup objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerGroups array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerGroup"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+  "/sources/{id}/container_nodes":
+    get:
+      summary: List ContainerNodes for Source
+      operationId: listSourceContainerNodes
+      description: Returns an array of ContainerNode objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerNodes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerNode"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+  "/sources/{id}/container_projects":
+    get:
+      summary: List ContainerProjects for Source
+      operationId: listSourceContainerProjects
+      description: Returns an array of ContainerProject objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerProjects array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerProject"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+  "/sources/{id}/container_templates":
+    get:
+      summary: List ContainerTemplates for Source
+      operationId: listSourceContainerTemplates
+      description: Returns an array of ContainerTemplate objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerTemplates array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerTemplate"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+  "/sources/{id}/endpoints":
+    get:
+      summary: List Endpoints for Source
+      operationId: listSourceEndpoints
+      description: Returns an array of Endpoint objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Endpoints array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Endpoint"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+  "/sources/{id}/service_instances":
+    get:
+      summary: List ServiceInstances for Source
+      operationId: listSourceServiceInstances
+      description: Returns an array of ServiceInstance objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceInstances array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceInstance"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+  "/sources/{id}/service_offerings":
+    get:
+      summary: List ServiceOfferings for Source
+      operationId: listSourceServiceOfferings
+      description: Returns an array of ServiceOffering objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceOfferings array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceOffering"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
+  "/sources/{id}/service_parameters_sets":
+    get:
+      summary: List ServiceParametersSets for Source
+      operationId: listSourceServiceParametersSets
+      description: Returns an array of ServiceParametersSet objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceParametersSets array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceParametersSet"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        format: uuid
   "/sources":
     get:
       summary: List Sources

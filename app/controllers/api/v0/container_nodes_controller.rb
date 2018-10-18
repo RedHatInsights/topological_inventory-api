@@ -1,14 +1,17 @@
 module Api
   module V0
     class ContainerNodesController < ApplicationController
-      def index
-        render json: ContainerNode.all
+      include Api::Mixins::IndexMixin
+      include Api::Mixins::ShowMixin
+
+      private
+
+      def list_params
+        params.permit(:source_id, :tenant_id)
       end
 
-      def show
-        render json: ContainerNode.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
+      def model
+        ContainerNode
       end
     end
   end

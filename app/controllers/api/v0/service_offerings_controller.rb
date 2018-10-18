@@ -1,14 +1,17 @@
 module Api
   module V0
     class ServiceOfferingsController < ApplicationController
-      def index
-        render json: ServiceOffering.all
+      include Api::Mixins::IndexMixin
+      include Api::Mixins::ShowMixin
+
+      private
+
+      def list_params
+        params.permit(:source_id, :tenant_id)
       end
 
-      def show
-        render json: ServiceOffering.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
+      def model
+        ServiceOffering
       end
     end
   end

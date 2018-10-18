@@ -1,14 +1,17 @@
 module Api
   module V0
     class ContainerProjectsController < ApplicationController
-      def index
-        render json: ContainerProject.all
+      include Api::Mixins::IndexMixin
+      include Api::Mixins::ShowMixin
+
+      private
+
+      def list_params
+        params.permit(:source_id, :tenant_id)
       end
 
-      def show
-        render json: ContainerProject.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
+      def model
+        ContainerProject
       end
     end
   end

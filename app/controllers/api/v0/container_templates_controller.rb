@@ -1,14 +1,17 @@
 module Api
   module V0
     class ContainerTemplatesController < ApplicationController
-      def index
-        render json: ContainerTemplate.all
+      include Api::Mixins::IndexMixin
+      include Api::Mixins::ShowMixin
+
+      private
+
+      def list_params
+        params.permit(:source_id, :tenant_id, :container_project_id)
       end
 
-      def show
-        render json: ContainerTemplate.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
+      def model
+        ContainerTemplate
       end
     end
   end
