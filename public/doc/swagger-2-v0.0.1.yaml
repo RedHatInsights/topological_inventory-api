@@ -798,6 +798,12 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      create_json_schema:
+        type: object
+        readOnly: true
+      update_json_schema:
+        type: object
+        readOnly: true
   Source:
     type: object
     properties:
