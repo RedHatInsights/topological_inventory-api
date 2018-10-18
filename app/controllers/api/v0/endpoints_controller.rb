@@ -11,7 +11,7 @@ module Api
       end
 
       def update
-        Endpoint.update(params[:id], update_params)
+        Endpoint.update(params.require(:id), update_params)
         head :no_content
       rescue ActiveRecord::RecordNotFound
         head :not_found
