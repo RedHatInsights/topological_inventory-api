@@ -1,5 +1,6 @@
 RSpec.describe Api::V0x0::EndpointsController, :type => :request do
   it("Uses IndexMixin") { expect(described_class.instance_method(:index).owner).to eq(Api::Mixins::IndexMixin) }
+  it("Uses ShowMixin")  { expect(described_class.instance_method(:show).owner).to eq(Api::Mixins::ShowMixin) }
 
   let(:source) { Source.create!(:tenant => tenant) }
   let(:tenant) { Tenant.create! }
@@ -13,15 +14,6 @@ RSpec.describe Api::V0x0::EndpointsController, :type => :request do
 
     expect(response.status).to eq(204)
     expect(response.parsed_body).to be_empty
-  end
-
-  it "get /endpoints/:id lists all Endpoints" do
-    endpoint = Endpoint.create!(:source => source, :tenant => tenant)
-
-    get(api_v0x0_endpoint_url(endpoint.id))
-
-    expect(response.status).to eq(200)
-    expect(response.parsed_body).to match(a_hash_including("id" => endpoint.id.to_s))
   end
 
   it "patch /endpoints/:id updates an Endpoint" do
