@@ -7,7 +7,7 @@ module Api
     class EndpointsController < Api::V0::EndpointsController; end
     class ServiceInstancesController < Api::V0::ServiceInstancesController; end
     class ServiceOfferingsController < Api::V0::ServiceOfferingsController; end
-    class ServiceParametersSetsController < Api::V0::ServiceParametersSetsController; end
+    class ServicePlansController < Api::V0::ServicePlansController; end
     class SourcesController < Api::V0::SourcesController; end
   end
 end

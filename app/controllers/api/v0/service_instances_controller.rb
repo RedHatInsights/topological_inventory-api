@@ -7,7 +7,7 @@ module Api
       private
 
       def list_params
-        params.permit(:source_id, :tenant_id, :service_offering_id, :service_parameters_set_id)
+        params.permit(:source_id, :tenant_id, :service_offering_id, :service_plan_id)
       end
 
       def model
