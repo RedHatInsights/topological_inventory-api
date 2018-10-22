@@ -10,6 +10,10 @@ gem 'inventory_refresh', :git => 'https://github.com/ManageIQ/inventory_refresh'
 gem 'manageiq-gems-pending', :git => 'https://github.com/ManageIQ/manageiq-gems-pending', :branch => 'master'
 gem 'topological_inventory-core', :git => 'https://github.com/ManageIQ/topological_inventory-core', :branch => 'master'
 
+group :development, :test do
+  gem 'simplecov'
+end
+
 group :test do
   gem 'rspec-rails', '~>3.8'
 end
