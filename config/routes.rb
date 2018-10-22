@@ -14,9 +14,9 @@ Rails.application.routes.draw do
       resources :service_instances,       :only => [:index, :show]
       resources :service_offerings,       :only => [:index, :show] do
         resources :service_instances,       :only => [:index]
-        resources :service_parameters_sets, :only => [:index]
+        resources :service_plans, :only => [:index]
       end
-      resources :service_parameters_sets, :only => [:index, :show] do
+      resources :service_plans, :only => [:index, :show] do
         resources :service_instances, :only => [:index]
       end
       resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
         resources :endpoints,               :only => [:index]
         resources :service_instances,       :only => [:index]
         resources :service_offerings,       :only => [:index]
-        resources :service_parameters_sets, :only => [:index]
+        resources :service_plans, :only => [:index]
       end
     end
   end

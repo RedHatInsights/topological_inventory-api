@@ -387,20 +387,20 @@ paths:
         required: true
         type: string
         format: uuid
-  "/service_offerings/{id}/service_parameters_sets":
+  "/service_offerings/{id}/service_plans":
     get:
-      summary: List ServiceParametersSets for ServiceOffering
-      operationId: listServiceOfferingServiceParametersSets
-      description: Returns an array of ServiceParametersSet objects
+      summary: List ServicePlans for ServiceOffering
+      operationId: listServiceOfferingServicePlans
+      description: Returns an array of ServicePlan objects
       produces:
       - application/json
       responses:
         200:
-          description: ServiceParametersSets array
+          description: ServicePlans array
           schema:
             type: array
             items:
-              "$ref": "#/definitions/ServiceParametersSet"
+              "$ref": "#/definitions/ServicePlan"
       parameters:
       - name: id
         in: path
@@ -443,10 +443,10 @@ paths:
             "$ref": "#/definitions/ServiceOffering"
         404:
           description: Not found
-  "/service_parameters_sets/{id}/service_instances":
+  "/service_plans/{id}/service_instances":
     get:
-      summary: List ServiceInstances for ServiceParametersSet
-      operationId: listServiceParametersSetServiceInstances
+      summary: List ServiceInstances for ServicePlan
+      operationId: listServicePlanServiceInstances
       description: Returns an array of ServiceInstance objects
       produces:
       - application/json
@@ -464,25 +464,25 @@ paths:
         required: true
         type: string
         format: uuid
-  "/service_parameters_sets":
+  "/service_plans":
     get:
-      summary: List ServiceParametersSets
-      operationId: listServiceParametersSets
-      description: Returns an array of ServiceParametersSet objects
+      summary: List ServicePlans
+      operationId: listServicePlans
+      description: Returns an array of ServicePlan objects
       produces:
       - application/json
       responses:
         200:
-          description: ServiceParametersSets array
+          description: ServicePlans array
           schema:
             type: array
             items:
-              "$ref": "#/definitions/ServiceParametersSet"
-  "/service_parameters_sets/{id}":
+              "$ref": "#/definitions/ServicePlan"
+  "/service_plans/{id}":
     get:
-      summary: Show an existing ServiceParametersSet
-      operationId: showServiceParametersSet
-      description: Returns a ServiceParametersSet object
+      summary: Show an existing ServicePlan
+      operationId: showServicePlan
+      description: Returns a ServicePlan object
       produces:
       - application/json
       parameters:
@@ -494,9 +494,9 @@ paths:
         format: uuid
       responses:
         200:
-          description: ServiceParametersSet info
+          description: ServicePlan info
           schema:
-            "$ref": "#/definitions/ServiceParametersSet"
+            "$ref": "#/definitions/ServicePlan"
         404:
           description: Not found
   "/sources/{id}/container_groups":
@@ -646,20 +646,20 @@ paths:
         required: true
         type: string
         format: uuid
-  "/sources/{id}/service_parameters_sets":
+  "/sources/{id}/service_plans":
     get:
-      summary: List ServiceParametersSets for Source
-      operationId: listSourceServiceParametersSets
-      description: Returns an array of ServiceParametersSet objects
+      summary: List ServicePlans for Source
+      operationId: listSourceServicePlans
+      description: Returns an array of ServicePlan objects
       produces:
       - application/json
       responses:
         200:
-          description: ServiceParametersSets array
+          description: ServicePlans array
           schema:
             type: array
             items:
-              "$ref": "#/definitions/ServiceParametersSet"
+              "$ref": "#/definitions/ServicePlan"
       parameters:
       - name: id
         in: path
@@ -1049,7 +1049,7 @@ definitions:
         type: string
         readOnly: true
         format: uuid
-  ServiceParametersSet:
+  ServicePlan:
     type: object
     properties:
       id:

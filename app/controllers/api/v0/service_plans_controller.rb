@@ -1,6 +1,6 @@
 module Api
   module V0
-    class ServiceParametersSetsController < ApplicationController
+    class ServicePlansController < ApplicationController
       include Api::Mixins::IndexMixin
       include Api::Mixins::ShowMixin
 
@@ -11,7 +11,7 @@ module Api
       end
 
       def model
-        ServiceParametersSet
+        ServicePlan
       end
     end
   end
