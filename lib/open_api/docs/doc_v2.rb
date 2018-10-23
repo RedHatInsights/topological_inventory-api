@@ -20,6 +20,25 @@ module OpenApi
           hash[col] = stuff["example"] if stuff.key?("example")
         end
       end
+
+      def base_path
+        @base_path ||= @content["basePath"]
+      end
+
+      def paths
+        @content["paths"]
+      end
+
+      def routes
+        @routes ||= begin
+          paths.flat_map do |path, hash|
+            hash.collect do |verb, _details|
+              p = File.join(base_path, path).gsub(/{\w*}/, ":id")
+              {:path => p, :verb => verb.upcase}
+            end
+          end
+        end
+      end
     end
   end
 end

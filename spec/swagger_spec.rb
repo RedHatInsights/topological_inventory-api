@@ -9,8 +9,7 @@ describe "Swagger stuff" do
     end
   end
 
-  let(:swagger_docs) { Spec::Support::SwaggerDocs.new }
-  let(:swagger_routes) { swagger_docs.routes }
+  let(:swagger_routes) { Api::Docs.routes }
 
   it "routes match" do
     expect(rails_routes).to match_array(swagger_routes)
