@@ -20,7 +20,7 @@ module Api
       private
 
       def create_params
-        ActionController::Parameters.new(JSON.parse(request.body.read)).permit(:role, :port, :source_id, :default, :scheme, :host, :path, :tenant_id)
+        body_params.permit(:role, :port, :source_id, :default, :scheme, :host, :path, :tenant_id)
       end
 
       def update_params
