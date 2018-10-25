@@ -1,29 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.5'
-
-gem 'jbuilder', '~> 2.0'
-gem 'pg', '~> 1.0', :require => false
-gem 'puma', '~> 3.0'
+gem 'pg',        '~> 1.0', :require => false
+gem 'puma',      '~> 3.0'
 gem 'rack-cors', '>= 0.4.1'
-gem 'rest-client', '>= 1.8.0'
-gem 'rspec-rails'
+gem 'rails',     '~> 5.1.5'
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'topological_inventory-core', :git => 'https://github.com/ManageIQ/topological_inventory-core', :branch => 'master'
 gem 'inventory_refresh', :git => 'https://github.com/ManageIQ/inventory_refresh', :branch => 'master'
 gem 'manageiq-gems-pending', :git => 'https://github.com/ManageIQ/manageiq-gems-pending', :branch => 'master'
+gem 'topological_inventory-core', :git => 'https://github.com/ManageIQ/topological_inventory-core', :branch => 'master'
 
-group :development, :test do
-  gem 'byebug', platform: :mri
-end
-
-group :development do
-  gem 'listen', '~> 3.0.5'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+group :test do
+  gem 'rspec-rails', '~>3.8'
 end
 
 #
