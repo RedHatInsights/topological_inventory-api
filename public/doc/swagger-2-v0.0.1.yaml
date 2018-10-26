@@ -781,6 +781,41 @@ paths:
           description: Source deleted
         404:
           description: Not found
+  "/tasks":
+    get:
+      summary: List Tasks
+      operationId: listTasks
+      description: Returns an array of Task objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Tasks array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Task"
+  "/tasks/{id}":
+    get:
+      summary: Show an existing Task
+      operationId: showTask
+      description: Returns a Task object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        pattern: '\A\d+\z'
+      responses:
+        200:
+          description: Task info
+          schema:
+            "$ref": "#/definitions/Task"
+        404:
+          description: Not found
 definitions:
   ContainerGroup:
     type: object
@@ -1128,6 +1163,36 @@ definitions:
         type: string
         readOnly: true
         title: Unique ID of the inventory source installation
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
+  Task:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Order Service Plan
+        title: Name
+      status:
+        type: string
+        example: Error
+        title: Status
+      state:
+        type: string
+        example: Running
+        title: State
+      context:
+        type: object
+        example: Extra information about this task, e.g. new inventory items created by this task
+        title: Context
+      completed_at:
+        type: string
+        format: date-time
       tenant_id:
         type: string
         readOnly: true

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         resources :service_offerings,       :only => [:index]
         resources :service_plans, :only => [:index]
       end
+      resources :tasks, :only => [:index, :show]
     end
   end
 end
