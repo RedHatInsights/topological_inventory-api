@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   prefix = ENV["PATH_PREFIX"] || "api"
   scope :as => :api, :module => "api", :path => prefix do
+    match "/v0/*path", :via => [:delete, :get, :options, :patch, :post, :put], :to => redirect("#{prefix}/v0.0/%{path}")
+
     namespace :v0x0, :path => "v0.0" do
       resources :container_groups,        :only => [:index, :show]
       resources :container_nodes,         :only => [:index, :show] do

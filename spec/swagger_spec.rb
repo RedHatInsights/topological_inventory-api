@@ -15,7 +15,8 @@ describe "Swagger stuff" do
     include Rails.application.routes.url_helpers
 
     it "routes match" do
-      expect(rails_routes).to match_array(swagger_routes)
+      redirect_routes = [{:path=>"/api/v0/*path", :verb=>"DELETE|GET|OPTIONS|PATCH|POST|PUT"}]
+      expect(rails_routes).to match_array(swagger_routes + redirect_routes)
     end
 
     context "customizable route prefixes" do
