@@ -5,12 +5,12 @@
 /.yardoc
 /Gemfile.lock
 /_yardoc/
+/bundler.d/*
 /config/database.yml
 /coverage/
+/db/schema.rb
 /doc/
 /log/
 /pkg/
 /spec/reports/
 /tmp/
-db/schema.rb
-/bundler.d/*
