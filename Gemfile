@@ -7,7 +7,7 @@ gem 'rack-cors',   '>= 0.4.1'
 gem 'rails',       '~> 5.1.5'
 
 gem 'inventory_refresh', :git => 'https://github.com/ManageIQ/inventory_refresh', :branch => 'master'
-gem 'manageiq-gems-pending', :git => 'https://github.com/ManageIQ/manageiq-gems-pending', :branch => 'master'
+gem 'manageiq-password', :git => 'https://github.com/ManageIQ/manageiq-password', :branch => 'master'
 gem 'topological_inventory-core', :git => 'https://github.com/ManageIQ/topological_inventory-core', :branch => 'master'
 
 group :development, :test do
