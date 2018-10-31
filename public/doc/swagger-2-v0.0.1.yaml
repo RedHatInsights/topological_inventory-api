@@ -41,7 +41,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         200:
           description: ContainerGroup info
@@ -69,7 +69,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/container_nodes":
     get:
       summary: List ContainerNodes
@@ -97,7 +97,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         200:
           description: ContainerNode info
@@ -125,7 +125,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/container_projects/{id}/container_templates":
     get:
       summary: List ContainerTemplates for ContainerProject
@@ -146,7 +146,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/container_projects":
     get:
       summary: List ContainerProjects
@@ -174,7 +174,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         200:
           description: ContainerProject info
@@ -209,7 +209,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         200:
           description: ContainerTemplate info
@@ -265,7 +265,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         200:
           description: Endpoint info
@@ -287,7 +287,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         204:
           description: Updated, no content
@@ -307,7 +307,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         204:
           description: Updated, no content
@@ -325,7 +325,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         204:
           description: Endpoint deleted
@@ -358,7 +358,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         200:
           description: ServiceInstance info
@@ -386,7 +386,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/service_offerings/{id}/service_plans":
     get:
       summary: List ServicePlans for ServiceOffering
@@ -407,7 +407,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/service_offerings":
     get:
       summary: List ServiceOfferings
@@ -435,7 +435,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         200:
           description: ServiceOffering info
@@ -463,7 +463,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/service_plans":
     get:
       summary: List ServicePlans
@@ -491,7 +491,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         200:
           description: ServicePlan info
@@ -519,7 +519,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/sources/{id}/container_nodes":
     get:
       summary: List ContainerNodes for Source
@@ -540,7 +540,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/sources/{id}/container_projects":
     get:
       summary: List ContainerProjects for Source
@@ -561,7 +561,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/sources/{id}/container_templates":
     get:
       summary: List ContainerTemplates for Source
@@ -582,7 +582,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/sources/{id}/endpoints":
     get:
       summary: List Endpoints for Source
@@ -603,7 +603,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/sources/{id}/service_instances":
     get:
       summary: List ServiceInstances for Source
@@ -624,7 +624,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/sources/{id}/service_offerings":
     get:
       summary: List ServiceOfferings for Source
@@ -645,7 +645,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/sources/{id}/service_plans":
     get:
       summary: List ServicePlans for Source
@@ -666,7 +666,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
   "/sources":
     get:
       summary: List Sources
@@ -715,7 +715,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         200:
           description: Source info
@@ -737,7 +737,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         204:
           description: Updated, no content
@@ -757,7 +757,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         204:
           description: Updated, no content
@@ -775,7 +775,7 @@ paths:
         description: ID of the resource to return
         required: true
         type: string
-        format: uuid
+        pattern: '\A\d+\z'
       responses:
         204:
           description: Source deleted
@@ -964,7 +964,7 @@ definitions:
         description: URI scheme component
       source_id:
         type: string
-        example: "1234567890"
+        example: '1234567890'
         readOnly: true
         format: uuid
       tenant_id:
@@ -1053,10 +1053,6 @@ definitions:
         format: date-time
         readOnly: true
       source_id:
-        type: string
-        readOnly: true
-        format: uuid
-      source_ref:
         type: string
         readOnly: true
         format: uuid
