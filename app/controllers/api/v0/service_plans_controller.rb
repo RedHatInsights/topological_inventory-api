@@ -4,6 +4,12 @@ module Api
       include Api::Mixins::IndexMixin
       include Api::Mixins::ShowMixin
 
+      def order
+        service_plan = model.find(params[:id])
+        task_id = service_plan.order(params[:catalog_id], params[:other_params?])
+        render :json => {:task_id => task_id}
+      end
+
       private
 
       def list_params

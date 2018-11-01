@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resources :source_types, :only => [:create, :index, :show] do
         resources :sources, :only => [:index]
       end
+      post "/service_plans/:id", :to => "service_plans#order"
       resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
         resources :container_groups,        :only => [:index]
         resources :container_nodes,         :only => [:index]
