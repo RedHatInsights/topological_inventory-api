@@ -26,6 +26,7 @@ describe "Swagger stuff" do
     let(:service_offering) { ServiceOffering.create!(doc.example_attributes("ServiceOffering").symbolize_keys.merge(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid, :source_created_at => Time.now)) }
     let(:service_plan) { ServicePlan.create!(doc.example_attributes("ServicePlan").symbolize_keys.merge(:tenant => tenant, :source => source, :service_offering => service_offering, :source_ref => SecureRandom.uuid, :source_created_at => Time.now, :create_json_schema => {}, :update_json_schema => {})) }
     let(:source) { Source.create!(doc.example_attributes("Source").symbolize_keys.merge(:tenant => tenant, :uid => SecureRandom.uuid)) }
+    let(:task) { Task.create!(:tenant => tenant, :name => "Operation", :status => "Ok", :state => "Running", :completed_at => Time.now.utc, :context => {:method => "order"}) }
     let(:tenant) { Tenant.create! }
 
     context "v0.0" do

@@ -9,5 +9,6 @@ module Api
     class ServiceOfferingsController < Api::V0::ServiceOfferingsController; end
     class ServicePlansController < Api::V0::ServicePlansController; end
     class SourcesController < Api::V0::SourcesController; end
+    class TasksController < Api::V0::TasksController; end
   end
 end
