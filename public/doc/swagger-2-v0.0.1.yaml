@@ -839,9 +839,7 @@ definitions:
         format: date-time
         readOnly: true
       source_deleted_at:
-        type:
-        - string
-        - null
+        type: string
         format: date-time
         readOnly: true
       container_node_id:
@@ -889,9 +887,7 @@ definitions:
         format: date-time
         readOnly: true
       source_deleted_at:
-        type:
-        - string
-        - null
+        type: string
         format: date-time
         readOnly: true
       source_id:
@@ -949,9 +945,7 @@ definitions:
         format: date-time
         readOnly: true
       source_deleted_at:
-        type:
-        - string
-        - null
+        type: string
         format: date-time
         readOnly: true
       source_id:
@@ -1021,18 +1015,15 @@ definitions:
         example: Sample ServiceInstance
         title: Name
       extra:
-        type:
-        - object
-        - null
+        type: string
+        description: Extra information about this object in JSON format
         readOnly: true
       source_created_at:
         type: string
         format: date-time
         readOnly: true
       source_deleted_at:
-        type:
-        - string
-        - null
+        type: string
         format: date-time
         readOnly: true
       service_offering_id:
@@ -1072,19 +1063,15 @@ definitions:
         title: Source reference
         description: The native reference used by the Source to refer to this object
       extra:
-        type:
-        - object
-        - null
-        example: Extra information about this object in JSON format
-        title: Extra
+        type: string
+        description: Extra information about this object in JSON format
+        readOnly: true
       source_created_at:
         type: string
         format: date-time
         readOnly: true
       source_deleted_at:
-        type:
-        - string
-        - null
+        type: string
         format: date-time
         readOnly: true
       source_id:
@@ -1111,19 +1098,15 @@ definitions:
         example: This is a sample description for a provider
         title: Description
       extra:
-        type:
-        - object
-        - null
-        example: Extra information about this object in JSON format
-        title: Extra
+        type: string
+        description: Extra information about this object in JSON format
+        readOnly: true
       source_created_at:
         type: string
         format: date-time
         readOnly: true
       source_deleted_at:
-        type:
-        - string
-        - null
+        type: string
         format: date-time
         readOnly: true
       source_id:

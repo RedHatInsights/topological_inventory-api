@@ -10,7 +10,7 @@ ar_serializing = Module.new do
       attrs[name] = attrs[name].iso8601 if attrs[name].kind_of?(Time)
       attrs[name] = attrs[name].to_s if name.ends_with?("_id") || name == "id"
     end
-    attrs
+    attrs.compact
   end
 end
 
