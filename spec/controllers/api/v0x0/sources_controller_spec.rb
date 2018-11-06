@@ -13,7 +13,7 @@ RSpec.describe Api::V0x0::SourcesController, :type => :request do
     source = Source.first
 
     expect(response.status).to eq(201)
-    expect(response.location).to match(a_string_ending_with("api/v0.0/sources/#{source.id}"))
+    expect(response.location).to match(a_string_ending_with("v0.0/sources/#{source.id}"))
     expect(response.parsed_body).to include("name" => "abc", "id" => source.id.to_s)
   end
 end

@@ -11,8 +11,36 @@ describe "Swagger stuff" do
 
   let(:swagger_routes) { Api::Docs.routes }
 
-  it "routes match" do
-    expect(rails_routes).to match_array(swagger_routes)
+  describe "Routing" do
+    include Rails.application.routes.url_helpers
+
+    it "routes match" do
+      expect(rails_routes).to match_array(swagger_routes)
+    end
+
+    context "customizable route prefixes" do
+      after { Rails.application.reload_routes! }
+
+      it "with a random prefix" do
+        stub_const("ENV", ENV.to_h.merge("PATH_PREFIX" => random_path))
+        Rails.application.reload_routes!
+
+        expect(ENV["PATH_PREFIX"]).not_to be_nil
+        expect(api_v0x0_sources_url(:only_path => true)).to eq("/#{ENV["PATH_PREFIX"]}/v0.0/sources")
+      end
+    end
+
+    def words
+      @words ||= File.readlines("/usr/share/dict/words", :chomp => true)
+    end
+
+    def random_path_part
+      rand(1..5).times.collect { words.sample }.join("_")
+    end
+
+    def random_path
+      rand(1..10).times.collect { random_path_part }.join("/")
+    end
   end
 
   describe "Model serialization" do

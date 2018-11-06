@@ -14,7 +14,7 @@ RSpec.describe Api::V0x0::EndpointsController, :type => :request do
     endpoint = Endpoint.first
 
     expect(response.status).to eq(201)
-    expect(response.location).to match(a_string_ending_with("api/v0.0/endpoints/#{endpoint.id}"))
+    expect(response.location).to match(a_string_ending_with("v0.0/endpoints/#{endpoint.id}"))
     expect(response.parsed_body).to include("host" => "example.com", "id" => endpoint.id.to_s)
   end
 end

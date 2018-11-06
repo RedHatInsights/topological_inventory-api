@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  namespace :api do
+  prefix = ENV["PATH_PREFIX"] || "api"
+  scope :as => :api, :module => "api", :path => prefix do
     namespace :v0x0, :path => "v0.0" do
       resources :container_groups,        :only => [:index, :show]
       resources :container_nodes,         :only => [:index, :show] do
