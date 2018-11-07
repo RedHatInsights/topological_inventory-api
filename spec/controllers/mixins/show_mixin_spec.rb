@@ -1,8 +1,9 @@
 describe Api::Mixins::ShowMixin do
   describe Api::V0x0::SourcesController, :type => :request do
-    let!(:tenant)  { Tenant.create! }
-    let!(:source_1) { Source.create!(:tenant => tenant, :name => "test_source 1") }
-    let!(:source_2) { Source.create!(:tenant => tenant, :name => "test_source 2") }
+    let!(:source_1)   { Source.create!(:source_type => source_type, :tenant => tenant, :name => "test_source 1") }
+    let!(:source_2)   { Source.create!(:source_type => source_type, :tenant => tenant, :name => "test_source 2") }
+    let!(:tenant)     { Tenant.create! }
+    let(:source_type) { SourceType.create! }
 
     it "Primary Collection: get /sources lists all Sources" do
       get(api_v0x0_source_url(source_1.id))

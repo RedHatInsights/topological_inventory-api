@@ -14,7 +14,7 @@ module Api
       private
 
       def create_params
-        body_params.permit(:name, :tenant_id)
+        body_params.permit(:name, :source_type_id, :tenant_id)
       end
 
       def update_params
