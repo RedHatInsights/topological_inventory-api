@@ -4,11 +4,12 @@ RSpec.describe Api::V0x0::SourcesController, :type => :request do
   it("Uses ShowMixin")    { expect(described_class.instance_method(:show).owner).to eq(Api::Mixins::ShowMixin) }
   it("Uses UpdateMixin")  { expect(described_class.instance_method(:update).owner).to eq(Api::Mixins::UpdateMixin) }
 
-  let(:tenant) { Tenant.create! }
+  let(:source_type) { SourceType.create! }
+  let(:tenant)      { Tenant.create! }
 
   it "post /sources creates a Source" do
     headers = { "CONTENT_TYPE" => "application/json" }
-    post(api_v0x0_sources_url, :params => {:tenant_id => tenant.id.to_s, :name => "abc"}.to_json)
+    post(api_v0x0_sources_url, :params => {:source_type_id => source_type.id.to_s, :tenant_id => tenant.id.to_s, :name => "abc"}.to_json)
 
     source = Source.first
 

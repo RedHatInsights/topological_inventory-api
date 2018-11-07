@@ -1138,6 +1138,10 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      source_type_id:
+        type: string
+        readOnly: true
+        format: uuid
       name:
         type: string
         example: Sample Provider
