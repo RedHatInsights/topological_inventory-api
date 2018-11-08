@@ -3,15 +3,30 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
   it("Uses ShowMixin")  { expect(described_class.instance_method(:show).owner).to eq(Api::Mixins::ShowMixin) }
 
   describe "#order" do
-    let(:service_plan) { ServicePlan.new(:id => 123) }
+    let(:service_plan) do
+      ServicePlan.create!(
+        :source           => source,
+        :tenant           => tenant,
+        :service_offering => service_offering,
+        :source_region    => source_region,
+        :subscription     => subscription
+      )
+    end
+    let(:source_type) { SourceType.create! }
+    let(:source_region) { SourceRegion.create!(:tenant => tenant, :source => source) }
+    let(:source) { Source.create!(:tenant => tenant, :source_type => source_type) }
+    let(:tenant) { Tenant.create! }
+    let(:subscription) { Subscription.create!(:tenant => tenant, :source => source) }
+    let(:service_offering) do
+      ServiceOffering.create!(:source => source, :tenant => tenant, :source_region => source_region, :subscription => subscription)
+    end
 
     let(:catalog_parameters) { service_parameters.merge(provider_control_parameters) }
     let(:service_parameters) { {"DB_NAME" => "TEST_DB", "namespace" => "TEST_DB_NAMESPACE"} }
     let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test"} }
 
     before do
-      allow(ServicePlan).to receive(:find).with("123").and_return(service_plan)
-      allow(service_plan).to receive(:order).with(catalog_parameters).and_return("task_id")
+      allow_any_instance_of(ServicePlan).to receive(:order).with(catalog_parameters).and_return("task_id")
       Rails.application.config.action_dispatch.show_exceptions = false
     end
 
@@ -25,7 +40,7 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
         "provider_control_parameters" => provider_control_parameters
       }
 
-      post "/api/v0.0/service_plans/123/order", :params => payload
+      post "/api/v0.0/service_plans/#{service_plan.id}/order", :params => payload
 
       body = JSON.parse(response.body)
       expect(body["task_id"]).to eq("task_id")
