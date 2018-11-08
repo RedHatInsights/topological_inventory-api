@@ -11,7 +11,7 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
 
     before do
       allow(ServicePlan).to receive(:find).with("123").and_return(service_plan)
-      allow(service_plan).to receive(:order).with("321", catalog_parameters).and_return("task_id")
+      allow(service_plan).to receive(:order).with(catalog_parameters).and_return("task_id")
       Rails.application.config.action_dispatch.show_exceptions = false
     end
 
@@ -21,7 +21,6 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
 
     it "returns json with the task id" do
       payload = {
-        :catalog_id                   => 321,
         "service_parameters"          => service_parameters,
         "provider_control_parameters" => provider_control_parameters
       }
