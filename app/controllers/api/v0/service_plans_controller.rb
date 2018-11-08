@@ -5,8 +5,9 @@ module Api
       include Api::Mixins::ShowMixin
 
       def order
-        service_plan = model.find(params[:id])
-        task_id = service_plan.order(params[:catalog_id], params[:other_params?])
+        service_plan = model.find(params[:service_plan_id])
+        catalog_parameters = params[:service_parameters].permit!.merge(params[:provider_control_parameters].permit!)
+        task_id = service_plan.order(params[:catalog_id], catalog_parameters)
         render :json => {:task_id => task_id}
       end
 
