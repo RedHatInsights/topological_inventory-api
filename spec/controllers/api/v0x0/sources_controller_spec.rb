@@ -4,7 +4,7 @@ RSpec.describe Api::V0x0::SourcesController, :type => :request do
   it("Uses ShowMixin")    { expect(described_class.instance_method(:show).owner).to eq(Api::Mixins::ShowMixin) }
   it("Uses UpdateMixin")  { expect(described_class.instance_method(:update).owner).to eq(Api::Mixins::UpdateMixin) }
 
-  let(:source_type) { SourceType.create! }
+  let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
   let(:tenant)      { Tenant.create! }
 
   it "post /sources creates a Source" do

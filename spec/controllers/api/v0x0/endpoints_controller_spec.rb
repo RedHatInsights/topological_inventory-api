@@ -5,7 +5,7 @@ RSpec.describe Api::V0x0::EndpointsController, :type => :request do
   it("Uses UpdateMixin")  { expect(described_class.instance_method(:update).owner).to eq(Api::Mixins::UpdateMixin) }
 
   let(:source)      { Source.create!(:source_type => source_type, :tenant => tenant) }
-  let(:source_type) { SourceType.create! }
+  let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
   let(:tenant)      { Tenant.create! }
 
   it "post /endpoints creates an Endpoint" do
