@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       resources :service_plans, :only => [:index, :show] do
         resources :service_instances, :only => [:index]
       end
+      resources :source_types, :only => [:create, :index, :show] do
+        resources :sources, :only => [:index]
+      end
       resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
         resources :container_groups,        :only => [:index]
         resources :container_nodes,         :only => [:index]
