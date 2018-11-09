@@ -3,7 +3,7 @@ describe Api::Mixins::ShowMixin do
     let!(:source_1)   { Source.create!(:source_type => source_type, :tenant => tenant, :name => "test_source 1") }
     let!(:source_2)   { Source.create!(:source_type => source_type, :tenant => tenant, :name => "test_source 2") }
     let!(:tenant)     { Tenant.create! }
-    let(:source_type) { SourceType.create! }
+    let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
 
     it "Primary Collection: get /sources lists all Sources" do
       get(api_v0x0_source_url(source_1.id))

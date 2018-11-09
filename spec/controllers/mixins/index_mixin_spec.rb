@@ -2,7 +2,7 @@ describe Api::Mixins::IndexMixin do
   describe Api::V0x0::SourcesController, :type => :request do
     let!(:source_1)    { Source.create!(:source_type => source_type, :tenant => tenant, :name => "test_source 1") }
     let!(:source_2)    { Source.create!(:source_type => source_type, :tenant => tenant, :name => "test_source 2") }
-    let!(:source_type) { SourceType.create! }
+    let!(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
     let!(:tenant)      { Tenant.create! }
 
     it "Primary Collection: get /sources lists all Sources" do

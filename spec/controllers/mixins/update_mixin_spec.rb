@@ -1,6 +1,6 @@
 describe Api::Mixins::UpdateMixin do
   describe Api::V0x0::SourcesController, :type => :request do
-    let(:source_type) { SourceType.create!}
+    let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
     let(:tenant)      { Tenant.create! }
 
     it "patch /sources/:id updates a Source" do
