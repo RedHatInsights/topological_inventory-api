@@ -1,6 +1,6 @@
 module Api
   module V0
-    class SourceTypes < ApplicationController
+    class SourceTypesController < ApplicationController
       include Api::Mixins::IndexMixin
       include Api::Mixins::ShowMixin
 
@@ -13,6 +13,10 @@ module Api
 
       def create_params
         body_params.permit(:name, :product_name, :vendor)
+      end
+
+      def list_params
+        params.permit(:name, :product_name, :vendor)
       end
 
       def model
