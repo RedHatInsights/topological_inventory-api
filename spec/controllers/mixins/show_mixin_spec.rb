@@ -9,7 +9,7 @@ describe Api::Mixins::ShowMixin do
       get(api_v0x0_source_url(source_1.id))
 
       expect(response.status).to eq(200)
-      expect(response.parsed_body).to include("id" => source_1.id.to_s, "name" => source_1.name)
+      expect(response.parsed_body).to include("id" => source_1.id, "name" => source_1.name)
     end
 
     context "Sub-collection:" do

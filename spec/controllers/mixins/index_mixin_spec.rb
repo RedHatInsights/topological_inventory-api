@@ -9,7 +9,7 @@ describe Api::Mixins::IndexMixin do
       get(api_v0x0_sources_url)
 
       expect(response.status).to eq(200)
-      expect(response.parsed_body).to match([a_hash_including("id" => source_1.id.to_s), a_hash_including("id" => source_2.id.to_s)])
+      expect(response.parsed_body).to match([a_hash_including("id" => source_1.id), a_hash_including("id" => source_2.id)])
     end
 
     context "Sub-collection:" do
@@ -21,7 +21,7 @@ describe Api::Mixins::IndexMixin do
         get(api_v0x0_source_endpoints_url(source_1.id))
 
         expect(response.status).to eq(200)
-        expect(response.parsed_body).to match([a_hash_including("id" => endpoint_1.id.to_s), a_hash_including("id" => endpoint_2.id.to_s)])
+        expect(response.parsed_body).to match([a_hash_including("id" => endpoint_1.id), a_hash_including("id" => endpoint_2.id)])
       end
     end
   end
