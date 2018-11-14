@@ -22,7 +22,7 @@ module Api
       end
 
       def list_params
-        params.permit(:tenant_id)
+        params.permit(:tenant_id, :source_type_id)
       end
 
       def model
