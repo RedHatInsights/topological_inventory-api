@@ -331,6 +331,41 @@ paths:
           description: Endpoint deleted
         404:
           description: Not found
+  "/orchestration_stacks":
+    get:
+      summary: List OrchestrationStacks
+      operationId: listOrchestrationStacks
+      description: Returns an array of OrchestrationStack objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OrchestrationStacks array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/OrchestrationStack"
+  "/orchestration_stacks/{id}":
+    get:
+      summary: Show an existing OrchestrationStack
+      operationId: showOrchestrationStack
+      description: Returns an OrchestrationStack object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        pattern: '\A\d+\z'
+      responses:
+        200:
+          description: OrchestrationStack info
+          schema:
+            "$ref": "#/definitions/OrchestrationStack"
+        404:
+          description: Not found
   "/service_instances":
     get:
       summary: List ServiceInstances
@@ -681,6 +716,27 @@ paths:
         required: true
         type: string
         pattern: '\A\d+\z'
+  "/sources/{id}/orchestration_stacks":
+    get:
+      summary: List OrchestrationStacks for Source
+      operationId: listSourceOrchestrationStacks
+      description: Returns an array of OrchestrationStack objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OrchestrationStacks array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/OrchestrationStack"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        pattern: '\A\d+\z'
   "/sources/{id}/service_instances":
     get:
       summary: List ServiceInstances for Source
@@ -737,6 +793,27 @@ paths:
             type: array
             items:
               "$ref": "#/definitions/ServicePlan"
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        pattern: '\A\d+\z'
+  "/sources/{id}/vms":
+    get:
+      summary: List Vms for Source
+      operationId: listSourceVms
+      description: Returns an array of Vm objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Vms array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Vm"
       parameters:
       - name: id
         in: path
@@ -891,6 +968,41 @@ paths:
           description: Task info
           schema:
             "$ref": "#/definitions/Task"
+        404:
+          description: Not found
+  "/vms":
+    get:
+      summary: List Vms
+      operationId: listVms
+      description: Returns an array of Vm objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Vms array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Vm"
+  "/vms/{id}":
+    get:
+      summary: Show an existing Vm
+      operationId: showVm
+      description: Returns a Vm object
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the resource to return
+        required: true
+        type: string
+        pattern: '\A\d+\z'
+      responses:
+        200:
+          description: Vm info
+          schema:
+            "$ref": "#/definitions/Vm"
         404:
           description: Not found
 definitions:
@@ -1083,6 +1195,42 @@ definitions:
   Id:
     type: string
     format: uuid
+  OrchestrationStack:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample OrchestrationStack
+        title: Name
+        readOnly: true
+      description:
+        type: string
+        description: Description of the OrchestrationStack
+        readOnly: true
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
   ServiceInstance:
     type: object
     properties:
@@ -1280,6 +1428,42 @@ definitions:
       completed_at:
         type: string
         format: date-time
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
+  Vm:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Vm
+        title: Name
+        readOnly: true
+      description:
+        type: string
+        description: Description of the Vm
+        readOnly: true
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
       tenant_id:
         type: string
         readOnly: true
