@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         resources :service_instances,       :only => [:index]
         resources :service_plans, :only => [:index]
       end
+      resources :orchestration_stacks, :only => [:index, :show]
       resources :service_plans, :only => [:index, :show] do
         resources :service_instances, :only => [:index]
       end
@@ -31,11 +32,14 @@ Rails.application.routes.draw do
         resources :container_projects,      :only => [:index]
         resources :container_templates,     :only => [:index]
         resources :endpoints,               :only => [:index]
+        resources :orchestration_stacks,    :only => [:index]
         resources :service_instances,       :only => [:index]
         resources :service_offerings,       :only => [:index]
         resources :service_plans, :only => [:index]
+        resources :vms,                     :only => [:index]
       end
       resources :tasks, :only => [:index, :show]
+      resources :vms, :only => [:index, :show]
     end
   end
 end
