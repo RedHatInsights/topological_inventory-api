@@ -31,16 +31,32 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
       allow_any_instance_of(ServicePlan).to receive(:order).with(catalog_parameters).and_return("task_id")
     end
 
-    it "returns json with the task id" do
-      payload = {
-        "service_parameters"          => service_parameters,
-        "provider_control_parameters" => provider_control_parameters
-      }
+    context "with a well formed service plan id" do
+      it "returns json with the task id" do
+        payload = {
+          "service_parameters"          => service_parameters,
+          "provider_control_parameters" => provider_control_parameters
+        }
 
-      post "/api/v0.0/service_plans/#{service_plan.id}/order", :params => payload
+        post "/api/v0.0/service_plans/#{service_plan.id}/order", :params => payload
 
-      body = JSON.parse(response.body)
-      expect(body["task_id"]).to eq("task_id")
+        body = JSON.parse(response.body)
+        expect(body["task_id"]).to eq("task_id")
+      end
+    end
+
+    context "with a malicious service plan id" do
+      it "returns an error" do
+        post "/api/v0.0/service_plans/;myfakeSQLinjection/order"
+
+        expect(response.status).to eq(400)
+      end
+
+      it "does not try to look the model up by the fake ID" do
+        expect(ServicePlan).to_not receive(:find).with(";myfakeSQLinjection")
+
+        post "/api/v0.0/service_plans/;myfakeSQLinjection/order"
+      end
     end
   end
 end
