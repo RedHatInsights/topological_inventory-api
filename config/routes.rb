@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       end
       resources :orchestration_stacks, :only => [:index, :show]
       resources :service_plans, :only => [:index, :show] do
+        post "order", :to => "service_plans#order"
         resources :service_instances, :only => [:index]
       end
       resources :source_types, :only => [:create, :index, :show] do

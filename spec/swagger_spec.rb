@@ -16,23 +16,28 @@ describe "Swagger stuff" do
 
     it "routes match" do
       redirect_routes = [{:path=>"/api/v0/*path", :verb=>"DELETE|GET|OPTIONS|PATCH|POST|PUT"}]
-      expect(rails_routes).to match_array(swagger_routes + redirect_routes)
+      additional_routes = [{:path => "/api/v0.0/service_plans/:id/order", :verb => "POST"}]
+      expect(rails_routes).to match_array(swagger_routes + redirect_routes + additional_routes)
     end
 
     context "customizable route prefixes" do
-      after { Rails.application.reload_routes! }
-
-      it "with a random prefix" do
+      before do
         stub_const("ENV", ENV.to_h.merge("PATH_PREFIX" => random_path))
         Rails.application.reload_routes!
+      end
 
+      after(:all) do
+        Rails.application.reload_routes!
+      end
+
+      it "with a random prefix" do
         expect(ENV["PATH_PREFIX"]).not_to be_nil
-        expect(api_v0x0_sources_url(:only_path => true)).to eq("/#{ENV["PATH_PREFIX"]}/v0.0/sources")
+        expect(api_v0x0_sources_url(:only_path => true)).to eq("/#{URI.encode(ENV["PATH_PREFIX"])}/v0.0/sources")
       end
     end
 
     def words
-      @words ||= File.readlines("/usr/share/dict/words", :chomp => true)
+      @words ||= File.readlines("/usr/share/dict/words").collect(&:strip)
     end
 
     def random_path_part
