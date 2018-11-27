@@ -32,7 +32,7 @@ describe "Swagger stuff" do
 
       it "with a random prefix" do
         expect(ENV["PATH_PREFIX"]).not_to be_nil
-        expect(api_v0x0_sources_url(:only_path => true)).to eq("/#{ENV["PATH_PREFIX"]}/v0.0/sources")
+        expect(api_v0x0_sources_url(:only_path => true)).to eq("/#{URI.encode(ENV["PATH_PREFIX"])}/v0.0/sources")
       end
     end
 
