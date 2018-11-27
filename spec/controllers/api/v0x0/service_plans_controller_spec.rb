@@ -12,7 +12,9 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
         :subscription     => subscription
       )
     end
-    let(:source_type) { SourceType.create! }
+    let(:source_type) do
+      SourceType.create!(:name => "source_type", :product_name => "product_name", :vendor => "vendor")
+    end
     let(:source_region) { SourceRegion.create!(:tenant => tenant, :source => source) }
     let(:source) { Source.create!(:tenant => tenant, :source_type => source_type) }
     let(:tenant) { Tenant.create! }
@@ -27,11 +29,6 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
 
     before do
       allow_any_instance_of(ServicePlan).to receive(:order).with(catalog_parameters).and_return("task_id")
-      Rails.application.config.action_dispatch.show_exceptions = false
-    end
-
-    after do
-      Rails.application.config.action_dispatch.show_exceptions = true
     end
 
     it "returns json with the task id" do
