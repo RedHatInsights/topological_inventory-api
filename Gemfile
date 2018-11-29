@@ -5,7 +5,7 @@ gem 'json-schema', '~> 2.8'
 gem 'pg',          '~> 1.0', :require => false
 gem 'puma',        '~> 3.0'
 gem 'rack-cors',   '>= 0.4.1'
-gem 'rails',       '~> 5.1.5'
+gem 'rails',       '~> 5.1.6.1'
 
 gem 'inventory_refresh', :git => 'https://github.com/ManageIQ/inventory_refresh', :branch => 'master'
 gem 'manageiq-password', :git => 'https://github.com/ManageIQ/manageiq-password', :branch => 'master'
