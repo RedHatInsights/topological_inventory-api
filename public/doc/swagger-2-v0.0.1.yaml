@@ -534,6 +534,52 @@ paths:
             "$ref": "#/definitions/ServicePlan"
         404:
           description: Not found
+  "/service_plans/{id}/order":
+    post:
+      summary: Order an existing ServicePlan
+      operationId: orderServicePlan
+      description: Returns a Task id
+      consumes:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: ID of the ServicePlan to order
+        required: true
+        type: string
+        pattern: '\A\d+\z'
+      - name: parameters
+        in: body
+        description: Extra parameters defining the service and provider control
+        schema:
+          type: object
+          properties:
+            service_parameters:
+              description: Extra parameters defining the service
+              type: object
+              properties:
+                DB_NAME:
+                  type: string
+                namespace:
+                  type: string
+            provider_control_parameters:
+              description: Extra parameters defining the provider control
+              type: object
+              properties:
+                namespace:
+                  type: string
+                OpenShift_param1:
+                  type: string
+      responses:
+        200:
+          description: Returns a task ID for the order
+          schema:
+            type: object
+            properties:
+              task_id:
+                type: string
+        400:
+          description: BadRequest
   "/source_types/{id}/sources":
     get:
       summary: List Sources for SourceType
