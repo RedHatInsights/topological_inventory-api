@@ -21,7 +21,7 @@ describe "Swagger stuff" do
 
     context "customizable route prefixes" do
       before do
-        stub_const("ENV", ENV.to_h.merge("PATH_PREFIX" => random_path))
+        stub_const("ENV", ENV.to_h.merge("PATH_PREFIX" => random_path, "APP_NAME" => random_path_part))
         Rails.application.reload_routes!
       end
 
@@ -31,7 +31,16 @@ describe "Swagger stuff" do
 
       it "with a random prefix" do
         expect(ENV["PATH_PREFIX"]).not_to be_nil
-        expect(api_v0x0_sources_url(:only_path => true)).to eq("/#{URI.encode(ENV["PATH_PREFIX"])}/v0.0/sources")
+        expect(ENV["APP_NAME"]).not_to be_nil
+        expect(api_v0x0_sources_url(:only_path => true)).to eq("/#{URI.encode(ENV["PATH_PREFIX"])}/#{URI.encode(ENV["APP_NAME"])}/v0.0/sources")
+      end
+
+      it "doesn't use the APP_NAME when PATH_PREFIX is empty" do
+        ENV["PATH_PREFIX"] = ""
+        Rails.application.reload_routes!
+
+        expect(ENV["APP_NAME"]).not_to be_nil
+        expect(api_v0x0_sources_url(:only_path => true)).to eq("/api/v0.0/sources")
       end
     end
 

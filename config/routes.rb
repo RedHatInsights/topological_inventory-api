@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  prefix = ENV["PATH_PREFIX"] || "api"
+  prefix = "api"
+  prefix = "#{ENV["PATH_PREFIX"]}/#{ENV["APP_NAME"]}" if ENV["PATH_PREFIX"].present? && ENV["APP_NAME"].present?
+
   scope :as => :api, :module => "api", :path => prefix do
     match "/v0/*path", :via => [:delete, :get, :options, :patch, :post, :put], :to => redirect("#{prefix}/v0.0/%{path}")
 
