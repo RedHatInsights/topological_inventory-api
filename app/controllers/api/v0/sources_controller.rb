@@ -7,7 +7,7 @@ module Api
       include Api::Mixins::UpdateMixin
 
       def create
-        source = Source.create!(create_params)
+        source = Source.create!(create_params.merge!("uid" => SecureRandom.uuid))
         render :json => source, :status => :created, :location => api_v0x0_source_url(source.id)
       end
 
