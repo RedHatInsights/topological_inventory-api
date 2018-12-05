@@ -555,21 +555,13 @@ paths:
           type: object
           properties:
             service_parameters:
-              description: Extra parameters defining the service
               type: object
-              properties:
-                DB_NAME:
-                  type: string
-                namespace:
-                  type: string
+              description: JSON object with provisioning parameters
             provider_control_parameters:
-              description: Extra parameters defining the provider control
               type: object
-              properties:
-                namespace:
-                  type: string
-                OpenShift_param1:
-                  type: string
+              description: >-
+                The provider specific parameters needed to provision this service.
+                This might include namespaces, special keys
       responses:
         200:
           description: Returns a task ID for the order

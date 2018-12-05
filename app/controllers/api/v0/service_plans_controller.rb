@@ -24,8 +24,8 @@ module Api
 
       def order_params
         params.permit(
-          :service_parameters          => [:DB_NAME, :namespace],
-          :provider_control_parameters => [:namespace, :OpenShift_param1]
+          :service_parameters          => {},
+          :provider_control_parameters => {}
         ).to_h
       end
 
