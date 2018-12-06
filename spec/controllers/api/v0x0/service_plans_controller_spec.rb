@@ -23,12 +23,17 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
       ServiceOffering.create!(:source => source, :tenant => tenant, :source_region => source_region, :subscription => subscription)
     end
 
-    let(:catalog_parameters) { service_parameters.merge(provider_control_parameters) }
+    let(:order_parameters) do
+      {
+        :service_parameters          => service_parameters,
+        :provider_control_parameters => provider_control_parameters
+      }
+    end
     let(:service_parameters) { {"DB_NAME" => "TEST_DB", "namespace" => "TEST_DB_NAMESPACE"} }
     let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test"} }
 
     before do
-      allow_any_instance_of(ServicePlan).to receive(:order).with(catalog_parameters).and_return("task_id")
+      allow_any_instance_of(ServicePlan).to receive(:order).with(order_parameters).and_return("task_id")
     end
 
     context "with a well formed service plan id" do

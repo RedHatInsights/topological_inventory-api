@@ -6,17 +6,13 @@ module Api
 
       def order
         service_plan = model.find(service_plan_id)
-        task_id = service_plan.order(catalog_parameters)
+        task_id = service_plan.order(order_params)
         render :json => {:task_id => task_id}
       rescue ActiveRecord::RecordNotFound
         head :bad_request
       end
 
       private
-
-      def catalog_parameters
-        order_params[:service_parameters].merge(order_params[:provider_control_parameters])
-      end
 
       def service_plan_id
         params[:service_plan_id].to_i
