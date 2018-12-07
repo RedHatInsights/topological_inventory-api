@@ -455,18 +455,10 @@ paths:
       - $ref: '#/parameters/ID'
       - name: parameters
         in: body
-        description: Extra parameters defining the service and provider control
+        description: Order parameters defining the service and provider control
+        required: true
         schema:
-          type: object
-          properties:
-            service_parameters:
-              type: object
-              description: JSON object with provisioning parameters
-            provider_control_parameters:
-              type: object
-              description: >-
-                The provider specific parameters needed to provision this service.
-                This might include namespaces, special keys
+          $ref: '#/definitions/OrderParameters'
       responses:
         200:
           description: Returns a task ID for the order
@@ -1092,6 +1084,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  OrderParameters:
+    type: object
+    properties:
+      service_parameters:
+        type: object
+        description: JSON object with provisioning parameters
+      provider_control_parameters:
+        type: object
+        description: >-
+          The provider specific parameters needed to provision this service.
+          This might include namespaces, special keys
   ServiceInstance:
     type: object
     properties:
