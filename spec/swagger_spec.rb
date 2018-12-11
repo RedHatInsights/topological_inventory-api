@@ -87,7 +87,7 @@ describe "Swagger stuff" do
     context "v0.0" do
       let(:version) { "0.0" }
       Api::Docs["0.0"].definitions.each do |definition_name, schema|
-        next if definition_name.in?(["Id"])
+        next if definition_name.in?(["Id", "OrderParameters"])
 
         it "#{definition_name} matches the JSONSchema" do
           const = definition_name.constantize
