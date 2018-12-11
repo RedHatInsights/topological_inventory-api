@@ -33,11 +33,11 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
     let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test"} }
 
     before do
-      allow_any_instance_of(ServicePlan).to receive(:order).with(order_parameters).and_return("task_id")
+      allow_any_instance_of(ServicePlan).to receive(:order).with(order_parameters).and_return("task_context")
     end
 
     context "with a well formed service plan id" do
-      it "returns json with the task id" do
+      before do
         payload = {
           "service_parameters"          => service_parameters,
           "provider_control_parameters" => provider_control_parameters
@@ -45,8 +45,15 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
 
         post "/api/v0.0/service_plans/#{service_plan.id}/order", :params => payload
 
-        body = JSON.parse(response.body)
-        expect(body["task_id"]).to eq("task_id")
+        @body = JSON.parse(response.body)
+      end
+
+      it "returns json with the task id" do
+        expect(@body).to have_key("task_id")
+      end
+
+      it "sets the context based on the results of the order and sets the status of the task to completed" do
+        expect(Task.find(@body["task_id"])).to have_attributes(:context => "task_context", :status => "completed")
       end
     end
 
