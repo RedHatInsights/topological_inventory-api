@@ -36,12 +36,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: ContainerGroup info
@@ -64,12 +59,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerGroup"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/container_nodes":
     get:
       summary: List ContainerNodes
@@ -92,12 +82,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: ContainerNode info
@@ -120,12 +105,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerGroup"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/container_projects/{id}/container_templates":
     get:
       summary: List ContainerTemplates for ContainerProject
@@ -141,12 +121,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerTemplate"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/container_projects":
     get:
       summary: List ContainerProjects
@@ -169,12 +144,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: ContainerProject info
@@ -204,12 +174,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: ContainerTemplate info
@@ -260,12 +225,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: Endpoint info
@@ -282,12 +242,7 @@ paths:
       consumes:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         204:
           description: Updated, no content
@@ -302,12 +257,7 @@ paths:
       consumes:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         204:
           description: Updated, no content
@@ -320,12 +270,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         204:
           description: Endpoint deleted
@@ -353,12 +298,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: OrchestrationStack info
@@ -388,12 +328,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: ServiceInstance info
@@ -416,12 +351,7 @@ paths:
             items:
               "$ref": "#/definitions/ServiceInstance"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/service_offerings/{id}/service_plans":
     get:
       summary: List ServicePlans for ServiceOffering
@@ -437,12 +367,7 @@ paths:
             items:
               "$ref": "#/definitions/ServicePlan"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/service_offerings":
     get:
       summary: List ServiceOfferings
@@ -465,12 +390,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: ServiceOffering info
@@ -493,12 +413,7 @@ paths:
             items:
               "$ref": "#/definitions/ServiceInstance"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/service_plans":
     get:
       summary: List ServicePlans
@@ -521,12 +436,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: ServicePlan info
@@ -542,12 +452,7 @@ paths:
       consumes:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the ServicePlan to order
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+      - $ref: '#/parameters/ID'
       - name: parameters
         in: body
         description: Extra parameters defining the service and provider control
@@ -587,12 +492,7 @@ paths:
             items:
               "$ref": "#/definitions/Source"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/source_types":
     get:
       summary: List SourceTypes
@@ -636,12 +536,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: SourceType info
@@ -664,12 +559,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerGroup"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources/{id}/container_nodes":
     get:
       summary: List ContainerNodes for Source
@@ -685,12 +575,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerNode"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources/{id}/container_projects":
     get:
       summary: List ContainerProjects for Source
@@ -706,12 +591,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerProject"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources/{id}/container_templates":
     get:
       summary: List ContainerTemplates for Source
@@ -727,12 +607,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerTemplate"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources/{id}/endpoints":
     get:
       summary: List Endpoints for Source
@@ -748,12 +623,7 @@ paths:
             items:
               "$ref": "#/definitions/Endpoint"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources/{id}/orchestration_stacks":
     get:
       summary: List OrchestrationStacks for Source
@@ -769,12 +639,7 @@ paths:
             items:
               "$ref": "#/definitions/OrchestrationStack"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources/{id}/service_instances":
     get:
       summary: List ServiceInstances for Source
@@ -790,12 +655,7 @@ paths:
             items:
               "$ref": "#/definitions/ServiceInstance"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources/{id}/service_offerings":
     get:
       summary: List ServiceOfferings for Source
@@ -811,12 +671,7 @@ paths:
             items:
               "$ref": "#/definitions/ServiceOffering"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources/{id}/service_plans":
     get:
       summary: List ServicePlans for Source
@@ -832,12 +687,7 @@ paths:
             items:
               "$ref": "#/definitions/ServicePlan"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources/{id}/vms":
     get:
       summary: List Vms for Source
@@ -853,12 +703,7 @@ paths:
             items:
               "$ref": "#/definitions/Vm"
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
   "/sources":
     get:
       summary: List Sources
@@ -902,12 +747,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: Source info
@@ -924,12 +764,7 @@ paths:
       consumes:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         204:
           description: Updated, no content
@@ -944,12 +779,7 @@ paths:
       consumes:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         204:
           description: Updated, no content
@@ -962,12 +792,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         204:
           description: Source deleted
@@ -995,12 +820,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: Task info
@@ -1030,12 +850,7 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: id
-        in: path
-        description: ID of the resource to return
-        required: true
-        type: string
-        pattern: '\A\d+\z'
+        - $ref: '#/parameters/ID'
       responses:
         200:
           description: Vm info
@@ -1043,6 +858,14 @@ paths:
             "$ref": "#/definitions/Vm"
         404:
           description: Not found
+parameters:
+  ID:
+    name: id
+    in: path
+    description: ID of the resource
+    required: true
+    type: string
+    pattern: '/^\d+$/'
 definitions:
   ContainerGroup:
     type: object
