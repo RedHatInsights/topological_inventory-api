@@ -14,20 +14,28 @@ describe "Swagger stuff" do
   describe "Routing" do
     include Rails.application.routes.url_helpers
 
-    it "routes match" do
-      redirect_routes = [{:path=>"/api/v0/*path", :verb=>"DELETE|GET|OPTIONS|PATCH|POST|PUT"}]
-      expect(rails_routes).to match_array(swagger_routes + redirect_routes)
+    before do
+      stub_const("ENV", ENV.to_h.merge("PATH_PREFIX" => path_prefix, "APP_NAME" => app_name))
+      Rails.application.reload_routes!
+    end
+
+    after(:all) do
+      Rails.application.reload_routes!
+    end
+
+    context "with the swagger yaml" do
+      let(:path_prefix) { "/r/insights/platform" }
+      let(:app_name)    { "topological-inventory" }
+
+      it "matches the routes" do
+        redirect_routes = [{:path => "#{path_prefix}/#{app_name}/v0/*path", :verb => "DELETE|GET|OPTIONS|PATCH|POST|PUT"}]
+        expect(rails_routes).to match_array(swagger_routes + redirect_routes)
+      end
     end
 
     context "customizable route prefixes" do
-      before do
-        stub_const("ENV", ENV.to_h.merge("PATH_PREFIX" => random_path, "APP_NAME" => random_path_part))
-        Rails.application.reload_routes!
-      end
-
-      after(:all) do
-        Rails.application.reload_routes!
-      end
+      let(:path_prefix) { random_path }
+      let(:app_name)    { random_path_part }
 
       it "with a random prefix" do
         expect(ENV["PATH_PREFIX"]).not_to be_nil
