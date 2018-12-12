@@ -16,5 +16,8 @@ module Api
     class SourceTypesController < Api::V0::SourceTypesController; end
     class TasksController < Api::V0::TasksController; end
     class VmsController < Api::V0::VmsController; end
+    class VolumeAttachmentsController < Api::V0::VolumeAttachmentsController; end
+    class VolumeTypesController < Api::V0::VolumeTypesController; end
+    class VolumesController < Api::V0::VolumesController; end
   end
 end

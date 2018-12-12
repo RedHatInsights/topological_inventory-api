@@ -92,6 +92,9 @@ describe "Swagger stuff" do
     let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
     let(:subscription) { Subscription.create!(:source => source, :tenant => tenant) }
     let(:vm) { Vm.create!(doc.example_attributes("Vm").symbolize_keys.merge(:source => source, :tenant => tenant, :source_ref => SecureRandom.uuid, :uid_ems => SecureRandom.uuid)) }
+    let(:volume_attachment) { VolumeAttachment.create!(doc.example_attributes("VolumeAttachment").symbolize_keys.merge(:tenant => tenant, :vm => vm, :volume => volume)) }
+    let(:volume_type) { VolumeType.create!(doc.example_attributes("VolumeType").symbolize_keys.merge(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid)) }
+    let(:volume) { Volume.create!(doc.example_attributes("Volume").symbolize_keys.merge(:source => source, :tenant => tenant, :source_ref => SecureRandom.uuid, :volume_type => volume_type)) }
     let(:task) { Task.create!(:tenant => tenant, :name => "Operation", :status => "Ok", :state => "Running", :completed_at => Time.now.utc, :context => {:method => "order"}) }
     let(:tenant) { Tenant.create! }
 
