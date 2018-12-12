@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export RAILS_ENV=production
-export DATABASE_URL="postgresql://$DATABASE_USER:$DATABASE_PASSWORD@$DATABASE_HOST:$DATABASE_PORT/$DATABASE_NAME?encoding=utf8&pool=5&wait_timeout=5"
 
 function write_encryption_key() {
   echo "== Writing encryption key =="
