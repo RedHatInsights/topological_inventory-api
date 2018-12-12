@@ -1564,6 +1564,31 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      uid_ems:
+        type: string
+        readOnly: true
+        description: Cross-Source Unique Reference
+      hostname:
+        type: string
+        readOnly: true
+        example: localhost.localdomain
+      power_state:
+        type: string
+        readOnly: true
+        example: running
+      cpus:
+        type: integer
+        readOnly: true
+        example: 2
+        description: Total number of CPUs
+      memory:
+        type: integer
+        readOnly: true
+        example: 17179869184
+        description: Total RAM in bytes
+      orchestration_stack_id:
+        type: "#/parameters/ID"
+        readOnly: true
       flavor_id:
         type: "#/parameters/ID"
         readOnly: true
