@@ -276,6 +276,36 @@ paths:
           description: Endpoint deleted
         404:
           description: Not found
+  "/flavors":
+    get:
+      summary: List Flavors
+      operationId: listFlavors
+      description: Returns an array of Flavor objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Flavors array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Flavor"
+  "/flavors/{id}":
+    get:
+      summary: Show an existing Flavor
+      operationId: showFlavor
+      description: Returns a Flavor object
+      produces:
+      - application/json
+      parameters:
+        - $ref: '#/parameters/ID'
+      responses:
+        200:
+          description: Flavor info
+          schema:
+            "$ref": "#/definitions/Flavor"
+        404:
+          description: Not found
   "/orchestration_stacks":
     get:
       summary: List OrchestrationStacks
@@ -1053,6 +1083,42 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  Flavor:
+    type: object
+    properties:
+      id:
+        type: "#/parameters/ID"
+        readOnly: true
+      tenant_id:
+        type: "#/parameters/ID"
+        readOnly: true
+      source_id:
+        type: "#/parameters/ID"
+        readOnly: true
+      source_ref:
+        type: string
+        readOnly: true
+        format: uuid
+      disk_size:
+        type: integer
+        readOnly: true
+        example: 17179869184
+        description: Size of the default disks in bytes
+      disk_count:
+        type: integer
+        readOnly: true
+        example: 2
+        description: The number of default disks
+      memory:
+        type: integer
+        readOnly: true
+        example: 17179869184
+        description: Amount of RAM in bytes
+      cpus:
+        type: integer
+        readOnly: true
+        example: 2
+        description: Number of CPUs
   Id:
     type: string
     format: uuid
@@ -1329,6 +1395,9 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      flavor_id:
+        type: "#/parameters/ID"
+        readOnly: true
 host: virtserver.swaggerhub.com
 schemes:
 - https

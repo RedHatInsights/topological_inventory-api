@@ -5,6 +5,7 @@ module Api
     class ContainerProjectsController < Api::V0::ContainerProjectsController; end
     class ContainerTemplatesController < Api::V0::ContainerTemplatesController; end
     class EndpointsController < Api::V0::EndpointsController; end
+    class FlavorsController < Api::V0::FlavorsController; end
     class OrchestrationStacksController < Api::V0::OrchestrationStacksController; end
     class ServiceInstancesController < Api::V0::ServiceInstancesController; end
     class ServiceOfferingsController < Api::V0::ServiceOfferingsController; end
