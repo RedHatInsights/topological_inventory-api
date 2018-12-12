@@ -1,11 +1,11 @@
-# Swagger for Rails 5
+# Topological Inventory API
 
 [![Build Status](https://travis-ci.org/ManageIQ/topological_inventory-api.svg)](https://travis-ci.org/ManageIQ/topological_inventory-api)
 [![Maintainability](https://api.codeclimate.com/v1/badges/47776e67dbb7cc572c3b/maintainability)](https://codeclimate.com/github/ManageIQ/topological_inventory-api/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/47776e67dbb7cc572c3b/test_coverage)](https://codeclimate.com/github/ManageIQ/topological_inventory-api/test_coverage)
 [![Security](https://hakiri.io/github/ManageIQ/topological_inventory-api/master.svg)](https://hakiri.io/github/ManageIQ/topological_inventory-api/master)
 
-This is a project to provide Swagger support inside the [Ruby on Rails](http://rubyonrails.org/) framework.
+This project exposes an API for accessing objects living in the Topological Inventory Service database
 
 ## Prerequisites
 You need to install ruby >= 2.2.2 and run:
