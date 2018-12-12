@@ -14,6 +14,36 @@ securityDefinitions:
 security:
 - UserSecurity: []
 paths:
+  "/containers":
+    get:
+      summary: List Containers
+      operationId: listContainers
+      description: Returns an array of Container objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Containers array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Container"
+  "/containers/{id}":
+    get:
+      summary: Show an existing Container
+      operationId: showContainer
+      description: Returns a Container object
+      produces:
+      - application/json
+      parameters:
+        - $ref: '#/parameters/ID'
+      responses:
+        200:
+          description: Container info
+          schema:
+            "$ref": "#/definitions/Container"
+        404:
+          description: Not found
   "/container_groups":
     get:
       summary: List ContainerGroups
@@ -42,6 +72,52 @@ paths:
           description: ContainerGroup info
           schema:
             "$ref": "#/definitions/ContainerGroup"
+        404:
+          description: Not found
+  "/container_groups/{id}/containers":
+    get:
+      summary: List Containers for ContainerGroup
+      operationId: listContainerGroupContainers
+      description: Returns an array of Container objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Containers array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Container"
+      parameters:
+        - $ref: '#/parameters/ID'
+  "/container_images":
+    get:
+      summary: List ContainerImages
+      operationId: listContainerImages
+      description: Returns an array of ContainerImage objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerImages array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerImage"
+  "/container_images/{id}":
+    get:
+      summary: Show an existing ContainerImage
+      operationId: showContainerImage
+      description: Returns a ContainerImage object
+      produces:
+      - application/json
+      parameters:
+        - $ref: '#/parameters/ID'
+      responses:
+        200:
+          description: ContainerImage info
+          schema:
+            "$ref": "#/definitions/ContainerImage"
         404:
           description: Not found
   "/container_nodes/{id}/container_groups":
@@ -574,6 +650,22 @@ paths:
             "$ref": "#/definitions/SourceType"
         404:
           description: Not found
+  "/sources/{id}/containers":
+    get:
+      summary: List Containers for Source
+      operationId: listSourceContainers
+      description: Returns an array of Container objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Containers array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Container"
+      parameters:
+        - $ref: '#/parameters/ID'
   "/sources/{id}/container_groups":
     get:
       summary: List ContainerGroups for Source
@@ -588,6 +680,22 @@ paths:
             type: array
             items:
               "$ref": "#/definitions/ContainerGroup"
+      parameters:
+        - $ref: '#/parameters/ID'
+  "/sources/{id}/container_images":
+    get:
+      summary: List ContainerImages for Source
+      operationId: listSourceContainerImages
+      description: Returns an array of ContainerImage objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerImages array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerImage"
       parameters:
         - $ref: '#/parameters/ID'
   "/sources/{id}/container_nodes":
@@ -897,6 +1005,39 @@ parameters:
     type: string
     pattern: '/^\d+$/'
 definitions:
+  Container:
+    type: object
+    properties:
+      id:
+        type: "#/parameters/id"
+        readonly: true
+      tenant_id:
+        type: "#/parameters/id"
+        readonly: true
+      name:
+        type: string
+        readonly: true
+        example: docker-build
+      cpu_limit:
+        type: number
+        format: double
+        readonly: true
+      cpu_request:
+        type: number
+        format: double
+        readonly: true
+      memory_limit:
+        type: integer
+        readonly: true
+      memory_request:
+        type: integer
+        readonly: true
+      container_group_id:
+        type: "#/parameters/id"
+        readonly: true
+      container_image_id:
+        type: "#/parameters/id"
+        readonly: true
   ContainerGroup:
     type: object
     properties:
@@ -982,6 +1123,34 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  ContainerImage:
+    type: object
+    properties:
+      id:
+        type: "#/parameters/id"
+        readonly: true
+      tenant_id:
+        type: "#/parameters/id"
+        readonly: true
+      source_id:
+        type: "#/parameters/id"
+        readonly: true
+      name:
+        type: string
+        readonly: true
+        example: openshift3/postgresql-92-rhel7
+      tag:
+        type: string
+        readOnly: true
+        example: latest
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
   ContainerProject:
     type: object
     properties:

@@ -1,6 +1,8 @@
 module Api
   module V0x0
+    class ContainersController < Api::V0::ContainersController; end
     class ContainerGroupsController < Api::V0::ContainerGroupsController; end
+    class ContainerImagesController < Api::V0::ContainerImagesController; end
     class ContainerNodesController < Api::V0::ContainerNodesController; end
     class ContainerProjectsController < Api::V0::ContainerProjectsController; end
     class ContainerTemplatesController < Api::V0::ContainerTemplatesController; end

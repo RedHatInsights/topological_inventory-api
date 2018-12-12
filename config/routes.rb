@@ -8,10 +8,14 @@ Rails.application.routes.draw do
     match "/v0/*path", :via => [:delete, :get, :options, :patch, :post, :put], :to => redirect("#{prefix}/v0.0/%{path}")
 
     namespace :v0x0, :path => "v0.0" do
-      resources :container_groups,        :only => [:index, :show]
+      resources :containers,              :only => [:index, :show]
+      resources :container_groups,        :only => [:index, :show] do
+        resources :containers, :only => [:index]
+      end
       resources :container_nodes,         :only => [:index, :show] do
         resources :container_groups, :only => [:index]
       end
+      resources :container_images,        :only => [:index, :show]
       resources :container_projects,      :only => [:index, :show] do
         resources :container_groups,    :only => [:index]
         resources :container_templates, :only => [:index]
@@ -33,7 +37,9 @@ Rails.application.routes.draw do
         resources :sources, :only => [:index]
       end
       resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
+        resources :containers,              :only => [:index]
         resources :container_groups,        :only => [:index]
+        resources :container_images,        :only => [:index]
         resources :container_nodes,         :only => [:index]
         resources :container_projects,      :only => [:index]
         resources :container_templates,     :only => [:index]
