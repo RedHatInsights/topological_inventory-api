@@ -49,9 +49,17 @@ Rails.application.routes.draw do
         resources :service_offerings,       :only => [:index]
         resources :service_plans, :only => [:index]
         resources :vms,                     :only => [:index]
+        resources :volume_types,            :only => [:index]
+        resources :volumes,                 :only => [:index]
       end
       resources :tasks, :only => [:index, :show]
-      resources :vms, :only => [:index, :show]
+      resources :vms, :only => [:index, :show] do
+        resources :volume_attachments, :only => [:index]
+        resources :volumes,            :only => [:index]
+      end
+      resources :volume_attachments, :only => [:index, :show]
+      resources :volume_types,       :only => [:index, :show]
+      resources :volumes,            :only => [:index, :show]
     end
   end
 end

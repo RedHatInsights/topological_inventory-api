@@ -842,6 +842,38 @@ paths:
               "$ref": "#/definitions/Vm"
       parameters:
         - $ref: '#/parameters/ID'
+  "/sources/{id}/volume_types":
+    get:
+      summary: List VolumeTypes for Source
+      operationId: listSourceVolumeTypes
+      description: Returns an array of VolumeType objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: VolumeTypes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/VolumeType"
+      parameters:
+        - $ref: '#/parameters/ID'
+  "/sources/{id}/volumes":
+    get:
+      summary: List Volumes for Source
+      operationId: listSourceVolumes
+      description: Returns an array of Volume objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Volumes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Volume"
+      parameters:
+        - $ref: '#/parameters/ID'
   "/sources":
     get:
       summary: List Sources
@@ -994,6 +1026,128 @@ paths:
           description: Vm info
           schema:
             "$ref": "#/definitions/Vm"
+        404:
+          description: Not found
+  "/vms/{id}/volume_attachments":
+    get:
+      summary: List VolumeAttachments for a Vm
+      operationId: listVmVolumeAttachments
+      description: Returns an array of VolumeAttachment objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: VolumeAttachments array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/VolumeAttachment"
+      parameters:
+        - $ref: '#/parameters/ID'
+  "/vms/{id}/volumes":
+    get:
+      summary: List Volumes for a Vm
+      operationId: listVmVolumes
+      description: Returns an array of Volume objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Volumes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Volume"
+      parameters:
+        - $ref: '#/parameters/ID'
+  "/volume_attachments":
+    get:
+      summary: List VolumeAttachments
+      operationId: listVolumeAttachments
+      description: Returns an array of VolumeAttachment objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: VolumeAttachments array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/VolumeAttachment"
+  "/volume_attachments/{id}":
+    get:
+      summary: Show an existing VolumeAttachment
+      operationId: showVolumeAttachment
+      description: Returns a VolumeAttachment object
+      produces:
+      - application/json
+      parameters:
+        - $ref: '#/parameters/ID'
+      responses:
+        200:
+          description: VolumeAttachment info
+          schema:
+            "$ref": "#/definitions/VolumeAttachment"
+        404:
+          description: Not found
+  "/volume_types":
+    get:
+      summary: List VolumeTypes
+      operationId: listVolumeTypes
+      description: Returns an array of VolumeType objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: VolumeTypes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/VolumeType"
+  "/volume_types/{id}":
+    get:
+      summary: Show an existing VolumeType
+      operationId: showVolumeType
+      description: Returns a VolumeType object
+      produces:
+      - application/json
+      parameters:
+        - $ref: '#/parameters/ID'
+      responses:
+        200:
+          description: VolumeType info
+          schema:
+            "$ref": "#/definitions/VolumeType"
+        404:
+          description: Not found
+  "/volumes":
+    get:
+      summary: List Volumes
+      operationId: listVolumes
+      description: Returns an array of Volume objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Volumes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Volume"
+  "/volumes/{id}":
+    get:
+      summary: Show an existing Volume
+      operationId: showVolume
+      description: Returns a Volume object
+      produces:
+      - application/json
+      parameters:
+        - $ref: '#/parameters/ID'
+      responses:
+        200:
+          description: Volume info
+          schema:
+            "$ref": "#/definitions/Volume"
         404:
           description: Not found
 parameters:
@@ -1591,6 +1745,88 @@ definitions:
         readOnly: true
       flavor_id:
         type: "#/parameters/ID"
+        readOnly: true
+  VolumeAttachment:
+    type: object
+    properties:
+      id:
+        type: "#/properties/ID"
+        readOnly: true
+      tenant_id:
+        type: "#/properties/ID"
+        readOnly: true
+      vm_id:
+        type: "#/properties/ID"
+        readOnly: true
+      volume_id:
+        type: "#/properties/ID"
+        readOnly: true
+      device:
+        type: string
+        readOnly: true
+        example: /dev/xvda
+      state:
+        type: string
+        readOnly: true
+        example: attached
+  VolumeType:
+    type: object
+    properties:
+      id:
+        type: "#/properties/ID"
+        readOnly: true
+      tenant_id:
+        type: "#/properties/ID"
+        readOnly: true
+      source_id:
+        type: "#/properties/ID"
+        readOnly: true
+      source_ref:
+        type: string
+      name:
+        type: string
+        example: standard
+      description:
+        type: string
+        example: Magnetic
+  Volume:
+    type: object
+    properties:
+      id:
+        type: "#/properties/ID"
+        readOnly: true
+      tenant_id:
+        type: "#/properties/ID"
+        readOnly: true
+      source_id:
+        type: "#/properties/ID"
+        readOnly: true
+      source_region_id:
+        type: "#/properties/ID"
+        readOnly: true
+      volume_type_id:
+        type: "#/properties/ID"
+        readOnly: true
+      source_ref:
+        type: string
+        readOnly: true
+      name:
+        type: string
+        example: vol-00627bf31217a7bc0
+      state:
+        type: string
+        example: in-use
+      size:
+        type: integer
+        example: 8589934592
+        description: Size of the volume in bytes
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
         readOnly: true
 host: virtserver.swaggerhub.com
 schemes:
