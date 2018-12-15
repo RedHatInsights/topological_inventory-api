@@ -23,11 +23,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Authentications array
+          description: Authentications collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Authentication"
+            "$ref": "#/definitions/AuthenticationsCollection"
     post:
       summary: Create a new Authentication
       operationId: createAuthentication
@@ -130,11 +128,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerGroups array
+          description: ContainerGroups collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerGroup"
+            "$ref": "#/definitions/ContainerGroupsCollection"
   "/container_groups/{id}":
     get:
       summary: Show an existing ContainerGroup
@@ -160,11 +156,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Containers array
+          description: Containers collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Container"
+            "$ref": "#/definitions/ContainersCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/container_images":
@@ -176,11 +170,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerImages array
+          description: ContainerImages collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerImage"
+            "$ref": "#/definitions/ContainerImagesCollection"
   "/container_images/{id}":
     get:
       summary: Show an existing ContainerImage
@@ -206,11 +198,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerNodes array
+          description: ContainerNodes collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerNode"
+            "$ref": "#/definitions/ContainerNodesCollection"
   "/container_nodes/{id}":
     get:
       summary: Show an existing ContainerNode
@@ -236,11 +226,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerGroups array
+          description: ContainerGroups collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerGroup"
+            "$ref": "#/definitions/ContainerGroupsCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/container_projects":
@@ -252,11 +240,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerProjects array
+          description: ContainerProjects collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerProject"
+            "$ref": "#/definitions/ContainerProjectsCollection"
   "/container_projects/{id}":
     get:
       summary: Show an existing ContainerProject
@@ -282,11 +268,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerGroups array
+          description: ContainerGroups collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerGroup"
+            "$ref": "#/definitions/ContainerGroupsCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/container_projects/{id}/container_templates":
@@ -298,11 +282,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerTemplates array
+          description: ContainerTemplates collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerTemplate"
+            "$ref": "#/definitions/ContainerTemplatesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/container_templates":
@@ -314,11 +296,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerTemplates array
+          description: ContainerTemplates collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerTemplate"
+            "$ref": "#/definitions/ContainerTemplatesCollection"
   "/container_templates/{id}":
     get:
       summary: Show an existing ContainerTemplate
@@ -344,11 +324,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Containers array
+          description: Containers collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Container"
+            "$ref": "#/definitions/ContainersCollection"
   "/containers/{id}":
     get:
       summary: Show an existing Container
@@ -374,11 +352,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Endpoints array
+          description: Endpoints collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Endpoint"
+            "$ref": "#/definitions/EndpointsCollection"
     post:
       summary: Create a new Endpoint
       operationId: createEndpoint
@@ -481,11 +457,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Flavors array
+          description: Flavors collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Flavor"
+            "$ref": "#/definitions/FlavorsCollection"
   "/flavors/{id}":
     get:
       summary: Show an existing Flavor
@@ -511,11 +485,9 @@ paths:
       - application/json
       responses:
         200:
-          description: OrchestrationStacks array
+          description: OrchestrationStacks collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/OrchestrationStack"
+            "$ref": "#/definitions/OrchestrationStacksCollection"
   "/orchestration_stacks/{id}":
     get:
       summary: Show an existing OrchestrationStack
@@ -541,11 +513,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ServiceInstances array
+          description: ServiceInstances collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceInstance"
+            "$ref": "#/definitions/ServiceInstancesCollection"
   "/service_instances/{id}":
     get:
       summary: Show an existing ServiceInstance
@@ -571,11 +541,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ServiceOfferings array
+          description: ServiceOfferings collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceOffering"
+            "$ref": "#/definitions/ServiceOfferingsCollection"
   "/service_offerings/{id}":
     get:
       summary: Show an existing ServiceOffering
@@ -601,11 +569,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ServiceInstances array
+          description: ServiceInstances collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceInstance"
+            "$ref": "#/definitions/ServiceInstancesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/service_offerings/{id}/service_plans":
@@ -617,11 +583,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ServicePlans array
+          description: ServicePlans collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServicePlan"
+            "$ref": "#/definitions/ServicePlansCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/service_plans":
@@ -633,11 +597,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ServicePlans array
+          description: ServicePlans collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServicePlan"
+            "$ref": "#/definitions/ServicePlansCollection"
   "/service_plans/{id}":
     get:
       summary: Show an existing ServicePlan
@@ -688,11 +650,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ServiceInstances array
+          description: ServiceInstances collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceInstance"
+            "$ref": "#/definitions/ServiceInstancesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/source_types":
@@ -704,11 +664,9 @@ paths:
       - application/json
       responses:
         200:
-          description: SourceTypes array
+          description: SourceTypes collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/SourceType"
+            "$ref": "#/definitions/SourceTypesCollection"
     post:
       summary: Create a new SourceType
       operationId: createSourceType
@@ -756,11 +714,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Sources array
+          description: Sources collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Source"
+            "$ref": "#/definitions/SourcesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources":
@@ -772,11 +728,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Sources array
+          description: Sources collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Source"
+            "$ref": "#/definitions/SourcesCollection"
     post:
       summary: Create a new Source
       operationId: createSource
@@ -879,11 +833,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerGroups array
+          description: ContainerGroups collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerGroup"
+            "$ref": "#/definitions/ContainerGroupsCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/container_images":
@@ -895,11 +847,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerImages array
+          description: ContainerImages collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerImage"
+            "$ref": "#/definitions/ContainerImagesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/container_nodes":
@@ -911,11 +861,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerNodes array
+          description: ContainerNodes collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerNode"
+            "$ref": "#/definitions/ContainerNodesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/container_projects":
@@ -927,11 +875,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerProjects array
+          description: ContainerProjects collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerProject"
+            "$ref": "#/definitions/ContainerProjectsCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/container_templates":
@@ -943,11 +889,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ContainerTemplates array
+          description: ContainerTemplates collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerTemplate"
+            "$ref": "#/definitions/ContainerTemplatesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/containers":
@@ -959,11 +903,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Containers array
+          description: Containers collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Container"
+            "$ref": "#/definitions/ContainersCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/endpoints":
@@ -975,11 +917,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Endpoints array
+          description: Endpoints collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Endpoint"
+            "$ref": "#/definitions/EndpointsCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/orchestration_stacks":
@@ -991,11 +931,9 @@ paths:
       - application/json
       responses:
         200:
-          description: OrchestrationStacks array
+          description: OrchestrationStacks collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/OrchestrationStack"
+            "$ref": "#/definitions/OrchestrationStacksCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/service_instances":
@@ -1007,11 +945,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ServiceInstances array
+          description: ServiceInstances collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceInstance"
+            "$ref": "#/definitions/ServiceInstancesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/service_offerings":
@@ -1023,11 +959,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ServiceOfferings array
+          description: ServiceOfferings collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceOffering"
+            "$ref": "#/definitions/ServiceOfferingsCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/service_plans":
@@ -1039,11 +973,9 @@ paths:
       - application/json
       responses:
         200:
-          description: ServicePlans array
+          description: ServicePlans collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServicePlan"
+            "$ref": "#/definitions/ServicePlansCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/vms":
@@ -1055,11 +987,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Vms array
+          description: Vms collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Vm"
+            "$ref": "#/definitions/VmsCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/volume_types":
@@ -1071,11 +1001,9 @@ paths:
       - application/json
       responses:
         200:
-          description: VolumeTypes array
+          description: VolumeTypes collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/VolumeType"
+            "$ref": "#/definitions/VolumeTypesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/volumes":
@@ -1087,11 +1015,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Volumes array
+          description: Volumes collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Volume"
+            "$ref": "#/definitions/VolumesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/tasks":
@@ -1103,11 +1029,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Tasks array
+          description: Tasks collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Task"
+            "$ref": "#/definitions/TasksCollection"
   "/tasks/{id}":
     get:
       summary: Show an existing Task
@@ -1133,11 +1057,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Vms array
+          description: Vms collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Vm"
+            "$ref": "#/definitions/VmsCollection"
   "/vms/{id}":
     get:
       summary: Show an existing Vm
@@ -1163,11 +1085,9 @@ paths:
       - application/json
       responses:
         200:
-          description: VolumeAttachments array
+          description: VolumeAttachments collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/VolumeAttachment"
+            "$ref": "#/definitions/VolumeAttachmentsCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/vms/{id}/volumes":
@@ -1179,11 +1099,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Volumes array
+          description: Volumes collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Volume"
+            "$ref": "#/definitions/VolumesCollection"
       parameters:
       - "$ref": "#/parameters/ID"
   "/volume_attachments":
@@ -1195,11 +1113,9 @@ paths:
       - application/json
       responses:
         200:
-          description: VolumeAttachments array
+          description: VolumeAttachments collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/VolumeAttachment"
+            "$ref": "#/definitions/VolumeAttachmentsCollection"
   "/volume_attachments/{id}":
     get:
       summary: Show an existing VolumeAttachment
@@ -1225,11 +1141,9 @@ paths:
       - application/json
       responses:
         200:
-          description: VolumeTypes array
+          description: VolumeTypes collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/VolumeType"
+            "$ref": "#/definitions/VolumeTypesCollection"
   "/volume_types/{id}":
     get:
       summary: Show an existing VolumeType
@@ -1255,11 +1169,9 @@ paths:
       - application/json
       responses:
         200:
-          description: Volumes array
+          description: Volumes collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Volume"
+            "$ref": "#/definitions/VolumesCollection"
   "/volumes/{id}":
     get:
       summary: Show an existing Volume
@@ -1316,6 +1228,33 @@ definitions:
       username:
         type: string
         example: user@example.com
+  AuthenticationsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/Authentication"
+  CollectionLinks:
+    type: object
+    properties:
+      first:
+        type: string
+      last:
+        type: string
+      prev:
+        type: string
+      next:
+        type: string
+  CollectionMetadata:
+    type: object
+    properties:
+      count:
+        type: integer
   Container:
     type: object
     properties:
@@ -1398,6 +1337,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  ContainerGroupsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ContainerGroup"
   ContainerImage:
     type: object
     properties:
@@ -1429,6 +1379,17 @@ definitions:
         type: string
         format: date-time
         readOnly: true
+  ContainerImagesCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ContainerImage"
   ContainerNode:
     type: object
     properties:
@@ -1477,6 +1438,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  ContainerNodesCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ContainerNode"
   ContainerProject:
     type: object
     properties:
@@ -1504,6 +1476,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  ContainerProjectsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ContainerProject"
   ContainerTemplate:
     type: object
     properties:
@@ -1539,6 +1522,28 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  ContainerTemplatesCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ContainerTemplate"
+  ContainersCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/Container"
   Endpoint:
     type: object
     properties:
@@ -1578,6 +1583,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  EndpointsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/Endpoint"
   Flavor:
     type: object
     properties:
@@ -1617,6 +1633,17 @@ definitions:
         readOnly: true
         example: 2
         description: Number of CPUs
+  FlavorsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/Flavor"
   OrchestrationStack:
     type: object
     properties:
@@ -1653,6 +1680,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  OrchestrationStacksCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/OrchestrationStack"
   OrderParameters:
     type: object
     properties:
@@ -1703,6 +1741,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  ServiceInstancesCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ServiceInstance"
   ServiceOffering:
     type: object
     properties:
@@ -1743,6 +1792,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  ServiceOfferingsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ServiceOffering"
   ServicePlan:
     type: object
     properties:
@@ -1792,6 +1852,17 @@ definitions:
       update_json_schema:
         type: object
         readOnly: true
+  ServicePlansCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ServicePlan"
   Source:
     type: object
     properties:
@@ -1837,6 +1908,28 @@ definitions:
         example: Red Hat
       schema:
         type: object
+  SourceTypesCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/SourceType"
+  SourcesCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/Source"
   Task:
     type: object
     properties:
@@ -1867,6 +1960,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  TasksCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/Task"
   Vm:
     type: object
     properties:
@@ -1933,6 +2037,17 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  VmsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/Vm"
   Volume:
     type: object
     properties:
@@ -2004,6 +2119,17 @@ definitions:
         type: string
         readOnly: true
         example: attached
+  VolumeAttachmentsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/VolumeAttachment"
   VolumeType:
     type: object
     properties:
@@ -2027,6 +2153,28 @@ definitions:
       description:
         type: string
         example: Magnetic
+  VolumeTypesCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/VolumeType"
+  VolumesCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/Volume"
 host: virtserver.swaggerhub.com
 schemes:
 - https
