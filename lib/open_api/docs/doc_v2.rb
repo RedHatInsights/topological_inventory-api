@@ -13,6 +13,15 @@ module OpenApi
 
       def definitions
         @definitions ||= content["definitions"]
+
+      def parameters
+        @parameters ||= content["parameters"]
+      end
+
+      def expanded_definition(key)
+        definitions[key].tap do |i|
+          i["properties"] = substitute_references(i["properties"])
+        end
       end
 
       def example_attributes(key)
@@ -38,6 +47,24 @@ module OpenApi
             end
           end
         end
+      end
+
+      private
+
+      def substitute_references(object)
+        if object.kind_of?(Array)
+          object.collect { |i| substitute_references(i) }
+        elsif object.kind_of?(Hash)
+          return fetch_ref_value(object["$ref"]) if object.keys == ["$ref"]
+          object.each { |k, v| object[k] = substitute_references(v) }
+        else
+          object
+        end
+      end
+
+      def fetch_ref_value(ref_path)
+        _, section, property = ref_path.split("/")
+        send(section)[property]
       end
     end
   end
