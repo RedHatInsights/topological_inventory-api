@@ -14,6 +14,100 @@ securityDefinitions:
 security:
 - UserSecurity: []
 paths:
+  "/authentications":
+    get:
+      summary: List Authentications
+      operationId: listAuthentications
+      description: Returns an array of Authentication objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Authentications array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Authentication"
+    post:
+      summary: Create a new Authentication
+      operationId: createAuthentication
+      description: Creates a Authentication object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          "$ref": "#/parameters/ID"
+      responses:
+        201:
+          description: Authentication info
+          schema:
+            type: object
+            items:
+              "$ref": "#/definitions/Authentication"
+  "/authentications/{id}":
+    get:
+      summary: Show an existing Authentication
+      operationId: showAuthentication
+      description: Returns a Authentication object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: Authentication info
+          schema:
+            "$ref": "#/definitions/Authentication"
+        404:
+          description: Not found
+    patch:
+      summary: Update an existing Authentication
+      operationId: updateAuthentication
+      description: Updates a Authentication object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: Not found
+    put:
+      summary: Replace an existing Authentication
+      operationId: replaceAuthentication
+      description: Replaces a Authentication object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: Not found
+    delete:
+      summary: Delete an existing Authentication
+      operationId: deleteAuthentication
+      description: Deletes a Authentication object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        204:
+          description: Authentication deleted
+        404:
+          description: Not found
   "/container_groups":
     get:
       summary: List ContainerGroups
@@ -1151,6 +1245,37 @@ parameters:
     type: string
     pattern: "/^\\d+$/"
 definitions:
+  Authentication:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      tenant_id:
+        type: string
+        readOnly: true
+        format: uuid
+      authtype:
+        type: string
+        example: openshift_default
+      name:
+        type: string
+        example: OpenShift default
+      resource_type:
+        type: string
+        example: Endpoint
+      resource_id:
+        type: string
+        format: uuid
+      status:
+        type: string
+        example: valid
+      status_details:
+        type: string
+      userid:
+        type: string
+        example: user@example.com
   Container:
     type: object
     properties:
