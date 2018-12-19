@@ -382,36 +382,6 @@ paths:
             "$ref": "#/definitions/Flavor"
         404:
           description: Not found
-  "/orchestration_stacks":
-    get:
-      summary: List OrchestrationStacks
-      operationId: listOrchestrationStacks
-      description: Returns an array of OrchestrationStack objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: OrchestrationStacks array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/OrchestrationStack"
-  "/orchestration_stacks/{id}":
-    get:
-      summary: Show an existing OrchestrationStack
-      operationId: showOrchestrationStack
-      description: Returns an OrchestrationStack object
-      produces:
-      - application/json
-      parameters:
-        - $ref: '#/parameters/ID'
-      responses:
-        200:
-          description: OrchestrationStack info
-          schema:
-            "$ref": "#/definitions/OrchestrationStack"
-        404:
-          description: Not found
   "/service_instances":
     get:
       summary: List ServiceInstances
@@ -504,6 +474,61 @@ paths:
             "$ref": "#/definitions/ServiceOffering"
         404:
           description: Not found
+  "/orchestration_stacks":
+    get:
+      summary: List OrchestrationStacks
+      operationId: listOrchestrationStacks
+      description: Returns an array of OrchestrationStack objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OrchestrationStacks array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/OrchestrationStack"
+  "/orchestration_stacks/{id}":
+    get:
+      summary: Show an existing OrchestrationStack
+      operationId: showOrchestrationStack
+      description: Returns a OrchestrationStack object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: OrchestrationStack info
+          schema:
+            "$ref": "#/definitions/OrchestrationStack"
+        404:
+          description: Not found
+  "/service_plans/{id}/order":
+    post:
+      summary: Order an existing ServicePlan
+      operationId: orderServicePlan
+      description: Returns a Task id
+      consumes:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/ID'
+      - name: parameters
+        in: body
+        description: Order parameters defining the service and provider control
+        required: true
+        schema:
+          $ref: '#/definitions/OrderParameters'
+      responses:
+        200:
+          description: Returns a task ID for the order
+          schema:
+            type: object
+            properties:
+              task_id:
+                type: string
+        400:
+          description: BadRequest
   "/service_plans/{id}/service_instances":
     get:
       summary: List ServiceInstances for ServicePlan
@@ -550,31 +575,6 @@ paths:
             "$ref": "#/definitions/ServicePlan"
         404:
           description: Not found
-  "/service_plans/{id}/order":
-    post:
-      summary: Order an existing ServicePlan
-      operationId: orderServicePlan
-      description: Returns a Task id
-      consumes:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/ID'
-      - name: parameters
-        in: body
-        description: Order parameters defining the service and provider control
-        required: true
-        schema:
-          $ref: '#/definitions/OrderParameters'
-      responses:
-        200:
-          description: Returns a task ID for the order
-          schema:
-            type: object
-            properties:
-              task_id:
-                type: string
-        400:
-          description: BadRequest
   "/source_types/{id}/sources":
     get:
       summary: List Sources for SourceType
@@ -990,6 +990,38 @@ paths:
             "$ref": "#/definitions/Task"
         404:
           description: Not found
+  "/vms/{id}/volume_attachments":
+    get:
+      summary: List VolumeAttachments for Vm
+      operationId: listVmVolumeAttachments
+      description: Returns an array of VolumeAttachment objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: VolumeAttachments array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/VolumeAttachment"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/vms/{id}/volumes":
+    get:
+      summary: List Volumes for Vm
+      operationId: listVmVolumes
+      description: Returns an array of Volume objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Volumes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Volume"
+      parameters:
+      - "$ref": "#/parameters/ID"
   "/vms":
     get:
       summary: List Vms
@@ -1020,38 +1052,6 @@ paths:
             "$ref": "#/definitions/Vm"
         404:
           description: Not found
-  "/vms/{id}/volume_attachments":
-    get:
-      summary: List VolumeAttachments for a Vm
-      operationId: listVmVolumeAttachments
-      description: Returns an array of VolumeAttachment objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: VolumeAttachments array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/VolumeAttachment"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/vms/{id}/volumes":
-    get:
-      summary: List Volumes for a Vm
-      operationId: listVmVolumes
-      description: Returns an array of Volume objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Volumes array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Volume"
-      parameters:
-        - $ref: '#/parameters/ID'
   "/volume_attachments":
     get:
       summary: List VolumeAttachments
