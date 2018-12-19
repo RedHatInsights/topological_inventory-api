@@ -66,7 +66,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerGroup info
@@ -285,7 +285,7 @@ paths:
         in: body
         required: true
         schema:
-          "$ref": "#/definitions/Id"
+          "$ref": "#/parameters/ID"
       responses:
         201:
           description: Endpoint info
@@ -618,7 +618,7 @@ paths:
         in: body
         required: true
         schema:
-          "$ref": "#/definitions/Id"
+          "$ref": "#/parameters/ID"
       responses:
         201:
           description: SourceType info
@@ -893,7 +893,7 @@ paths:
         in: body
         required: true
         schema:
-          "$ref": "#/definitions/Id"
+          "$ref": "#/parameters/ID"
       responses:
         201:
           description: Source info
@@ -1441,9 +1441,6 @@ definitions:
         readOnly: true
         example: 2
         description: Number of CPUs
-  Id:
-    type: string
-    format: uuid
   OrchestrationStack:
     type: object
     properties:
