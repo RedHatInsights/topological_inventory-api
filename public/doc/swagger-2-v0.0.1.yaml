@@ -1229,6 +1229,34 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  ContainerImage:
+    type: object
+    properties:
+      id:
+        type: "#/parameters/id"
+        readonly: true
+      tenant_id:
+        type: "#/parameters/id"
+        readonly: true
+      source_id:
+        type: "#/parameters/id"
+        readonly: true
+      name:
+        type: string
+        readonly: true
+        example: openshift3/postgresql-92-rhel7
+      tag:
+        type: string
+        readOnly: true
+        example: latest
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
   ContainerNode:
     type: object
     properties:
@@ -1276,34 +1304,6 @@ definitions:
         type: string
         readOnly: true
         format: uuid
-  ContainerImage:
-    type: object
-    properties:
-      id:
-        type: "#/parameters/id"
-        readonly: true
-      tenant_id:
-        type: "#/parameters/id"
-        readonly: true
-      source_id:
-        type: "#/parameters/id"
-        readonly: true
-      name:
-        type: string
-        readonly: true
-        example: openshift3/postgresql-92-rhel7
-      tag:
-        type: string
-        readOnly: true
-        example: latest
-      source_created_at:
-        type: string
-        format: date-time
-        readOnly: true
-      source_deleted_at:
-        type: string
-        format: date-time
-        readOnly: true
   ContainerProject:
     type: object
     properties:
@@ -1756,49 +1756,6 @@ definitions:
       flavor_id:
         type: "#/parameters/ID"
         readOnly: true
-  VolumeAttachment:
-    type: object
-    properties:
-      id:
-        type: "#/properties/ID"
-        readOnly: true
-      tenant_id:
-        type: "#/properties/ID"
-        readOnly: true
-      vm_id:
-        type: "#/properties/ID"
-        readOnly: true
-      volume_id:
-        type: "#/properties/ID"
-        readOnly: true
-      device:
-        type: string
-        readOnly: true
-        example: /dev/xvda
-      state:
-        type: string
-        readOnly: true
-        example: attached
-  VolumeType:
-    type: object
-    properties:
-      id:
-        type: "#/properties/ID"
-        readOnly: true
-      tenant_id:
-        type: "#/properties/ID"
-        readOnly: true
-      source_id:
-        type: "#/properties/ID"
-        readOnly: true
-      source_ref:
-        type: string
-      name:
-        type: string
-        example: standard
-      description:
-        type: string
-        example: Magnetic
   Volume:
     type: object
     properties:
@@ -1838,6 +1795,49 @@ definitions:
         type: string
         format: date-time
         readOnly: true
+  VolumeAttachment:
+    type: object
+    properties:
+      id:
+        type: "#/properties/ID"
+        readOnly: true
+      tenant_id:
+        type: "#/properties/ID"
+        readOnly: true
+      vm_id:
+        type: "#/properties/ID"
+        readOnly: true
+      volume_id:
+        type: "#/properties/ID"
+        readOnly: true
+      device:
+        type: string
+        readOnly: true
+        example: "/dev/xvda"
+      state:
+        type: string
+        readOnly: true
+        example: attached
+  VolumeType:
+    type: object
+    properties:
+      id:
+        type: "#/properties/ID"
+        readOnly: true
+      tenant_id:
+        type: "#/properties/ID"
+        readOnly: true
+      source_id:
+        type: "#/properties/ID"
+        readOnly: true
+      source_ref:
+        type: string
+      name:
+        type: string
+        example: standard
+      description:
+        type: string
+        example: Magnetic
 host: virtserver.swaggerhub.com
 schemes:
 - https
