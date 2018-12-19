@@ -1156,34 +1156,34 @@ definitions:
     properties:
       id:
         type: "#/parameters/id"
-        readonly: true
+        readOnly: true
       tenant_id:
         type: "#/parameters/id"
-        readonly: true
+        readOnly: true
       name:
         type: string
-        readonly: true
+        readOnly: true
         example: docker-build
       cpu_limit:
         type: number
         format: double
-        readonly: true
+        readOnly: true
       cpu_request:
         type: number
         format: double
-        readonly: true
+        readOnly: true
       memory_limit:
         type: integer
-        readonly: true
+        readOnly: true
       memory_request:
         type: integer
-        readonly: true
+        readOnly: true
       container_group_id:
         type: "#/parameters/id"
-        readonly: true
+        readOnly: true
       container_image_id:
         type: "#/parameters/id"
-        readonly: true
+        readOnly: true
   ContainerGroup:
     type: object
     properties:
@@ -1234,16 +1234,16 @@ definitions:
     properties:
       id:
         type: "#/parameters/id"
-        readonly: true
+        readOnly: true
       tenant_id:
         type: "#/parameters/id"
-        readonly: true
+        readOnly: true
       source_id:
         type: "#/parameters/id"
-        readonly: true
+        readOnly: true
       name:
         type: string
-        readonly: true
+        readOnly: true
         example: openshift3/postgresql-92-rhel7
       tag:
         type: string
