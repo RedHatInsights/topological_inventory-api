@@ -14,36 +14,6 @@ securityDefinitions:
 security:
 - UserSecurity: []
 paths:
-  "/containers":
-    get:
-      summary: List Containers
-      operationId: listContainers
-      description: Returns an array of Container objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Containers array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Container"
-  "/containers/{id}":
-    get:
-      summary: Show an existing Container
-      operationId: showContainer
-      description: Returns a Container object
-      produces:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      responses:
-        200:
-          description: Container info
-          schema:
-            "$ref": "#/definitions/Container"
-        404:
-          description: Not found
   "/container_groups":
     get:
       summary: List ContainerGroups
@@ -120,22 +90,6 @@ paths:
             "$ref": "#/definitions/ContainerImage"
         404:
           description: Not found
-  "/container_nodes/{id}/container_groups":
-    get:
-      summary: List ContainerGroups for ContainerNode
-      operationId: listContainerNodeContainerGroups
-      description: Returns an array of ContainerGroup objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ContainerGroups array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerGroup"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/container_nodes":
     get:
       summary: List ContainerNodes
@@ -164,6 +118,52 @@ paths:
           description: ContainerNode info
           schema:
             "$ref": "#/definitions/ContainerNode"
+        404:
+          description: Not found
+  "/container_nodes/{id}/container_groups":
+    get:
+      summary: List ContainerGroups for ContainerNode
+      operationId: listContainerNodeContainerGroups
+      description: Returns an array of ContainerGroup objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerGroups array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerGroup"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/container_projects":
+    get:
+      summary: List ContainerProjects
+      operationId: listContainerProjects
+      description: Returns an array of ContainerProject objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerProjects array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerProject"
+  "/container_projects/{id}":
+    get:
+      summary: Show an existing ContainerProject
+      operationId: showContainerProject
+      description: Returns a ContainerProject object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: ContainerProject info
+          schema:
+            "$ref": "#/definitions/ContainerProject"
         404:
           description: Not found
   "/container_projects/{id}/container_groups":
@@ -198,36 +198,6 @@ paths:
               "$ref": "#/definitions/ContainerTemplate"
       parameters:
       - "$ref": "#/parameters/ID"
-  "/container_projects":
-    get:
-      summary: List ContainerProjects
-      operationId: listContainerProjects
-      description: Returns an array of ContainerProject objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ContainerProjects array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerProject"
-  "/container_projects/{id}":
-    get:
-      summary: Show an existing ContainerProject
-      operationId: showContainerProject
-      description: Returns a ContainerProject object
-      produces:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      responses:
-        200:
-          description: ContainerProject info
-          schema:
-            "$ref": "#/definitions/ContainerProject"
-        404:
-          description: Not found
   "/container_templates":
     get:
       summary: List ContainerTemplates
@@ -256,6 +226,36 @@ paths:
           description: ContainerTemplate info
           schema:
             "$ref": "#/definitions/ContainerTemplate"
+        404:
+          description: Not found
+  "/containers":
+    get:
+      summary: List Containers
+      operationId: listContainers
+      description: Returns an array of Container objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Containers array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Container"
+  "/containers/{id}":
+    get:
+      summary: Show an existing Container
+      operationId: showContainer
+      description: Returns a Container object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: Container info
+          schema:
+            "$ref": "#/definitions/Container"
         404:
           description: Not found
   "/endpoints":
@@ -382,6 +382,36 @@ paths:
             "$ref": "#/definitions/Flavor"
         404:
           description: Not found
+  "/orchestration_stacks":
+    get:
+      summary: List OrchestrationStacks
+      operationId: listOrchestrationStacks
+      description: Returns an array of OrchestrationStack objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OrchestrationStacks array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/OrchestrationStack"
+  "/orchestration_stacks/{id}":
+    get:
+      summary: Show an existing OrchestrationStack
+      operationId: showOrchestrationStack
+      description: Returns a OrchestrationStack object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: OrchestrationStack info
+          schema:
+            "$ref": "#/definitions/OrchestrationStack"
+        404:
+          description: Not found
   "/service_instances":
     get:
       summary: List ServiceInstances
@@ -410,6 +440,36 @@ paths:
           description: ServiceInstance info
           schema:
             "$ref": "#/definitions/ServiceInstance"
+        404:
+          description: Not found
+  "/service_offerings":
+    get:
+      summary: List ServiceOfferings
+      operationId: listServiceOfferings
+      description: Returns an array of ServiceOffering objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceOfferings array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceOffering"
+  "/service_offerings/{id}":
+    get:
+      summary: Show an existing ServiceOffering
+      operationId: showServiceOffering
+      description: Returns a ServiceOffering object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: ServiceOffering info
+          schema:
+            "$ref": "#/definitions/ServiceOffering"
         404:
           description: Not found
   "/service_offerings/{id}/service_instances":
@@ -444,107 +504,6 @@ paths:
               "$ref": "#/definitions/ServicePlan"
       parameters:
       - "$ref": "#/parameters/ID"
-  "/service_offerings":
-    get:
-      summary: List ServiceOfferings
-      operationId: listServiceOfferings
-      description: Returns an array of ServiceOffering objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ServiceOfferings array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceOffering"
-  "/service_offerings/{id}":
-    get:
-      summary: Show an existing ServiceOffering
-      operationId: showServiceOffering
-      description: Returns a ServiceOffering object
-      produces:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      responses:
-        200:
-          description: ServiceOffering info
-          schema:
-            "$ref": "#/definitions/ServiceOffering"
-        404:
-          description: Not found
-  "/orchestration_stacks":
-    get:
-      summary: List OrchestrationStacks
-      operationId: listOrchestrationStacks
-      description: Returns an array of OrchestrationStack objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: OrchestrationStacks array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/OrchestrationStack"
-  "/orchestration_stacks/{id}":
-    get:
-      summary: Show an existing OrchestrationStack
-      operationId: showOrchestrationStack
-      description: Returns a OrchestrationStack object
-      produces:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      responses:
-        200:
-          description: OrchestrationStack info
-          schema:
-            "$ref": "#/definitions/OrchestrationStack"
-        404:
-          description: Not found
-  "/service_plans/{id}/order":
-    post:
-      summary: Order an existing ServicePlan
-      operationId: orderServicePlan
-      description: Returns a Task id
-      consumes:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/ID'
-      - name: parameters
-        in: body
-        description: Order parameters defining the service and provider control
-        required: true
-        schema:
-          $ref: '#/definitions/OrderParameters'
-      responses:
-        200:
-          description: Returns a task ID for the order
-          schema:
-            type: object
-            properties:
-              task_id:
-                type: string
-        400:
-          description: BadRequest
-  "/service_plans/{id}/service_instances":
-    get:
-      summary: List ServiceInstances for ServicePlan
-      operationId: listServicePlanServiceInstances
-      description: Returns an array of ServiceInstance objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ServiceInstances array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceInstance"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/service_plans":
     get:
       summary: List ServicePlans
@@ -575,20 +534,45 @@ paths:
             "$ref": "#/definitions/ServicePlan"
         404:
           description: Not found
-  "/source_types/{id}/sources":
+  "/service_plans/{id}/order":
+    post:
+      summary: Order an existing ServicePlan
+      operationId: orderServicePlan
+      description: Returns a Task id
+      consumes:
+      - application/json
+      parameters:
+      - "$ref": '#/parameters/ID'
+      - name: parameters
+        in: body
+        description: Order parameters defining the service and provider control
+        required: true
+        schema:
+          $ref: '#/definitions/OrderParameters'
+      responses:
+        200:
+          description: Returns a task ID for the order
+          schema:
+            type: object
+            properties:
+              task_id:
+                type: string
+        400:
+          description: BadRequest
+  "/service_plans/{id}/service_instances":
     get:
-      summary: List Sources for SourceType
-      operationId: listSourceTypeSources
-      description: Returns an array of Source objects
+      summary: List ServiceInstances for ServicePlan
+      operationId: listServicePlanServiceInstances
+      description: Returns an array of ServiceInstance objects
       produces:
       - application/json
       responses:
         200:
-          description: Sources array
+          description: ServiceInstances array
           schema:
             type: array
             items:
-              "$ref": "#/definitions/Source"
+              "$ref": "#/definitions/ServiceInstance"
       parameters:
       - "$ref": "#/parameters/ID"
   "/source_types":
@@ -642,22 +626,116 @@ paths:
             "$ref": "#/definitions/SourceType"
         404:
           description: Not found
-  "/sources/{id}/containers":
+  "/source_types/{id}/sources":
     get:
-      summary: List Containers for Source
-      operationId: listSourceContainers
-      description: Returns an array of Container objects
+      summary: List Sources for SourceType
+      operationId: listSourceTypeSources
+      description: Returns an array of Source objects
       produces:
       - application/json
       responses:
         200:
-          description: Containers array
+          description: Sources array
           schema:
             type: array
             items:
-              "$ref": "#/definitions/Container"
+              "$ref": "#/definitions/Source"
       parameters:
       - "$ref": "#/parameters/ID"
+  "/sources":
+    get:
+      summary: List Sources
+      operationId: listSources
+      description: Returns an array of Source objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Sources array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Source"
+    post:
+      summary: Create a new Source
+      operationId: createSource
+      description: Creates a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          "$ref": "#/parameters/ID"
+      responses:
+        201:
+          description: Source info
+          schema:
+            type: object
+            items:
+              "$ref": "#/definitions/Source"
+  "/sources/{id}":
+    get:
+      summary: Show an existing Source
+      operationId: showSource
+      description: Returns a Source object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: Source info
+          schema:
+            "$ref": "#/definitions/Source"
+        404:
+          description: Not found
+    patch:
+      summary: Update an existing Source
+      operationId: updateSource
+      description: Updates a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: Not found
+    put:
+      summary: Replace an existing Source
+      operationId: replaceSource
+      description: Replaces a Source object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: Not found
+    delete:
+      summary: Delete an existing Source
+      operationId: deleteSource
+      description: Deletes a Source object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        204:
+          description: Source deleted
+        404:
+          description: Not found
   "/sources/{id}/container_groups":
     get:
       summary: List ContainerGroups for Source
@@ -736,6 +814,22 @@ paths:
             type: array
             items:
               "$ref": "#/definitions/ContainerTemplate"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/containers":
+    get:
+      summary: List Containers for Source
+      operationId: listSourceContainers
+      description: Returns an array of Container objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Containers array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Container"
       parameters:
       - "$ref": "#/parameters/ID"
   "/sources/{id}/endpoints":
@@ -866,100 +960,6 @@ paths:
               "$ref": "#/definitions/Volume"
       parameters:
       - "$ref": "#/parameters/ID"
-  "/sources":
-    get:
-      summary: List Sources
-      operationId: listSources
-      description: Returns an array of Source objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Sources array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Source"
-    post:
-      summary: Create a new Source
-      operationId: createSource
-      description: Creates a Source object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          "$ref": "#/parameters/ID"
-      responses:
-        201:
-          description: Source info
-          schema:
-            type: object
-            items:
-              "$ref": "#/definitions/Source"
-  "/sources/{id}":
-    get:
-      summary: Show an existing Source
-      operationId: showSource
-      description: Returns a Source object
-      produces:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      responses:
-        200:
-          description: Source info
-          schema:
-            "$ref": "#/definitions/Source"
-        404:
-          description: Not found
-    patch:
-      summary: Update an existing Source
-      operationId: updateSource
-      description: Updates a Source object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      responses:
-        204:
-          description: Updated, no content
-        404:
-          description: Not found
-    put:
-      summary: Replace an existing Source
-      operationId: replaceSource
-      description: Replaces a Source object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      responses:
-        204:
-          description: Updated, no content
-        404:
-          description: Not found
-    delete:
-      summary: Delete an existing Source
-      operationId: deleteSource
-      description: Deletes a Source object
-      produces:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      responses:
-        204:
-          description: Source deleted
-        404:
-          description: Not found
   "/tasks":
     get:
       summary: List Tasks
@@ -988,6 +988,36 @@ paths:
           description: Task info
           schema:
             "$ref": "#/definitions/Task"
+        404:
+          description: Not found
+  "/vms":
+    get:
+      summary: List Vms
+      operationId: listVms
+      description: Returns an array of Vm objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Vms array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Vm"
+  "/vms/{id}":
+    get:
+      summary: Show an existing Vm
+      operationId: showVm
+      description: Returns a Vm object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: Vm info
+          schema:
+            "$ref": "#/definitions/Vm"
         404:
           description: Not found
   "/vms/{id}/volume_attachments":
@@ -1022,36 +1052,6 @@ paths:
               "$ref": "#/definitions/Volume"
       parameters:
       - "$ref": "#/parameters/ID"
-  "/vms":
-    get:
-      summary: List Vms
-      operationId: listVms
-      description: Returns an array of Vm objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Vms array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Vm"
-  "/vms/{id}":
-    get:
-      summary: Show an existing Vm
-      operationId: showVm
-      description: Returns a Vm object
-      produces:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      responses:
-        200:
-          description: Vm info
-          schema:
-            "$ref": "#/definitions/Vm"
-        404:
-          description: Not found
   "/volume_attachments":
     get:
       summary: List VolumeAttachments
