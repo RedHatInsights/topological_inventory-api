@@ -1155,11 +1155,13 @@ definitions:
     type: object
     properties:
       id:
-        type: "#/parameters/id"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       tenant_id:
-        type: "#/parameters/id"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       name:
         type: string
         readOnly: true
@@ -1179,11 +1181,13 @@ definitions:
         type: integer
         readOnly: true
       container_group_id:
-        type: "#/parameters/id"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       container_image_id:
-        type: "#/parameters/id"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
   ContainerGroup:
     type: object
     properties:
@@ -1233,14 +1237,17 @@ definitions:
     type: object
     properties:
       id:
-        type: "#/parameters/id"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       tenant_id:
-        type: "#/parameters/id"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_id:
-        type: "#/parameters/id"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       name:
         type: string
         readOnly: true
@@ -1409,14 +1416,17 @@ definitions:
     type: object
     properties:
       id:
-        type: "#/parameters/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       tenant_id:
-        type: "#/parameters/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_id:
-        type: "#/parameters/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_ref:
         type: string
         readOnly: true
@@ -1748,29 +1758,36 @@ definitions:
         example: 17179869184
         description: Total RAM in bytes
       orchestration_stack_id:
-        type: "#/parameters/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       flavor_id:
-        type: "#/parameters/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
   Volume:
     type: object
     properties:
       id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       tenant_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_region_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       volume_type_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_ref:
         type: string
         readOnly: true
@@ -1796,17 +1813,21 @@ definitions:
     type: object
     properties:
       id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       tenant_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       vm_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       volume_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       device:
         type: string
         readOnly: true
@@ -1819,14 +1840,17 @@ definitions:
     type: object
     properties:
       id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       tenant_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_ref:
         type: string
       name:
