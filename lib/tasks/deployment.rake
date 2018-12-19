@@ -1,7 +1,7 @@
 module ApplicationDeployment
   def self.status
     return "new_deployment" if ActiveRecord::Migrator.current_version.zero?
-    return "upgrade"        if ActiveRecord::Migrator.needs_migration?
+    return "upgrade"        if ActiveRecord::MigrationContext.new(ActiveRecord::Migrator.migrations_paths).needs_migration?
     "other"
   end
 end
