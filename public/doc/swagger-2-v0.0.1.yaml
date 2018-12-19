@@ -36,7 +36,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Container info
@@ -89,7 +89,7 @@ paths:
             items:
               "$ref": "#/definitions/Container"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/container_images":
     get:
       summary: List ContainerImages
@@ -112,7 +112,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerImage info
@@ -135,7 +135,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerGroup"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/container_nodes":
     get:
       summary: List ContainerNodes
@@ -158,7 +158,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerNode info
@@ -181,7 +181,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerGroup"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/container_projects/{id}/container_templates":
     get:
       summary: List ContainerTemplates for ContainerProject
@@ -197,7 +197,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerTemplate"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/container_projects":
     get:
       summary: List ContainerProjects
@@ -220,7 +220,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerProject info
@@ -250,7 +250,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerTemplate info
@@ -301,7 +301,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Endpoint info
@@ -318,7 +318,7 @@ paths:
       consumes:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Updated, no content
@@ -333,7 +333,7 @@ paths:
       consumes:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Updated, no content
@@ -346,7 +346,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Endpoint deleted
@@ -374,7 +374,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Flavor info
@@ -434,7 +434,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ServiceInstance info
@@ -457,7 +457,7 @@ paths:
             items:
               "$ref": "#/definitions/ServiceInstance"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/service_offerings/{id}/service_plans":
     get:
       summary: List ServicePlans for ServiceOffering
@@ -473,7 +473,7 @@ paths:
             items:
               "$ref": "#/definitions/ServicePlan"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/service_offerings":
     get:
       summary: List ServiceOfferings
@@ -496,7 +496,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ServiceOffering info
@@ -519,7 +519,7 @@ paths:
             items:
               "$ref": "#/definitions/ServiceInstance"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/service_plans":
     get:
       summary: List ServicePlans
@@ -542,7 +542,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ServicePlan info
@@ -590,7 +590,7 @@ paths:
             items:
               "$ref": "#/definitions/Source"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/source_types":
     get:
       summary: List SourceTypes
@@ -634,7 +634,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: SourceType info
@@ -657,7 +657,7 @@ paths:
             items:
               "$ref": "#/definitions/Container"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/container_groups":
     get:
       summary: List ContainerGroups for Source
@@ -673,7 +673,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerGroup"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/container_images":
     get:
       summary: List ContainerImages for Source
@@ -689,7 +689,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerImage"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/container_nodes":
     get:
       summary: List ContainerNodes for Source
@@ -705,7 +705,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerNode"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/container_projects":
     get:
       summary: List ContainerProjects for Source
@@ -721,7 +721,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerProject"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/container_templates":
     get:
       summary: List ContainerTemplates for Source
@@ -737,7 +737,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerTemplate"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/endpoints":
     get:
       summary: List Endpoints for Source
@@ -753,7 +753,7 @@ paths:
             items:
               "$ref": "#/definitions/Endpoint"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/orchestration_stacks":
     get:
       summary: List OrchestrationStacks for Source
@@ -769,7 +769,7 @@ paths:
             items:
               "$ref": "#/definitions/OrchestrationStack"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/service_instances":
     get:
       summary: List ServiceInstances for Source
@@ -785,7 +785,7 @@ paths:
             items:
               "$ref": "#/definitions/ServiceInstance"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/service_offerings":
     get:
       summary: List ServiceOfferings for Source
@@ -801,7 +801,7 @@ paths:
             items:
               "$ref": "#/definitions/ServiceOffering"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/service_plans":
     get:
       summary: List ServicePlans for Source
@@ -817,7 +817,7 @@ paths:
             items:
               "$ref": "#/definitions/ServicePlan"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/vms":
     get:
       summary: List Vms for Source
@@ -833,7 +833,7 @@ paths:
             items:
               "$ref": "#/definitions/Vm"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/volume_types":
     get:
       summary: List VolumeTypes for Source
@@ -849,7 +849,7 @@ paths:
             items:
               "$ref": "#/definitions/VolumeType"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources/{id}/volumes":
     get:
       summary: List Volumes for Source
@@ -865,7 +865,7 @@ paths:
             items:
               "$ref": "#/definitions/Volume"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources":
     get:
       summary: List Sources
@@ -909,7 +909,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Source info
@@ -926,7 +926,7 @@ paths:
       consumes:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Updated, no content
@@ -941,7 +941,7 @@ paths:
       consumes:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Updated, no content
@@ -954,7 +954,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Source deleted
@@ -982,7 +982,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Task info
@@ -1012,7 +1012,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Vm info
@@ -1074,7 +1074,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: VolumeAttachment info
@@ -1104,7 +1104,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: VolumeType info
@@ -1134,7 +1134,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Volume info
