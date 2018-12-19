@@ -1758,13 +1758,13 @@ definitions:
         example: 17179869184
         description: Total RAM in bytes
       orchestration_stack_id:
-        allOf:
-        - "$ref": "#/parameters/ID"
-        - readOnly: true
+        type: string
+        readOnly: true
+        format: uuid
       flavor_id:
-        allOf:
-        - "$ref": "#/parameters/ID"
-        - readOnly: true
+        type: string
+        readOnly: true
+        format: uuid
   Volume:
     type: object
     properties:
@@ -1781,9 +1781,9 @@ definitions:
         - "$ref": "#/parameters/ID"
         - readOnly: true
       source_region_id:
-        allOf:
-        - "$ref": "#/parameters/ID"
-        - readOnly: true
+        type: string
+        readOnly: true
+        format: uuid
       volume_type_id:
         allOf:
         - "$ref": "#/parameters/ID"
