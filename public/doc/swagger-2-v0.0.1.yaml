@@ -1149,7 +1149,7 @@ parameters:
     description: ID of the resource
     required: true
     type: string
-    pattern: '/^\d+$/'
+    pattern: "/^\\d+$/"
 definitions:
   Container:
     type: object
