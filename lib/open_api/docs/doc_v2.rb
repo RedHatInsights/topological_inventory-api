@@ -12,10 +12,11 @@ module OpenApi
       end
 
       def definitions
-        @definitions ||= content["definitions"]
+        @definitions ||= substitute_regexes(content["definitions"])
+      end
 
       def parameters
-        @parameters ||= content["parameters"]
+        @parameters ||= substitute_regexes(content["parameters"])
       end
 
       def expanded_definition(key)
@@ -65,6 +66,23 @@ module OpenApi
       def fetch_ref_value(ref_path)
         _, section, property = ref_path.split("/")
         send(section)[property]
+      end
+
+      def substitute_regexes(object)
+        if object.kind_of?(Array)
+          object.collect { |i| substitute_regexes(i) }
+        elsif object.kind_of?(Hash)
+          object.each do |k, v|
+            object[k] = k == "pattern" ? regexp_from_pattern(v) : substitute_regexes(v)
+          end
+        else
+          object
+        end
+      end
+
+      def regexp_from_pattern(pattern)
+        raise "Pattern #{pattern.inspect} is not a regular expression" unless pattern.starts_with?("/") && pattern.ends_with?("/")
+        Regexp.new(pattern[1..-2])
       end
     end
   end
