@@ -12,7 +12,7 @@ module Api
       private
 
       def create_params
-        body_params.permit(:name, :product_name, :vendor)
+        body_params.permit(:name, :product_name, :vendor, :schema)
       end
 
       def list_params
