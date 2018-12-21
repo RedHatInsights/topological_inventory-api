@@ -5,6 +5,7 @@ module OpenApi
 
       def initialize(content)
         @content = content
+        @expanded_definitions = {}
       end
 
       def version
@@ -12,7 +13,19 @@ module OpenApi
       end
 
       def definitions
-        @definitions ||= content["definitions"]
+        @definitions ||= substitute_regexes(content["definitions"])
+      end
+
+      def parameters
+        @parameters ||= substitute_regexes(content["parameters"])
+      end
+
+      def expanded_definition(key)
+        @expanded_definitions[key] ||= begin
+          definitions[key].tap do |i|
+            i["properties"] = substitute_references(i["properties"])
+          end
+        end
       end
 
       def example_attributes(key)
@@ -38,6 +51,41 @@ module OpenApi
             end
           end
         end
+      end
+
+      private
+
+      def substitute_references(object)
+        if object.kind_of?(Array)
+          object.collect { |i| substitute_references(i) }
+        elsif object.kind_of?(Hash)
+          return fetch_ref_value(object["$ref"]) if object.keys == ["$ref"]
+          object.each { |k, v| object[k] = substitute_references(v) }
+        else
+          object
+        end
+      end
+
+      def fetch_ref_value(ref_path)
+        _, section, property = ref_path.split("/")
+        send(section)[property]
+      end
+
+      def substitute_regexes(object)
+        if object.kind_of?(Array)
+          object.collect { |i| substitute_regexes(i) }
+        elsif object.kind_of?(Hash)
+          object.each do |k, v|
+            object[k] = k == "pattern" ? regexp_from_pattern(v) : substitute_regexes(v)
+          end
+        else
+          object
+        end
+      end
+
+      def regexp_from_pattern(pattern)
+        raise "Pattern #{pattern.inspect} is not a regular expression" unless pattern.starts_with?("/") && pattern.ends_with?("/")
+        Regexp.new(pattern[1..-2])
       end
     end
   end

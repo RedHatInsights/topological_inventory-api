@@ -14,36 +14,6 @@ securityDefinitions:
 security:
 - UserSecurity: []
 paths:
-  "/containers":
-    get:
-      summary: List Containers
-      operationId: listContainers
-      description: Returns an array of Container objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Containers array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Container"
-  "/containers/{id}":
-    get:
-      summary: Show an existing Container
-      operationId: showContainer
-      description: Returns a Container object
-      produces:
-      - application/json
-      parameters:
-        - $ref: '#/parameters/ID'
-      responses:
-        200:
-          description: Container info
-          schema:
-            "$ref": "#/definitions/Container"
-        404:
-          description: Not found
   "/container_groups":
     get:
       summary: List ContainerGroups
@@ -66,7 +36,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerGroup info
@@ -89,7 +59,7 @@ paths:
             items:
               "$ref": "#/definitions/Container"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/container_images":
     get:
       summary: List ContainerImages
@@ -112,7 +82,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerImage info
@@ -120,22 +90,6 @@ paths:
             "$ref": "#/definitions/ContainerImage"
         404:
           description: Not found
-  "/container_nodes/{id}/container_groups":
-    get:
-      summary: List ContainerGroups for ContainerNode
-      operationId: listContainerNodeContainerGroups
-      description: Returns an array of ContainerGroup objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ContainerGroups array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerGroup"
-      parameters:
-        - $ref: '#/parameters/ID'
   "/container_nodes":
     get:
       summary: List ContainerNodes
@@ -158,7 +112,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerNode info
@@ -166,10 +120,10 @@ paths:
             "$ref": "#/definitions/ContainerNode"
         404:
           description: Not found
-  "/container_projects/{id}/container_groups":
+  "/container_nodes/{id}/container_groups":
     get:
-      summary: List ContainerGroups for ContainerProject
-      operationId: listContainerProjectContainerGroups
+      summary: List ContainerGroups for ContainerNode
+      operationId: listContainerNodeContainerGroups
       description: Returns an array of ContainerGroup objects
       produces:
       - application/json
@@ -181,23 +135,7 @@ paths:
             items:
               "$ref": "#/definitions/ContainerGroup"
       parameters:
-        - $ref: '#/parameters/ID'
-  "/container_projects/{id}/container_templates":
-    get:
-      summary: List ContainerTemplates for ContainerProject
-      operationId: listContainerProjectContainerTemplates
-      description: Returns an array of ContainerTemplate objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ContainerTemplates array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerTemplate"
-      parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/container_projects":
     get:
       summary: List ContainerProjects
@@ -220,7 +158,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerProject info
@@ -228,6 +166,38 @@ paths:
             "$ref": "#/definitions/ContainerProject"
         404:
           description: Not found
+  "/container_projects/{id}/container_groups":
+    get:
+      summary: List ContainerGroups for ContainerProject
+      operationId: listContainerProjectContainerGroups
+      description: Returns an array of ContainerGroup objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerGroups array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerGroup"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/container_projects/{id}/container_templates":
+    get:
+      summary: List ContainerTemplates for ContainerProject
+      operationId: listContainerProjectContainerTemplates
+      description: Returns an array of ContainerTemplate objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerTemplates array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerTemplate"
+      parameters:
+      - "$ref": "#/parameters/ID"
   "/container_templates":
     get:
       summary: List ContainerTemplates
@@ -250,12 +220,42 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ContainerTemplate info
           schema:
             "$ref": "#/definitions/ContainerTemplate"
+        404:
+          description: Not found
+  "/containers":
+    get:
+      summary: List Containers
+      operationId: listContainers
+      description: Returns an array of Container objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Containers array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Container"
+  "/containers/{id}":
+    get:
+      summary: Show an existing Container
+      operationId: showContainer
+      description: Returns a Container object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: Container info
+          schema:
+            "$ref": "#/definitions/Container"
         404:
           description: Not found
   "/endpoints":
@@ -285,7 +285,7 @@ paths:
         in: body
         required: true
         schema:
-          "$ref": "#/definitions/Id"
+          "$ref": "#/parameters/ID"
       responses:
         201:
           description: Endpoint info
@@ -301,7 +301,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Endpoint info
@@ -318,7 +318,7 @@ paths:
       consumes:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Updated, no content
@@ -333,7 +333,7 @@ paths:
       consumes:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Updated, no content
@@ -346,7 +346,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Endpoint deleted
@@ -374,7 +374,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Flavor info
@@ -400,11 +400,11 @@ paths:
     get:
       summary: Show an existing OrchestrationStack
       operationId: showOrchestrationStack
-      description: Returns an OrchestrationStack object
+      description: Returns a OrchestrationStack object
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: OrchestrationStack info
@@ -434,7 +434,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ServiceInstance info
@@ -442,38 +442,6 @@ paths:
             "$ref": "#/definitions/ServiceInstance"
         404:
           description: Not found
-  "/service_offerings/{id}/service_instances":
-    get:
-      summary: List ServiceInstances for ServiceOffering
-      operationId: listServiceOfferingServiceInstances
-      description: Returns an array of ServiceInstance objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ServiceInstances array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceInstance"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/service_offerings/{id}/service_plans":
-    get:
-      summary: List ServicePlans for ServiceOffering
-      operationId: listServiceOfferingServicePlans
-      description: Returns an array of ServicePlan objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ServicePlans array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServicePlan"
-      parameters:
-        - $ref: '#/parameters/ID'
   "/service_offerings":
     get:
       summary: List ServiceOfferings
@@ -496,7 +464,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ServiceOffering info
@@ -504,10 +472,10 @@ paths:
             "$ref": "#/definitions/ServiceOffering"
         404:
           description: Not found
-  "/service_plans/{id}/service_instances":
+  "/service_offerings/{id}/service_instances":
     get:
-      summary: List ServiceInstances for ServicePlan
-      operationId: listServicePlanServiceInstances
+      summary: List ServiceInstances for ServiceOffering
+      operationId: listServiceOfferingServiceInstances
       description: Returns an array of ServiceInstance objects
       produces:
       - application/json
@@ -519,7 +487,23 @@ paths:
             items:
               "$ref": "#/definitions/ServiceInstance"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
+  "/service_offerings/{id}/service_plans":
+    get:
+      summary: List ServicePlans for ServiceOffering
+      operationId: listServiceOfferingServicePlans
+      description: Returns an array of ServicePlan objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServicePlans array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServicePlan"
+      parameters:
+      - "$ref": "#/parameters/ID"
   "/service_plans":
     get:
       summary: List ServicePlans
@@ -542,7 +526,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: ServicePlan info
@@ -558,7 +542,7 @@ paths:
       consumes:
       - application/json
       parameters:
-      - $ref: '#/parameters/ID'
+      - "$ref": '#/parameters/ID'
       - name: parameters
         in: body
         description: Order parameters defining the service and provider control
@@ -575,22 +559,22 @@ paths:
                 type: string
         400:
           description: BadRequest
-  "/source_types/{id}/sources":
+  "/service_plans/{id}/service_instances":
     get:
-      summary: List Sources for SourceType
-      operationId: listSourceTypeSources
-      description: Returns an array of Source objects
+      summary: List ServiceInstances for ServicePlan
+      operationId: listServicePlanServiceInstances
+      description: Returns an array of ServiceInstance objects
       produces:
       - application/json
       responses:
         200:
-          description: Sources array
+          description: ServiceInstances array
           schema:
             type: array
             items:
-              "$ref": "#/definitions/Source"
+              "$ref": "#/definitions/ServiceInstance"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/source_types":
     get:
       summary: List SourceTypes
@@ -618,7 +602,7 @@ paths:
         in: body
         required: true
         schema:
-          "$ref": "#/definitions/Id"
+          "$ref": "#/parameters/ID"
       responses:
         201:
           description: SourceType info
@@ -634,7 +618,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: SourceType info
@@ -642,230 +626,22 @@ paths:
             "$ref": "#/definitions/SourceType"
         404:
           description: Not found
-  "/sources/{id}/containers":
+  "/source_types/{id}/sources":
     get:
-      summary: List Containers for Source
-      operationId: listSourceContainers
-      description: Returns an array of Container objects
+      summary: List Sources for SourceType
+      operationId: listSourceTypeSources
+      description: Returns an array of Source objects
       produces:
       - application/json
       responses:
         200:
-          description: Containers array
+          description: Sources array
           schema:
             type: array
             items:
-              "$ref": "#/definitions/Container"
+              "$ref": "#/definitions/Source"
       parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/container_groups":
-    get:
-      summary: List ContainerGroups for Source
-      operationId: listSourceContainerGroups
-      description: Returns an array of ContainerGroup objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ContainerGroups array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerGroup"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/container_images":
-    get:
-      summary: List ContainerImages for Source
-      operationId: listSourceContainerImages
-      description: Returns an array of ContainerImage objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ContainerImages array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerImage"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/container_nodes":
-    get:
-      summary: List ContainerNodes for Source
-      operationId: listSourceContainerNodes
-      description: Returns an array of ContainerNode objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ContainerNodes array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerNode"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/container_projects":
-    get:
-      summary: List ContainerProjects for Source
-      operationId: listSourceContainerProjects
-      description: Returns an array of ContainerProject objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ContainerProjects array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerProject"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/container_templates":
-    get:
-      summary: List ContainerTemplates for Source
-      operationId: listSourceContainerTemplates
-      description: Returns an array of ContainerTemplate objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ContainerTemplates array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ContainerTemplate"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/endpoints":
-    get:
-      summary: List Endpoints for Source
-      operationId: listSourceEndpoints
-      description: Returns an array of Endpoint objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Endpoints array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Endpoint"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/orchestration_stacks":
-    get:
-      summary: List OrchestrationStacks for Source
-      operationId: listSourceOrchestrationStacks
-      description: Returns an array of OrchestrationStack objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: OrchestrationStacks array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/OrchestrationStack"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/service_instances":
-    get:
-      summary: List ServiceInstances for Source
-      operationId: listSourceServiceInstances
-      description: Returns an array of ServiceInstance objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ServiceInstances array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceInstance"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/service_offerings":
-    get:
-      summary: List ServiceOfferings for Source
-      operationId: listSourceServiceOfferings
-      description: Returns an array of ServiceOffering objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ServiceOfferings array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceOffering"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/service_plans":
-    get:
-      summary: List ServicePlans for Source
-      operationId: listSourceServicePlans
-      description: Returns an array of ServicePlan objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: ServicePlans array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServicePlan"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/vms":
-    get:
-      summary: List Vms for Source
-      operationId: listSourceVms
-      description: Returns an array of Vm objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Vms array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Vm"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/volume_types":
-    get:
-      summary: List VolumeTypes for Source
-      operationId: listSourceVolumeTypes
-      description: Returns an array of VolumeType objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: VolumeTypes array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/VolumeType"
-      parameters:
-        - $ref: '#/parameters/ID'
-  "/sources/{id}/volumes":
-    get:
-      summary: List Volumes for Source
-      operationId: listSourceVolumes
-      description: Returns an array of Volume objects
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Volumes array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/Volume"
-      parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/sources":
     get:
       summary: List Sources
@@ -893,7 +669,7 @@ paths:
         in: body
         required: true
         schema:
-          "$ref": "#/definitions/Id"
+          "$ref": "#/parameters/ID"
       responses:
         201:
           description: Source info
@@ -909,7 +685,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Source info
@@ -926,7 +702,7 @@ paths:
       consumes:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Updated, no content
@@ -941,7 +717,7 @@ paths:
       consumes:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Updated, no content
@@ -954,12 +730,236 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         204:
           description: Source deleted
         404:
           description: Not found
+  "/sources/{id}/container_groups":
+    get:
+      summary: List ContainerGroups for Source
+      operationId: listSourceContainerGroups
+      description: Returns an array of ContainerGroup objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerGroups array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerGroup"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/container_images":
+    get:
+      summary: List ContainerImages for Source
+      operationId: listSourceContainerImages
+      description: Returns an array of ContainerImage objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerImages array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerImage"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/container_nodes":
+    get:
+      summary: List ContainerNodes for Source
+      operationId: listSourceContainerNodes
+      description: Returns an array of ContainerNode objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerNodes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerNode"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/container_projects":
+    get:
+      summary: List ContainerProjects for Source
+      operationId: listSourceContainerProjects
+      description: Returns an array of ContainerProject objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerProjects array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerProject"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/container_templates":
+    get:
+      summary: List ContainerTemplates for Source
+      operationId: listSourceContainerTemplates
+      description: Returns an array of ContainerTemplate objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerTemplates array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ContainerTemplate"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/containers":
+    get:
+      summary: List Containers for Source
+      operationId: listSourceContainers
+      description: Returns an array of Container objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Containers array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Container"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/endpoints":
+    get:
+      summary: List Endpoints for Source
+      operationId: listSourceEndpoints
+      description: Returns an array of Endpoint objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Endpoints array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Endpoint"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/orchestration_stacks":
+    get:
+      summary: List OrchestrationStacks for Source
+      operationId: listSourceOrchestrationStacks
+      description: Returns an array of OrchestrationStack objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OrchestrationStacks array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/OrchestrationStack"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/service_instances":
+    get:
+      summary: List ServiceInstances for Source
+      operationId: listSourceServiceInstances
+      description: Returns an array of ServiceInstance objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceInstances array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceInstance"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/service_offerings":
+    get:
+      summary: List ServiceOfferings for Source
+      operationId: listSourceServiceOfferings
+      description: Returns an array of ServiceOffering objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceOfferings array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceOffering"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/service_plans":
+    get:
+      summary: List ServicePlans for Source
+      operationId: listSourceServicePlans
+      description: Returns an array of ServicePlan objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServicePlans array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServicePlan"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/vms":
+    get:
+      summary: List Vms for Source
+      operationId: listSourceVms
+      description: Returns an array of Vm objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Vms array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Vm"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/volume_types":
+    get:
+      summary: List VolumeTypes for Source
+      operationId: listSourceVolumeTypes
+      description: Returns an array of VolumeType objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: VolumeTypes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/VolumeType"
+      parameters:
+      - "$ref": "#/parameters/ID"
+  "/sources/{id}/volumes":
+    get:
+      summary: List Volumes for Source
+      operationId: listSourceVolumes
+      description: Returns an array of Volume objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Volumes array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Volume"
+      parameters:
+      - "$ref": "#/parameters/ID"
   "/tasks":
     get:
       summary: List Tasks
@@ -982,7 +982,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Task info
@@ -1012,7 +1012,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Vm info
@@ -1022,7 +1022,7 @@ paths:
           description: Not found
   "/vms/{id}/volume_attachments":
     get:
-      summary: List VolumeAttachments for a Vm
+      summary: List VolumeAttachments for Vm
       operationId: listVmVolumeAttachments
       description: Returns an array of VolumeAttachment objects
       produces:
@@ -1035,10 +1035,10 @@ paths:
             items:
               "$ref": "#/definitions/VolumeAttachment"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/vms/{id}/volumes":
     get:
-      summary: List Volumes for a Vm
+      summary: List Volumes for Vm
       operationId: listVmVolumes
       description: Returns an array of Volume objects
       produces:
@@ -1051,7 +1051,7 @@ paths:
             items:
               "$ref": "#/definitions/Volume"
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
   "/volume_attachments":
     get:
       summary: List VolumeAttachments
@@ -1074,7 +1074,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: VolumeAttachment info
@@ -1104,7 +1104,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: VolumeType info
@@ -1134,7 +1134,7 @@ paths:
       produces:
       - application/json
       parameters:
-        - $ref: '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       responses:
         200:
           description: Volume info
@@ -1149,41 +1149,45 @@ parameters:
     description: ID of the resource
     required: true
     type: string
-    pattern: '/^\d+$/'
+    pattern: "/^\\d+$/"
 definitions:
   Container:
     type: object
     properties:
       id:
-        type: "#/parameters/id"
-        readonly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       tenant_id:
-        type: "#/parameters/id"
-        readonly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       name:
         type: string
-        readonly: true
+        readOnly: true
         example: docker-build
       cpu_limit:
         type: number
         format: double
-        readonly: true
+        readOnly: true
       cpu_request:
         type: number
         format: double
-        readonly: true
+        readOnly: true
       memory_limit:
         type: integer
-        readonly: true
+        readOnly: true
       memory_request:
         type: integer
-        readonly: true
+        readOnly: true
       container_group_id:
-        type: "#/parameters/id"
-        readonly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       container_image_id:
-        type: "#/parameters/id"
-        readonly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
   ContainerGroup:
     type: object
     properties:
@@ -1229,6 +1233,37 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+  ContainerImage:
+    type: object
+    properties:
+      id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      tenant_id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      source_id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      name:
+        type: string
+        readOnly: true
+        example: openshift3/postgresql-92-rhel7
+      tag:
+        type: string
+        readOnly: true
+        example: latest
+      source_created_at:
+        type: string
+        format: date-time
+        readOnly: true
+      source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
   ContainerNode:
     type: object
     properties:
@@ -1276,34 +1311,6 @@ definitions:
         type: string
         readOnly: true
         format: uuid
-  ContainerImage:
-    type: object
-    properties:
-      id:
-        type: "#/parameters/id"
-        readonly: true
-      tenant_id:
-        type: "#/parameters/id"
-        readonly: true
-      source_id:
-        type: "#/parameters/id"
-        readonly: true
-      name:
-        type: string
-        readonly: true
-        example: openshift3/postgresql-92-rhel7
-      tag:
-        type: string
-        readOnly: true
-        example: latest
-      source_created_at:
-        type: string
-        format: date-time
-        readOnly: true
-      source_deleted_at:
-        type: string
-        format: date-time
-        readOnly: true
   ContainerProject:
     type: object
     properties:
@@ -1409,14 +1416,17 @@ definitions:
     type: object
     properties:
       id:
-        type: "#/parameters/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       tenant_id:
-        type: "#/parameters/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_id:
-        type: "#/parameters/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_ref:
         type: string
         readOnly: true
@@ -1441,9 +1451,6 @@ definitions:
         readOnly: true
         example: 2
         description: Number of CPUs
-  Id:
-    type: string
-    format: uuid
   OrchestrationStack:
     type: object
     properties:
@@ -1751,72 +1758,36 @@ definitions:
         example: 17179869184
         description: Total RAM in bytes
       orchestration_stack_id:
-        type: "#/parameters/ID"
+        type: string
         readOnly: true
+        format: uuid
       flavor_id:
-        type: "#/parameters/ID"
-        readOnly: true
-  VolumeAttachment:
-    type: object
-    properties:
-      id:
-        type: "#/properties/ID"
-        readOnly: true
-      tenant_id:
-        type: "#/properties/ID"
-        readOnly: true
-      vm_id:
-        type: "#/properties/ID"
-        readOnly: true
-      volume_id:
-        type: "#/properties/ID"
-        readOnly: true
-      device:
         type: string
         readOnly: true
-        example: /dev/xvda
-      state:
-        type: string
-        readOnly: true
-        example: attached
-  VolumeType:
-    type: object
-    properties:
-      id:
-        type: "#/properties/ID"
-        readOnly: true
-      tenant_id:
-        type: "#/properties/ID"
-        readOnly: true
-      source_id:
-        type: "#/properties/ID"
-        readOnly: true
-      source_ref:
-        type: string
-      name:
-        type: string
-        example: standard
-      description:
-        type: string
-        example: Magnetic
+        format: uuid
   Volume:
     type: object
     properties:
       id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       tenant_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_region_id:
-        type: "#/properties/ID"
+        type: string
         readOnly: true
+        format: uuid
       volume_type_id:
-        type: "#/properties/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       source_ref:
         type: string
         readOnly: true
@@ -1838,6 +1809,56 @@ definitions:
         type: string
         format: date-time
         readOnly: true
+  VolumeAttachment:
+    type: object
+    properties:
+      id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      tenant_id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      vm_id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      volume_id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      device:
+        type: string
+        readOnly: true
+        example: "/dev/xvda"
+      state:
+        type: string
+        readOnly: true
+        example: attached
+  VolumeType:
+    type: object
+    properties:
+      id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      tenant_id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      source_id:
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
+      source_ref:
+        type: string
+      name:
+        type: string
+        example: standard
+      description:
+        type: string
+        example: Magnetic
 host: virtserver.swaggerhub.com
 schemes:
 - https
