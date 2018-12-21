@@ -24,8 +24,8 @@ describe "Swagger stuff" do
     end
 
     context "with the swagger yaml" do
-      let(:path_prefix) { "/r/insights/platform" }
       let(:app_name)    { "topological-inventory" }
+      let(:path_prefix) { "/r/insights/platform" }
 
       it "matches the routes" do
         redirect_routes = [{:path => "#{path_prefix}/#{app_name}/v0/*path", :verb => "DELETE|GET|OPTIONS|PATCH|POST|PUT"}]
@@ -75,6 +75,7 @@ describe "Swagger stuff" do
 
   describe "Model serialization" do
     let(:doc) { Api::Docs[version] }
+    let(:authentication) { Authentication.create!(doc.example_attributes("Authentication").symbolize_keys.merge(:tenant => tenant, :resource => endpoint)) }
     let(:container) { Container.create!(doc.example_attributes("Container").symbolize_keys.merge(:tenant => tenant, :container_group => container_group, :container_image => container_image)) }
     let(:container_group) { ContainerGroup.create!(doc.example_attributes("ContainerGroup").symbolize_keys.merge(:tenant => tenant, :source => source, :container_node => container_node, :container_project => container_project, :source_created_at => Time.now, :source_ref => SecureRandom.uuid)) }
     let(:container_image) { ContainerImage.create!(doc.example_attributes("ContainerImage").symbolize_keys.merge(:tenant => tenant, :source => source, :source_created_at => Time.now, :source_ref => SecureRandom.uuid)) }

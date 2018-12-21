@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     match "/v0/*path", :via => [:delete, :get, :options, :patch, :post, :put], :to => redirect("#{prefix}/v0.0/%{path}")
 
     namespace :v0x0, :path => "v0.0" do
+      resources :authentications,         :only => [:create, :destroy, :index, :show, :update]
       resources :containers,              :only => [:index, :show]
       resources :container_groups,        :only => [:index, :show] do
         resources :containers, :only => [:index]
