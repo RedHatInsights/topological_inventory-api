@@ -5,6 +5,7 @@ module OpenApi
 
       def initialize(content)
         @content = content
+        @expanded_definitions = {}
       end
 
       def version
@@ -20,8 +21,10 @@ module OpenApi
       end
 
       def expanded_definition(key)
-        definitions[key].tap do |i|
-          i["properties"] = substitute_references(i["properties"])
+        @expanded_definitions[key] ||= begin
+          definitions[key].tap do |i|
+            i["properties"] = substitute_references(i["properties"])
+          end
         end
       end
 
