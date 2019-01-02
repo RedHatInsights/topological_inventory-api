@@ -1794,6 +1794,8 @@ definitions:
       vendor:
         type: string
         example: Red Hat
+      schema:
+        type: object
   Task:
     type: object
     properties:
