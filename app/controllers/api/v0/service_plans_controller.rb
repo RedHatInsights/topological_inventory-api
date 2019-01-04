@@ -1,3 +1,5 @@
+require "manageiq-messaging"
+
 module Api
   module V0
     class ServicePlansController < ApplicationController
@@ -8,9 +10,11 @@ module Api
         service_plan = model.find(order_params[:service_plan_id].to_i)
         task = Task.create!(:tenant => service_plan.tenant, :status => "started")
 
-        #TODO: Publish a message with service plan ordering messaging client and simply
-        # return the task id, let the messaging client handle updating the task.
-        order_service_plan_and_update_task(task, service_plan)
+        messaging_client.publish_message(
+          :service => "topological_inventory-orderer",
+          :message => "order_service",
+          :payload => {:task_id => task.id, :service_plan_id => service_plan.id, :order_params => order_params}
+        )
 
         render :json => {:task_id => task.id}
       rescue ActiveRecord::RecordNotFound
@@ -19,10 +23,8 @@ module Api
 
       private
 
-      def order_service_plan_and_update_task(task, service_plan)
-        task.context = service_plan.order(order_params.slice(:service_parameters, :provider_control_parameters))
-        task.status = "completed"
-        task.save!
+      def service_plan_id
+        params[:service_plan_id].to_i
       end
 
       def order_params
@@ -31,6 +33,27 @@ module Api
           :service_parameters          => {},
           :provider_control_parameters => {}
         ).to_h
+      end
+
+      def list_params
+        params.permit(:source_id, :tenant_id, :service_offering_id)
+      end
+
+      def messaging_client
+        ManageIQ::Messaging::Client.open(messaging_opts)
+      end
+
+      def messaging_opts
+        {
+          :protocol => :Kafka,
+          :host     => ENV["QUEUE_HOST"] || "localhost",
+          :port     => ENV["QUEUE_PORT"] || "9092",
+          :encoding => "json"
+        }
+      end
+
+      def model
+        ServicePlan
       end
     end
   end
