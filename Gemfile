@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'jbuilder',          '~> 2.0'
 gem 'json-schema',       '~> 2.8'
+gem 'manageiq-loggers',  '~> 0.1'
 gem 'manageiq-password', '~> 0.1'
 gem 'pg',                '~> 1.0', :require => false
 gem 'puma',              '~> 3.0'
