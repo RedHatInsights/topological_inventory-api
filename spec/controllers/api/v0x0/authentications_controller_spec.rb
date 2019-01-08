@@ -11,7 +11,7 @@ RSpec.describe Api::V0x0::AuthenticationsController, :type => :request do
 
   it "post /authentications creates an Authentication" do
     headers = { "CONTENT_TYPE" => "application/json" }
-    post(api_v0x0_authentications_url, :params => {:tenant_id => tenant.id.to_s, :resource_type => "Endpoint", :resource_id => endpoint.id, :name => "abc", :userid => "aaa", :password => "xxx"}.to_json)
+    post(api_v0x0_authentications_url, :params => {:tenant_id => tenant.id.to_s, :resource_type => "Endpoint", :resource_id => endpoint.id, :name => "abc", :username => "aaa", :password => "xxx"}.to_json)
 
     authentication = Authentication.first
 
@@ -23,7 +23,7 @@ RSpec.describe Api::V0x0::AuthenticationsController, :type => :request do
       "resource_id"   => endpoint.id.to_s,
       "resource_type" => "Endpoint",
       "tenant_id"     => tenant.id.to_s,
-      "userid"        => "aaa",
+      "username"        => "aaa",
     )
   end
 end

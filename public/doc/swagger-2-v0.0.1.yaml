@@ -1273,7 +1273,7 @@ definitions:
         example: valid
       status_details:
         type: string
-      userid:
+      username:
         type: string
         example: user@example.com
   Container:

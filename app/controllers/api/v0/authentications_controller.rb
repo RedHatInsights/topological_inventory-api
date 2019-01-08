@@ -14,15 +14,15 @@ module Api
       private
 
       def create_params
-        body_params.permit(:tenant_id, :authtype, :name, :password, :resource_type, :resource_id, :userid)
+        body_params.permit(:tenant_id, :authtype, :name, :password, :resource_type, :resource_id, :username)
       end
 
       def update_params
-        params.permit(:authtype, :name, :password, :userid)
+        params.permit(:authtype, :name, :password, :username)
       end
 
       def list_params
-        params.permit(:tenant_id, :authtype, :name, :resource_type, :resource_id, :status, :status_details, :userid)
+        params.permit(:tenant_id, :authtype, :name, :resource_type, :resource_id, :status, :status_details, :username)
       end
 
       def model
