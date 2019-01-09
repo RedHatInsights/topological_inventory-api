@@ -1410,8 +1410,9 @@ definitions:
         readOnly: true
         example: Vm
       lives_on_id:
-        type: "#/parameters/ID"
-        readOnly: true
+        allOf:
+        - "$ref": "#/parameters/ID"
+        - readOnly: true
       memory:
         type: integer
         example: 4294967296
