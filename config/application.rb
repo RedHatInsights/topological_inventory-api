@@ -27,5 +27,12 @@ module TopologicalInventory
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.autoload_paths << Rails.root.join('lib')
+
+    require 'manageiq/loggers'
+    config.logger = if Rails.env.production?
+                      ManageIQ::Loggers::Container.new
+                    else
+                      ManageIQ::Loggers::Base.new(Rails.root.join("log", "#{Rails.env}.log"))
+                    end
   end
 end
