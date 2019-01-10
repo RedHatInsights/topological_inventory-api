@@ -1429,6 +1429,11 @@ definitions:
         type: string
         format: date-time
         readOnly: true
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   ContainerNode:
     type: object
     properties:
@@ -1837,6 +1842,40 @@ definitions:
         example: Red Hat
       schema:
         type: object
+  Tag:
+    type: object
+    properties:
+      tag_id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        readOnly: true
+        example: architecture
+      description:
+        type: string
+        readOnly: true
+        example: Instruction set architecture
+      active:
+        type: boolean
+        readOnly: true
+        example: true
+  Tagging:
+    type: object
+    properties:
+      tag_id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        readOnly: true
+        example: architecture
+      value:
+        type: string
+        readOnly: true
+        example: x86_64
   Task:
     type: object
     properties:
