@@ -1398,6 +1398,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   ContainerImage:
     type: object
     properties:
@@ -1482,6 +1487,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   ContainerProject:
     type: object
     properties:
@@ -1509,6 +1519,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   ContainerTemplate:
     type: object
     properties:
@@ -1544,6 +1559,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   Endpoint:
     type: object
     properties:
@@ -1972,6 +1992,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   Volume:
     type: object
     properties:
