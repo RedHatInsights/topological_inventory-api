@@ -5,6 +5,7 @@ gem 'json-schema',       '~> 2.8'
 gem 'manageiq-loggers',  '~> 0.1'
 gem 'manageiq-password', '~> 0.1'
 gem 'pg',                '~> 1.0', :require => false
+gem 'prometheus-client', '~> 0.8.0'
 gem 'puma',              '~> 3.0'
 gem 'rack-cors',         '>= 0.4.1'
 gem 'rails',             '~> 5.2.1.1'
