@@ -76,6 +76,12 @@ paths:
       - application/json
       parameters:
       - "$ref": "#/parameters/ID"
+      - name: body
+        in: body
+        description: Authentication attributes to update
+        required: true
+        schema:
+          "$ref": "#/definitions/Authentication"
       responses:
         204:
           description: Updated, no content
@@ -91,6 +97,12 @@ paths:
       - application/json
       parameters:
       - "$ref": "#/parameters/ID"
+      - name: body
+        in: body
+        description: Authentication attributes to update
+        required: true
+        schema:
+          "$ref": "#/definitions/Authentication"
       responses:
         204:
           description: Updated, no content
@@ -415,6 +427,12 @@ paths:
       - application/json
       parameters:
       - "$ref": "#/parameters/ID"
+      - name: body
+        in: body
+        description: Endpoint attributes to update
+        required: true
+        schema:
+          "$ref": "#/definitions/Endpoint"
       responses:
         204:
           description: Updated, no content
@@ -430,6 +448,12 @@ paths:
       - application/json
       parameters:
       - "$ref": "#/parameters/ID"
+      - name: body
+        in: body
+        description: Endpoint attributes to update
+        required: true
+        schema:
+          "$ref": "#/definitions/Endpoint"
       responses:
         204:
           description: Updated, no content
@@ -801,6 +825,12 @@ paths:
       - application/json
       parameters:
       - "$ref": "#/parameters/ID"
+      - name: body
+        in: body
+        description: Source attributes to update
+        required: true
+        schema:
+          "$ref": "#/definitions/Source"
       responses:
         204:
           description: Updated, no content
@@ -816,6 +846,12 @@ paths:
       - application/json
       parameters:
       - "$ref": "#/parameters/ID"
+      - name: body
+        in: body
+        description: Source attributes to update
+        required: true
+        schema:
+          "$ref": "#/definitions/Source"
       responses:
         204:
           description: Updated, no content
