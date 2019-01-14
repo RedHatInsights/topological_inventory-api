@@ -39,12 +39,13 @@ paths:
       parameters:
       - name: body
         in: body
+        description: Authentication attributes to create
         required: true
         schema:
-          "$ref": "#/parameters/ID"
+          "$ref": "#/definitions/Authentication"
       responses:
         201:
-          description: Authentication info
+          description: Authentication creation successful
           schema:
             type: object
             items:
@@ -377,12 +378,13 @@ paths:
       parameters:
       - name: body
         in: body
+        description: Endpoint attributes to create
         required: true
         schema:
-          "$ref": "#/parameters/ID"
+          "$ref": "#/definitions/Endpoint"
       responses:
         201:
-          description: Endpoint info
+          description: Endpoint creation successful
           schema:
             type: object
             items:
@@ -694,12 +696,13 @@ paths:
       parameters:
       - name: body
         in: body
+        description: SourceType attributes to create
         required: true
         schema:
-          "$ref": "#/parameters/ID"
+          "$ref": "#/definitions/SourceType"
       responses:
         201:
-          description: SourceType info
+          description: SourceType creation successful
           schema:
             type: object
             items:
@@ -761,12 +764,13 @@ paths:
       parameters:
       - name: body
         in: body
+        description: Source attributes to create
         required: true
         schema:
-          "$ref": "#/parameters/ID"
+          "$ref": "#/definitions/Source"
       responses:
         201:
-          description: Source info
+          description: Source creation successful
           schema:
             type: object
             items:
