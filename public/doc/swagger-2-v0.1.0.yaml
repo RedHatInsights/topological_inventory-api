@@ -19,6 +19,9 @@ paths:
       summary: List Authentications
       operationId: listAuthentications
       description: Returns an array of Authentication objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -124,6 +127,9 @@ paths:
       summary: List ContainerGroups
       operationId: listContainerGroups
       description: Returns an array of ContainerGroup objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -152,6 +158,10 @@ paths:
       summary: List Containers for ContainerGroup
       operationId: listContainerGroupContainers
       description: Returns an array of Container objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -159,13 +169,14 @@ paths:
           description: Containers collection
           schema:
             "$ref": "#/definitions/ContainersCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/container_images":
     get:
       summary: List ContainerImages
       operationId: listContainerImages
       description: Returns an array of ContainerImage objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -194,6 +205,9 @@ paths:
       summary: List ContainerNodes
       operationId: listContainerNodes
       description: Returns an array of ContainerNode objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -222,6 +236,10 @@ paths:
       summary: List ContainerGroups for ContainerNode
       operationId: listContainerNodeContainerGroups
       description: Returns an array of ContainerGroup objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -229,13 +247,14 @@ paths:
           description: ContainerGroups collection
           schema:
             "$ref": "#/definitions/ContainerGroupsCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/container_projects":
     get:
       summary: List ContainerProjects
       operationId: listContainerProjects
       description: Returns an array of ContainerProject objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -264,6 +283,10 @@ paths:
       summary: List ContainerGroups for ContainerProject
       operationId: listContainerProjectContainerGroups
       description: Returns an array of ContainerGroup objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -271,13 +294,15 @@ paths:
           description: ContainerGroups collection
           schema:
             "$ref": "#/definitions/ContainerGroupsCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/container_projects/{id}/container_templates":
     get:
       summary: List ContainerTemplates for ContainerProject
       operationId: listContainerProjectContainerTemplates
       description: Returns an array of ContainerTemplate objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -285,13 +310,14 @@ paths:
           description: ContainerTemplates collection
           schema:
             "$ref": "#/definitions/ContainerTemplatesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/container_templates":
     get:
       summary: List ContainerTemplates
       operationId: listContainerTemplates
       description: Returns an array of ContainerTemplate objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -320,6 +346,9 @@ paths:
       summary: List Containers
       operationId: listContainers
       description: Returns an array of Container objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -348,6 +377,9 @@ paths:
       summary: List Endpoints
       operationId: listEndpoints
       description: Returns an array of Endpoint objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -453,6 +485,9 @@ paths:
       summary: List Flavors
       operationId: listFlavors
       description: Returns an array of Flavor objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -481,6 +516,9 @@ paths:
       summary: List OrchestrationStacks
       operationId: listOrchestrationStacks
       description: Returns an array of OrchestrationStack objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -509,6 +547,9 @@ paths:
       summary: List ServiceInstances
       operationId: listServiceInstances
       description: Returns an array of ServiceInstance objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -537,6 +578,9 @@ paths:
       summary: List ServiceOfferings
       operationId: listServiceOfferings
       description: Returns an array of ServiceOffering objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -565,6 +609,10 @@ paths:
       summary: List ServiceInstances for ServiceOffering
       operationId: listServiceOfferingServiceInstances
       description: Returns an array of ServiceInstance objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -572,13 +620,15 @@ paths:
           description: ServiceInstances collection
           schema:
             "$ref": "#/definitions/ServiceInstancesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/service_offerings/{id}/service_plans":
     get:
       summary: List ServicePlans for ServiceOffering
       operationId: listServiceOfferingServicePlans
       description: Returns an array of ServicePlan objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -586,13 +636,14 @@ paths:
           description: ServicePlans collection
           schema:
             "$ref": "#/definitions/ServicePlansCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/service_plans":
     get:
       summary: List ServicePlans
       operationId: listServicePlans
       description: Returns an array of ServicePlan objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -646,6 +697,10 @@ paths:
       summary: List ServiceInstances for ServicePlan
       operationId: listServicePlanServiceInstances
       description: Returns an array of ServiceInstance objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -653,13 +708,14 @@ paths:
           description: ServiceInstances collection
           schema:
             "$ref": "#/definitions/ServiceInstancesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/source_types":
     get:
       summary: List SourceTypes
       operationId: listSourceTypes
       description: Returns an array of SourceType objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -710,6 +766,10 @@ paths:
       summary: List Sources for SourceType
       operationId: listSourceTypeSources
       description: Returns an array of Source objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -717,13 +777,14 @@ paths:
           description: Sources collection
           schema:
             "$ref": "#/definitions/SourcesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources":
     get:
       summary: List Sources
       operationId: listSources
       description: Returns an array of Source objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -829,6 +890,10 @@ paths:
       summary: List ContainerGroups for Source
       operationId: listSourceContainerGroups
       description: Returns an array of ContainerGroup objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -836,13 +901,15 @@ paths:
           description: ContainerGroups collection
           schema:
             "$ref": "#/definitions/ContainerGroupsCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/container_images":
     get:
       summary: List ContainerImages for Source
       operationId: listSourceContainerImages
       description: Returns an array of ContainerImage objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -850,13 +917,15 @@ paths:
           description: ContainerImages collection
           schema:
             "$ref": "#/definitions/ContainerImagesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/container_nodes":
     get:
       summary: List ContainerNodes for Source
       operationId: listSourceContainerNodes
       description: Returns an array of ContainerNode objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -864,13 +933,15 @@ paths:
           description: ContainerNodes collection
           schema:
             "$ref": "#/definitions/ContainerNodesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/container_projects":
     get:
       summary: List ContainerProjects for Source
       operationId: listSourceContainerProjects
       description: Returns an array of ContainerProject objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -878,13 +949,15 @@ paths:
           description: ContainerProjects collection
           schema:
             "$ref": "#/definitions/ContainerProjectsCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/container_templates":
     get:
       summary: List ContainerTemplates for Source
       operationId: listSourceContainerTemplates
       description: Returns an array of ContainerTemplate objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -892,13 +965,15 @@ paths:
           description: ContainerTemplates collection
           schema:
             "$ref": "#/definitions/ContainerTemplatesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/containers":
     get:
       summary: List Containers for Source
       operationId: listSourceContainers
       description: Returns an array of Container objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -906,13 +981,15 @@ paths:
           description: Containers collection
           schema:
             "$ref": "#/definitions/ContainersCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/endpoints":
     get:
       summary: List Endpoints for Source
       operationId: listSourceEndpoints
       description: Returns an array of Endpoint objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -920,13 +997,15 @@ paths:
           description: Endpoints collection
           schema:
             "$ref": "#/definitions/EndpointsCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/orchestration_stacks":
     get:
       summary: List OrchestrationStacks for Source
       operationId: listSourceOrchestrationStacks
       description: Returns an array of OrchestrationStack objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -934,13 +1013,15 @@ paths:
           description: OrchestrationStacks collection
           schema:
             "$ref": "#/definitions/OrchestrationStacksCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/service_instances":
     get:
       summary: List ServiceInstances for Source
       operationId: listSourceServiceInstances
       description: Returns an array of ServiceInstance objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -948,13 +1029,15 @@ paths:
           description: ServiceInstances collection
           schema:
             "$ref": "#/definitions/ServiceInstancesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/service_offerings":
     get:
       summary: List ServiceOfferings for Source
       operationId: listSourceServiceOfferings
       description: Returns an array of ServiceOffering objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -962,13 +1045,15 @@ paths:
           description: ServiceOfferings collection
           schema:
             "$ref": "#/definitions/ServiceOfferingsCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/service_plans":
     get:
       summary: List ServicePlans for Source
       operationId: listSourceServicePlans
       description: Returns an array of ServicePlan objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -976,13 +1061,15 @@ paths:
           description: ServicePlans collection
           schema:
             "$ref": "#/definitions/ServicePlansCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/vms":
     get:
       summary: List Vms for Source
       operationId: listSourceVms
       description: Returns an array of Vm objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -990,13 +1077,15 @@ paths:
           description: Vms collection
           schema:
             "$ref": "#/definitions/VmsCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/volume_types":
     get:
       summary: List VolumeTypes for Source
       operationId: listSourceVolumeTypes
       description: Returns an array of VolumeType objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -1004,13 +1093,15 @@ paths:
           description: VolumeTypes collection
           schema:
             "$ref": "#/definitions/VolumeTypesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/sources/{id}/volumes":
     get:
       summary: List Volumes for Source
       operationId: listSourceVolumes
       description: Returns an array of Volume objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -1018,13 +1109,14 @@ paths:
           description: Volumes collection
           schema:
             "$ref": "#/definitions/VolumesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/tasks":
     get:
       summary: List Tasks
       operationId: listTasks
       description: Returns an array of Task objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -1053,6 +1145,9 @@ paths:
       summary: List Vms
       operationId: listVms
       description: Returns an array of Vm objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -1081,6 +1176,10 @@ paths:
       summary: List VolumeAttachments for Vm
       operationId: listVmVolumeAttachments
       description: Returns an array of VolumeAttachment objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -1088,13 +1187,15 @@ paths:
           description: VolumeAttachments collection
           schema:
             "$ref": "#/definitions/VolumeAttachmentsCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/vms/{id}/volumes":
     get:
       summary: List Volumes for Vm
       operationId: listVmVolumes
       description: Returns an array of Volume objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
       produces:
       - application/json
       responses:
@@ -1102,13 +1203,14 @@ paths:
           description: Volumes collection
           schema:
             "$ref": "#/definitions/VolumesCollection"
-      parameters:
-      - "$ref": "#/parameters/ID"
   "/volume_attachments":
     get:
       summary: List VolumeAttachments
       operationId: listVolumeAttachments
       description: Returns an array of VolumeAttachment objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -1137,6 +1239,9 @@ paths:
       summary: List VolumeTypes
       operationId: listVolumeTypes
       description: Returns an array of VolumeType objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -1165,6 +1270,9 @@ paths:
       summary: List Volumes
       operationId: listVolumes
       description: Returns an array of Volume objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
@@ -1196,6 +1304,23 @@ parameters:
     required: true
     type: string
     pattern: "/^\\d+$/"
+  QueryLimit:
+    in: query
+    name: limit
+    type: integer
+    required: false
+    default: 100
+    minimum: 1
+    maximum: 1000
+    description: The numbers of items to return per page.
+  QueryOffset:
+    in: query
+    name: offset
+    type: integer
+    required: false
+    default: 0
+    minimum: 0
+    description: The number of items to skip before starting to collect the result set.
 definitions:
   Authentication:
     type: object
