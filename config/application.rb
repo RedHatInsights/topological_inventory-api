@@ -16,9 +16,6 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-require 'prometheus/middleware/collector'
-require 'prometheus/middleware/exporter'
-
 module TopologicalInventory
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -39,7 +36,6 @@ module TopologicalInventory
                       ManageIQ::Loggers::Base.new(Rails.root.join("log", "#{Rails.env}.log"))
                     end
 
-    config.middleware.use(Prometheus::Middleware::Collector)
-    config.middleware.use(Prometheus::Middleware::Exporter)
+    ManageIQ::API::Common::Metrics.activate(config, "topological_inventory_api")
   end
 end
