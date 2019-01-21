@@ -1767,12 +1767,39 @@ definitions:
         format: uuid
       name:
         type: string
-        example: Sample Provider
+        example: Sample Service Offering
         title: Name
+        readOnly: true
       description:
         type: string
-        example: This is a sample description for a provider
+        example: This is a short description
         title: Description
+        readOnly: true
+      display_name:
+        type: string
+        example: MariaDB (Ephemeral)
+        title: Display Name
+        readOnly: true
+      distributor:
+        type: string
+        example: Red Hat, Inc.
+        title: Distributor
+        readOnly: true
+      documentation_url:
+        type: string
+        example: https://github.com/sclorg/mariadb-container/blob/master/10.2/root/usr/share/container-scripts/mysql/README.md
+        title: Documentation URL
+        readOnly: true
+      long_description:
+        type: string
+        example: This template provides a standalone MariaDB server with a database created...
+        title: Long Description
+        readOnly: true
+      support_url:
+        type: string
+        example: https://access.redhat.com
+        title: Support URL
+        readOnly: true
       source_ref:
         type: string
         example: object-12345_67890
@@ -1798,6 +1825,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   ServicePlan:
     type: object
     properties:
