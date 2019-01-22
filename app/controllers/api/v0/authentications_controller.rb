@@ -8,7 +8,7 @@ module Api
 
       def create
         authentication = model.create!(create_params)
-        render :json => authentication, :status => :created, :location => api_v0x0_authentication_url(authentication.id)
+        render :json => authentication, :status => :created, :location => instance_link(authentication)
       end
 
       private

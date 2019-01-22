@@ -8,7 +8,7 @@ module Api
 
       def create
         source = Source.create!(create_params.merge!("uid" => SecureRandom.uuid))
-        render :json => source, :status => :created, :location => api_v0x0_source_url(source.id)
+        render :json => source, :status => :created, :location => instance_link(source)
       end
 
       private
