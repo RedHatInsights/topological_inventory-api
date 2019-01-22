@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  # Disable PUT for now since rails sends these :update and they aren't really the same thing.
+  def put(*_args); end
+
   prefix = "api"
   if ENV["PATH_PREFIX"].present? && ENV["APP_NAME"].present?
     prefix = File.join(ENV["PATH_PREFIX"], ENV["APP_NAME"]).gsub(/^\/+|\/+$/, "")
   end
 
   scope :as => :api, :module => "api", :path => prefix do
-    match "/v0/*path", :via => [:delete, :get, :options, :patch, :post, :put], :to => redirect("#{prefix}/v0.0/%{path}")
+    match "/v0/*path", :via => [:delete, :get, :options, :patch, :post], :to => redirect("#{prefix}/v0.0/%{path}")
 
     namespace :v0x1, :path => "v0.1" do
       resources :authentications,         :only => [:create, :destroy, :index, :show, :update]
