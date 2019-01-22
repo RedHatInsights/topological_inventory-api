@@ -582,6 +582,36 @@ paths:
               "$ref": "#/definitions/ServicePlan"
       parameters:
       - "$ref": "#/parameters/ID"
+  "/service_offering_icons":
+    get:
+      summary: List ServiceOfferingIcons
+      operationId: listServiceOfferingIcons
+      description: Returns an array of ServiceOfferingIcon objects
+      produces:
+        - application/json
+      responses:
+        200:
+          description: ServiceOfferingIcons array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceOfferingIcon"
+  "/service_offering_icons/{id}":
+    get:
+      summary: Show an existing ServiceOfferingIcon
+      operationId: showServiceOfferingIcon
+      description: Returns a ServiceOfferingIcon object
+      produces:
+        - application/json
+      parameters:
+        - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: ServiceOfferingIcon info
+          schema:
+            "$ref": "#/definitions/ServiceOfferingIcon"
+        404:
+          description: Not found
   "/service_plans":
     get:
       summary: List ServicePlans
@@ -1762,11 +1792,29 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      service_offering_icon_id:
+        type: string
+        readOnly: true
+        format: uuid
       taggings:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
+  ServiceOfferingIcon:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      source_ref:
+        type: string
+        example: "icon-mariadb"
+      data:
+        type: string
+        description: Raw icon data
+        title: Icon Data
   ServicePlan:
     type: object
     properties:
