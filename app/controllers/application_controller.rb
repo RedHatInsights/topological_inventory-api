@@ -2,8 +2,8 @@ class ApplicationController < ActionController::API
 
   private
 
-  def model
-    self.class.controller_name.classify.constantize
+  private_class_method def self.model
+    @model ||= controller_name.classify.constantize
   end
 
   def body_params
@@ -14,5 +14,9 @@ class ApplicationController < ActionController::API
     endpoint = instance.class.name.downcase
     version  = self.class.name.split("::")[1].downcase
     send("api_#{version}_#{endpoint}_url", instance.id)
+  end
+
+  def model
+    self.class.send(:model)
   end
 end
