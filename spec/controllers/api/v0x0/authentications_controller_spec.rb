@@ -5,7 +5,7 @@ RSpec.describe Api::V0x0::AuthenticationsController, :type => :request do
   it("Uses UpdateMixin")  { expect(described_class.instance_method(:update).owner).to eq(Api::Mixins::UpdateMixin) }
 
   let(:endpoint)    { Endpoint.create!(:source => source, :tenant => tenant) }
-  let(:source)      { Source.create!(:source_type => source_type, :tenant => tenant, :uid => SecureRandom.uuid) }
+  let(:source)      { Source.create!(:source_type => source_type, :tenant => tenant, :uid => SecureRandom.uuid, :name => "test_source") }
   let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
   let(:tenant)      { Tenant.create! }
 
