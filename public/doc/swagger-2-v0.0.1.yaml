@@ -1094,6 +1094,36 @@ paths:
               "$ref": "#/definitions/Volume"
       parameters:
       - "$ref": "#/parameters/ID"
+  "/tags":
+    get:
+      summary: List Tags
+      operationId: listTags
+      description: Returns an array of Tag objects
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Tags array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Tag"
+  "/tags/{id}":
+    get:
+      summary: Show an existing Tag
+      operationId: showTag
+      description: Returns a Tag object
+      produces:
+        - application/json
+      parameters:
+        - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: Tag info
+          schema:
+            "$ref": "#/definitions/Tag"
+        404:
+          description: Not found      
   "/tasks":
     get:
       summary: List Tasks
@@ -1865,7 +1895,7 @@ definitions:
   Tag:
     type: object
     properties:
-      tag_id:
+      id:
         type: string
         readOnly: true
         format: uuid
@@ -1873,14 +1903,14 @@ definitions:
         type: string
         readOnly: true
         example: architecture
+      namespace:
+        type: string
+        readOnly: true
+        example: openshift
       description:
         type: string
         readOnly: true
         example: Instruction set architecture
-      active:
-        type: boolean
-        readOnly: true
-        example: true
   Tagging:
     type: object
     properties:

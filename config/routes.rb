@@ -53,6 +53,7 @@ Rails.application.routes.draw do
         resources :volume_types,            :only => [:index]
         resources :volumes,                 :only => [:index]
       end
+      resources :tags, :only => [:index, :show]
       resources :tasks, :only => [:index, :show]
       resources :vms, :only => [:index, :show] do
         resources :volume_attachments, :only => [:index]
