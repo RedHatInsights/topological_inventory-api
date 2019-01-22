@@ -1,4 +1,4 @@
-describe Api::Mixins::DestroyMixin do
+describe Api::V0::Mixins::DestroyMixin do
   describe Api::V0x0::SourcesController, :type => :request do
     let!(:source_1)   { Source.create!(:source_type => source_type, :tenant => tenant, :name => "test_source 1", :uid => SecureRandom.uuid) }
     let!(:tenant)     { Tenant.create! }

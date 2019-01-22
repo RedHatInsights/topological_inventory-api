@@ -1,8 +1,8 @@
 module Api
   module V0
     class ServicePlansController < ApplicationController
-      include Api::Mixins::IndexMixin
-      include Api::Mixins::ShowMixin
+      include Api::V0::Mixins::IndexMixin
+      include Api::V0::Mixins::ShowMixin
 
       def order
         service_plan = model.find(service_plan_id)
