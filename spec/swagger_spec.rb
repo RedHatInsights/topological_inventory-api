@@ -97,6 +97,7 @@ describe "Swagger stuff" do
     let(:volume_type) { VolumeType.create!(doc.example_attributes("VolumeType").symbolize_keys.merge(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid)) }
     let(:volume) { Volume.create!(doc.example_attributes("Volume").symbolize_keys.merge(:source => source, :tenant => tenant, :source_ref => SecureRandom.uuid, :volume_type => volume_type)) }
     let(:task) { Task.create!(:tenant => tenant, :name => "Operation", :status => "Ok", :state => "Running", :completed_at => Time.now.utc, :context => {:method => "order"}) }
+    let(:tag) { Tag.create!(:tenant => tenant, :name => "Operation", :description => "Desc") }
     let(:tenant) { Tenant.create! }
 
     context "v0.0" do
