@@ -14,11 +14,11 @@ module Api
       private
 
       def update_params
-        params.permit(:authtype, :name, :password, :username)
+        params.permit(:authtype, :name, :password, :username, :id)
       end
 
       def list_params
-        params.permit(:tenant_id, :authtype, :name, :resource_type, :resource_id, :status, :status_details, :username)
+        params.permit(:tenant_id, :authtype, :name, :resource_type, :resource_id, :status, :status_details, :username, :limit, :offset)
       end
     end
   end

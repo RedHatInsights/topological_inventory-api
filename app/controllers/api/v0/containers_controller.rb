@@ -7,7 +7,7 @@ module Api
       private
 
       def list_params
-        params.permit(:tenant_id, :container_group_id)
+        params.permit(:tenant_id, :container_group_id, :limit, :offset)
       end
     end
   end

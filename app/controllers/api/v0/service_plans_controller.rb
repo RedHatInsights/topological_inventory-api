@@ -5,7 +5,7 @@ module Api
       include Api::V0::Mixins::ShowMixin
 
       def order
-        service_plan = model.find(service_plan_id)
+        service_plan = model.find(order_params[:service_plan_id].to_i)
         task = Task.create!(:tenant => service_plan.tenant, :status => "started")
 
         #TODO: Publish a message with service plan ordering messaging client and simply
@@ -20,24 +20,21 @@ module Api
       private
 
       def order_service_plan_and_update_task(task, service_plan)
-        task.context = service_plan.order(order_params)
+        task.context = service_plan.order(order_params.slice(:service_parameters, :provider_control_parameters))
         task.status = "completed"
         task.save!
       end
 
-      def service_plan_id
-        params[:service_plan_id].to_i
-      end
-
       def order_params
         params.permit(
+          :service_plan_id,
           :service_parameters          => {},
           :provider_control_parameters => {}
         ).to_h
       end
 
       def list_params
-        params.permit(:source_id, :tenant_id, :service_offering_id)
+        params.permit(:source_id, :tenant_id, :service_offering_id, :limit, :offset)
       end
     end
   end

@@ -14,11 +14,11 @@ module Api
       private
 
       def update_params
-        params.permit(:name)
+        params.permit(:name, :id)
       end
 
       def list_params
-        params.permit(:tenant_id, :source_type_id)
+        params.permit(:tenant_id, :source_type_id, :limit, :offset)
       end
     end
   end

@@ -1351,6 +1351,8 @@ definitions:
       username:
         type: string
         example: user@example.com
+      password:
+        type: string
   AuthenticationsCollection:
     type: object
     properties:

@@ -4,10 +4,10 @@ module Api
       module IndexMixin
         def index
           render json: ManageIQ::API::Common::PaginatedResponse.new(
-            base_query: scoped(model.where(list_params)),
+            base_query: scoped(model.where(list_params.except(:limit, :offset))),
             request: request,
-            limit: params.permit(:limit)[:limit],
-            offset: params.permit(:offset)[:offset]
+            limit: list_params[:limit],
+            offset: list_params[:offset]
           ).response
         end
 
