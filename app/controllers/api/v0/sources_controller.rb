@@ -7,15 +7,11 @@ module Api
       include Api::V0::Mixins::UpdateMixin
 
       def create
-        source = Source.create!(create_params.merge!("uid" => SecureRandom.uuid))
+        source = Source.create!(params_for_create.merge!("uid" => SecureRandom.uuid))
         render :json => source, :status => :created, :location => instance_link(source)
       end
 
       private
-
-      def create_params
-        body_params.permit(:name, :source_type_id, :tenant_id)
-      end
 
       def update_params
         params.permit(:name)

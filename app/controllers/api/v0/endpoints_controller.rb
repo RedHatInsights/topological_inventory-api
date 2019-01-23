@@ -7,15 +7,11 @@ module Api
       include Api::V0::Mixins::UpdateMixin
 
       def create
-        endpoint = Endpoint.create!(create_params)
+        endpoint = Endpoint.create!(params_for_create)
         render :json => endpoint, :status => :created, :location => instance_link(endpoint)
       end
 
       private
-
-      def create_params
-        body_params.permit(:role, :port, :source_id, :default, :scheme, :host, :path, :tenant_id)
-      end
 
       def update_params
         params.permit(:role, :port, :source_id, :default, :scheme, :host, :path)

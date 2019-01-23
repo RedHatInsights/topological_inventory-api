@@ -7,15 +7,11 @@ module Api
       include Api::V0::Mixins::UpdateMixin
 
       def create
-        authentication = model.create!(create_params)
+        authentication = model.create!(params_for_create)
         render :json => authentication, :status => :created, :location => instance_link(authentication)
       end
 
       private
-
-      def create_params
-        body_params.permit(:tenant_id, :authtype, :name, :password, :resource_type, :resource_id, :username)
-      end
 
       def update_params
         params.permit(:authtype, :name, :password, :username)

@@ -13,7 +13,9 @@ module OpenApi
       end
 
       def definitions
-        @definitions ||= substitute_regexes(content["definitions"])
+        @definitions ||= substitute_regexes(content["definitions"]).tap do |h|
+          h.each { |name, v| h[name] = OpenApi::Docs::ObjectDefinition.new.replace(v) }
+        end
       end
 
       def parameters
