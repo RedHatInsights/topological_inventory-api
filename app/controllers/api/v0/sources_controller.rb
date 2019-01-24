@@ -1,14 +1,14 @@
 module Api
   module V0
     class SourcesController < ApplicationController
-      include Api::Mixins::DestroyMixin
-      include Api::Mixins::IndexMixin
-      include Api::Mixins::ShowMixin
-      include Api::Mixins::UpdateMixin
+      include Api::V0::Mixins::DestroyMixin
+      include Api::V0::Mixins::IndexMixin
+      include Api::V0::Mixins::ShowMixin
+      include Api::V0::Mixins::UpdateMixin
 
       def create
         source = Source.create!(create_params.merge!("uid" => SecureRandom.uuid))
-        render :json => source, :status => :created, :location => api_v0x0_source_url(source.id)
+        render :json => source, :status => :created, :location => instance_link(source)
       end
 
       private

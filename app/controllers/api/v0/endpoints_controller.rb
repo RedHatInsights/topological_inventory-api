@@ -1,14 +1,14 @@
 module Api
   module V0
     class EndpointsController < ApplicationController
-      include Api::Mixins::DestroyMixin
-      include Api::Mixins::IndexMixin
-      include Api::Mixins::ShowMixin
-      include Api::Mixins::UpdateMixin
+      include Api::V0::Mixins::DestroyMixin
+      include Api::V0::Mixins::IndexMixin
+      include Api::V0::Mixins::ShowMixin
+      include Api::V0::Mixins::UpdateMixin
 
       def create
         endpoint = Endpoint.create!(create_params)
-        render :json => endpoint, :status => :created, :location => api_v0x0_endpoint_url(endpoint.id)
+        render :json => endpoint, :status => :created, :location => instance_link(endpoint)
       end
 
       private

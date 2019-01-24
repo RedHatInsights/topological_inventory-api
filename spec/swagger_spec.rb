@@ -110,5 +110,18 @@ describe "Swagger stuff" do
         end
       end
     end
+
+    context "v0.1" do
+      let(:version) { "0.1" }
+      Api::Docs["0.1"].definitions.each do |definition_name, schema|
+        next if definition_name.in?(["CollectionLinks", "CollectionMetadata", "OrderParameters"])
+        definition_name = definition_name.sub(/Collection\z/, "").singularize
+
+        it "#{definition_name} matches the JSONSchema" do
+          const = definition_name.constantize
+          expect(send(definition_name.underscore).as_json(:prefixes => ["api/v0x1/#{definition_name.underscore}"])).to match_json_schema("0.1", definition_name)
+        end
+      end
+    end
   end
 end

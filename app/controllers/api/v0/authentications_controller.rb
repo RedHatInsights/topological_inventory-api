@@ -1,14 +1,14 @@
 module Api
   module V0
     class AuthenticationsController < ApplicationController
-      include Api::Mixins::DestroyMixin
-      include Api::Mixins::IndexMixin
-      include Api::Mixins::ShowMixin
-      include Api::Mixins::UpdateMixin
+      include Api::V0::Mixins::DestroyMixin
+      include Api::V0::Mixins::IndexMixin
+      include Api::V0::Mixins::ShowMixin
+      include Api::V0::Mixins::UpdateMixin
 
       def create
         authentication = model.create!(create_params)
-        render :json => authentication, :status => :created, :location => api_v0x0_authentication_url(authentication.id)
+        render :json => authentication, :status => :created, :location => instance_link(authentication)
       end
 
       private
