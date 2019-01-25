@@ -11,7 +11,7 @@ module Api
         task = Task.create!(:tenant => service_plan.tenant, :status => "started")
 
         messaging_client.publish_message(
-          :service => "topological_inventory-orderer",
+          :service => "platform.topological_inventory.openshift-operations",
           :message => "order_service",
           :payload => {:task_id => task.id, :service_plan_id => service_plan.id, :order_params => order_params}
         )

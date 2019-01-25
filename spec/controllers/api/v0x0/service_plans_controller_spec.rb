@@ -32,16 +32,12 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
 
     let(:order_parameters) do
       {
-        :service_parameters          => service_parameters,
-        :provider_control_parameters => provider_control_parameters
+        "service_parameters"          => service_parameters,
+        "provider_control_parameters" => provider_control_parameters
       }
     end
     let(:service_parameters) { {"DB_NAME" => "TEST_DB", "namespace" => "TEST_DB_NAMESPACE"} }
     let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test"} }
-
-    before do
-      allow_any_instance_of(ServicePlan).to receive(:order).with(order_parameters).and_return("task_context")
-    end
 
     context "with a well formed service plan id" do
       let(:client) { double(:client) }
@@ -59,7 +55,7 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
 
       it "publishes a message to the messaging client" do
         expect(client).to receive(:publish_message).with(
-          :service => "topological_inventory-orderer",
+          :service => "platform.topological_inventory.openshift-operations",
           :message => "order_service",
           :payload => {:task_id => kind_of(Numeric), :service_plan_id => service_plan.id, :order_params => order_parameters}
         )
