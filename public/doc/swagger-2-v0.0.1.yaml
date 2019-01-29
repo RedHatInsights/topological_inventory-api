@@ -1121,6 +1121,27 @@ paths:
             "$ref": "#/definitions/Task"
         404:
           description: Not found
+    patch:
+      summary: Update an existing Task
+      operationId: updateTask
+      description: Updates a Task object
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      - name: body
+        in: body
+        description: Task attributes to update
+        required: true
+        schema:
+          "$ref": "#/definitions/Task"
+      responses:
+        204:
+          description: Updated, no content
+        404:
+          description: Not found
   "/vms":
     get:
       summary: List Vms
