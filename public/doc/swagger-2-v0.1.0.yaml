@@ -88,27 +88,6 @@ paths:
           description: Updated, no content
         404:
           description: Not found
-    put:
-      summary: Replace an existing Authentication
-      operationId: replaceAuthentication
-      description: Replaces a Authentication object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      - name: body
-        in: body
-        description: Authentication attributes to update
-        required: true
-        schema:
-          "$ref": "#/definitions/Authentication"
-      responses:
-        204:
-          description: Updated, no content
-        404:
-          description: Not found
     delete:
       summary: Delete an existing Authentication
       operationId: deleteAuthentication
@@ -429,27 +408,6 @@ paths:
       summary: Update an existing Endpoint
       operationId: updateEndpoint
       description: Updates a Endpoint object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      - name: body
-        in: body
-        description: Endpoint attributes to update
-        required: true
-        schema:
-          "$ref": "#/definitions/Endpoint"
-      responses:
-        204:
-          description: Updated, no content
-        404:
-          description: Not found
-    put:
-      summary: Replace an existing Endpoint
-      operationId: replaceEndpoint
-      description: Replaces a Endpoint object
       produces:
       - application/json
       consumes:
@@ -834,27 +792,6 @@ paths:
       summary: Update an existing Source
       operationId: updateSource
       description: Updates a Source object
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - "$ref": "#/parameters/ID"
-      - name: body
-        in: body
-        description: Source attributes to update
-        required: true
-        schema:
-          "$ref": "#/definitions/Source"
-      responses:
-        204:
-          description: Updated, no content
-        404:
-          description: Not found
-    put:
-      summary: Replace an existing Source
-      operationId: replaceSource
-      description: Replaces a Source object
       produces:
       - application/json
       consumes:

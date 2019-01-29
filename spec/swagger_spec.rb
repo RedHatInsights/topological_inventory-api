@@ -28,7 +28,7 @@ describe "Swagger stuff" do
       let(:path_prefix) { "/r/insights/platform" }
 
       it "matches the routes" do
-        redirect_routes = [{:path => "#{path_prefix}/#{app_name}/v0/*path", :verb => "DELETE|GET|OPTIONS|PATCH|POST|PUT"}]
+        redirect_routes = [{:path => "#{path_prefix}/#{app_name}/v0/*path", :verb => "DELETE|GET|OPTIONS|PATCH|POST"}]
         expect(rails_routes).to match_array(swagger_routes + redirect_routes)
       end
     end
