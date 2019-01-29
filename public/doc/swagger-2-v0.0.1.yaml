@@ -1094,6 +1094,36 @@ paths:
               "$ref": "#/definitions/Volume"
       parameters:
       - "$ref": "#/parameters/ID"
+  "/tags":
+    get:
+      summary: List Tags
+      operationId: listTags
+      description: Returns an array of Tag objects
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Tags array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Tag"
+  "/tags/{id}":
+    get:
+      summary: Show an existing Tag
+      operationId: showTag
+      description: Returns a Tag object
+      produces:
+        - application/json
+      parameters:
+        - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: Tag info
+          schema:
+            "$ref": "#/definitions/Tag"
+        404:
+          description: Not found      
   "/tasks":
     get:
       summary: List Tasks
@@ -1398,6 +1428,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   ContainerImage:
     type: object
     properties:
@@ -1428,6 +1463,11 @@ definitions:
       source_deleted_at:
         type: string
         format: date-time
+        readOnly: true
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
         readOnly: true
   ContainerNode:
     type: object
@@ -1477,6 +1517,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   ContainerProject:
     type: object
     properties:
@@ -1504,6 +1549,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   ContainerTemplate:
     type: object
     properties:
@@ -1539,6 +1589,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   Endpoint:
     type: object
     properties:
@@ -1837,6 +1892,40 @@ definitions:
         example: Red Hat
       schema:
         type: object
+  Tag:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        readOnly: true
+        example: architecture
+      namespace:
+        type: string
+        readOnly: true
+        example: openshift
+      description:
+        type: string
+        readOnly: true
+        example: Instruction set architecture
+  Tagging:
+    type: object
+    properties:
+      tag_id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        readOnly: true
+        example: architecture
+      value:
+        type: string
+        readOnly: true
+        example: x86_64
   Task:
     type: object
     properties:
@@ -1933,6 +2022,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      taggings:
+        type: array
+        items:
+          "$ref": "#/definitions/Tagging"
+        readOnly: true
   Volume:
     type: object
     properties:

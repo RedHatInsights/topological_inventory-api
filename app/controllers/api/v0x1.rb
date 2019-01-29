@@ -60,6 +60,10 @@ module Api
       include Api::V0x1::Mixins::IndexMixin
     end
 
+    class TagsController < Api::V0x0::TagsController
+      include Api::V0x1::Mixins::IndexMixin
+    end
+
     class TasksController < Api::V0x0::TasksController
       include Api::V0x1::Mixins::IndexMixin
     end
