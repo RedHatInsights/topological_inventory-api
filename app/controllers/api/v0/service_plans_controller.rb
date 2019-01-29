@@ -1,5 +1,3 @@
-require "manageiq-messaging"
-
 module Api
   module V0
     class ServicePlansController < ApplicationController
@@ -40,11 +38,13 @@ module Api
       end
 
       def messaging_client
+        require "manageiq-messaging"
+
         ManageIQ::Messaging::Client.open(messaging_opts)
       end
 
       def messaging_opts
-        {
+        @messaging_opts ||= {
           :protocol => :Kafka,
           :host     => ENV["QUEUE_HOST"] || "localhost",
           :port     => ENV["QUEUE_PORT"] || "9092",
