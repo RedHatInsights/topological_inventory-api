@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :endpoints,               :only => [:create, :destroy, :index, :show, :update]
       resources :flavors,                 :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show]
+      resources :service_offering_icons,  :only => [:index, :show]
       resources :service_offerings,       :only => [:index, :show] do
         resources :service_instances,       :only => [:index]
         resources :service_plans, :only => [:index]
