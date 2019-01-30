@@ -1951,6 +1951,10 @@ definitions:
         type: string
         description: Extra information about this object in JSON format
         readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
       source_created_at:
         type: string
         format: date-time
