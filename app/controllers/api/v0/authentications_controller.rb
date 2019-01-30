@@ -24,10 +24,6 @@ module Api
       def list_params
         params.permit(:tenant_id, :authtype, :name, :resource_type, :resource_id, :status, :status_details, :username)
       end
-
-      def model
-        Authentication
-      end
     end
   end
 end

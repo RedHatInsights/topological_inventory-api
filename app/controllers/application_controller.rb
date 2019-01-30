@@ -2,6 +2,10 @@ class ApplicationController < ActionController::API
 
   private
 
+  def model
+    self.class.controller_name.classify.constantize
+  end
+
   def body_params
     ActionController::Parameters.new(JSON.parse(request.body.read))
   end

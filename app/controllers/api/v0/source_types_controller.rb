@@ -18,10 +18,6 @@ module Api
       def list_params
         params.permit(:name, :product_name, :vendor)
       end
-
-      def model
-        SourceType
-      end
     end
   end
 end

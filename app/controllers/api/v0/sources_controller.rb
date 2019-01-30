@@ -24,10 +24,6 @@ module Api
       def list_params
         params.permit(:tenant_id, :source_type_id)
       end
-
-      def model
-        Source
-      end
     end
   end
 end
