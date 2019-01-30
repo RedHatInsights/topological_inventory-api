@@ -9,10 +9,6 @@ module Api
       def list_params
         params.permit(:source_id, :tenant_id, :container_project_id)
       end
-
-      def model
-        ContainerTemplate
-      end
     end
   end
 end

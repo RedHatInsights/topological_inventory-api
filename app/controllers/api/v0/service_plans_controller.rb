@@ -39,10 +39,6 @@ module Api
       def list_params
         params.permit(:source_id, :tenant_id, :service_offering_id)
       end
-
-      def model
-        ServicePlan
-      end
     end
   end
 end

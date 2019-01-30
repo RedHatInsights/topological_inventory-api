@@ -9,10 +9,6 @@ module Api
       def list_params
         params.permit(:source_id, :tenant_id)
       end
-
-      def model
-        ContainerProject
-      end
     end
   end
 end

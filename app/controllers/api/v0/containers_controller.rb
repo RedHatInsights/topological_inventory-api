@@ -9,10 +9,6 @@ module Api
       def list_params
         params.permit(:tenant_id, :container_group_id)
       end
-
-      def model
-        Container
-      end
     end
   end
 end

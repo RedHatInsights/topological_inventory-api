@@ -7,10 +7,6 @@ module Api
       def list_params
         params.permit(:tenant_id)
       end
-
-      def model
-        Task
-      end
     end
   end
 end
