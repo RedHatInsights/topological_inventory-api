@@ -11,6 +11,7 @@ module Api
     class FlavorsController < Api::V0::FlavorsController; end
     class OrchestrationStacksController < Api::V0::OrchestrationStacksController; end
     class ServiceInstancesController < Api::V0::ServiceInstancesController; end
+    class ServiceOfferingIconsController < Api::V0::ServiceOfferingIconsController; end
     class ServiceOfferingsController < Api::V0::ServiceOfferingsController; end
     class ServicePlansController < Api::V0::ServicePlansController; end
     class SourcesController < Api::V0::SourcesController; end

@@ -44,6 +44,10 @@ module Api
       include Api::V0x1::Mixins::IndexMixin
     end
 
+    class ServiceOfferingIconsController < Api::V0x0::ServiceOfferingIconsController
+      include Api::V0x1::Mixins::IndexMixin
+    end
+
     class ServiceOfferingsController < Api::V0x0::ServiceOfferingsController
       include Api::V0x1::Mixins::IndexMixin
     end
