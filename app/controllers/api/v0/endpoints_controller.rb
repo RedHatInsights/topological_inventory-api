@@ -9,17 +9,12 @@ module Api
       def create
         endpoint = Endpoint.create!(params_for_create)
         render :json => endpoint, :status => :created, :location => instance_link(endpoint)
-
       end
 
       private
 
       def update_params
         params.permit(:role, :port, :source_id, :default, :scheme, :host, :path, :id)
-      end
-
-      def list_params
-        params.permit(:source_id, :tenant_id, :limit, :offset)
       end
     end
   end

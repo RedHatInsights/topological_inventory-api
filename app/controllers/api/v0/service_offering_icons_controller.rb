@@ -6,10 +6,6 @@ module Api
 
       private
 
-      def list_params
-        params.permit(:source_id, :tenant_id)
-      end
-
       def model
         ServiceOfferingIcon
       end

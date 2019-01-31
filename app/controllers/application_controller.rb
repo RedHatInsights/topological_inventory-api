@@ -30,6 +30,23 @@ class ApplicationController < ActionController::API
     body_params.permit(*api_doc_definition.all_attributes).tap { |i| i.require(required) if required }
   end
 
+  def safe_params_for_list
+    # :limit & :query can be passed in for pagination purposes, but shouldn't show up as params for filtering purposes
+    params.permit(*api_doc_definition.all_attributes + [:limit, :query])
+  end
+
+  def params_for_list
+    safe_params_for_list.slice(*api_doc_definition.all_attributes)
+  end
+
+  def pagination_limit
+    safe_params_for_list[:limit]
+  end
+
+  def pagination_offset
+    safe_params_for_list[:offset]
+  end
+
   def api_doc_definition
     self.class.send(:api_doc_definition)
   end
