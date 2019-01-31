@@ -26,7 +26,21 @@ module TopologicalInventory
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    config.autoload_paths << Rails.root.join('lib')
+
+    # Disabling eagerload in production in favor of autoload
+    config.autoload_paths += config.eager_load_paths
+
+    # NOTE:  If you are going to make changes to autoload_paths, please make
+    # sure they are all strings.  Rails will push these paths into the
+    # $LOAD_PATH.
+    #
+    # More info can be found in the ruby-lang bug:
+    #
+    #   https://bugs.ruby-lang.org/issues/14372
+    #
+    config.autoload_paths << Rails.root.join("app", "models", "mixins").to_s
+    config.autoload_paths << Rails.root.join("app", "controllers", "mixins").to_s
+    config.autoload_paths << Rails.root.join("lib").to_s
 
     ManageIQ::API::Common::Logging.activate(config)
     ManageIQ::API::Common::Metrics.activate(config, "topological_inventory_api")
