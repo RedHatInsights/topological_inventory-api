@@ -16,7 +16,7 @@ class ApplicationController < ActionController::API
   end
 
   def body_params
-    ActionController::Parameters.new(JSON.parse(request.body.read))
+    @body_params ||= ActionController::Parameters.new(JSON.parse(request.body.read))
   end
 
   def instance_link(instance)
@@ -45,6 +45,10 @@ class ApplicationController < ActionController::API
 
   def pagination_offset
     safe_params_for_list[:offset]
+  end
+
+  def params_for_update
+    body_params.permit(*api_doc_definition.all_attributes - api_doc_definition.read_only_attributes)
   end
 
   def api_doc_definition

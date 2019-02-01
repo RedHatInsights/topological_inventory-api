@@ -3,7 +3,7 @@ module Api
     module Mixins
       module UpdateMixin
         def update
-          model.update(params.require(:id), update_params)
+          model.update(params.require(:id), params_for_update)
           head :no_content
         rescue ActiveRecord::RecordNotFound
           head :not_found
