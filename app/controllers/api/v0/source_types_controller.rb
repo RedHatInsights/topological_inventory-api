@@ -16,7 +16,7 @@ module Api
       end
 
       def list_params
-        params.permit(:name, :product_name, :vendor)
+        params.permit(:name, :product_name, :vendor, :limit, :offset)
       end
     end
   end

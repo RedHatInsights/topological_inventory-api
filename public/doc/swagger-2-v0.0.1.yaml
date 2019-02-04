@@ -1313,6 +1313,8 @@ definitions:
       username:
         type: string
         example: user@example.com
+      password:
+        type: string
   Container:
     type: object
     properties:
