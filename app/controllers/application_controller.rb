@@ -25,7 +25,7 @@ class ApplicationController < ActionController::API
   before_action :set_the_current_tenant
 
   def set_the_current_tenant
-    return unless ENV["ENFORCE_TENANCY"]
+    return unless Tenant.tenancy_enabled?
 
     tenant = Tenant.find_by(:external_tenant => user_identity)
     if tenant
@@ -43,19 +43,15 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def user_account_number
-    Base64.decode64(request.headers.fetch_path("x-rh-identity", "identity", "account_number"))
-  end
-
   def user_identity
-    # x-rh-identity = {
-    #     "identity" => {
-    #         "account_number" => 123456,
-    #         "type" => "String"
-    #     },
+    # "x-rh-identity" => {
+    #   "identity" => {
+    #     "account_number" => 123456,
     #     "user" => {},
     #     "system" => {},
     #     "internal" => {},
+    #     "type" => "String"
+    #   }
     # }
     ident_key = "x-rh-identity"
     return unless request.headers.key?(ident_key)
