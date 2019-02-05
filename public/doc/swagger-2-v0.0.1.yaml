@@ -1944,6 +1944,11 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      version:
+        type: string
+        readOnly: true
+        example: 6.5.0
+        title: Version
   SourceType:
     type: object
     required:

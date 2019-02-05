@@ -2055,6 +2055,11 @@ definitions:
         title: Unique ID of the inventory source installation
       tenant_id:
         "$ref": "#/definitions/IDReadOnly"
+      version:
+        type: string
+        readOnly: true
+        example: 6.5.0
+        title: Version
   SourceType:
     type: object
     required:
