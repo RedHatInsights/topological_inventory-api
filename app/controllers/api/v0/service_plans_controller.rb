@@ -32,10 +32,6 @@ module Api
           :provider_control_parameters => {}
         ).to_h
       end
-
-      def list_params
-        params.permit(:source_id, :tenant_id, :service_offering_id, :limit, :offset)
-      end
     end
   end
 end

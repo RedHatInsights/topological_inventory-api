@@ -14,10 +14,6 @@ module Api
       def create_params
         body_params.permit(:name, :product_name, :vendor, :schema)
       end
-
-      def list_params
-        params.permit(:name, :product_name, :vendor, :limit, :offset)
-      end
     end
   end
 end

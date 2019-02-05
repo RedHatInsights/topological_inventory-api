@@ -16,7 +16,7 @@ class ApplicationController < ActionController::API
   end
 
   def body_params
-    ActionController::Parameters.new(JSON.parse(request.body.read))
+    @body_params ||= ActionController::Parameters.new(JSON.parse(request.body.read))
   end
 
   def instance_link(instance)
@@ -28,6 +28,27 @@ class ApplicationController < ActionController::API
   def params_for_create
     required = api_doc_definition.required_attributes
     body_params.permit(*api_doc_definition.all_attributes).tap { |i| i.require(required) if required }
+  end
+
+  def safe_params_for_list
+    # :limit & :query can be passed in for pagination purposes, but shouldn't show up as params for filtering purposes
+    params.permit(*api_doc_definition.all_attributes + [:limit, :query])
+  end
+
+  def params_for_list
+    safe_params_for_list.slice(*api_doc_definition.all_attributes)
+  end
+
+  def pagination_limit
+    safe_params_for_list[:limit]
+  end
+
+  def pagination_offset
+    safe_params_for_list[:offset]
+  end
+
+  def params_for_update
+    body_params.permit(*api_doc_definition.all_attributes - api_doc_definition.read_only_attributes)
   end
 
   def api_doc_definition

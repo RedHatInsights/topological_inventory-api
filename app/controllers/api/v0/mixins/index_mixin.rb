@@ -3,7 +3,7 @@ module Api
     module Mixins
       module IndexMixin
         def index
-          render json: scoped(model.where(list_params))
+          render json: scoped(model.where(params_for_list))
         end
 
         def scoped(relation)
