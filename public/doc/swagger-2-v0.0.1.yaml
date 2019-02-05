@@ -1352,6 +1352,10 @@ definitions:
         allOf:
         - "$ref": "#/parameters/ID"
         - readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ContainerGroup:
     type: object
     properties:
@@ -1402,6 +1406,10 @@ definitions:
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ContainerImage:
     type: object
     properties:
@@ -1437,6 +1445,10 @@ definitions:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
+        readOnly: true
+      archived_at:
+        type: string
+        format: date-time
         readOnly: true
   ContainerNode:
     type: object
@@ -1491,6 +1503,10 @@ definitions:
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ContainerProject:
     type: object
     properties:
@@ -1522,6 +1538,10 @@ definitions:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
+        readOnly: true
+      archived_at:
+        type: string
+        format: date-time
         readOnly: true
   ContainerTemplate:
     type: object
@@ -1562,6 +1582,10 @@ definitions:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
+        readOnly: true
+      archived_at:
+        type: string
+        format: date-time
         readOnly: true
   Endpoint:
     type: object
@@ -1641,6 +1665,10 @@ definitions:
         readOnly: true
         example: 2
         description: Number of CPUs
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   OrchestrationStack:
     type: object
     properties:
@@ -1677,6 +1705,10 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   OrderParameters:
     type: object
     properties:
@@ -1727,6 +1759,10 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ServiceOffering:
     type: object
     properties:
@@ -1803,6 +1839,10 @@ definitions:
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ServiceOfferingIcon:
     type: object
     properties:
@@ -1865,6 +1905,10 @@ definitions:
         readOnly: true
       update_json_schema:
         type: object
+        readOnly: true
+      archived_at:
+        type: string
+        format: date-time
         readOnly: true
   Source:
     type: object
@@ -2046,6 +2090,10 @@ definitions:
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   Volume:
     type: object
     properties:
@@ -2087,6 +2135,10 @@ definitions:
         format: date-time
         readOnly: true
       source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
+      archived_at:
         type: string
         format: date-time
         readOnly: true
@@ -2140,6 +2192,10 @@ definitions:
       description:
         type: string
         example: Magnetic
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
 host: virtserver.swaggerhub.com
 schemes:
 - https

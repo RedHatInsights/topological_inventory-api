@@ -1417,6 +1417,10 @@ definitions:
         allOf:
         - "$ref": "#/parameters/ID"
         - readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ContainerGroup:
     type: object
     properties:
@@ -1467,6 +1471,10 @@ definitions:
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ContainerGroupsCollection:
     type: object
     properties:
@@ -1513,6 +1521,10 @@ definitions:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
+        readOnly: true
+      archived_at:
+        type: string
+        format: date-time
         readOnly: true
   ContainerImagesCollection:
     type: object
@@ -1578,6 +1590,10 @@ definitions:
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ContainerNodesCollection:
     type: object
     properties:
@@ -1620,6 +1636,10 @@ definitions:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
+        readOnly: true
+      archived_at:
+        type: string
+        format: date-time
         readOnly: true
   ContainerProjectsCollection:
     type: object
@@ -1671,6 +1691,10 @@ definitions:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
+        readOnly: true
+      archived_at:
+        type: string
+        format: date-time
         readOnly: true
   ContainerTemplatesCollection:
     type: object
@@ -1783,6 +1807,10 @@ definitions:
         readOnly: true
         example: 2
         description: Number of CPUs
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   FlavorsCollection:
     type: object
     properties:
@@ -1830,6 +1858,10 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   OrchestrationStacksCollection:
     type: object
     properties:
@@ -1891,6 +1923,10 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ServiceInstancesCollection:
     type: object
     properties:
@@ -1978,6 +2014,10 @@ definitions:
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   ServiceOfferingsCollection:
     type: object
     properties:
@@ -2051,6 +2091,10 @@ definitions:
         readOnly: true
       update_json_schema:
         type: object
+        readOnly: true
+      archived_at:
+        type: string
+        format: date-time
         readOnly: true
   ServicePlansCollection:
     type: object
@@ -2287,6 +2331,10 @@ definitions:
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   VmsCollection:
     type: object
     properties:
@@ -2339,6 +2387,10 @@ definitions:
         format: date-time
         readOnly: true
       source_deleted_at:
+        type: string
+        format: date-time
+        readOnly: true
+      archived_at:
         type: string
         format: date-time
         readOnly: true
@@ -2403,6 +2455,10 @@ definitions:
       description:
         type: string
         example: Magnetic
+      archived_at:
+        type: string
+        format: date-time
+        readOnly: true
   VolumeTypesCollection:
     type: object
     properties:
