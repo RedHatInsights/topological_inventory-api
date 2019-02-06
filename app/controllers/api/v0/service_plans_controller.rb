@@ -5,13 +5,13 @@ module Api
       include Api::V0::Mixins::ShowMixin
 
       def order
-        service_plan = model.find(order_params[:service_plan_id].to_i)
+        service_plan = model.find(params_for_order[:service_plan_id].to_i)
         task = Task.create!(:tenant => service_plan.tenant, :status => "started")
 
         messaging_client.publish_message(
           :service => "platform.topological_inventory.operations-openshift",
           :message => "order_service",
-          :payload => {:task_id => task.id, :service_plan_id => service_plan.id, :order_params => order_params}
+          :payload => {:task_id => task.id, :service_plan_id => service_plan.id, :order_params => params_for_order}
         )
 
         render :json => {:task_id => task.id}
@@ -25,7 +25,7 @@ module Api
         params[:service_plan_id].to_i
       end
 
-      def order_params
+      def params_for_order
         params.permit(
           :service_plan_id,
           :service_parameters          => {},
@@ -33,7 +33,7 @@ module Api
         ).to_h
       end
 
-      def list_params
+      def params_for_list
         params.permit(:source_id, :tenant_id, :service_offering_id)
       end
 

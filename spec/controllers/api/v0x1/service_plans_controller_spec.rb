@@ -1,3 +1,5 @@
+require "manageiq-messaging"
+
 RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
   it("Uses IndexMixin") { expect(described_class.instance_method(:index).owner).to eq(Api::V0x1::Mixins::IndexMixin) }
   it("Uses ShowMixin")  { expect(described_class.instance_method(:show).owner).to eq(Api::V0::Mixins::ShowMixin) }
@@ -30,12 +32,6 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
       )
     end
 
-    let(:order_parameters) do
-      {
-        "service_parameters"          => service_parameters,
-        "provider_control_parameters" => provider_control_parameters
-      }
-    end
     let(:service_parameters) { {"DB_NAME" => "TEST_DB", "namespace" => "TEST_DB_NAMESPACE"} }
     let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test"} }
 
@@ -43,6 +39,7 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
       let(:client) { double(:client) }
       let(:payload) do
         {
+          "service_plan_id"             => service_plan.id.to_s,
           "service_parameters"          => service_parameters,
           "provider_control_parameters" => provider_control_parameters
         }
@@ -57,7 +54,7 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
         expect(client).to receive(:publish_message).with(
           :service => "platform.topological_inventory.operations-openshift",
           :message => "order_service",
-          :payload => {:task_id => kind_of(Numeric), :service_plan_id => service_plan.id, :order_params => order_parameters}
+          :payload => {:task_id => kind_of(Numeric), :service_plan_id => service_plan.id, :order_params => payload}
         )
 
         post "/api/v0.1/service_plans/#{service_plan.id}/order", :params => payload

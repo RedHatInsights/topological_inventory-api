@@ -39,6 +39,7 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
       let(:client) { double(:client) }
       let(:payload) do
         {
+          "service_plan_id"             => service_plan.id.to_s,
           "service_parameters"          => service_parameters,
           "provider_control_parameters" => provider_control_parameters
         }
