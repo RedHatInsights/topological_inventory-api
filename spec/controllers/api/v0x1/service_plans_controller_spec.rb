@@ -1,4 +1,6 @@
 RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
+  include ::Spec::Support::TenantIdentity
+
   it("Uses IndexMixin") { expect(described_class.instance_method(:index).owner).to eq(Api::V0x1::Mixins::IndexMixin) }
   it("Uses ShowMixin")  { expect(described_class.instance_method(:show).owner).to eq(Api::V0::Mixins::ShowMixin) }
 
@@ -18,7 +20,6 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
     end
     let(:source_region) { SourceRegion.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
     let(:source) { Source.create!(:tenant => tenant, :source_type => source_type, :uid => SecureRandom.uuid, :name => "test_source") }
-    let(:tenant) { Tenant.create! }
     let(:subscription) { Subscription.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
     let(:service_offering) do
       ServiceOffering.create!(
@@ -50,7 +51,7 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
           "provider_control_parameters" => provider_control_parameters
         }
 
-        post "/api/v0.1/service_plans/#{service_plan.id}/order", :params => payload
+        post "/api/v0.1/service_plans/#{service_plan.id}/order", :params => payload, :headers => {"x-rh-identity" => identity}
 
         @body = JSON.parse(response.body)
       end
@@ -66,7 +67,7 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
 
     context "with a malicious service plan id" do
       it "returns an error" do
-        post "/api/v0.1/service_plans/;myfakeSQLinjection/order"
+        post "/api/v0.1/service_plans/;myfakeSQLinjection/order", :headers => {"x-rh-identity" => identity}
 
         expect(response.status).to eq(400)
       end
@@ -74,7 +75,7 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
       it "does not try to look the model up by the fake ID" do
         expect(ServicePlan).to_not receive(:find).with(";myfakeSQLinjection")
 
-        post "/api/v0.1/service_plans/;myfakeSQLinjection/order"
+        post "/api/v0.1/service_plans/;myfakeSQLinjection/order", :headers => {"x-rh-identity" => identity}
       end
     end
   end

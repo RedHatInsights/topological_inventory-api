@@ -1,11 +1,12 @@
 describe Api::V0x1::Mixins::UpdateMixin do
+  include ::Spec::Support::TenantIdentity
+
   describe Api::V0x1::SourcesController, :type => :request do
     let(:source)      { Source.create!(:source_type => source_type, :tenant => tenant, :name => "abc", :uid => SecureRandom.uuid) }
     let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
-    let(:tenant)      { Tenant.create! }
 
     it "patch /sources/:id updates a Source" do
-      patch(api_v0x1_source_url(source.id), :params => {:name => "xyz"}.to_json)
+      patch(api_v0x1_source_url(source.id), :params => {:name => "xyz"}.to_json, :headers => {"x-rh-identity" => identity})
 
       expect(source.reload.name).to eq("xyz")
 
@@ -14,7 +15,7 @@ describe Api::V0x1::Mixins::UpdateMixin do
     end
 
     it "extra body parameters raise an error" do
-      patch(api_v0x1_source_url(source.id), :params => {"name" => "abc", "garbage" => "not accepted"}.to_json)
+      patch(api_v0x1_source_url(source.id), :params => {"name" => "abc", "garbage" => "not accepted"}.to_json, :headers => {"x-rh-identity" => identity})
 
       expect(response.status).to eq(400)
       expect(response.parsed_body).to eq(

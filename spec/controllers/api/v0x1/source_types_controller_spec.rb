@@ -1,10 +1,12 @@
 RSpec.describe Api::V0x1::SourceTypesController, :type => :request do
+  include ::Spec::Support::TenantIdentity
+
   it("Uses IndexMixin")   { expect(described_class.instance_method(:index).owner).to eq(Api::V0x1::Mixins::IndexMixin) }
   it("Uses ShowMixin")    { expect(described_class.instance_method(:show).owner).to eq(Api::V0::Mixins::ShowMixin) }
 
   it "post /sources creates a Source" do
     headers = { "CONTENT_TYPE" => "application/json" }
-    post(api_v0x1_source_types_url, :params => {:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat"}.to_json)
+    post(api_v0x1_source_types_url, :headers => {"x-rh-identity" => identity}, :params => {:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat"}.to_json)
 
     source_type = SourceType.first
 

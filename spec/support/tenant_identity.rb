@@ -1,0 +1,16 @@
+module Spec
+  module Support
+    module TenantIdentity
+      extend ActiveSupport::Concern
+
+      included do
+        after  { controller.send(:set_current_tenant,  nil) if controller }
+
+        let!(:tenant)           { Tenant.create!(:external_tenant => external_tenant) }
+        let!(:external_tenant)  { rand(1000).to_s }
+        let!(:identity)         { Base64.encode64({'identity' => { 'account_number' => external_tenant}}.to_json) }
+        let!(:unknown_identity) { Base64.encode64({'identity' => { 'account_number' => '123abc'}}.to_json) }
+      end
+    end
+  end
+end
