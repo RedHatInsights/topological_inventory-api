@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
   end
 
   def instance_link(instance)
-    endpoint = instance.class.name.downcase
+    endpoint = instance.class.name.underscore
     version  = self.class.send(:api_version)
     send("api_#{version}_#{endpoint}_url", instance.id)
   end
