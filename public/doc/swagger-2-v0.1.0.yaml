@@ -1106,7 +1106,7 @@ paths:
           schema:
             "$ref": "#/definitions/Tag"
         404:
-          description: Not found          
+          description: Not found
   "/tasks":
     get:
       summary: List Tasks
@@ -1888,9 +1888,7 @@ definitions:
         description: JSON object with provisioning parameters
       provider_control_parameters:
         type: object
-        description: >-
-          The provider specific parameters needed to provision this service.
-          This might include namespaces, special keys
+        description: The provider specific parameters needed to provision this service. This might include namespaces, special keys
   ServiceInstance:
     type: object
     properties:
@@ -2045,7 +2043,7 @@ definitions:
         format: uuid
       source_ref:
         type: string
-        example: "icon-mariadb"
+        example: icon-mariadb
       data:
         type: string
         description: Raw icon data
