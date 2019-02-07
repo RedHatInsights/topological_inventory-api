@@ -10,12 +10,6 @@ module Api
         source = Source.create!(params_for_create.merge!("uid" => SecureRandom.uuid))
         render :json => source, :status => :created, :location => instance_link(source)
       end
-
-      private
-
-      def update_params
-        params.permit(:name, :id)
-      end
     end
   end
 end

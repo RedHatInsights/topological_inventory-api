@@ -10,12 +10,6 @@ module Api
         authentication = model.create!(params_for_create)
         render :json => authentication, :status => :created, :location => instance_link(authentication)
       end
-
-      private
-
-      def update_params
-        params.permit(:authtype, :name, :password, :username, :id)
-      end
     end
   end
 end
