@@ -14,7 +14,7 @@ module Api
       private
 
       def update_params
-        params.permit(:role, :port, :source_id, :default, :scheme, :host, :path, :id)
+        params.permit(:role, :port, :source_id, :default, :scheme, :host, :path, :verify_ssl, :certificate_authority, :id)
       end
     end
   end

@@ -11,7 +11,20 @@ RSpec.describe Api::V0x1::EndpointsController, :type => :request do
 
   it "post /endpoints creates an Endpoint" do
     headers = { "CONTENT_TYPE" => "application/json" }
-    post(api_v0x1_endpoints_url, :params => {:host => "example.com", :source_id => source.id.to_s, :tenant_id => tenant.id.to_s}.to_json)
+    post(
+      api_v0x1_endpoints_url,
+      :params => {
+        :host                  => "example.com",
+        :port                  => "443",
+        :role                  => "default",
+        :path                  => "api",
+        :source_id             => source.id.to_s,
+        :tenant_id             => tenant.id.to_s,
+        :scheme                => "https",
+        :verify_ssl            => true,
+        :certificate_authority => "-----BEGIN CERTIFICATE-----\nabcd\n-----END CERTIFICATE-----",
+      }.to_json
+    )
 
     endpoint = Endpoint.first
 
