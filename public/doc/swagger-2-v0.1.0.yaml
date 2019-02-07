@@ -531,6 +531,36 @@ paths:
             "$ref": "#/definitions/ServiceInstance"
         404:
           description: Not found
+  "/service_offering_icons":
+    get:
+      summary: List ServiceOfferingIcons
+      operationId: listServiceOfferingIcons
+      description: Returns an array of ServiceOfferingIcon objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceOfferingIcons array
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/ServiceOfferingIcon"
+  "/service_offering_icons/{id}":
+    get:
+      summary: Show an existing ServiceOfferingIcon
+      operationId: showServiceOfferingIcon
+      description: Returns a ServiceOfferingIcon object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: ServiceOfferingIcon info
+          schema:
+            "$ref": "#/definitions/ServiceOfferingIcon"
+        404:
+          description: Not found
   "/service_offerings":
     get:
       summary: List ServiceOfferings
@@ -594,36 +624,6 @@ paths:
           description: ServicePlans collection
           schema:
             "$ref": "#/definitions/ServicePlansCollection"
-  "/service_offering_icons":
-    get:
-      summary: List ServiceOfferingIcons
-      operationId: listServiceOfferingIcons
-      description: Returns an array of ServiceOfferingIcon objects
-      produces:
-        - application/json
-      responses:
-        200:
-          description: ServiceOfferingIcons array
-          schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceOfferingIcon"
-  "/service_offering_icons/{id}":
-    get:
-      summary: Show an existing ServiceOfferingIcon
-      operationId: showServiceOfferingIcon
-      description: Returns a ServiceOfferingIcon object
-      produces:
-        - application/json
-      parameters:
-        - "$ref": "#/parameters/ID"
-      responses:
-        200:
-          description: ServiceOfferingIcon info
-          schema:
-            "$ref": "#/definitions/ServiceOfferingIcon"
-        404:
-          description: Not found
   "/service_plans":
     get:
       summary: List ServicePlans
@@ -2023,17 +2023,6 @@ definitions:
         type: string
         format: date-time
         readOnly: true
-  ServiceOfferingsCollection:
-    type: object
-    properties:
-      meta:
-        "$ref": "#/definitions/CollectionMetadata"
-      links:
-        "$ref": "#/definitions/CollectionLinks"
-      data:
-        type: array
-        items:
-          "$ref": "#/definitions/ServiceOffering"
   ServiceOfferingIcon:
     type: object
     properties:
@@ -2048,6 +2037,17 @@ definitions:
         type: string
         description: Raw icon data
         title: Icon Data
+  ServiceOfferingsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ServiceOffering"
   ServicePlan:
     type: object
     properties:
