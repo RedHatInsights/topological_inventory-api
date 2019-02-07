@@ -1757,6 +1757,13 @@ definitions:
         type: string
         readOnly: true
         format: uuid
+      verify_ssl:
+        type: boolean
+        example: true
+        description: Should SSL be verified
+      certificate_authority:
+        type: string
+        description: Optional X.509 Certificate Authority
   EndpointsCollection:
     type: object
     properties:
