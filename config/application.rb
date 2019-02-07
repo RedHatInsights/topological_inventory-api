@@ -44,5 +44,8 @@ module TopologicalInventory
 
     ManageIQ::API::Common::Logging.activate(config)
     ManageIQ::API::Common::Metrics.activate(config, "topological_inventory_api")
+
+    require Rails.root.join("app/middleware/tracker_middleware").to_s
+    config.middleware.use(::TrackerMiddleware)
   end
 end
