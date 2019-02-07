@@ -126,4 +126,12 @@ Rails.application.routes.draw do
       resources :volumes,            :only => [:index, :show]
     end
   end
+
+  scope :as => :internal, :module => "internal", :path => "internal" do
+    match "/v0/*path", :via => [:get], :to => redirect(:path => "/internal/v0.0/%{path}", :only_path => true)
+
+    namespace :v0x0, :path => "v0.0" do
+      resources :authentications, :only => [:show]
+    end
+  end
 end
