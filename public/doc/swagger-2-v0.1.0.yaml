@@ -536,15 +536,16 @@ paths:
       summary: List ServiceOfferingIcons
       operationId: listServiceOfferingIcons
       description: Returns an array of ServiceOfferingIcon objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
       produces:
       - application/json
       responses:
         200:
-          description: ServiceOfferingIcons array
+          description: ServiceOfferingIcons collection
           schema:
-            type: array
-            items:
-              "$ref": "#/definitions/ServiceOfferingIcon"
+            "$ref": "#/definitions/ServiceOfferingIconsCollection"
   "/service_offering_icons/{id}":
     get:
       summary: Show an existing ServiceOfferingIcon
@@ -2037,6 +2038,17 @@ definitions:
         type: string
         description: Raw icon data
         title: Icon Data
+  ServiceOfferingIconsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ServiceOfferingIcon"
   ServiceOfferingsCollection:
     type: object
     properties:
