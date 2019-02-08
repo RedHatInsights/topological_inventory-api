@@ -1320,11 +1320,11 @@ definitions:
     properties:
       id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       tenant_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       name:
         type: string
@@ -1346,11 +1346,11 @@ definitions:
         readOnly: true
       container_group_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       container_image_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       archived_at:
         type: string
@@ -1415,15 +1415,15 @@ definitions:
     properties:
       id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       tenant_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       source_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       name:
         type: string
@@ -1472,7 +1472,7 @@ definitions:
         example: Vm
       lives_on_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       memory:
         type: integer
@@ -1638,15 +1638,15 @@ definitions:
     properties:
       id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       tenant_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       source_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       source_ref:
         type: string
@@ -1676,6 +1676,10 @@ definitions:
         type: string
         format: date-time
         readOnly: true
+  ID:
+    type: string
+    description: ID of the resource
+    pattern: "/^\\d+$/"
   OrchestrationStack:
     type: object
     properties:
@@ -2106,15 +2110,15 @@ definitions:
     properties:
       id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       tenant_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       source_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       source_region_id:
         type: string
@@ -2122,7 +2126,7 @@ definitions:
         format: uuid
       volume_type_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       source_ref:
         type: string
@@ -2154,19 +2158,19 @@ definitions:
     properties:
       id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       tenant_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       vm_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       volume_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       device:
         type: string
@@ -2181,15 +2185,15 @@ definitions:
     properties:
       id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       tenant_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       source_id:
         allOf:
-        - "$ref": "#/parameters/ID"
+        - "$ref": "#/definitions/ID"
         - readOnly: true
       source_ref:
         type: string
