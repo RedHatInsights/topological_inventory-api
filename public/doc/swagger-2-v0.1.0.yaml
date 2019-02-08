@@ -664,13 +664,13 @@ paths:
       consumes:
       - application/json
       parameters:
-      - "$ref": '#/parameters/ID'
+      - "$ref": "#/parameters/ID"
       - name: parameters
         in: body
         description: Order parameters defining the service and provider control
         required: true
         schema:
-          $ref: '#/definitions/OrderParameters'
+          "$ref": "#/definitions/OrderParameters"
       responses:
         200:
           description: Returns a task ID for the order
@@ -2114,17 +2114,6 @@ definitions:
         type: string
         readOnly: true
         example: Instruction set architecture
-  TagsCollection:
-    type: object
-    properties:
-      meta:
-        "$ref": "#/definitions/CollectionMetadata"
-      links:
-        "$ref": "#/definitions/CollectionLinks"
-      data:
-        type: array
-        items:
-          "$ref": "#/definitions/Tag"
   Tagging:
     type: object
     properties:
@@ -2138,6 +2127,17 @@ definitions:
         type: string
         readOnly: true
         example: x86_64
+  TagsCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/Tag"
   Task:
     type: object
     properties:

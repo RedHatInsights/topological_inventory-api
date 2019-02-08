@@ -53,6 +53,16 @@ class SwaggerGenerator
           when "create"  then swagger_create_description(klass_name)
           when "update"  then swagger_update_description(klass_name, verb)
         end
+
+      unless expected_paths[sub_path][verb]
+        # If it's not generic action but a custom method like e.g. `post "order", :to => "service_plans#order"`, we will
+        # try to take existing definition, because the description, summary, etc. are likely to be custom.
+        expected_paths[sub_path][verb] =
+          case verb
+          when "post"
+            swagger_contents.dig('paths', sub_path, 'post') || swagger_create_description(klass_name)
+          end
+      end
     end
   end
 
@@ -258,6 +268,23 @@ class SwaggerGenerator
           "description" => "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
         }
       }
+    }
+
+    definitions["Tagging"] = {
+      "type"       => "object",
+      "properties" => {
+        "tag_id" => {"$ref" => "#/definitions/IDReadOnly"},
+        "name"   => {"type" => "string", "readOnly" => true, "example" => "architecture"},
+        "value"  => {"type" => "string", "readOnly" => true, "example" => "x86_64"}
+      }
+    }
+
+    definitions["ID"] = {
+      "type"=>"string", "description"=>"ID of the resource", "pattern"=>"/^\\d+$/"
+    }
+
+    definitions["IDReadOnly"] = {
+      "allOf"=>[{"$ref"=>"#/definitions/ID"}, {"readOnly"=>true}]
     }
 
     new_content = swagger_contents
