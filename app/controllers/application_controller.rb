@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::API
   ActionController::Parameters.action_on_unpermitted_parameters = :raise
 
+  rescue_from TopologicalInventory::Api::BodyParseError do |exception|
+    error_document = TopologicalInventory::Api::ErrorDocument.new.add(400, "Failed to parse POST body, expected JSON")
+    render :json => error_document, :status => :bad_request
+  end
+
   private
 
   private_class_method def self.model
@@ -16,7 +21,13 @@ class ApplicationController < ActionController::API
   end
 
   def body_params
-    @body_params ||= ActionController::Parameters.new(JSON.parse(request.body.read))
+    @body_params ||= begin
+      raw_body = request.body.read
+      parsed_body = JSON.parse(raw_body)
+      ActionController::Parameters.new(parsed_body)
+    rescue JSON::ParserError
+      raise TopologicalInventory::Api::BodyParseError
+    end
   end
 
   def instance_link(instance)
