@@ -70,9 +70,9 @@ class SwaggerGenerator
     @definitions ||= {}
   end
 
-  def build_definition(name, value = nil)
-    definitions[name] = value
-    "#/definitions/#{name}"
+  def build_definition(klass_name)
+    definitions[klass_name] = swagger_definition(klass_name)
+    "#/definitions/#{klass_name}"
   end
 
   def parameters
@@ -121,6 +121,67 @@ class SwaggerGenerator
     }
 
     "#/definitions/#{collection_name}"
+  end
+
+  def swagger_definition(klass_name)
+    {
+      "type"       => "object",
+      "properties" => swagger_definition_properties(klass_name),
+    }
+  end
+
+  def swagger_definition_properties(klass_name)
+    model = klass_name.constantize
+    model.columns_hash.map do |key, value|
+      next if GENERATOR_BLACKLIST_ATTRIBUTES.include?(key.to_sym)
+
+      [key, swagger_definition_properties_value(klass_name, model, key, value)]
+    end.compact.sort.to_h
+  end
+
+  def swagger_definition_properties_value(klass_name, model, key, value)
+    if key == model.primary_key
+      {
+        "$ref" => "#/definitions/IDReadOnly"
+      }
+    elsif key.ends_with?("_id")
+      properties_value = {}
+      if GENERATOR_WHITELIST_PROVIDER_DEFINITIONS.include?(klass_name)
+        # Everything under providers data is read only for now
+        properties_value["$ref"] = "#/definitions/IDReadOnly"
+      else
+        properties_value["$ref"] = swagger_contents.dig("definitions", klass_name, "properties", key, "$ref") || "#/definitions/IDReadOnly"
+      end
+      properties_value
+    else
+      properties_value = {
+        "type" => "string"
+      }
+
+      case value.sql_type_metadata.type
+      when :datetime
+        properties_value["format"] = "date-time"
+      when :integer
+        properties_value["type"] = "integer"
+      when :float
+        properties_value["type"] = "number"
+      when :boolean
+        properties_value["type"] = "boolean"
+      end
+
+      # Take existing attrs, that we won't generate
+      ['example', 'format', 'readOnly', 'title', 'description'].each do |property_key|
+        property_value                 = swagger_contents.dig("definitions", klass_name, "properties", key, property_key)
+        properties_value[property_key] = property_value if property_value
+      end
+
+      if GENERATOR_WHITELIST_PROVIDER_DEFINITIONS.include?(klass_name)
+        # Everything under providers data is read only for now
+        properties_value['readOnly'] = true
+      end
+
+      properties_value.sort.to_h
+    end
   end
 
   def swagger_show_description(klass_name)
@@ -294,6 +355,17 @@ class SwaggerGenerator
     File.write(swagger_file, new_content.to_yaml(line_width: -1).sub("---\n", "").tap { |c| c.gsub!("- NULL VALUE", "- null") })
   end
 end
+
+
+GENERATOR_BLACKLIST_ATTRIBUTES            = [
+  :resource_timestamp, :resource_timestamps, :resource_timestamps_max, :tenant_id
+].to_set.freeze
+GENERATOR_WHITELIST_PROVIDER_DEFINITIONS = [
+  'Container', 'ContainerGroup', 'ContainerImage', 'ContainerNode', 'ContainerProject', 'ContainerTemplate', 'Flavor',
+  'OrchestrationStack', 'ServiceInstance', 'ServiceOffering', 'ServiceOfferingIcon', 'ServicePlan', 'Tag', 'Tagging',
+  'Vm', 'Volume', 'VolumeAttachment', 'VolumeType'
+].to_set.freeze
+
 
 namespace :swagger do
   desc "Generate the swagger.yml contents"
