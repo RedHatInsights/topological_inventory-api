@@ -42,8 +42,19 @@ class ApplicationController < ActionController::API
   end
 
   def safe_params_for_list
-    # :limit & :query can be passed in for pagination purposes, but shouldn't show up as params for filtering purposes
-    params.permit(*api_doc_definition.all_attributes + [:limit, :query, :offset])
+    # :limit & :offset can be passed in for pagination purposes, but shouldn't show up as params for filtering purposes
+    @safe_params_for_list ||= params.merge(params_for_polymorphic_subcollection).permit(*api_doc_definition.all_attributes + [:limit, :offset] + ["#{request_path_parts["primary_collection_name"].singularize}_id"])
+  end
+
+  def params_for_polymorphic_subcollection
+    return {} unless subcollection?
+    return {} unless reflection = primary_collection_model&.reflect_on_association(request_path_parts["subcollection_name"])
+    return {} unless as = reflection.options[:as]
+    {"#{as}_type" => primary_collection_model.name, "#{as}_id" => request_path_parts["primary_collection_id"]}
+  end
+
+  def primary_collection_model
+    @primary_collection_model ||= request_path_parts["primary_collection_name"].singularize.classify.safe_constantize
   end
 
   def params_for_list
@@ -60,6 +71,18 @@ class ApplicationController < ActionController::API
 
   def params_for_update
     body_params.permit(*api_doc_definition.all_attributes - api_doc_definition.read_only_attributes)
+  end
+
+  def request_path
+    request.env["REQUEST_URI"]
+  end
+
+  def request_path_parts
+    @request_path_parts ||= request_path.match(/\/(?<full_version_string>v\d+.\d+)\/(?<primary_collection_name>\w+)\/?(?<primary_collection_id>\d+)?\/?(?<subcollection_name>\w+)?/)&.named_captures || {}
+  end
+
+  def subcollection?
+    !!(request_path_parts["subcollection_name"] && request_path_parts["primary_collection_id"] && request_path_parts["primary_collection_name"])
   end
 
   def api_doc_definition
