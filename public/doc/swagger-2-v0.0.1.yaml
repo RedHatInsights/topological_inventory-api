@@ -837,6 +837,20 @@ paths:
           description: Source deleted
         404:
           description: Not found
+  "/sources/{id}/availabilities":
+    get:
+      summary: List Availabilities for Source
+      operationId: listSourceAvailabilities
+      description: Returns an array of Availability objects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Availabilities array
+          schema:
+            type: array
+            items:
+                "$ref": "#/definitions/Availability"
   "/sources/{id}/container_groups":
     get:
       summary: List ContainerGroups for Source
@@ -1315,6 +1329,27 @@ definitions:
         example: user@example.com
       password:
         type: string
+  Availability:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      resource_id:
+        type: string
+        readOnly: true
+        format: uuid
+      resource_type:
+        type: string
+        readOnly: true
+      identifier:
+        type: string
+        example: "/service_offerings"
+        readOnly: true
+      availability:
+        type: string
+        example: "available"
   Container:
     type: object
     properties:
