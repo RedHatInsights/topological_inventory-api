@@ -19,4 +19,14 @@ RSpec.describe Api::V0x1::SourcesController, :type => :request do
     expect(response.location).to match(a_string_ending_with("v0.1/sources/#{source.id}"))
     expect(response.parsed_body).to include("name" => "abc", "id" => source.id.to_s)
   end
+
+  it "post /sources creates a Source and Tenant when tenant does not exist" do
+    headers = { "CONTENT_TYPE" => "application/json", "x-rh-identity" => unknown_identity }
+    post(api_v0x1_sources_url, :headers => headers, :params => {:source_type_id => source_type.id.to_s, :tenant_id => tenant.id.to_s, :name => "abc"}.to_json)
+
+    expect(Tenant.find_by(:external_tenant => unknown_tenant)).not_to be_nil
+    source = Source.first
+
+    expect(response.status).to eq(201)
+  end
 end
