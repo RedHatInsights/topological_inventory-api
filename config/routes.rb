@@ -25,7 +25,9 @@ Rails.application.routes.draw do
         resources :container_templates, :only => [:index]
       end
       resources :container_templates,     :only => [:index, :show]
-      resources :endpoints,               :only => [:create, :destroy, :index, :show, :update]
+      resources :endpoints,               :only => [:create, :destroy, :index, :show, :update] do
+        resources :authentications, :only => [:index]
+      end
       resources :flavors,                 :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show]
       resources :service_offering_icons,  :only => [:index, :show]

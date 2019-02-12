@@ -438,6 +438,22 @@ paths:
           description: Endpoint deleted
         404:
           description: Not found
+  "/endpoints/{id}/authentications":
+    get:
+      summary: List Authentications for Endpoint
+      operationId: listEndpointAuthentications
+      description: Returns an array of Authentication objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Authentications collection
+          schema:
+            "$ref": "#/definitions/AuthenticationsCollection"
   "/flavors":
     get:
       summary: List Flavors
