@@ -1,10 +1,7 @@
 module Api
   module V0x1
     class AuthenticationsController < Api::V0x0::AuthenticationsController
-      include Api::V0x1::Mixins::CreateMixin
-      include Api::V0x1::Mixins::DestroyMixin
       include Api::V0x1::Mixins::IndexMixin
-      include Api::V0x1::Mixins::UpdateMixin
     end
 
     class ContainersController < Api::V0x0::ContainersController
@@ -32,10 +29,7 @@ module Api
     end
 
     class EndpointsController < Api::V0x0::EndpointsController
-      include Api::V0x1::Mixins::CreateMixin
-      include Api::V0x1::Mixins::DestroyMixin
       include Api::V0x1::Mixins::IndexMixin
-      include Api::V0x1::Mixins::UpdateMixin
     end
 
     class FlavorsController < Api::V0x0::FlavorsController
@@ -63,14 +57,10 @@ module Api
     end
 
     class SourcesController < Api::V0x0::SourcesController
-      include Api::V0x1::Mixins::CreateMixin
-      include Api::V0x1::Mixins::DestroyMixin
       include Api::V0x1::Mixins::IndexMixin
-      include Api::V0x1::Mixins::UpdateMixin
     end
 
     class SourceTypesController < Api::V0x0::SourceTypesController
-      include Api::V0x1::Mixins::CreateMixin
       include Api::V0x1::Mixins::IndexMixin
     end
 
