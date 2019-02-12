@@ -1,6 +1,8 @@
 require_relative "shared_examples_for_index"
 
 RSpec.describe("v0.0 - Sources") do
+  include ::Spec::Support::TenantIdentity
+
   let(:attributes)      { {"name" => "my source", "source_type_id" => source_type.id.to_s, "tenant_id" => tenant.id.to_s} }
   let(:collection_path) { "/api/v0.1/sources" }
   let(:source_type)     { SourceType.create!(:name => "SourceType", :vendor => "Some Vendor", :product_name => "Product Name") }
@@ -57,6 +59,16 @@ RSpec.describe("v0.0 - Sources") do
           :location => nil,
           :parsed_body => TopologicalInventory::Api::ErrorDocument.new.add(400, "found unpermitted parameter: :aaa").to_h
         )
+      end
+
+      it "success: creates source and tenant when tenant does not exist" do
+        stub_const("ENV", "BYPASS_TENANCY" => nil)
+        headers = { "CONTENT_TYPE" => "application/json", "x-rh-identity" => unknown_identity }
+        post(collection_path, :headers => headers, :params => {:source_type_id => source_type.id.to_s, :tenant_id => tenant.id.to_s, :name => "abc"}.to_json)
+
+        expect(Tenant.find_by(:external_tenant => unknown_tenant)).not_to be_nil
+
+        expect(response.status).to eq(201)
       end
     end
   end
