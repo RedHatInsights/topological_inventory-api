@@ -6,6 +6,11 @@ class ApplicationController < ActionController::API
     render :json => error_document, :status => error_document.status
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    error_document = TopologicalInventory::Api::ErrorDocument.new.add(404, exception.message)
+    render :json => error_document, :status => :not_found
+  end
+
   rescue_from TopologicalInventory::Api::BodyParseError do |exception|
     error_document = TopologicalInventory::Api::ErrorDocument.new.add(400, "Failed to parse POST body, expected JSON")
     render :json => error_document, :status => error_document.status
