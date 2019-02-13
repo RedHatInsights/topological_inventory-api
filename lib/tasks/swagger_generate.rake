@@ -133,7 +133,9 @@ class SwaggerGenerator
   def swagger_definition_properties(klass_name)
     model = klass_name.constantize
     model.columns_hash.map do |key, value|
-      next if GENERATOR_BLACKLIST_ATTRIBUTES.include?(key.to_sym)
+      unless(GENERATOR_ALLOW_BLACKLISTED_ATTRIBUTES[key.to_sym] || []).include?(klass_name)
+        next if GENERATOR_BLACKLIST_ATTRIBUTES.include?(key.to_sym)
+      end
 
       [key, swagger_definition_properties_value(klass_name, model, key, value)]
     end.compact.sort.to_h
@@ -356,16 +358,17 @@ class SwaggerGenerator
   end
 end
 
-
-GENERATOR_BLACKLIST_ATTRIBUTES            = [
+GENERATOR_BLACKLIST_ATTRIBUTES           = [
   :resource_timestamp, :resource_timestamps, :resource_timestamps_max, :tenant_id
 ].to_set.freeze
+GENERATOR_ALLOW_BLACKLISTED_ATTRIBUTES   = {
+  :tenant_id => ['Source', 'Endpoint', 'Authentication'].to_set.freeze
+}
 GENERATOR_WHITELIST_PROVIDER_DEFINITIONS = [
   'Container', 'ContainerGroup', 'ContainerImage', 'ContainerNode', 'ContainerProject', 'ContainerTemplate', 'Flavor',
   'OrchestrationStack', 'ServiceInstance', 'ServiceOffering', 'ServiceOfferingIcon', 'ServicePlan', 'Tag', 'Tagging',
   'Vm', 'Volume', 'VolumeAttachment', 'VolumeType'
 ].to_set.freeze
-
 
 namespace :swagger do
   desc "Generate the swagger.yml contents"
