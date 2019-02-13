@@ -1,5 +1,5 @@
 RSpec.describe("v0.1 - SourceTypes") do
-  let(:attributes)      { {"name" => "test_name", "product_name" => "Test Product", "vendor" => "TestVendor"} }
+  let(:attributes)      { {"name" => "test_name", "product_name" => "Test Product", "vendor" => "TestVendor", "created_at"=>"2019-02-13T16:23:24Z", "updated_at"=>"2019-02-13T16:23:24Z"} }
   let(:collection_path) { "/api/v0.1/source_types" }
 
   def paginated_response(count, data)
