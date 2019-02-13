@@ -9,16 +9,6 @@ module Api
             limit: pagination_limit,
             offset: pagination_offset
           ).response
-        rescue ActionController::UnpermittedParameters => error
-          error_document = {
-            "errors" => [
-              {
-                "status" => "400",
-                "detail" => "#{error.message} in request parameters"
-              }
-            ]
-          }
-          render :json => error_document, :status => :bad_request
         end
 
         def scoped(relation)

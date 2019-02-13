@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::API
   ActionController::Parameters.action_on_unpermitted_parameters = :raise
 
+  rescue_from ActionController::UnpermittedParameters do |exception|
+    error_document = TopologicalInventory::Api::ErrorDocument.new.add(400, exception.message)
+    render :json => error_document, :status => error_document.status
+  end
+
   rescue_from TopologicalInventory::Api::BodyParseError do |exception|
     error_document = TopologicalInventory::Api::ErrorDocument.new.add(400, "Failed to parse POST body, expected JSON")
-    render :json => error_document, :status => :bad_request
+    render :json => error_document, :status => error_document.status
   end
 
   private

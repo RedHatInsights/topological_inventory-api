@@ -1,9 +1,8 @@
 RSpec.describe Api::V0x1::EndpointsController, :type => :request do
-  it("Uses CreateMixin")  { expect(described_class.instance_method(:create).owner).to eq(Api::V0x1::Mixins::CreateMixin) }
-  it("Uses DestroyMixin") { expect(described_class.instance_method(:destroy).owner).to eq(Api::V0x1::Mixins::DestroyMixin) }
+  it("Uses DestroyMixin") { expect(described_class.instance_method(:destroy).owner).to eq(Api::V0::Mixins::DestroyMixin) }
   it("Uses IndexMixin")   { expect(described_class.instance_method(:index).owner).to eq(Api::V0x1::Mixins::IndexMixin) }
   it("Uses ShowMixin")    { expect(described_class.instance_method(:show).owner).to eq(Api::V0::Mixins::ShowMixin) }
-  it("Uses UpdateMixin")  { expect(described_class.instance_method(:update).owner).to eq(Api::V0x1::Mixins::UpdateMixin) }
+  it("Uses UpdateMixin")  { expect(described_class.instance_method(:update).owner).to eq(Api::V0::Mixins::UpdateMixin) }
 
   let(:source)      { Source.create!(:source_type => source_type, :tenant => tenant, :uid => SecureRandom.uuid, :name => "test_source") }
   let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
