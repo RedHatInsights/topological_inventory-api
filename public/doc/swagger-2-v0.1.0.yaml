@@ -1341,9 +1341,9 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       authtype:
         type: string
         example: openshift_default
@@ -1396,9 +1396,9 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         readOnly: true
@@ -1418,9 +1418,9 @@ definitions:
         type: integer
         readOnly: true
       container_group_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       container_image_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       archived_at:
         type: string
         format: date-time
@@ -1429,7 +1429,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample Group
@@ -1449,17 +1449,17 @@ definitions:
         format: date-time
         readOnly: true
       container_node_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       container_project_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
         format: uuid
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       taggings:
         type: array
         items:
@@ -1484,11 +1484,11 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         readOnly: true
@@ -1529,7 +1529,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample Group
@@ -1544,7 +1544,7 @@ definitions:
         readOnly: true
         example: Vm
       lives_on_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       memory:
         type: integer
         example: 4294967296
@@ -1558,13 +1558,13 @@ definitions:
         format: date-time
         readOnly: true
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
         format: uuid
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       taggings:
         type: array
         items:
@@ -1589,7 +1589,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample Project
@@ -1599,13 +1599,13 @@ definitions:
         example: This is a sample display name for a project
         title: Display Name
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
         format: uuid
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       taggings:
         type: array
         items:
@@ -1630,7 +1630,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample Project
@@ -1644,15 +1644,15 @@ definitions:
         format: date-time
         readOnly: true
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
         format: uuid
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       container_project_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       taggings:
         type: array
         items:
@@ -1688,7 +1688,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       default:
         type: boolean
       host:
@@ -1713,9 +1713,9 @@ definitions:
         example: https
         description: URI scheme component
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       verify_ssl:
         type: boolean
         example: true
@@ -1738,11 +1738,11 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
@@ -1784,17 +1784,14 @@ definitions:
           "$ref": "#/definitions/Flavor"
   ID:
     type: string
-    description: ID of the resource
+    description: ID of the resource (read only)
     pattern: "/^\\d+$/"
-  IDReadOnly:
-    allOf:
-    - "$ref": "#/definitions/ID"
-    - readOnly: true
+    readOnly: true
   OrchestrationStack:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample OrchestrationStack
@@ -1813,13 +1810,13 @@ definitions:
         format: date-time
         readOnly: true
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
         format: uuid
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       archived_at:
         type: string
         format: date-time
@@ -1848,7 +1845,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample ServiceInstance
@@ -1870,13 +1867,13 @@ definitions:
         readOnly: true
         format: uuid
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
         format: uuid
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       archived_at:
         type: string
         format: date-time
@@ -1896,7 +1893,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample Service Offering
@@ -1950,11 +1947,11 @@ definitions:
         format: date-time
         readOnly: true
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       service_offering_icon_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       taggings:
         type: array
         items:
@@ -1968,7 +1965,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         example: icon-mariadb
@@ -2002,7 +1999,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample Provider
@@ -2024,15 +2021,15 @@ definitions:
         format: date-time
         readOnly: true
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
         format: uuid
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       service_offering_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       create_json_schema:
         type: object
         readOnly: true
@@ -2058,9 +2055,9 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_type_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample Provider
@@ -2070,7 +2067,7 @@ definitions:
         readOnly: true
         title: Unique ID of the inventory source installation
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       version:
         type: string
         readOnly: true
@@ -2084,7 +2081,7 @@ definitions:
     - vendor
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: openshift
@@ -2122,7 +2119,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         readOnly: true
@@ -2139,7 +2136,7 @@ definitions:
     type: object
     properties:
       tag_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         readOnly: true
@@ -2163,7 +2160,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Order Service Plan
@@ -2184,7 +2181,7 @@ definitions:
         type: string
         format: date-time
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
   TasksCollection:
     type: object
     properties:
@@ -2200,7 +2197,7 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         example: Sample Vm
@@ -2219,13 +2216,13 @@ definitions:
         format: date-time
         readOnly: true
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
         format: uuid
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       uid_ems:
         type: string
         readOnly: true
@@ -2249,9 +2246,9 @@ definitions:
         example: 17179869184
         description: Total RAM in bytes
       orchestration_stack_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       flavor_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       taggings:
         type: array
         items:
@@ -2276,15 +2273,15 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_region_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       volume_type_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
         readOnly: true
@@ -2314,13 +2311,13 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       vm_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       volume_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       device:
         type: string
         readOnly: true
@@ -2344,11 +2341,11 @@ definitions:
     type: object
     properties:
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       tenant_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         type: string
       name:
