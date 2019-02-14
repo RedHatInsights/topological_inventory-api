@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     match "/v0/*path", :via => [:delete, :get, :options, :patch, :post], :to => redirect(:path => "/#{prefix}/v0.0/%{path}", :only_path => true)
 
     namespace :v0x1, :path => "v0.1" do
+      get "/openapi.json", :to => "root#openapi"
       resources :authentications,         :only => [:create, :destroy, :index, :show, :update]
       resources :containers,              :only => [:index, :show]
       resources :container_groups,        :only => [:index, :show] do

@@ -485,6 +485,15 @@ paths:
             "$ref": "#/definitions/Flavor"
         404:
           description: Not found
+  "/openapi.json":
+    get:
+      summary: Return this API document in JSON format
+      operationId: getDocumentation
+      produces:
+      - application/json
+      responses:
+        200:
+          description: The API document for this version of the API
   "/orchestration_stacks":
     get:
       summary: List OrchestrationStacks
