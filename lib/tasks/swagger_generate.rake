@@ -148,7 +148,7 @@ class SwaggerGenerator
       }
     elsif key.ends_with?("_id")
       properties_value = {}
-      if GENERATOR_WHITELIST_PROVIDER_DEFINITIONS.include?(klass_name)
+      if GENERATOR_READ_ONLY_DEFINITIONS.include?(klass_name)
         # Everything under providers data is read only for now
         properties_value["$ref"] = "#/definitions/IDReadOnly"
       else
@@ -177,7 +177,7 @@ class SwaggerGenerator
         properties_value[property_key] = property_value if property_value
       end
 
-      if GENERATOR_WHITELIST_PROVIDER_DEFINITIONS.include?(klass_name)
+      if GENERATOR_READ_ONLY_DEFINITIONS.include?(klass_name)
         # Everything under providers data is read only for now
         properties_value['readOnly'] = true
       end
@@ -364,7 +364,7 @@ GENERATOR_BLACKLIST_ATTRIBUTES           = [
 GENERATOR_ALLOW_BLACKLISTED_ATTRIBUTES   = {
   :tenant_id => ['Source', 'Endpoint', 'Authentication'].to_set.freeze
 }
-GENERATOR_WHITELIST_PROVIDER_DEFINITIONS = [
+GENERATOR_READ_ONLY_DEFINITIONS = [
   'Container', 'ContainerGroup', 'ContainerImage', 'ContainerNode', 'ContainerProject', 'ContainerTemplate', 'Flavor',
   'OrchestrationStack', 'ServiceInstance', 'ServiceOffering', 'ServiceOfferingIcon', 'ServicePlan', 'Tag', 'Tagging',
   'Vm', 'Volume', 'VolumeAttachment', 'VolumeType'
