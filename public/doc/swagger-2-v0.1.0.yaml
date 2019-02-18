@@ -1349,30 +1349,30 @@ definitions:
   Authentication:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      tenant_id:
-        "$ref": "#/definitions/ID"
       authtype:
-        type: string
         example: openshift_default
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
       name:
-        type: string
         example: OpenShift default
-      resource_type:
         type: string
-        example: Endpoint
+      password:
+        type: string
       resource_id:
         "$ref": "#/definitions/ID"
-      status:
+      resource_type:
+        example: Endpoint
         type: string
+      status:
         example: valid
+        type: string
       status_details:
         type: string
+      tenant_id:
+        "$ref": "#/definitions/ID"
       username:
-        type: string
         example: user@example.com
-      password:
         type: string
   AuthenticationsCollection:
     type: object
@@ -1404,80 +1404,99 @@ definitions:
   Container:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      tenant_id:
-        "$ref": "#/definitions/ID"
-      name:
-        type: string
-        readOnly: true
-        example: docker-build
-      cpu_limit:
-        type: number
-        format: double
-        readOnly: true
-      cpu_request:
-        type: number
-        format: double
-        readOnly: true
-      memory_limit:
-        type: integer
-        readOnly: true
-      memory_request:
-        type: integer
-        readOnly: true
-      container_group_id:
-        "$ref": "#/definitions/ID"
-      container_image_id:
-        "$ref": "#/definitions/ID"
       archived_at:
-        type: string
         format: date-time
         readOnly: true
+        type: string
+      container_group_id:
+        "$ref": "#/definitions/IDReadOnly"
+      container_image_id:
+        "$ref": "#/definitions/IDReadOnly"
+      cpu_limit:
+        format: double
+        readOnly: true
+        type: number
+      cpu_request:
+        format: double
+        readOnly: true
+        type: number
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      memory_limit:
+        readOnly: true
+        type: integer
+      memory_request:
+        readOnly: true
+        type: integer
+      name:
+        example: docker-build
+        readOnly: true
+        type: string
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
   ContainerGroup:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
-        type: string
-        example: Sample Group
-        title: Name
-        readOnly: true
-      ipaddress:
-        type: string
-        example: 192.0.2.1
-        title: IP Address
-        readOnly: true
-      source_created_at:
-        type: string
+      archived_at:
         format: date-time
         readOnly: true
-      source_deleted_at:
         type: string
-        format: date-time
-        readOnly: true
       container_node_id:
-        "$ref": "#/definitions/ID"
+        "$ref": "#/definitions/IDReadOnly"
       container_project_id:
-        "$ref": "#/definitions/ID"
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
-        type: string
+        "$ref": "#/definitions/IDReadOnly"
+      created_at:
+        format: date-time
         readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      ipaddress:
+        example: 192.0.2.1
+        readOnly: true
+        title: IP Address
+        type: string
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      name:
+        example: Sample Group
+        readOnly: true
+        title: Name
+        type: string
+      resource_version:
+        readOnly: true
+        type: string
+      source_created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_deleted_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
         format: uuid
-      tenant_id:
-        "$ref": "#/definitions/ID"
+        readOnly: true
+        type: string
       taggings:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
-      archived_at:
-        type: string
+      updated_at:
         format: date-time
         readOnly: true
+        type: string
   ContainerGroupsCollection:
     type: object
     properties:
@@ -1492,37 +1511,53 @@ definitions:
   ContainerImage:
     type: object
     properties:
+      archived_at:
+        format: date-time
+        readOnly: true
+        type: string
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
       id:
-        "$ref": "#/definitions/ID"
-      tenant_id:
-        "$ref": "#/definitions/ID"
-      source_id:
-        "$ref": "#/definitions/ID"
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
       name:
-        type: string
-        readOnly: true
         example: openshift3/postgresql-92-rhel7
-      tag:
-        type: string
         readOnly: true
-        example: latest
+        type: string
+      resource_version:
+        readOnly: true
+        type: string
       source_created_at:
-        type: string
         format: date-time
         readOnly: true
+        type: string
       source_deleted_at:
-        type: string
         format: date-time
         readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        readOnly: true
+        type: string
+      tag:
+        example: latest
+        readOnly: true
+        type: string
       taggings:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
-      archived_at:
-        type: string
+      updated_at:
         format: date-time
         readOnly: true
+        type: string
   ContainerImagesCollection:
     type: object
     properties:
@@ -1537,52 +1572,65 @@ definitions:
   ContainerNode:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
-        type: string
-        example: Sample Group
-        title: Name
+      archived_at:
+        format: date-time
         readOnly: true
+        type: string
       cpus:
-        type: integer
         example: 4
         readOnly: true
-      lives_on_type:
-        type: string
-        readOnly: true
-        example: Vm
-      lives_on_id:
-        "$ref": "#/definitions/ID"
-      memory:
         type: integer
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      lives_on_id:
+        "$ref": "#/definitions/IDReadOnly"
+      lives_on_type:
+        example: Vm
+        readOnly: true
+        type: string
+      memory:
         example: 4294967296
         readOnly: true
+        type: integer
+      name:
+        example: Sample Group
+        readOnly: true
+        title: Name
+        type: string
+      resource_version:
+        readOnly: true
+        type: string
       source_created_at:
-        type: string
         format: date-time
         readOnly: true
+        type: string
       source_deleted_at:
-        type: string
         format: date-time
         readOnly: true
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
         type: string
-        readOnly: true
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
         format: uuid
-      tenant_id:
-        "$ref": "#/definitions/ID"
+        readOnly: true
+        type: string
       taggings:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
-      archived_at:
-        type: string
+      updated_at:
         format: date-time
         readOnly: true
+        type: string
   ContainerNodesCollection:
     type: object
     properties:
@@ -1597,33 +1645,56 @@ definitions:
   ContainerProject:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
-        type: string
-        example: Sample Project
-        title: Name
-      display_name:
-        type: string
-        example: This is a sample display name for a project
-        title: Display Name
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
-        type: string
+      archived_at:
+        format: date-time
         readOnly: true
+        type: string
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      display_name:
+        example: This is a sample display name for a project
+        readOnly: true
+        title: Display Name
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      name:
+        example: Sample Project
+        readOnly: true
+        title: Name
+        type: string
+      resource_version:
+        readOnly: true
+        type: string
+      source_created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_deleted_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
         format: uuid
-      tenant_id:
-        "$ref": "#/definitions/ID"
+        readOnly: true
+        type: string
       taggings:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
-      archived_at:
-        type: string
+      updated_at:
         format: date-time
         readOnly: true
+        type: string
   ContainerProjectsCollection:
     type: object
     properties:
@@ -1638,39 +1709,53 @@ definitions:
   ContainerTemplate:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
-        type: string
-        example: Sample Project
-        title: Name
-      source_created_at:
-        type: string
+      archived_at:
         format: date-time
         readOnly: true
-      source_deleted_at:
         type: string
-        format: date-time
-        readOnly: true
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
-        type: string
-        readOnly: true
-        format: uuid
-      tenant_id:
-        "$ref": "#/definitions/ID"
       container_project_id:
-        "$ref": "#/definitions/ID"
+        "$ref": "#/definitions/IDReadOnly"
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      name:
+        example: Sample Project
+        readOnly: true
+        title: Name
+        type: string
+      resource_version:
+        readOnly: true
+        type: string
+      source_created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_deleted_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        format: uuid
+        readOnly: true
+        type: string
       taggings:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
-      archived_at:
-        type: string
+      updated_at:
         format: date-time
         readOnly: true
+        type: string
   ContainerTemplatesCollection:
     type: object
     properties:
@@ -1696,42 +1781,48 @@ definitions:
   Endpoint:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
+      certificate_authority:
+        description: Optional X.509 Certificate Authority
+        type: string
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
       default:
         type: boolean
       host:
-        type: string
-        example: www.example.com
         description: URI host component
+        example: www.example.com
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
       path:
-        type: string
-        example: "/api/v1"
         description: URI path component
+        example: "/api/v1"
+        type: string
       port:
-        type: integer
-        minimum: 0
-        maximum: 65534
-        example: 80
         description: URI port component
+        example: 80
+        type: integer
       role:
-        type: string
         example: default
-      scheme:
         type: string
-        example: https
+      scheme:
         description: URI scheme component
+        example: https
+        type: string
       source_id:
         "$ref": "#/definitions/ID"
       tenant_id:
         "$ref": "#/definitions/ID"
-      verify_ssl:
-        type: boolean
-        example: true
-        description: Should SSL be verified
-      certificate_authority:
+      updated_at:
+        format: date-time
+        readOnly: true
         type: string
-        description: Optional X.509 Certificate Authority
+      verify_ssl:
+        description: Should SSL be verified
+        example: true
+        type: boolean
   EndpointsCollection:
     type: object
     properties:
@@ -1746,40 +1837,56 @@ definitions:
   Flavor:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      tenant_id:
-        "$ref": "#/definitions/ID"
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
-        type: string
-        readOnly: true
-        format: uuid
-      disk_size:
-        type: integer
-        readOnly: true
-        example: 17179869184
-        description: Size of the default disks in bytes
-      disk_count:
-        type: integer
-        readOnly: true
-        example: 2
-        description: The number of default disks
-      memory:
-        type: integer
-        readOnly: true
-        example: 17179869184
-        description: Amount of RAM in bytes
-      cpus:
-        type: integer
-        readOnly: true
-        example: 2
-        description: Number of CPUs
       archived_at:
-        type: string
         format: date-time
         readOnly: true
+        type: string
+      cpus:
+        description: Number of CPUs
+        example: 2
+        readOnly: true
+        type: integer
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      disk_count:
+        description: The number of default disks
+        example: 2
+        readOnly: true
+        type: integer
+      disk_size:
+        description: Size of the default disks in bytes
+        example: 17179869184
+        readOnly: true
+        type: integer
+      extra:
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      memory:
+        description: Amount of RAM in bytes
+        example: 17179869184
+        readOnly: true
+        type: integer
+      name:
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        format: uuid
+        readOnly: true
+        type: string
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
   FlavorsCollection:
     type: object
     properties:
@@ -1793,43 +1900,56 @@ definitions:
           "$ref": "#/definitions/Flavor"
   ID:
     type: string
-    description: ID of the resource (read only)
+    description: ID of the resource
     pattern: "/^\\d+$/"
-    readOnly: true
+  IDReadOnly:
+    allOf:
+    - "$ref": "#/definitions/ID"
+    - readOnly: true
   OrchestrationStack:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
-        type: string
-        example: Sample OrchestrationStack
-        title: Name
+      archived_at:
+        format: date-time
         readOnly: true
-      description:
         type: string
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      description:
         description: Description of the OrchestrationStack
         readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      name:
+        example: Sample OrchestrationStack
+        readOnly: true
+        title: Name
+        type: string
       source_created_at:
-        type: string
         format: date-time
         readOnly: true
+        type: string
       source_deleted_at:
-        type: string
         format: date-time
         readOnly: true
+        type: string
       source_id:
-        "$ref": "#/definitions/ID"
+        "$ref": "#/definitions/IDReadOnly"
       source_ref:
-        type: string
-        readOnly: true
         format: uuid
-      tenant_id:
-        "$ref": "#/definitions/ID"
-      archived_at:
+        readOnly: true
         type: string
+      updated_at:
         format: date-time
         readOnly: true
+        type: string
   OrchestrationStacksCollection:
     type: object
     properties:
@@ -1853,40 +1973,55 @@ definitions:
   ServiceInstance:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
+      archived_at:
+        format: date-time
+        readOnly: true
         type: string
-        example: Sample ServiceInstance
-        title: Name
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
       extra:
-        type: string
         description: Extra information about this object in JSON format
         readOnly: true
-      source_created_at:
         type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
         format: date-time
         readOnly: true
-      source_deleted_at:
         type: string
-        format: date-time
+      name:
+        example: Sample ServiceInstance
         readOnly: true
+        title: Name
+        type: string
       service_offering_id:
-        type: string
-        readOnly: true
-        format: uuid
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
-        type: string
-        readOnly: true
-        format: uuid
-      tenant_id:
-        "$ref": "#/definitions/ID"
-      archived_at:
-        type: string
+        "$ref": "#/definitions/IDReadOnly"
+      service_plan_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_created_at:
         format: date-time
         readOnly: true
+        type: string
+      source_deleted_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        format: uuid
+        readOnly: true
+        type: string
+      source_region_id:
+        "$ref": "#/definitions/IDReadOnly"
+      subscription_id:
+        "$ref": "#/definitions/IDReadOnly"
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
   ServiceInstancesCollection:
     type: object
     properties:
@@ -1901,87 +2036,114 @@ definitions:
   ServiceOffering:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
-        type: string
-        example: Sample Service Offering
-        title: Name
+      archived_at:
+        format: date-time
         readOnly: true
+        type: string
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
       description:
-        type: string
         example: This is a short description
+        readOnly: true
         title: Description
-        readOnly: true
+        type: string
       display_name:
-        type: string
         example: MariaDB (Ephemeral)
+        readOnly: true
         title: Display Name
-        readOnly: true
+        type: string
       distributor:
-        type: string
         example: Red Hat, Inc.
+        readOnly: true
         title: Distributor
-        readOnly: true
+        type: string
       documentation_url:
-        type: string
         example: https://github.com/sclorg/mariadb-container/blob/master/10.2/root/usr/share/container-scripts/mysql/README.md
+        readOnly: true
         title: Documentation URL
-        readOnly: true
-      long_description:
         type: string
-        example: This template provides a standalone MariaDB server with a database created...
-        title: Long Description
-        readOnly: true
-      support_url:
-        type: string
-        example: https://access.redhat.com
-        title: Support URL
-        readOnly: true
-      source_ref:
-        type: string
-        example: object-12345_67890
-        title: Source reference
-        description: The native reference used by the Source to refer to this object
       extra:
-        type: string
         description: Extra information about this object in JSON format
         readOnly: true
-      source_created_at:
         type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
         format: date-time
         readOnly: true
-      source_deleted_at:
         type: string
-        format: date-time
+      long_description:
+        example: This template provides a standalone MariaDB server with a database created...
         readOnly: true
-      source_id:
-        "$ref": "#/definitions/ID"
-      tenant_id:
-        "$ref": "#/definitions/ID"
+        title: Long Description
+        type: string
+      name:
+        example: Sample Service Offering
+        readOnly: true
+        title: Name
+        type: string
       service_offering_icon_id:
-        "$ref": "#/definitions/ID"
+        "$ref": "#/definitions/IDReadOnly"
+      source_created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_deleted_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        description: The native reference used by the Source to refer to this object
+        example: object-12345_67890
+        readOnly: true
+        title: Source reference
+        type: string
+      source_region_id:
+        "$ref": "#/definitions/IDReadOnly"
+      subscription_id:
+        "$ref": "#/definitions/IDReadOnly"
+      support_url:
+        example: https://access.redhat.com
+        readOnly: true
+        title: Support URL
+        type: string
       taggings:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
-      archived_at:
-        type: string
+      updated_at:
         format: date-time
         readOnly: true
+        type: string
   ServiceOfferingIcon:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      source_ref:
+      created_at:
+        format: date-time
+        readOnly: true
         type: string
-        example: icon-mariadb
       data:
-        type: string
         description: Raw icon data
+        readOnly: true
         title: Icon Data
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        example: icon-mariadb
+        readOnly: true
+        type: string
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
   ServiceOfferingIconsCollection:
     type: object
     properties:
@@ -2007,48 +2169,67 @@ definitions:
   ServicePlan:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
+      archived_at:
+        format: date-time
+        readOnly: true
         type: string
-        example: Sample Provider
-        title: Name
+      create_json_schema:
+        readOnly: true
+        type: string
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
       description:
-        type: string
         example: This is a sample description for a provider
+        readOnly: true
         title: Description
-      extra:
         type: string
+      extra:
         description: Extra information about this object in JSON format
         readOnly: true
-      source_created_at:
         type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
         format: date-time
         readOnly: true
-      source_deleted_at:
         type: string
-        format: date-time
+      name:
+        example: Sample Provider
         readOnly: true
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
+        title: Name
         type: string
+      resource_version:
         readOnly: true
-        format: uuid
-      tenant_id:
-        "$ref": "#/definitions/ID"
+        type: string
       service_offering_id:
-        "$ref": "#/definitions/ID"
-      create_json_schema:
-        type: object
-        readOnly: true
-      update_json_schema:
-        type: object
-        readOnly: true
-      archived_at:
-        type: string
+        "$ref": "#/definitions/IDReadOnly"
+      source_created_at:
         format: date-time
         readOnly: true
+        type: string
+      source_deleted_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        format: uuid
+        readOnly: true
+        type: string
+      source_region_id:
+        "$ref": "#/definitions/IDReadOnly"
+      subscription_id:
+        "$ref": "#/definitions/IDReadOnly"
+      update_json_schema:
+        readOnly: true
+        type: string
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
   ServicePlansCollection:
     type: object
     properties:
@@ -2063,45 +2244,57 @@ definitions:
   Source:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      source_type_id:
-        "$ref": "#/definitions/ID"
-      name:
+      created_at:
+        format: date-time
+        readOnly: true
         type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      name:
         example: Sample Provider
         title: Name
-      uid:
         type: string
-        readOnly: true
-        title: Unique ID of the inventory source installation
+      source_type_id:
+        "$ref": "#/definitions/ID"
       tenant_id:
         "$ref": "#/definitions/ID"
-      version:
-        type: string
+      uid:
         readOnly: true
+        title: Unique ID of the inventory source installation
+        type: string
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
+      version:
         example: 6.5.0
+        readOnly: true
         title: Version
+        type: string
   SourceType:
     type: object
-    required:
-    - name
-    - product_name
-    - vendor
     properties:
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
       id:
-        "$ref": "#/definitions/ID"
+        "$ref": "#/definitions/IDReadOnly"
       name:
-        type: string
         example: openshift
+        type: string
       product_name:
-        type: string
         example: OpenShift
-      vendor:
         type: string
-        example: Red Hat
       schema:
-        type: object
+        type: string
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
+      vendor:
+        example: Red Hat
+        type: string
   SourceTypesCollection:
     type: object
     properties:
@@ -2127,25 +2320,29 @@ definitions:
   Tag:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
-        type: string
+      created_at:
+        format: date-time
         readOnly: true
-        example: architecture
-      namespace:
         type: string
-        readOnly: true
-        example: openshift
       description:
-        type: string
-        readOnly: true
         example: Instruction set architecture
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      name:
+        example: architecture
+        readOnly: true
+        type: string
+      namespace:
+        example: openshift
+        readOnly: true
+        type: string
   Tagging:
     type: object
     properties:
       tag_id:
-        "$ref": "#/definitions/ID"
+        "$ref": "#/definitions/IDReadOnly"
       name:
         type: string
         readOnly: true
@@ -2168,29 +2365,35 @@ definitions:
   Task:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
+      completed_at:
+        format: date-time
         type: string
-        example: Order Service Plan
-        title: Name
-      status:
-        type: string
-        example: Error
-        title: Status
-      state:
-        type: string
-        example: Running
-        title: State
       context:
-        type: object
         example: Extra information about this task, e.g. new inventory items created by this task
         title: Context
-      completed_at:
         type: string
+      created_at:
         format: date-time
-      tenant_id:
-        "$ref": "#/definitions/ID"
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      name:
+        example: Order Service Plan
+        title: Name
+        type: string
+      state:
+        example: Running
+        title: State
+        type: string
+      status:
+        example: Error
+        title: Status
+        type: string
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
   TasksCollection:
     type: object
     properties:
@@ -2205,68 +2408,81 @@ definitions:
   Vm:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      name:
-        type: string
-        example: Sample Vm
-        title: Name
+      archived_at:
+        format: date-time
         readOnly: true
-      description:
         type: string
+      cpus:
+        description: Total number of CPUs
+        example: 2
+        readOnly: true
+        type: integer
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      description:
         description: Description of the Vm
         readOnly: true
-      source_created_at:
         type: string
-        format: date-time
+      extra:
         readOnly: true
-      source_deleted_at:
         type: string
-        format: date-time
-        readOnly: true
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
-        type: string
-        readOnly: true
-        format: uuid
-      tenant_id:
-        "$ref": "#/definitions/ID"
-      uid_ems:
-        type: string
-        readOnly: true
-        description: Cross-Source Unique Reference
-      hostname:
-        type: string
-        readOnly: true
-        example: localhost.localdomain
-      power_state:
-        type: string
-        readOnly: true
-        example: running
-      cpus:
-        type: integer
-        readOnly: true
-        example: 2
-        description: Total number of CPUs
-      memory:
-        type: integer
-        readOnly: true
-        example: 17179869184
-        description: Total RAM in bytes
-      orchestration_stack_id:
-        "$ref": "#/definitions/ID"
       flavor_id:
-        "$ref": "#/definitions/ID"
+        "$ref": "#/definitions/IDReadOnly"
+      hostname:
+        example: localhost.localdomain
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      memory:
+        description: Total RAM in bytes
+        example: 17179869184
+        readOnly: true
+        type: integer
+      name:
+        example: Sample Vm
+        readOnly: true
+        title: Name
+        type: string
+      orchestration_stack_id:
+        "$ref": "#/definitions/IDReadOnly"
+      power_state:
+        example: running
+        readOnly: true
+        type: string
+      source_created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_deleted_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        format: uuid
+        readOnly: true
+        type: string
       taggings:
         type: array
         items:
           "$ref": "#/definitions/Tagging"
         readOnly: true
-      archived_at:
+      uid_ems:
+        description: Cross-Source Unique Reference
+        readOnly: true
         type: string
+      updated_at:
         format: date-time
         readOnly: true
+        type: string
   VmsCollection:
     type: object
     properties:
@@ -2281,60 +2497,74 @@ definitions:
   Volume:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      tenant_id:
-        "$ref": "#/definitions/ID"
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_region_id:
-        "$ref": "#/definitions/ID"
-      volume_type_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
-        type: string
-        readOnly: true
-      name:
-        type: string
-        example: vol-00627bf31217a7bc0
-      state:
-        type: string
-        example: in-use
-      size:
-        type: integer
-        example: 8589934592
-        description: Size of the volume in bytes
-      source_created_at:
-        type: string
-        format: date-time
-        readOnly: true
-      source_deleted_at:
-        type: string
-        format: date-time
-        readOnly: true
       archived_at:
-        type: string
         format: date-time
         readOnly: true
+        type: string
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      extra:
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      name:
+        example: vol-00627bf31217a7bc0
+        readOnly: true
+        type: string
+      size:
+        description: Size of the volume in bytes
+        example: 8589934592
+        readOnly: true
+        type: integer
+      source_created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_deleted_at:
+        format: date-time
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        readOnly: true
+        type: string
+      source_region_id:
+        "$ref": "#/definitions/IDReadOnly"
+      state:
+        example: in-use
+        readOnly: true
+        type: string
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
+      volume_type_id:
+        "$ref": "#/definitions/IDReadOnly"
   VolumeAttachment:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      tenant_id:
-        "$ref": "#/definitions/ID"
-      vm_id:
-        "$ref": "#/definitions/ID"
-      volume_id:
-        "$ref": "#/definitions/ID"
       device:
-        type: string
-        readOnly: true
         example: "/dev/xvda"
-      state:
-        type: string
         readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      state:
         example: attached
+        readOnly: true
+        type: string
+      vm_id:
+        "$ref": "#/definitions/IDReadOnly"
+      volume_id:
+        "$ref": "#/definitions/IDReadOnly"
   VolumeAttachmentsCollection:
     type: object
     properties:
@@ -2349,24 +2579,40 @@ definitions:
   VolumeType:
     type: object
     properties:
-      id:
-        "$ref": "#/definitions/ID"
-      tenant_id:
-        "$ref": "#/definitions/ID"
-      source_id:
-        "$ref": "#/definitions/ID"
-      source_ref:
-        type: string
-      name:
-        type: string
-        example: standard
-      description:
-        type: string
-        example: Magnetic
       archived_at:
-        type: string
         format: date-time
         readOnly: true
+        type: string
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      description:
+        example: Magnetic
+        readOnly: true
+        type: string
+      extra:
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/IDReadOnly"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      name:
+        example: standard
+        readOnly: true
+        type: string
+      source_id:
+        "$ref": "#/definitions/IDReadOnly"
+      source_ref:
+        readOnly: true
+        type: string
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
   VolumeTypesCollection:
     type: object
     properties:
