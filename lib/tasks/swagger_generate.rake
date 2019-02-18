@@ -60,7 +60,11 @@ class SwaggerGenerator
         expected_paths[sub_path][verb] =
           case verb
           when "post"
-            swagger_contents.dig('paths', sub_path, 'post') || swagger_create_description(klass_name)
+            swagger_contents.dig('paths', sub_path, verb) || swagger_create_description(klass_name)
+          when "get"
+            swagger_contents.dig('paths', sub_path, verb) || swagger_show_description(klass_name)
+          else
+            swagger_contents.dig('paths', sub_path, verb)
           end
       end
     end
