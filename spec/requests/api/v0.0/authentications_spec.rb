@@ -1,26 +1,27 @@
-RSpec.describe("v0.1 - SourceTypes") do
-  let(:attributes)      { {"name" => "test_name", "product_name" => "Test Product", "vendor" => "TestVendor"} }
-  let(:collection_path) { "/api/v0.1/source_types" }
+RSpec.describe("v0.0 - Authentications") do
+  let(:attributes)      { {"username" => "test_name", "password" => "Test Password", "tenant_id" => tenant.id.to_s, "resource_type" => "Tenant", "resource_id" => tenant.id.to_s} }
+  let(:collection_path) { "/api/v0.0/authentications" }
+  let(:tenant)          { Tenant.create! }
 
-  describe("/api/v0.1/source_types") do
+  describe("/api/v0.0/authentications") do
     context "get" do
       it "success: empty collection" do
         get(collection_path)
 
         expect(response).to have_attributes(
           :status => 200,
-          :parsed_body => paginated_response(0, [])
+          :parsed_body => []
         )
       end
 
       it "success: non-empty collection" do
-        SourceType.create!(attributes)
+        Authentication.create!(attributes)
 
         get(collection_path)
 
         expect(response).to have_attributes(
           :status => 200,
-          :parsed_body => paginated_response(1, [a_hash_including(attributes)])
+          :parsed_body => [a_hash_including(attributes.except("password"))]
         )
       end
     end
@@ -31,8 +32,8 @@ RSpec.describe("v0.1 - SourceTypes") do
 
         expect(response).to have_attributes(
           :status => 201,
-          :location => "http://www.example.com/api/v0.1/source_types/#{response.parsed_body["id"]}",
-          :parsed_body => a_hash_including(attributes)
+          :location => "http://www.example.com/api/v0.0/authentications/#{response.parsed_body["id"]}",
+          :parsed_body => a_hash_including(attributes.except("password"))
         )
       end
 
@@ -58,63 +59,31 @@ RSpec.describe("v0.1 - SourceTypes") do
     end
   end
 
-  describe("/api/v0.1/source_types/:id") do
+  describe("/api/v0.0/authentications/:id") do
     def instance_path(id)
       File.join(collection_path, id.to_s)
     end
 
     context "get" do
       it "success: with a valid id" do
-        instance = SourceType.create!(attributes)
+        instance = Authentication.create!(attributes)
 
         get(instance_path(instance.id))
 
         expect(response).to have_attributes(
           :status => 200,
-          :parsed_body => attributes.merge("id" => instance.id.to_s)
+          :parsed_body => attributes.except("password").merge("id" => instance.id.to_s)
         )
       end
 
       it "failure: with an invalid id" do
-        instance = SourceType.create!(attributes)
+        instance = Authentication.create!(attributes)
 
         get(instance_path(instance.id * 1000))
 
         expect(response).to have_attributes(
           :status => 404,
           :parsed_body => ""
-        )
-      end
-    end
-  end
-
-  describe("/api/v0.1/source_types/:id/sources") do
-    def subcollection_path(id, subcollection)
-      File.join(collection_path, id.to_s, subcollection)
-    end
-
-    context "get" do
-      it "success: with a valid id" do
-        instance = SourceType.create!(attributes)
-
-        get(subcollection_path(instance.id, "sources"))
-
-        expect(response).to have_attributes(
-          :status => 200,
-          :parsed_body => paginated_response(0, [])
-        )
-      end
-
-      it "failure: with an invalid id" do
-        instance = SourceType.create!(attributes)
-        missing_id = (instance.id * 1000)
-        expect(Source.exists?(missing_id)).to eq(false)
-
-        get(subcollection_path(missing_id, "sources"))
-
-        expect(response).to have_attributes(
-          :status => 404,
-          :parsed_body => {"errors"=>[{"detail"=>"Couldn't find SourceType with 'id'=#{missing_id}", "status"=>404}]}
         )
       end
     end
