@@ -1,5 +1,5 @@
 RSpec.describe("v0.1 - SourceTypes") do
-  let(:attributes)      { {"name" => "test_name", "product_name" => "Test Product", "vendor" => "TestVendor", "created_at"=>"2019-02-13T16:23:24Z", "updated_at"=>"2019-02-13T16:23:24Z"} }
+  let(:attributes)      { {"name" => "test_name", "product_name" => "Test Product", "vendor" => "TestVendor"} }
   let(:collection_path) { "/api/v0.1/source_types" }
 
   def paginated_response(count, data)
@@ -79,7 +79,7 @@ RSpec.describe("v0.1 - SourceTypes") do
 
         expect(response).to have_attributes(
           :status => 200,
-          :parsed_body => attributes.merge("id" => instance.id.to_s)
+          :parsed_body => a_hash_including(attributes.merge("id" => instance.id.to_s))
         )
       end
 
