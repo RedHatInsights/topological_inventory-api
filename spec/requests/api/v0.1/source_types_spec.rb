@@ -71,7 +71,7 @@ RSpec.describe("v0.1 - SourceTypes") do
 
         expect(response).to have_attributes(
           :status => 200,
-          :parsed_body => attributes.merge("id" => instance.id.to_s)
+          :parsed_body => a_hash_including(attributes.merge("id" => instance.id.to_s))
         )
       end
 
