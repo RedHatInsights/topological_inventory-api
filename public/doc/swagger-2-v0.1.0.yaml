@@ -775,6 +775,22 @@ paths:
             "$ref": "#/definitions/SourceType"
         404:
           description: Not found
+  "/source_types/{id}/availabilities":
+    get:
+      summary: List Availabilities for SourceType
+      operationId: listSourceTypeAvailabilities
+      description: Returns an array of Availability objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Availabilities collection
+          schema:
+            "$ref": "#/definitions/AvailabilitiesCollection"
   "/source_types/{id}/sources":
     get:
       summary: List Sources for SourceType
