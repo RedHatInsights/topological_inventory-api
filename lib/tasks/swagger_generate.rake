@@ -194,7 +194,7 @@ class SwaggerGenerator
         properties_value[property_key] = property_value if property_value
       end
 
-      if GENERATOR_READ_ONLY_DEFINITIONS.include?(klass_name)
+      if GENERATOR_READ_ONLY_DEFINITIONS.include?(klass_name) || GENERATOR_READ_ONLY_ATTRIBUTES.include?(key.to_sym)
         # Everything under providers data is read only for now
         properties_value['readOnly'] = true
       end
@@ -385,6 +385,9 @@ GENERATOR_READ_ONLY_DEFINITIONS = [
   'Container', 'ContainerGroup', 'ContainerImage', 'ContainerNode', 'ContainerProject', 'ContainerTemplate', 'Flavor',
   'OrchestrationStack', 'ServiceInstance', 'ServiceOffering', 'ServiceOfferingIcon', 'ServicePlan', 'Tag', 'Tagging',
   'Vm', 'Volume', 'VolumeAttachment', 'VolumeType'
+].to_set.freeze
+GENERATOR_READ_ONLY_ATTRIBUTES = [
+  :created_at, :updated_at, :archived_at, :last_seen_at
 ].to_set.freeze
 
 namespace :swagger do
