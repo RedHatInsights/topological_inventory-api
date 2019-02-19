@@ -88,6 +88,58 @@ RSpec.describe("v0.0 - Sources") do
         )
       end
     end
+
+    context "patch" do
+      it "success: with a valid id" do
+        instance = Source.create!(attributes)
+        new_attributes = {"name" => "new name"}
+
+        patch(instance_path(instance.id), :params => new_attributes.to_json)
+
+        expect(response).to have_attributes(
+          :status => 204,
+          :parsed_body => ""
+        )
+
+        expect(instance.reload).to have_attributes(new_attributes)
+      end
+
+      it "failure: with an invalid id" do
+        instance = Source.create!(attributes)
+        new_attributes = {"name" => "new name"}
+
+        patch(instance_path(instance.id * 1000), :params => new_attributes.to_json)
+
+        expect(response).to have_attributes(
+          :status => 404,
+          :parsed_body => ""
+        )
+      end
+
+      it "failure: with extra parameters" do
+        instance = Source.create!(attributes)
+        new_attributes = {"aaaaa" => "bbbbb"}
+
+        patch(instance_path(instance.id), :params => new_attributes.to_json)
+
+        expect(response).to have_attributes(
+          :status => 400,
+          :parsed_body => {"errors" => [{"detail"=>"found unpermitted parameter: :aaaaa", "status" => 400}]}
+        )
+      end
+
+      it "failure: with read-only parameters" do
+        instance = Source.create!(attributes)
+        new_attributes = {"uid" => "xxxxx"}
+
+        patch(instance_path(instance.id), :params => new_attributes.to_json)
+
+        expect(response).to have_attributes(
+          :status => 400,
+          :parsed_body => {"errors" => [{"detail"=>"found unpermitted parameter: :uid", "status" => 400}]}
+        )
+      end
+    end
   end
 
   describe("subcollections") do
