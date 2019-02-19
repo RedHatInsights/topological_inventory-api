@@ -1,7 +1,6 @@
 module Api
   module V0x0
     class AuthenticationsController < Api::V0::AuthenticationsController; end
-    class AvailabilitiesController < Api::V0::AvailabilitiesController; end
     class ContainersController < Api::V0::ContainersController; end
     class ContainerGroupsController < Api::V0::ContainerGroupsController; end
     class ContainerImagesController < Api::V0::ContainerImagesController; end

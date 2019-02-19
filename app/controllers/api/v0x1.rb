@@ -10,9 +10,7 @@ module Api
       include Api::V0x1::Mixins::IndexMixin
     end
 
-    class AvailabilitiesController < Api::V0x0::AvailabilitiesController
-      include Api::V0x1::Mixins::IndexMixin
-    end
+    class AvailabilitiesController < Api::V0::AvailabilitiesController; end
 
     class ContainersController < Api::V0x0::ContainersController
       include Api::V0x1::Mixins::IndexMixin

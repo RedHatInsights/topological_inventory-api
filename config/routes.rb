@@ -104,7 +104,6 @@ Rails.application.routes.draw do
         resources :sources, :only => [:index]
       end
       resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
-        resources :availabilities,          :only => [:index]
         resources :containers,              :only => [:index]
         resources :container_groups,        :only => [:index]
         resources :container_images,        :only => [:index]
