@@ -2276,6 +2276,9 @@ definitions:
         readOnly: true
         title: Name
         type: string
+      resource_version:
+        readOnly: true
+        type: string
       service_offering_id:
         "$ref": "#/definitions/IDReadOnly"
       source_created_at:
