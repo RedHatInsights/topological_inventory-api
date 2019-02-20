@@ -42,9 +42,11 @@ Rails.application.routes.draw do
         resources :service_instances, :only => [:index]
       end
       resources :source_types, :only => [:create, :index, :show] do
-        resources :sources, :only => [:index]
+        resources :availabilities, :only => [:index]
+        resources :sources,        :only => [:index]
       end
       resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
+        resources :availabilities,          :only => [:index]
         resources :containers,              :only => [:index]
         resources :container_groups,        :only => [:index]
         resources :container_images,        :only => [:index]
