@@ -52,7 +52,7 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
 
       it "publishes a message to the messaging client" do
         expect(client).to receive(:publish_message).with(
-          :service => "platform.topological_inventory.operations-openshift",
+          :service => "platform.topological-inventory.operations-openshift",
           :message => "order_service",
           :payload => {:task_id => kind_of(Numeric), :service_plan_id => service_plan.id, :order_params => payload}
         )

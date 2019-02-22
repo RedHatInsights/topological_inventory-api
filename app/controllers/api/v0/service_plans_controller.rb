@@ -9,7 +9,7 @@ module Api
         task = Task.create!(:tenant => service_plan.tenant, :status => "started")
 
         messaging_client.publish_message(
-          :service => "platform.topological_inventory.operations-openshift",
+          :service => "platform.topological-inventory.operations-openshift",
           :message => "order_service",
           :payload => {:task_id => task.id, :service_plan_id => service_plan.id, :order_params => params_for_order}
         )
@@ -50,10 +50,6 @@ module Api
           :port     => ENV["QUEUE_PORT"] || "9092",
           :encoding => "json"
         }
-      end
-
-      def model
-        ServicePlan
       end
     end
   end
