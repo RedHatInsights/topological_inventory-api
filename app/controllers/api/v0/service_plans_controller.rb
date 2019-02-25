@@ -21,26 +21,18 @@ module Api
 
       private
 
-      def service_plan_id
-        params[:service_plan_id].to_i
-      end
-
       def params_for_order
-        params.permit(
+        @params_for_order ||= params.permit(
           :service_plan_id,
           :service_parameters          => {},
           :provider_control_parameters => {}
         ).to_h
       end
 
-      def params_for_list
-        params.permit(:source_id, :tenant_id, :service_offering_id)
-      end
-
       def messaging_client
         require "manageiq-messaging"
 
-        ManageIQ::Messaging::Client.open(messaging_opts)
+        @messaging_client ||= ManageIQ::Messaging::Client.open(messaging_opts)
       end
 
       def messaging_opts
