@@ -76,6 +76,7 @@ module Api
 
     class TasksController < Api::V0x0::TasksController
       include Api::V0x1::Mixins::IndexMixin
+      include Api::V0::Mixins::UpdateMixin
     end
 
     class VmsController < Api::V0x0::VmsController
