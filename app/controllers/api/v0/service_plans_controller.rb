@@ -10,7 +10,7 @@ module Api
 
         messaging_client.publish_message(
           :service => "platform.topological-inventory.operations-openshift",
-          :message => "order_service",
+          :message => "ServicePlan.order",
           :payload => {:task_id => task.id, :service_plan_id => service_plan.id, :order_params => params_for_order}
         )
 
