@@ -1,3 +1,5 @@
+require "manageiq-messaging"
+
 RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
   it("Uses IndexMixin") { expect(described_class.instance_method(:index).owner).to eq(Api::V0x1::Mixins::IndexMixin) }
   it("Uses ShowMixin")  { expect(described_class.instance_method(:show).owner).to eq(Api::V0::Mixins::ShowMixin) }
@@ -30,37 +32,39 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
       )
     end
 
-    let(:order_parameters) do
-      {
-        :service_parameters          => service_parameters,
-        :provider_control_parameters => provider_control_parameters
-      }
-    end
     let(:service_parameters) { {"DB_NAME" => "TEST_DB", "namespace" => "TEST_DB_NAMESPACE"} }
     let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test"} }
 
-    before do
-      allow_any_instance_of(ServicePlan).to receive(:order).with(order_parameters).and_return("task_context")
-    end
-
     context "with a well formed service plan id" do
-      before do
-        payload = {
+      let(:client) { double(:client) }
+      let(:payload) do
+        {
+          "service_plan_id"             => service_plan.id.to_s,
           "service_parameters"          => service_parameters,
           "provider_control_parameters" => provider_control_parameters
         }
+      end
+
+      before do
+        allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
+        allow(client).to receive(:publish_message)
+      end
+
+      it "publishes a message to the messaging client" do
+        expect(client).to receive(:publish_message).with(
+          :service => "platform.topological-inventory.operations-openshift",
+          :message => "ServicePlan.order",
+          :payload => {:task_id => kind_of(Numeric), :service_plan_id => service_plan.id, :order_params => payload}
+        )
 
         post "/api/v0.1/service_plans/#{service_plan.id}/order", :params => payload
-
-        @body = JSON.parse(response.body)
       end
 
       it "returns json with the task id" do
-        expect(@body).to have_key("task_id")
-      end
+        post "/api/v0.1/service_plans/#{service_plan.id}/order", :params => payload
 
-      it "sets the context based on the results of the order and sets the status of the task to completed" do
-        expect(Task.find(@body["task_id"])).to have_attributes(:context => "task_context", :status => "completed")
+        @body = JSON.parse(response.body)
+        expect(@body).to have_key("task_id")
       end
     end
 
