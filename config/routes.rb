@@ -63,7 +63,7 @@ Rails.application.routes.draw do
         resources :volumes,                 :only => [:index]
       end
       resources :tags, :only => [:index, :show]
-      resources :tasks, :only => [:index, :show]
+      resources :tasks, :only => [:index, :show, :update]
       resources :vms, :only => [:index, :show] do
         resources :volume_attachments, :only => [:index]
         resources :volumes,            :only => [:index]
