@@ -2539,10 +2539,10 @@ definitions:
         readOnly: true
         type: string
       mac_addresses:
-        readOnly: true
-        type: array
         items:
           type: string
+        readOnly: true
+        type: array
       memory:
         description: Total RAM in bytes
         example: 17179869184
