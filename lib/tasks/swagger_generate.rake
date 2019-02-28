@@ -186,6 +186,11 @@ class SwaggerGenerator
         properties_value["type"] = "number"
       when :boolean
         properties_value["type"] = "boolean"
+      when :jsonb
+        ['type', 'items'].each do |property_key|
+          prop = swagger_contents.dig("definitions", klass_name, "properties", key, property_key)
+          properties_value[property_key] = prop if prop.present?
+        end
       end
 
       # Take existing attrs, that we won't generate

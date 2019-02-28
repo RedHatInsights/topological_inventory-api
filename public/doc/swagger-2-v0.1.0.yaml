@@ -2524,6 +2524,10 @@ definitions:
         type: string
       flavor_id:
         "$ref": "#/definitions/ID"
+      host_inventory_uuid:
+        format: uuid
+        readOnly: true
+        type: string
       hostname:
         example: localhost.localdomain
         readOnly: true
@@ -2534,6 +2538,11 @@ definitions:
         format: date-time
         readOnly: true
         type: string
+      mac_addresses:
+        items:
+          type: string
+        readOnly: true
+        type: array
       memory:
         description: Total RAM in bytes
         example: 17179869184
