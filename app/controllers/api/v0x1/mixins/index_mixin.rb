@@ -13,10 +13,8 @@ module Api
         end
 
         def scoped(relation)
-          if model.respond_to?(:taggable?) && model.taggable?
-            ref_schema = {model.tagging_relation_name => :tag}
-
-            relation = relation.includes(ref_schema).references(ref_schema)
+          if through_relation_klass
+            relation = relation.joins(through_relation_klass.table_name.to_sym)
           end
 
           relation

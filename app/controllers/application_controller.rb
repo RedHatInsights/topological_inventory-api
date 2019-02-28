@@ -53,7 +53,15 @@ class ApplicationController < ActionController::API
 
   def safe_params_for_list
     # :limit & :offset can be passed in for pagination purposes, but shouldn't show up as params for filtering purposes
-    @safe_params_for_list ||= params.merge(params_for_polymorphic_subcollection).permit(*api_doc_definition.all_attributes + [:limit, :offset] + ["#{request_path_parts["primary_collection_name"].singularize}_id"])
+    @safe_params_for_list ||= params.merge(params_for_polymorphic_subcollection).permit(*permitted_params)
+  end
+
+  def permitted_params
+    api_doc_definition.all_attributes + [:limit, :offset] + [subcollection_foreign_key]
+  end
+
+  def subcollection_foreign_key
+    "#{request_path_parts["primary_collection_name"].singularize}_id"
   end
 
   def params_for_polymorphic_subcollection
@@ -68,7 +76,31 @@ class ApplicationController < ActionController::API
   end
 
   def params_for_list
-    safe_params_for_list.slice(*api_doc_definition.all_attributes)
+    safe_params = safe_params_for_list.slice(*all_attributes_for_index)
+    if safe_params[attribute_for_through_subcollection]
+      p = safe_params.delete(attribute_for_through_subcollection)
+      safe_params[through_relation_klass.table_name.to_sym] = {attribute_for_through_subcollection => p}
+    end
+
+    safe_params
+  end
+
+  def through_relation_klass
+    return unless subcollection?
+    return unless reflection = primary_collection_model&.reflect_on_association(request_path_parts["subcollection_name"])
+    return unless through = reflection.options[:through]
+
+    primary_collection_model&.reflect_on_association(through).klass
+  end
+
+  def attribute_for_through_subcollection
+    return unless through_relation_klass
+
+    subcollection_foreign_key
+  end
+
+  def all_attributes_for_index
+    api_doc_definition.all_attributes + [attribute_for_through_subcollection]
   end
 
   def pagination_limit
