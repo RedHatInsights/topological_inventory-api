@@ -2525,6 +2525,7 @@ definitions:
       flavor_id:
         "$ref": "#/definitions/ID"
       host_inventory_uuid:
+        format: uuid
         readOnly: true
         type: string
       hostname:
