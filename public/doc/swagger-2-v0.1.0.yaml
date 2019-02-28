@@ -1406,7 +1406,7 @@ definitions:
         example: openshift_default
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         example: OpenShift default
         type: string
@@ -1462,7 +1462,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       identifier:
         example: "/service_offerings"
         readOnly: true
@@ -1474,7 +1474,7 @@ definitions:
         format: date-time
         type: string
       resource_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       resource_type:
         readOnly: true
         type: string
@@ -1506,9 +1506,9 @@ definitions:
         readOnly: true
         type: string
       container_group_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       container_image_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       cpu_limit:
         format: double
         readOnly: true
@@ -1522,7 +1522,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       memory_limit:
         readOnly: true
         type: integer
@@ -1545,15 +1545,15 @@ definitions:
         readOnly: true
         type: string
       container_node_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       container_project_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       created_at:
         format: date-time
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       ipaddress:
         example: 192.0.2.1
         readOnly: true
@@ -1580,7 +1580,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         format: uuid
         readOnly: true
@@ -1617,7 +1617,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -1638,7 +1638,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         readOnly: true
         type: string
@@ -1682,13 +1682,13 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
         type: string
       lives_on_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       lives_on_type:
         example: Vm
         readOnly: true
@@ -1714,7 +1714,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         format: uuid
         readOnly: true
@@ -1756,7 +1756,7 @@ definitions:
         title: Display Name
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -1778,7 +1778,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         format: uuid
         readOnly: true
@@ -1811,13 +1811,13 @@ definitions:
         readOnly: true
         type: string
       container_project_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       created_at:
         format: date-time
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -1839,7 +1839,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         format: uuid
         readOnly: true
@@ -1892,7 +1892,7 @@ definitions:
         example: www.example.com
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       path:
         description: URI path component
         example: "/api/v1"
@@ -1961,7 +1961,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -1975,7 +1975,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         format: uuid
         readOnly: true
@@ -1999,10 +1999,7 @@ definitions:
     type: string
     description: ID of the resource
     pattern: "/^\\d+$/"
-  IDReadOnly:
-    allOf:
-    - "$ref": "#/definitions/ID"
-    - readOnly: true
+    readOnly: true
   OrchestrationStack:
     type: object
     properties:
@@ -2019,7 +2016,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -2038,7 +2035,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         format: uuid
         readOnly: true
@@ -2083,7 +2080,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -2094,9 +2091,9 @@ definitions:
         title: Name
         type: string
       service_offering_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       service_plan_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_created_at:
         format: date-time
         readOnly: true
@@ -2106,15 +2103,15 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         format: uuid
         readOnly: true
         type: string
       source_region_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       subscription_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       updated_at:
         format: date-time
         readOnly: true
@@ -2166,7 +2163,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -2182,7 +2179,7 @@ definitions:
         title: Name
         type: string
       service_offering_icon_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_created_at:
         format: date-time
         readOnly: true
@@ -2192,7 +2189,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         description: The native reference used by the Source to refer to this object
         example: object-12345_67890
@@ -2200,9 +2197,9 @@ definitions:
         title: Source reference
         type: string
       source_region_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       subscription_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       support_url:
         example: https://access.redhat.com
         readOnly: true
@@ -2230,9 +2227,9 @@ definitions:
         title: Icon Data
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         example: icon-mariadb
         readOnly: true
@@ -2287,7 +2284,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -2301,7 +2298,7 @@ definitions:
         readOnly: true
         type: string
       service_offering_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_created_at:
         format: date-time
         readOnly: true
@@ -2311,15 +2308,15 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         format: uuid
         readOnly: true
         type: string
       source_region_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       subscription_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       update_json_schema:
         readOnly: true
         type: string
@@ -2346,7 +2343,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         example: Sample Provider
         title: Name
@@ -2376,7 +2373,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         example: openshift
         type: string
@@ -2426,7 +2423,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         example: architecture
         readOnly: true
@@ -2439,7 +2436,7 @@ definitions:
     type: object
     properties:
       tag_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         type: string
         readOnly: true
@@ -2474,7 +2471,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       name:
         example: Order Service Plan
         title: Name
@@ -2526,13 +2523,13 @@ definitions:
         readOnly: true
         type: string
       flavor_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       hostname:
         example: localhost.localdomain
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -2548,7 +2545,7 @@ definitions:
         title: Name
         type: string
       orchestration_stack_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       power_state:
         example: running
         readOnly: true
@@ -2562,7 +2559,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         format: uuid
         readOnly: true
@@ -2606,7 +2603,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -2629,12 +2626,12 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         readOnly: true
         type: string
       source_region_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       state:
         example: in-use
         readOnly: true
@@ -2644,7 +2641,7 @@ definitions:
         readOnly: true
         type: string
       volume_type_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
   VolumeAttachment:
     type: object
     properties:
@@ -2653,15 +2650,15 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       state:
         example: attached
         readOnly: true
         type: string
       vm_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       volume_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
   VolumeAttachmentsCollection:
     type: object
     properties:
@@ -2692,7 +2689,7 @@ definitions:
         readOnly: true
         type: string
       id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
         readOnly: true
@@ -2702,7 +2699,7 @@ definitions:
         readOnly: true
         type: string
       source_id:
-        "$ref": "#/definitions/IDReadOnly"
+        "$ref": "#/definitions/ID"
       source_ref:
         readOnly: true
         type: string

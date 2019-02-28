@@ -161,15 +161,15 @@ class SwaggerGenerator
   def swagger_definition_properties_value(klass_name, model, key, value)
     if key == model.primary_key
       {
-        "$ref" => "#/definitions/IDReadOnly"
+        "$ref" => "#/definitions/ID"
       }
     elsif key.ends_with?("_id")
       properties_value = {}
       if GENERATOR_READ_ONLY_DEFINITIONS.include?(klass_name)
         # Everything under providers data is read only for now
-        properties_value["$ref"] = "#/definitions/IDReadOnly"
+        properties_value["$ref"] = "#/definitions/ID"
       else
-        properties_value["$ref"] = swagger_contents.dig("definitions", klass_name, "properties", key, "$ref") || "#/definitions/IDReadOnly"
+        properties_value["$ref"] = swagger_contents.dig("definitions", klass_name, "properties", key, "$ref") || "#/definitions/ID"
       end
       properties_value
     else
@@ -353,18 +353,14 @@ class SwaggerGenerator
     definitions["Tagging"] = {
       "type"       => "object",
       "properties" => {
-        "tag_id" => {"$ref" => "#/definitions/IDReadOnly"},
+        "tag_id" => {"$ref" => "#/definitions/ID"},
         "name"   => {"type" => "string", "readOnly" => true, "example" => "architecture"},
         "value"  => {"type" => "string", "readOnly" => true, "example" => "x86_64"}
       }
     }
 
     definitions["ID"] = {
-      "type"=>"string", "description"=>"ID of the resource", "pattern"=>"/^\\d+$/"
-    }
-
-    definitions["IDReadOnly"] = {
-      "allOf"=>[{"$ref"=>"#/definitions/ID"}, {"readOnly"=>true}]
+      "type"=>"string", "description"=>"ID of the resource", "pattern"=>"/^\\d+$/", "readOnly"=>true
     }
 
     new_content = swagger_contents
