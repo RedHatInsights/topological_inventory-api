@@ -2524,6 +2524,9 @@ definitions:
         type: string
       flavor_id:
         "$ref": "#/definitions/ID"
+      host_inventory_uuid:
+        readOnly: true
+        type: string
       hostname:
         example: localhost.localdomain
         readOnly: true
@@ -2532,6 +2535,9 @@ definitions:
         "$ref": "#/definitions/ID"
       last_seen_at:
         format: date-time
+        readOnly: true
+        type: string
+      mac_addresses:
         readOnly: true
         type: string
       memory:
