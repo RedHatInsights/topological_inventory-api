@@ -98,6 +98,14 @@ class ApplicationController < ActionController::API
     primary_collection_model&.reflect_on_association(through).klass
   end
 
+  def through_relation_name
+    # Through relation name taken from the subcollection model side, so we can use this for table join.
+    return unless through_relation_klass
+    return unless through_relation_association = model.reflect_on_all_associations.detect { |x| x.klass == through_relation_klass }
+
+    through_relation_association.name
+  end
+
   def subcollection_foreign_key_using_through_relation
     return unless through_relation_klass
 

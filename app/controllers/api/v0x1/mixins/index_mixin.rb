@@ -14,7 +14,7 @@ module Api
 
         def scoped(relation)
           if through_relation_klass
-            relation = relation.joins(through_relation_klass.table_name.to_sym)
+            relation = relation.joins(through_relation_name)
           end
 
           relation
