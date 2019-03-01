@@ -16,11 +16,11 @@ Rails.application.routes.draw do
       resources :containers,              :only => [:index, :show]
       resources :container_groups,        :only => [:index, :show] do
         resources :containers, :only => [:index]
-        resources :tags, :only => [:index]
+        resources :tags,       :only => [:index]
       end
       resources :container_nodes,         :only => [:index, :show] do
         resources :container_groups, :only => [:index]
-        resources :tags, :only => [:index]
+        resources :tags,             :only => [:index]
       end
       resources :container_images,        :only => [:index, :show] do
         resources :tags, :only => [:index]
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       resources :container_projects,      :only => [:index, :show] do
         resources :container_groups,    :only => [:index]
         resources :container_templates, :only => [:index]
-        resources :tags, :only => [:index]
+        resources :tags,                :only => [:index]
       end
       resources :container_templates,     :only => [:index, :show] do
         resources :tags, :only => [:index]
@@ -40,9 +40,9 @@ Rails.application.routes.draw do
       resources :service_instances,       :only => [:index, :show]
       resources :service_offering_icons,  :only => [:index, :show]
       resources :service_offerings,       :only => [:index, :show] do
-        resources :service_instances,       :only => [:index]
-        resources :service_plans, :only => [:index]
-        resources :tags, :only => [:index]
+        resources :service_instances, :only => [:index]
+        resources :service_plans,     :only => [:index]
+        resources :tags,              :only => [:index]
       end
       resources :orchestration_stacks, :only => [:index, :show]
       resources :service_plans, :only => [:index, :show] do
