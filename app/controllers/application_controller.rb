@@ -77,9 +77,14 @@ class ApplicationController < ActionController::API
 
   def params_for_list
     safe_params = safe_params_for_list.slice(*all_attributes_for_index)
-    if safe_params[attribute_for_through_subcollection]
-      p = safe_params.delete(attribute_for_through_subcollection)
-      safe_params[through_relation_klass.table_name.to_sym] = {attribute_for_through_subcollection => p}
+    if safe_params[subcollection_foreign_key_using_through_relation]
+      # If this is a through relation, we need to replace the :foreign_key by the foreign key with right table
+      # information. So e.g. :container_images with :tags subcollection will have {:container_image_id => ID} and we need
+      # to replace it with {:container_images_tags => {:container_image_id => ID}}, where :container_images_tags is the
+      # name of the mapping table.
+      safe_params[through_relation_klass.table_name.to_sym] = {
+        subcollection_foreign_key_using_through_relation => safe_params.delete(subcollection_foreign_key_using_through_relation)
+      }
     end
 
     safe_params
@@ -93,14 +98,14 @@ class ApplicationController < ActionController::API
     primary_collection_model&.reflect_on_association(through).klass
   end
 
-  def attribute_for_through_subcollection
+  def subcollection_foreign_key_using_through_relation
     return unless through_relation_klass
 
     subcollection_foreign_key
   end
 
   def all_attributes_for_index
-    api_doc_definition.all_attributes + [attribute_for_through_subcollection]
+    api_doc_definition.all_attributes + [subcollection_foreign_key_using_through_relation]
   end
 
   def pagination_limit
