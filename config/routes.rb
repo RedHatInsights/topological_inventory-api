@@ -18,12 +18,12 @@ Rails.application.routes.draw do
         resources :containers, :only => [:index]
         resources :tags,       :only => [:index]
       end
+      resources :container_images,        :only => [:index, :show] do
+        resources :tags, :only => [:index]
+      end
       resources :container_nodes,         :only => [:index, :show] do
         resources :container_groups, :only => [:index]
         resources :tags,             :only => [:index]
-      end
-      resources :container_images,        :only => [:index, :show] do
-        resources :tags, :only => [:index]
       end
       resources :container_projects,      :only => [:index, :show] do
         resources :container_groups,    :only => [:index]
