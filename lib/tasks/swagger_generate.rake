@@ -136,26 +136,13 @@ class SwaggerGenerator
 
   def swagger_definition_properties(klass_name)
     model = klass_name.constantize
-    attrs = model.columns_hash.map do |key, value|
+    model.columns_hash.map do |key, value|
       unless(GENERATOR_ALLOW_BLACKLISTED_ATTRIBUTES[key.to_sym] || []).include?(klass_name)
         next if GENERATOR_BLACKLIST_ATTRIBUTES.include?(key.to_sym)
       end
 
       [key, swagger_definition_properties_value(klass_name, model, key, value)]
-    end
-
-    if model.respond_to?(:taggable?) && model.taggable?
-      attrs << [
-        "taggings",
-        {
-          "type"     => "array",
-          "items"    => {"$ref" => "#/definitions/Tagging"},
-          "readOnly" => true
-        }
-      ]
-    end
-
-    attrs.compact.sort.to_h
+    end.compact.sort.to_h
   end
 
   def swagger_definition_properties_value(klass_name, model, key, value)

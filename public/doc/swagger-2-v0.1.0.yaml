@@ -148,6 +148,22 @@ paths:
           description: Containers collection
           schema:
             "$ref": "#/definitions/ContainersCollection"
+  "/container_groups/{id}/tags":
+    get:
+      summary: List Tags for ContainerGroup
+      operationId: listContainerGroupTags
+      description: Returns an array of Tag objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Tags collection
+          schema:
+            "$ref": "#/definitions/TagsCollection"
   "/container_images":
     get:
       summary: List ContainerImages
@@ -179,6 +195,22 @@ paths:
             "$ref": "#/definitions/ContainerImage"
         404:
           description: Not found
+  "/container_images/{id}/tags":
+    get:
+      summary: List Tags for ContainerImage
+      operationId: listContainerImageTags
+      description: Returns an array of Tag objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Tags collection
+          schema:
+            "$ref": "#/definitions/TagsCollection"
   "/container_nodes":
     get:
       summary: List ContainerNodes
@@ -226,6 +258,22 @@ paths:
           description: ContainerGroups collection
           schema:
             "$ref": "#/definitions/ContainerGroupsCollection"
+  "/container_nodes/{id}/tags":
+    get:
+      summary: List Tags for ContainerNode
+      operationId: listContainerNodeTags
+      description: Returns an array of Tag objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Tags collection
+          schema:
+            "$ref": "#/definitions/TagsCollection"
   "/container_projects":
     get:
       summary: List ContainerProjects
@@ -289,6 +337,22 @@ paths:
           description: ContainerTemplates collection
           schema:
             "$ref": "#/definitions/ContainerTemplatesCollection"
+  "/container_projects/{id}/tags":
+    get:
+      summary: List Tags for ContainerProject
+      operationId: listContainerProjectTags
+      description: Returns an array of Tag objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Tags collection
+          schema:
+            "$ref": "#/definitions/TagsCollection"
   "/container_templates":
     get:
       summary: List ContainerTemplates
@@ -320,6 +384,22 @@ paths:
             "$ref": "#/definitions/ContainerTemplate"
         404:
           description: Not found
+  "/container_templates/{id}/tags":
+    get:
+      summary: List Tags for ContainerTemplate
+      operationId: listContainerTemplateTags
+      description: Returns an array of Tag objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Tags collection
+          schema:
+            "$ref": "#/definitions/TagsCollection"
   "/containers":
     get:
       summary: List Containers
@@ -650,6 +730,22 @@ paths:
           description: ServicePlans collection
           schema:
             "$ref": "#/definitions/ServicePlansCollection"
+  "/service_offerings/{id}/tags":
+    get:
+      summary: List Tags for ServiceOffering
+      operationId: listServiceOfferingTags
+      description: Returns an array of Tag objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Tags collection
+          schema:
+            "$ref": "#/definitions/TagsCollection"
   "/service_plans":
     get:
       summary: List ServicePlans
@@ -1165,6 +1261,118 @@ paths:
             "$ref": "#/definitions/Tag"
         404:
           description: Not found
+  "/tags/{id}/container_groups":
+    get:
+      summary: List ContainerGroups for Tag
+      operationId: listTagContainerGroups
+      description: Returns an array of ContainerGroup objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerGroups collection
+          schema:
+            "$ref": "#/definitions/ContainerGroupsCollection"
+  "/tags/{id}/container_images":
+    get:
+      summary: List ContainerImages for Tag
+      operationId: listTagContainerImages
+      description: Returns an array of ContainerImage objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerImages collection
+          schema:
+            "$ref": "#/definitions/ContainerImagesCollection"
+  "/tags/{id}/container_nodes":
+    get:
+      summary: List ContainerNodes for Tag
+      operationId: listTagContainerNodes
+      description: Returns an array of ContainerNode objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerNodes collection
+          schema:
+            "$ref": "#/definitions/ContainerNodesCollection"
+  "/tags/{id}/container_projects":
+    get:
+      summary: List ContainerProjects for Tag
+      operationId: listTagContainerProjects
+      description: Returns an array of ContainerProject objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerProjects collection
+          schema:
+            "$ref": "#/definitions/ContainerProjectsCollection"
+  "/tags/{id}/container_templates":
+    get:
+      summary: List ContainerTemplates for Tag
+      operationId: listTagContainerTemplates
+      description: Returns an array of ContainerTemplate objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerTemplates collection
+          schema:
+            "$ref": "#/definitions/ContainerTemplatesCollection"
+  "/tags/{id}/service_offerings":
+    get:
+      summary: List ServiceOfferings for Tag
+      operationId: listTagServiceOfferings
+      description: Returns an array of ServiceOffering objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ServiceOfferings collection
+          schema:
+            "$ref": "#/definitions/ServiceOfferingsCollection"
+  "/tags/{id}/vms":
+    get:
+      summary: List Vms for Tag
+      operationId: listTagVms
+      description: Returns an array of Vm objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Vms collection
+          schema:
+            "$ref": "#/definitions/VmsCollection"
   "/tasks":
     get:
       summary: List Tasks
@@ -1248,6 +1456,22 @@ paths:
             "$ref": "#/definitions/Vm"
         404:
           description: Not found
+  "/vms/{id}/tags":
+    get:
+      summary: List Tags for Vm
+      operationId: listVmTags
+      description: Returns an array of Tag objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Tags collection
+          schema:
+            "$ref": "#/definitions/TagsCollection"
   "/vms/{id}/volume_attachments":
     get:
       summary: List VolumeAttachments for Vm
@@ -1585,11 +1809,6 @@ definitions:
         format: uuid
         readOnly: true
         type: string
-      taggings:
-        type: array
-        items:
-          "$ref": "#/definitions/Tagging"
-        readOnly: true
       updated_at:
         format: date-time
         readOnly: true
@@ -1646,11 +1865,6 @@ definitions:
         example: latest
         readOnly: true
         type: string
-      taggings:
-        type: array
-        items:
-          "$ref": "#/definitions/Tagging"
-        readOnly: true
       updated_at:
         format: date-time
         readOnly: true
@@ -1719,11 +1933,6 @@ definitions:
         format: uuid
         readOnly: true
         type: string
-      taggings:
-        type: array
-        items:
-          "$ref": "#/definitions/Tagging"
-        readOnly: true
       updated_at:
         format: date-time
         readOnly: true
@@ -1783,11 +1992,6 @@ definitions:
         format: uuid
         readOnly: true
         type: string
-      taggings:
-        type: array
-        items:
-          "$ref": "#/definitions/Tagging"
-        readOnly: true
       updated_at:
         format: date-time
         readOnly: true
@@ -1844,11 +2048,6 @@ definitions:
         format: uuid
         readOnly: true
         type: string
-      taggings:
-        type: array
-        items:
-          "$ref": "#/definitions/Tagging"
-        readOnly: true
       updated_at:
         format: date-time
         readOnly: true
@@ -2205,11 +2404,6 @@ definitions:
         readOnly: true
         title: Support URL
         type: string
-      taggings:
-        type: array
-        items:
-          "$ref": "#/definitions/Tagging"
-        readOnly: true
       updated_at:
         format: date-time
         readOnly: true
@@ -2432,6 +2626,9 @@ definitions:
         example: openshift
         readOnly: true
         type: string
+      value:
+        readOnly: true
+        type: string
   Tagging:
     type: object
     properties:
@@ -2573,11 +2770,6 @@ definitions:
         format: uuid
         readOnly: true
         type: string
-      taggings:
-        type: array
-        items:
-          "$ref": "#/definitions/Tagging"
-        readOnly: true
       uid_ems:
         description: Cross-Source Unique Reference
         readOnly: true

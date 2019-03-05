@@ -53,7 +53,15 @@ class ApplicationController < ActionController::API
 
   def safe_params_for_list
     # :limit & :offset can be passed in for pagination purposes, but shouldn't show up as params for filtering purposes
-    @safe_params_for_list ||= params.merge(params_for_polymorphic_subcollection).permit(*api_doc_definition.all_attributes + [:limit, :offset] + ["#{request_path_parts["primary_collection_name"].singularize}_id"])
+    @safe_params_for_list ||= params.merge(params_for_polymorphic_subcollection).permit(*permitted_params)
+  end
+
+  def permitted_params
+    api_doc_definition.all_attributes + [:limit, :offset] + [subcollection_foreign_key]
+  end
+
+  def subcollection_foreign_key
+    "#{request_path_parts["primary_collection_name"].singularize}_id"
   end
 
   def params_for_polymorphic_subcollection
@@ -68,7 +76,44 @@ class ApplicationController < ActionController::API
   end
 
   def params_for_list
-    safe_params_for_list.slice(*api_doc_definition.all_attributes)
+    safe_params = safe_params_for_list.slice(*all_attributes_for_index)
+    if safe_params[subcollection_foreign_key_using_through_relation]
+      # If this is a through relation, we need to replace the :foreign_key by the foreign key with right table
+      # information. So e.g. :container_images with :tags subcollection will have {:container_image_id => ID} and we need
+      # to replace it with {:container_images_tags => {:container_image_id => ID}}, where :container_images_tags is the
+      # name of the mapping table.
+      safe_params[through_relation_klass.table_name.to_sym] = {
+        subcollection_foreign_key_using_through_relation => safe_params.delete(subcollection_foreign_key_using_through_relation)
+      }
+    end
+
+    safe_params
+  end
+
+  def through_relation_klass
+    return unless subcollection?
+    return unless reflection = primary_collection_model&.reflect_on_association(request_path_parts["subcollection_name"])
+    return unless through = reflection.options[:through]
+
+    primary_collection_model&.reflect_on_association(through).klass
+  end
+
+  def through_relation_name
+    # Through relation name taken from the subcollection model side, so we can use this for table join.
+    return unless through_relation_klass
+    return unless through_relation_association = model.reflect_on_all_associations.detect { |x| !x.polymorphic? && x.klass == through_relation_klass }
+
+    through_relation_association.name
+  end
+
+  def subcollection_foreign_key_using_through_relation
+    return unless through_relation_klass
+
+    subcollection_foreign_key
+  end
+
+  def all_attributes_for_index
+    api_doc_definition.all_attributes + [subcollection_foreign_key_using_through_relation]
   end
 
   def pagination_limit
