@@ -37,7 +37,7 @@ describe Api::V0x1::Mixins::IndexMixin do
         get(api_v0x1_sources_url)
 
         expect(response.status).to eq(200)
-        expect(response.parsed_body["meta"]).to eq("count" => 2)
+        expect(response.parsed_body["meta"]).to eq("count" => 2, "limit" => 100, "offset" => 0)
       end
     end
   end
