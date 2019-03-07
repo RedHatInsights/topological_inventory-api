@@ -54,7 +54,7 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
         expect(client).to receive(:publish_message).with(
           :service => "platform.topological-inventory.operations-openshift",
           :message => "ServicePlan.order",
-          :payload => {:task_id => kind_of(Numeric), :service_plan_id => service_plan.id, :order_params => payload}
+          :payload => {:task_id => kind_of(String), :service_plan_id => service_plan.id.to_s, :order_params => payload}
         )
 
         post "/api/v0.0/service_plans/#{service_plan.id}/order", :params => payload

@@ -6,11 +6,12 @@ RSpec.describe Api::V0x1::TasksController, :type => :request do
   let(:tenant) { Tenant.create! }
 
   it "patch /tasks/:id updates a Task" do
-    task = Task.create!(:status => "started", :context => "context1", :tenant => tenant)
+    task = Task.create!(:state => "running", :status => "ok", :context => "context1", :tenant => tenant)
 
-    patch(api_v0x1_task_url(task.id), :params => {:status => "completed", :context => "context2"}.to_json)
+    patch(api_v0x1_task_url(task.id), :params => {:state => "completed", :status => "ok", :context => "context2"}.to_json)
 
-    expect(task.reload.status).to eq("completed")
+    expect(task.reload.state).to eq("completed")
+    expect(task.reload.status).to eq("ok")
     expect(task.context).to eq("context2")
 
     expect(response.status).to eq(204)
