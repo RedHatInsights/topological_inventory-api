@@ -6,12 +6,12 @@ module Api
 
       def order
         service_plan = model.find(params_for_order[:service_plan_id].to_i)
-        task = Task.create!(:tenant => service_plan.tenant, :status => "started")
+        task = Task.create!(:tenant => service_plan.tenant, :state => "pending", :status => "ok")
 
         messaging_client.publish_message(
           :service => "platform.topological-inventory.operations-openshift",
           :message => "ServicePlan.order",
-          :payload => {:task_id => task.id, :service_plan_id => service_plan.id, :order_params => params_for_order}
+          :payload => {:task_id => task.id.to_s, :service_plan_id => service_plan.id.to_s, :order_params => params_for_order}
         )
 
         render :json => {:task_id => task.id}
