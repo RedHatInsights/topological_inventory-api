@@ -1,32 +1,33 @@
+require_relative "shared_examples_for_index"
+
 RSpec.describe("v0.0 - Sources") do
   let(:attributes)      { {"name" => "my source", "source_type_id" => source_type.id.to_s, "tenant_id" => tenant.id.to_s} }
   let(:collection_path) { "/api/v0.1/sources" }
   let(:source_type)     { SourceType.create!(:name => "SourceType", :vendor => "Some Vendor", :product_name => "Product Name") }
   let(:tenant)          { Tenant.create! }
 
+  include_examples(
+    "test_index_and_subcollections",
+    "sources",
+    [
+      "container_groups",
+      "container_images",
+      "container_nodes",
+      "container_projects",
+      "container_templates",
+      "containers",
+      "endpoints",
+      "orchestration_stacks",
+      "service_instances",
+      "service_offerings",
+      "service_plans",
+      "vms",
+      "volume_types",
+      "volumes",
+    ],
+  )
+
   describe("/api/v0.1/sources") do
-    context "get" do
-      it "success: empty collection" do
-        get(collection_path)
-
-        expect(response).to have_attributes(
-          :status => 200,
-          :parsed_body => paginated_response(0, [])
-        )
-      end
-
-      it "success: non-empty collection" do
-        Source.create!(attributes)
-
-        get(collection_path)
-
-        expect(response).to have_attributes(
-          :status => 200,
-          :parsed_body => paginated_response(1, [a_hash_including(attributes)])
-        )
-      end
-    end
-
     context "post" do
       it "success: with valid body" do
         post(collection_path, :params => attributes.to_json)
@@ -63,30 +64,6 @@ RSpec.describe("v0.0 - Sources") do
   describe("/api/v0.1/sources/:id") do
     def instance_path(id)
       File.join(collection_path, id.to_s)
-    end
-
-    context "get" do
-      it "success: with a valid id" do
-        instance = Source.create!(attributes)
-
-        get(instance_path(instance.id))
-
-        expect(response).to have_attributes(
-          :status => 200,
-          :parsed_body => a_hash_including(attributes.merge("id" => instance.id.to_s))
-        )
-      end
-
-      it "failure: with an invalid id" do
-        instance = Source.create!(attributes)
-
-        get(instance_path(instance.id * 1000))
-
-        expect(response).to have_attributes(
-          :status => 404,
-          :parsed_body => ""
-        )
-      end
     end
 
     context "patch" do
@@ -138,61 +115,6 @@ RSpec.describe("v0.0 - Sources") do
           :status => 400,
           :parsed_body => {"errors" => [{"detail"=>"found unpermitted parameter: :uid", "status" => 400}]}
         )
-      end
-    end
-  end
-
-  describe("subcollections") do
-    existing_subcollections = [
-      "container_groups",
-      "container_images",
-      "container_nodes",
-      "container_projects",
-      "container_templates",
-      "containers",
-      "endpoints",
-      "orchestration_stacks",
-      "service_instances",
-      "service_offerings",
-      "service_plans",
-      "vms",
-      "volume_types",
-      "volumes",
-    ]
-
-    existing_subcollections.each do |subcollection|
-      describe("/api/v0.1/sources/:id/#{subcollection}") do
-        let(:subcollection) { subcollection }
-
-        def subcollection_path(id)
-          File.join(collection_path, id.to_s, subcollection)
-        end
-
-        context "get" do
-          it "success: with a valid id" do
-            instance = Source.create!(attributes)
-
-            get(subcollection_path(instance.id))
-
-            expect(response).to have_attributes(
-              :status => 200,
-              :parsed_body => paginated_response(0, [])
-            )
-          end
-
-          it "failure: with an invalid id" do
-            instance = Source.create!(attributes)
-            missing_id = (instance.id * 1000)
-            expect(Source.exists?(missing_id)).to eq(false)
-
-            get(subcollection_path(missing_id))
-
-            expect(response).to have_attributes(
-              :status => 404,
-              :parsed_body => {"errors"=>[{"detail"=>"Couldn't find Source with 'id'=#{missing_id}", "status"=>404}]}
-            )
-          end
-        end
       end
     end
   end
