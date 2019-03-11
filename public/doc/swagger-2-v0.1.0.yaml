@@ -86,6 +86,8 @@ paths:
       responses:
         204:
           description: Updated, no content
+        400:
+          description: Bad request
         404:
           description: Not found
     delete:
@@ -503,6 +505,8 @@ paths:
       responses:
         204:
           description: Updated, no content
+        400:
+          description: Bad request
         404:
           description: Not found
     delete:
@@ -975,6 +979,8 @@ paths:
       responses:
         204:
           description: Updated, no content
+        400:
+          description: Bad request
         404:
           description: Not found
     delete:
@@ -1423,6 +1429,8 @@ paths:
       responses:
         204:
           description: Updated, no content
+        400:
+          description: Bad request
         404:
           description: Not found
   "/vms":
