@@ -274,6 +274,7 @@ class SwaggerGenerator
       ],
       "responses" => {
         204 => {"description" => "Updated, no content"},
+        400 => {"description" => "Bad request"},
         404 => {"description" => "Not found"}
       }
     }
