@@ -144,6 +144,17 @@ class ApplicationController < ActionController::API
     self.class.send(:api_doc_definition)
   end
 
+  def messaging_client
+    require "manageiq-messaging"
+
+    @messaging_client ||= ManageIQ::Messaging::Client.open({
+      :protocol => :Kafka,
+      :host     => ENV["QUEUE_HOST"] || "localhost",
+      :port     => ENV["QUEUE_PORT"] || "9092",
+      :encoding => "json"
+    })
+  end
+
   def model
     self.class.send(:model)
   end
