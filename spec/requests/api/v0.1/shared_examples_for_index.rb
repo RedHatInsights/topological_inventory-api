@@ -52,6 +52,15 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
                               :parsed_body => ""
                             )
       end
+
+      it "failure: with an invalid non-numeric id" do
+        get(instance_path("non_numeric_id"))
+
+        expect(response).to have_attributes(
+                              :status      => 404,
+                              :parsed_body => ""
+                            )
+      end
     end
   end
 
@@ -86,6 +95,15 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
             expect(response).to have_attributes(
                                   :status      => 404,
                                   :parsed_body => {"errors" => [{"detail" => "Couldn't find #{primary_collection.to_s.singularize.camelize} with 'id'=#{missing_id}", "status" => 404}]}
+                                )
+          end
+
+          it "failure: with an invalid non-numeric id" do
+            get(subcollection_path("non_numeric_id"))
+
+            expect(response).to have_attributes(
+                                  :status      => 404,
+                                  :parsed_body => {"errors" => [{"detail" => /Couldn't find #{primary_collection.to_s.singularize.camelize}/, "status" => 404}]}
                                 )
           end
         end
