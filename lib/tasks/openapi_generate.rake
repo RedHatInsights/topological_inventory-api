@@ -1,4 +1,6 @@
-class SwaggerGenerator
+class OpenapiGenerator
+  require 'json'
+
   def rails_routes
     Rails.application.routes.routes.each_with_object([]) do |route, array|
       r = ActionDispatch::Routing::RouteWrapper.new(route)
@@ -9,15 +11,13 @@ class SwaggerGenerator
     end
   end
 
-  def swagger_file
-    Pathname.new(__dir__).join("../../public/doc/swagger-2-v0.1.0.yaml").to_s
+  def openapi_file
+    Pathname.new(__dir__).join("../../public/doc/openapi-3-v0.1.0.json").to_s
   end
 
-  def swagger_contents
-    @swagger_contents ||= begin
-      require 'yaml'
-      content = File.read(swagger_file).tap { |c| c.gsub!("- null", "- NULL VALUE") }
-      YAML.load(content)
+  def openapi_contents
+    @openapi_contents ||= begin
+      JSON.parse(File.read(openapi_file))
     end
   end
 
@@ -29,7 +29,7 @@ class SwaggerGenerator
   end
 
   def base_path
-    swagger_contents["basePath"]
+    openapi_contents["servers"].first["variables"]["basePath"]["default"]
   end
 
   def applicable_rails_routes
@@ -47,36 +47,36 @@ class SwaggerGenerator
       expected_paths[sub_path] ||= {}
       expected_paths[sub_path][verb] =
         case route.action
-          when "index"   then swagger_list_description(klass_name, primary_collection)
-          when "show"    then swagger_show_description(klass_name)
-          when "destroy" then swagger_destroy_description(klass_name)
-          when "create"  then swagger_create_description(klass_name)
-          when "update"  then swagger_update_description(klass_name, verb)
+          when "index"   then openapi_list_description(klass_name, primary_collection)
+          when "show"    then openapi_show_description(klass_name)
+          when "destroy" then openapi_destroy_description(klass_name)
+          when "create"  then openapi_create_description(klass_name)
+          when "update"  then openapi_update_description(klass_name, verb)
         end
 
       unless expected_paths[sub_path][verb]
         # If it's not generic action but a custom method like e.g. `post "order", :to => "service_plans#order"`, we will
-        # try to take existing definition, because the description, summary, etc. are likely to be custom.
+        # try to take existing schema, because the description, summary, etc. are likely to be custom.
         expected_paths[sub_path][verb] =
           case verb
           when "post"
-            swagger_contents.dig('paths', sub_path, verb) || swagger_create_description(klass_name)
+            openapi_contents.dig("paths", sub_path, verb) || openapi_create_description(klass_name)
           when "get"
-            swagger_contents.dig('paths', sub_path, verb) || swagger_show_description(klass_name)
+            openapi_contents.dig("paths", sub_path, verb) || openapi_show_description(klass_name)
           else
-            swagger_contents.dig('paths', sub_path, verb)
+            openapi_contents.dig("paths", sub_path, verb)
           end
       end
     end
   end
 
-  def definitions
-    @definitions ||= {}
+  def schemas
+    @schemas ||= {}
   end
 
-  def build_definition(klass_name)
-    definitions[klass_name] = swagger_definition(klass_name)
-    "#/definitions/#{klass_name}"
+  def build_schema(klass_name)
+    schemas[klass_name] = openapi_schema(klass_name)
+    "#/components/schemas/#{klass_name}"
   end
 
   def parameters
@@ -85,24 +85,24 @@ class SwaggerGenerator
 
   def build_parameter(name, value = nil)
     parameters[name] = value
-    "#/parameters/#{name}"
+    "#/components/parameters/#{name}"
   end
 
-  def swagger_list_description(klass_name, primary_collection)
+  def openapi_list_description(klass_name, primary_collection)
     primary_collection = nil if primary_collection == klass_name
     {
       "summary" => "List #{klass_name.pluralize}#{" for #{primary_collection}" if primary_collection}",
       "operationId" => "list#{primary_collection}#{klass_name.pluralize}",
       "description" => "Returns an array of #{klass_name} objects",
       "parameters" => [
-        {"$ref" => "#/parameters/QueryLimit"},
-        {"$ref" => "#/parameters/QueryOffset"}
+        {"$ref" => "#/components/parameters/QueryLimit"},
+        {"$ref" => "#/components/parameters/QueryOffset"}
       ],
       "produces" => ["application/json"],
       "responses" => {
         200 => {
           "description" => "#{klass_name.pluralize} collection",
-          "schema" => {"$ref" => build_collection_definition(klass_name)}
+          "schema" => {"$ref" => build_collection_schema(klass_name)}
         }
       }
     }.tap do |h|
@@ -110,53 +110,53 @@ class SwaggerGenerator
     end
   end
 
-  def build_collection_definition(klass_name)
+  def build_collection_schema(klass_name)
     collection_name = "#{klass_name.pluralize}Collection"
-    definitions[collection_name] = {
+    schemas[collection_name] = {
       "type" => "object",
       "properties" => {
-        "meta" => {"$ref" => "#/definitions/CollectionMetadata"},
-        "links" => {"$ref" => "#/definitions/CollectionLinks"},
+        "meta" => {"$ref" => "#/components/schemas/CollectionMetadata"},
+        "links" => {"$ref" => "#/components/schemas/CollectionLinks"},
         "data" => {
           "type" => "array",
-          "items" => {"$ref" => build_definition(klass_name)}
+          "items" => {"$ref" => build_schema(klass_name)}
         }
       }
     }
 
-    "#/definitions/#{collection_name}"
+    "#/components/schemas/#{collection_name}"
   end
 
-  def swagger_definition(klass_name)
+  def openapi_schema(klass_name)
     {
       "type"       => "object",
-      "properties" => swagger_definition_properties(klass_name),
+      "properties" => openapi_schema_properties(klass_name),
     }
   end
 
-  def swagger_definition_properties(klass_name)
+  def openapi_schema_properties(klass_name)
     model = klass_name.constantize
     model.columns_hash.map do |key, value|
       unless(GENERATOR_ALLOW_BLACKLISTED_ATTRIBUTES[key.to_sym] || []).include?(klass_name)
         next if GENERATOR_BLACKLIST_ATTRIBUTES.include?(key.to_sym)
       end
 
-      [key, swagger_definition_properties_value(klass_name, model, key, value)]
+      [key, openapi_schema_properties_value(klass_name, model, key, value)]
     end.compact.sort.to_h
   end
 
-  def swagger_definition_properties_value(klass_name, model, key, value)
+  def openapi_schema_properties_value(klass_name, model, key, value)
     if key == model.primary_key
       {
-        "$ref" => "#/definitions/ID"
+        "$ref" => "#/components/schemas/ID"
       }
     elsif key.ends_with?("_id")
       properties_value = {}
       if GENERATOR_READ_ONLY_DEFINITIONS.include?(klass_name)
         # Everything under providers data is read only for now
-        properties_value["$ref"] = "#/definitions/ID"
+        properties_value["$ref"] = "#/components/schemas/ID"
       else
-        properties_value["$ref"] = swagger_contents.dig("definitions", klass_name, "properties", key, "$ref") || "#/definitions/ID"
+        properties_value["$ref"] = openapi_contents.dig("components", "schemas", klass_name, "properties", key, "$ref") || "#/components/schemas/ID"
       end
       properties_value
     else
@@ -174,16 +174,15 @@ class SwaggerGenerator
       when :boolean
         properties_value["type"] = "boolean"
       when :jsonb
-        properties_value["type"] = "object"
         ['type', 'items'].each do |property_key|
-          prop = swagger_contents.dig("definitions", klass_name, "properties", key, property_key)
+          prop = openapi_contents.dig("components", "schemas", klass_name, "properties", key, property_key)
           properties_value[property_key] = prop if prop.present?
         end
       end
 
       # Take existing attrs, that we won't generate
       ['example', 'format', 'readOnly', 'title', 'description'].each do |property_key|
-        property_value                 = swagger_contents.dig("definitions", klass_name, "properties", key, property_key)
+        property_value                 = openapi_contents.dig("components", "schemas", klass_name, "properties", key, property_key)
         properties_value[property_key] = property_value if property_value
       end
 
@@ -196,7 +195,7 @@ class SwaggerGenerator
     end
   end
 
-  def swagger_show_description(klass_name)
+  def openapi_show_description(klass_name)
     {
       "summary" => "Show an existing #{klass_name}",
       "operationId" => "show#{klass_name}",
@@ -206,14 +205,14 @@ class SwaggerGenerator
       "responses" => {
         200 => {
           "description" => "#{klass_name} info",
-          "schema" => {"$ref" => build_definition(klass_name)}
+          "schema" => {"$ref" => build_schema(klass_name)}
         },
         404 => {"description" => "Not found"}
       }
     }
   end
 
-  def swagger_destroy_description(klass_name)
+  def openapi_destroy_description(klass_name)
     {
       "summary" => "Delete an existing #{klass_name}",
       "operationId" => "delete#{klass_name}",
@@ -227,7 +226,7 @@ class SwaggerGenerator
     }
   end
 
-  def swagger_create_description(klass_name)
+  def openapi_create_description(klass_name)
     {
       "summary" => "Create a new #{klass_name}",
       "operationId" => "create#{klass_name}",
@@ -240,7 +239,7 @@ class SwaggerGenerator
           "in" => "body",
           "description" => "#{klass_name} attributes to create",
           "required" => true,
-          "schema" => {"$ref" => build_definition(klass_name)}
+          "schema" => {"$ref" => build_schema(klass_name)}
         }
       ],
       "responses" => {
@@ -248,14 +247,14 @@ class SwaggerGenerator
           "description" => "#{klass_name} creation successful",
           "schema" => {
             "type" => "object",
-            "items" => {"$ref" => build_definition(klass_name)}
+            "items" => {"$ref" => build_schema(klass_name)}
           }
         }
       }
     }
   end
 
-  def swagger_update_description(klass_name, verb)
+  def openapi_update_description(klass_name, verb)
     action = verb == "patch" ? "Update" : "Replace"
     {
       "summary" => "#{action} an existing #{klass_name}",
@@ -270,7 +269,7 @@ class SwaggerGenerator
           "in" => "body",
           "description" => "#{klass_name} attributes to update",
           "required" => true,
-          "schema" => {"$ref" => build_definition(klass_name)}
+          "schema" => {"$ref" => build_schema(klass_name)}
         }
       ],
       "responses" => {
@@ -303,7 +302,7 @@ class SwaggerGenerator
       "description" => "The numbers of items to return per page."
     }
 
-    definitions["CollectionLinks"] = {
+    schemas["CollectionLinks"] = {
       "type" => "object",
       "properties" => {
         "first" => {
@@ -321,7 +320,7 @@ class SwaggerGenerator
       }
     }
 
-    definitions["CollectionMetadata"] = {
+    schemas["CollectionMetadata"] = {
       "type" => "object",
       "properties" => {
         "count" => {
@@ -330,7 +329,7 @@ class SwaggerGenerator
       }
     }
 
-    definitions["OrderParameters"] = {
+    schemas["OrderParameters"] = {
       "type" => "object",
       "properties" => {
         "service_parameters" => {
@@ -344,24 +343,25 @@ class SwaggerGenerator
       }
     }
 
-    definitions["Tagging"] = {
+    schemas["Tagging"] = {
       "type"       => "object",
       "properties" => {
-        "tag_id" => {"$ref" => "#/definitions/ID"},
+        "tag_id" => {"$ref" => "#/components/schemas/ID"},
         "name"   => {"type" => "string", "readOnly" => true, "example" => "architecture"},
         "value"  => {"type" => "string", "readOnly" => true, "example" => "x86_64"}
       }
     }
 
-    definitions["ID"] = {
+    schemas["ID"] = {
       "type"=>"string", "description"=>"ID of the resource", "pattern"=>"/^\\d+$/", "readOnly"=>true
     }
 
-    new_content = swagger_contents
+    new_content = openapi_contents
     new_content["paths"] = build_paths.sort.to_h
-    new_content["parameters"] = parameters.sort.each_with_object({}) { |(name, val), h| h[name] = val || swagger_contents["parameters"][name] || {} }
-    new_content["definitions"] = definitions.sort.each_with_object({}) { |(name, val), h| h[name] = val || swagger_contents["definitions"][name] || {} }
-    File.write(swagger_file, new_content.to_yaml(line_width: -1).sub("---\n", "").tap { |c| c.gsub!("- NULL VALUE", "- null") })
+    new_content["components"] ||= {}
+    new_content["components"]["schemas"]    = schemas.sort.each_with_object({})    { |(name, val), h| h[name] = val || openapi_contents["components"]["schemas"][name]    || {} }
+    new_content["components"]["parameters"] = parameters.sort.each_with_object({}) { |(name, val), h| h[name] = val || openapi_contents["components"]["parameters"][name] || {} }
+    File.write(openapi_file, JSON.pretty_generate(new_content) + "\n")
   end
 end
 
@@ -380,9 +380,9 @@ GENERATOR_READ_ONLY_ATTRIBUTES = [
   :created_at, :updated_at, :archived_at, :last_seen_at
 ].to_set.freeze
 
-namespace :swagger do
-  desc "Generate the swagger.yml contents"
+namespace :openapi do
+  desc "Generate the openapi.json contents"
   task :generate => :environment do
-    SwaggerGenerator.new.run
+    OpenapiGenerator.new.run
   end
 end
