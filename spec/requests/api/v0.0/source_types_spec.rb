@@ -42,7 +42,7 @@ RSpec.describe("v0.0 - SourceTypes") do
         expect(response).to have_attributes(
           :status => 400,
           :location => nil,
-          :parsed_body => TopologicalInventory::Api::ErrorDocument.new.add(400, "Failed to parse POST body, expected JSON")
+          :parsed_body => TopologicalInventory::Api::ErrorDocument.new.add(400, "Failed to parse POST body, expected JSON").to_h
         )
       end
 
@@ -52,7 +52,7 @@ RSpec.describe("v0.0 - SourceTypes") do
         expect(response).to have_attributes(
           :status => 400,
           :location => nil,
-          :parsed_body => TopologicalInventory::Api::ErrorDocument.new.add(400, "found unpermitted parameter: :aaa")
+          :parsed_body => TopologicalInventory::Api::ErrorDocument.new.add(400, "found unpermitted parameter: :aaa").to_h
         )
       end
     end
