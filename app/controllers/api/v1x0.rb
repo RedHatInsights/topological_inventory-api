@@ -6,8 +6,6 @@ module Api
       end
     end
 
-    class ApplicationsController                < Api::V0x1::ApplicationsController; end
-    class ApplicationTypesController            < Api::V0x1::ApplicationTypesController; end
     class AuthenticationsController             < Api::V0x1::AuthenticationsController; end
     class AvailabilitiesController              < Api::V0x1::AvailabilitiesController; end
     class ContainersController                  < Api::V0x1::ContainersController; end

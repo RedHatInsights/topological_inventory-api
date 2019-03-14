@@ -4,8 +4,7 @@ RSpec.describe("v0.1 - Vm") do
   include ::Spec::Support::TenantIdentity
 
   let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
-  let(:source) { Source.create!(:name => "name", :source_type => source_type, :tenant => tenant) }
-  let(:source_type) { SourceType.create!(:vendor => "vendor", :product_name => "product_name", :name => "name") }
+  let(:source) { Source.create!(:name => "name", :tenant => tenant) }
 
   let(:attributes) do
     {

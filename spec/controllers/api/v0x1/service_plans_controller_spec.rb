@@ -18,11 +18,8 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
         :source_ref       => SecureRandom.uuid
       )
     end
-    let(:source_type) do
-      SourceType.create!(:name => "source_type", :product_name => "product_name", :vendor => "vendor")
-    end
     let(:source_region) { SourceRegion.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
-    let(:source) { Source.create!(:tenant => tenant, :source_type => source_type, :uid => SecureRandom.uuid, :name => "test_source") }
+    let(:source) { Source.create!(:tenant => tenant, :uid => SecureRandom.uuid, :name => "test_source") }
     let(:subscription) { Subscription.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
     let(:service_offering) do
       ServiceOffering.create!(
