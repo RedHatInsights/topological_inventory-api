@@ -323,6 +323,22 @@ paths:
           description: ContainerGroups collection
           schema:
             "$ref": "#/definitions/ContainerGroupsCollection"
+  "/container_projects/{id}/container_resource_quotas":
+    get:
+      summary: List ContainerResourceQuota for ContainerProject
+      operationId: listContainerProjectContainerResourceQuota
+      description: Returns an array of ContainerResourceQuota objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      - "$ref": "#/parameters/ID"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerResourceQuota collection
+          schema:
+            "$ref": "#/definitions/ContainerResourceQuotaCollection"
   "/container_projects/{id}/container_templates":
     get:
       summary: List ContainerTemplates for ContainerProject
@@ -355,6 +371,37 @@ paths:
           description: Tags collection
           schema:
             "$ref": "#/definitions/TagsCollection"
+  "/container_resource_quotas":
+    get:
+      summary: List ContainerResourceQuota
+      operationId: listContainerResourceQuota
+      description: Returns an array of ContainerResourceQuota objects
+      parameters:
+      - "$ref": "#/parameters/QueryLimit"
+      - "$ref": "#/parameters/QueryOffset"
+      produces:
+      - application/json
+      responses:
+        200:
+          description: ContainerResourceQuota collection
+          schema:
+            "$ref": "#/definitions/ContainerResourceQuotaCollection"
+  "/container_resource_quotas/{id}":
+    get:
+      summary: Show an existing ContainerResourceQuota
+      operationId: showContainerResourceQuota
+      description: Returns a ContainerResourceQuota object
+      produces:
+      - application/json
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: ContainerResourceQuota info
+          schema:
+            "$ref": "#/definitions/ContainerResourceQuota"
+        404:
+          description: Not found
   "/container_templates":
     get:
       summary: List ContainerTemplates
@@ -1891,10 +1938,25 @@ definitions:
   ContainerNode:
     type: object
     properties:
+      addresses:
+        readOnly: true
+        type: object
+      allocatable_cpus:
+        readOnly: true
+        type: number
+      allocatable_memory:
+        readOnly: true
+        type: integer
+      allocatable_pods:
+        readOnly: true
+        type: integer
       archived_at:
         format: date-time
         readOnly: true
         type: string
+      conditions:
+        readOnly: true
+        type: object
       cpus:
         example: 4
         readOnly: true
@@ -1924,6 +1986,12 @@ definitions:
         readOnly: true
         title: Name
         type: string
+      node_info:
+        readOnly: true
+        type: object
+      pods:
+        readOnly: true
+        type: integer
       resource_version:
         readOnly: true
         type: string
@@ -2000,6 +2068,9 @@ definitions:
         format: uuid
         readOnly: true
         type: string
+      status_phase:
+        readOnly: true
+        type: string
       updated_at:
         format: date-time
         readOnly: true
@@ -2015,6 +2086,58 @@ definitions:
         type: array
         items:
           "$ref": "#/definitions/ContainerProject"
+  ContainerResourceQuota:
+    type: object
+    properties:
+      archived_at:
+        format: date-time
+        readOnly: true
+        type: string
+      container_project_id:
+        "$ref": "#/definitions/ID"
+      created_at:
+        format: date-time
+        readOnly: true
+        type: string
+      id:
+        "$ref": "#/definitions/ID"
+      last_seen_at:
+        format: date-time
+        readOnly: true
+        type: string
+      name:
+        type: string
+      resource_version:
+        type: string
+      source_created_at:
+        format: date-time
+        type: string
+      source_deleted_at:
+        format: date-time
+        type: string
+      source_id:
+        "$ref": "#/definitions/ID"
+      source_ref:
+        type: string
+      spec:
+        type: object
+      status:
+        type: object
+      updated_at:
+        format: date-time
+        readOnly: true
+        type: string
+  ContainerResourceQuotaCollection:
+    type: object
+    properties:
+      meta:
+        "$ref": "#/definitions/CollectionMetadata"
+      links:
+        "$ref": "#/definitions/CollectionLinks"
+      data:
+        type: array
+        items:
+          "$ref": "#/definitions/ContainerResourceQuota"
   ContainerTemplate:
     type: object
     properties:
