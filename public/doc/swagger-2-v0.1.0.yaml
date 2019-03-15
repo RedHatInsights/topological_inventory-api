@@ -2106,22 +2106,29 @@ definitions:
         readOnly: true
         type: string
       name:
+        readOnly: true
         type: string
       resource_version:
+        readOnly: true
         type: string
       source_created_at:
         format: date-time
+        readOnly: true
         type: string
       source_deleted_at:
         format: date-time
+        readOnly: true
         type: string
       source_id:
         "$ref": "#/definitions/ID"
       source_ref:
+        readOnly: true
         type: string
       spec:
+        readOnly: true
         type: object
       status:
+        readOnly: true
         type: object
       updated_at:
         format: date-time

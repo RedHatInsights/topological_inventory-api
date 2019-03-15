@@ -374,7 +374,7 @@ GENERATOR_ALLOW_BLACKLISTED_ATTRIBUTES   = {
 GENERATOR_READ_ONLY_DEFINITIONS = [
   'Container', 'ContainerGroup', 'ContainerImage', 'ContainerNode', 'ContainerProject', 'ContainerTemplate', 'Flavor',
   'OrchestrationStack', 'ServiceInstance', 'ServiceOffering', 'ServiceOfferingIcon', 'ServicePlan', 'Tag', 'Tagging',
-  'Vm', 'Volume', 'VolumeAttachment', 'VolumeType'
+  'Vm', 'Volume', 'VolumeAttachment', 'VolumeType', 'ContainerResourceQuota'
 ].to_set.freeze
 GENERATOR_READ_ONLY_ATTRIBUTES = [
   :created_at, :updated_at, :archived_at, :last_seen_at
