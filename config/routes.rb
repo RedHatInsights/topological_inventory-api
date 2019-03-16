@@ -26,10 +26,12 @@ Rails.application.routes.draw do
         resources :tags,             :only => [:index]
       end
       resources :container_projects,      :only => [:index, :show] do
-        resources :container_groups,    :only => [:index]
-        resources :container_templates, :only => [:index]
-        resources :tags,                :only => [:index]
+        resources :container_groups,          :only => [:index]
+        resources :container_resource_quotas, :only => [:index]
+        resources :container_templates,       :only => [:index]
+        resources :tags,                      :only => [:index]
       end
+      resources :container_resource_quotas, :only => [:index, :show]
       resources :container_templates,     :only => [:index, :show] do
         resources :tags, :only => [:index]
       end

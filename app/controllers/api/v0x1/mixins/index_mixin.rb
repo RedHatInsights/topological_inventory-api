@@ -19,6 +19,13 @@ module Api
 
           relation
         end
+
+        def raise_unless_primary_instance_exists
+          return unless subcollection?
+
+          klass = request_path_parts["primary_collection_name"].singularize.camelize.safe_constantize
+          klass.find(request_path_parts["primary_collection_id"].to_i)
+        end
       end
     end
   end

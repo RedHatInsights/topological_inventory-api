@@ -174,6 +174,7 @@ class SwaggerGenerator
       when :boolean
         properties_value["type"] = "boolean"
       when :jsonb
+        properties_value["type"] = "object"
         ['type', 'items'].each do |property_key|
           prop = swagger_contents.dig("definitions", klass_name, "properties", key, property_key)
           properties_value[property_key] = prop if prop.present?
@@ -373,7 +374,7 @@ GENERATOR_ALLOW_BLACKLISTED_ATTRIBUTES   = {
 GENERATOR_READ_ONLY_DEFINITIONS = [
   'Container', 'ContainerGroup', 'ContainerImage', 'ContainerNode', 'ContainerProject', 'ContainerTemplate', 'Flavor',
   'OrchestrationStack', 'ServiceInstance', 'ServiceOffering', 'ServiceOfferingIcon', 'ServicePlan', 'Tag', 'Tagging',
-  'Vm', 'Volume', 'VolumeAttachment', 'VolumeType'
+  'Vm', 'Volume', 'VolumeAttachment', 'VolumeType', 'ContainerResourceQuota'
 ].to_set.freeze
 GENERATOR_READ_ONLY_ATTRIBUTES = [
   :created_at, :updated_at, :archived_at, :last_seen_at
