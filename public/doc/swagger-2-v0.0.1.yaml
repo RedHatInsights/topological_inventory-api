@@ -2216,4 +2216,4 @@ host: virtserver.swaggerhub.com
 schemes:
 - https
 - http
-basePath: "/r/insights/platform/topological-inventory/v0.0"
+basePath: "/api/topological-inventory/v0.0"
