@@ -2601,7 +2601,7 @@ definitions:
         type: string
       create_json_schema:
         readOnly: true
-        type: string
+        type: object
       created_at:
         format: date-time
         readOnly: true
