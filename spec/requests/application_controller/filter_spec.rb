@@ -123,5 +123,32 @@ RSpec.describe("ApplicationController::Filter") do
       expect(response.status).to eq(400)
       expect(response.parsed_body["errors"]).to eq([{"detail"=>"unsupported attribute type for: mac_addresses", "status"=>400}])
     end
+
+    it "invalid attribute" do
+      source_type = SourceType.create!(:name => "a", :vendor => "a", :product_name => "a")
+      source = Source.create!(:source_type => source_type, :tenant => tenant, :name => "a")
+      Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
+
+      get("/api/v0.1/vms?filter[bogus_attribute]=a")
+
+      expect(response.status).to eq(400)
+      expect(response.parsed_body["errors"]).to eq([{"detail"=>"found unpermitted parameter: bogus_attribute", "status"=>400}])
+    end
+
+    it "multiple invalid attributes mixed with a valid attribute" do
+      source_type = SourceType.create!(:name => "a", :vendor => "a", :product_name => "a")
+      source = Source.create!(:source_type => source_type, :tenant => tenant, :name => "a")
+      Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
+
+      get("/api/v0.1/vms?filter[mac_addresses]=a&filter[name]=a&filter[bogus_attribute]=b")
+
+      expect(response.status).to eq(400)
+      expect(response.parsed_body["errors"]).to eq(
+        [
+          {"detail" => "unsupported attribute type for: mac_addresses", "status" => 400},
+          {"detail" => "found unpermitted parameter: bogus_attribute", "status" => 400}
+        ]
+      )
+    end
   end
 end
