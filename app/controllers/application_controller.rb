@@ -2,18 +2,22 @@ class ApplicationController < ActionController::API
   ActionController::Parameters.action_on_unpermitted_parameters = :raise
 
   rescue_from ActionController::UnpermittedParameters do |exception|
-    error_document = TopologicalInventory::Api::ErrorDocument.new.add(400, exception.message)
-    render :json => error_document, :status => error_document.status
+    error_document = TopologicalInventory::Api::ErrorDocument.new.add(exception.message)
+    render :json => error_document.to_h, :status => error_document.status
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     error_document = TopologicalInventory::Api::ErrorDocument.new.add(404, exception.message)
-    render :json => error_document, :status => :not_found
+    render :json => error_document.to_h, :status => :not_found
+  end
+
+  rescue_from ApplicationController::Filter::Error do |exception|
+    render :json => exception.error_document.to_h, :status => exception.error_document.status
   end
 
   rescue_from TopologicalInventory::Api::BodyParseError do |exception|
-    error_document = TopologicalInventory::Api::ErrorDocument.new.add(400, "Failed to parse POST body, expected JSON")
-    render :json => error_document, :status => error_document.status
+    error_document = TopologicalInventory::Api::ErrorDocument.new.add("Failed to parse POST body, expected JSON")
+    render :json => error_document.to_h, :status => error_document.status
   end
 
   private
@@ -53,7 +57,7 @@ class ApplicationController < ActionController::API
 
   def safe_params_for_list
     # :limit & :offset can be passed in for pagination purposes, but shouldn't show up as params for filtering purposes
-    @safe_params_for_list ||= params.merge(params_for_polymorphic_subcollection).permit(*permitted_params)
+    @safe_params_for_list ||= params.merge(params_for_polymorphic_subcollection).permit(*permitted_params, :filter => {})
   end
 
   def permitted_params
@@ -114,6 +118,10 @@ class ApplicationController < ActionController::API
 
   def all_attributes_for_index
     api_doc_definition.all_attributes + [subcollection_foreign_key_using_through_relation]
+  end
+
+  def filtered
+    ApplicationController::Filter.new(model, safe_params_for_list[:filter], api_doc_definition).apply
   end
 
   def pagination_limit
