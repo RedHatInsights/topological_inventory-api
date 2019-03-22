@@ -12,7 +12,7 @@ RSpec.describe("ApplicationController::Filter") do
   end
 
   def expect_failure(query, *errors)
-    get("/api/v0.1/tasks?#{query}")
+    get(URI.escape("/api/v0.1/tasks?#{query}"))
 
     expect(response).to have_attributes(
       :parsed_body => {
@@ -23,7 +23,7 @@ RSpec.describe("ApplicationController::Filter") do
   end
 
   def expect_success(query, *results)
-    get("/api/v0.1/tasks?#{query}")
+    get(URI.escape("/api/v0.1/tasks?#{query}"))
 
     expect(response).to have_attributes(
       :parsed_body => paginated_response(results.length, results.collect { |i| a_hash_including("id" => i.id.to_s) }),
@@ -36,6 +36,9 @@ RSpec.describe("ApplicationController::Filter") do
     let!(:task_2) { create_task(:name => "bbb") }
     let!(:task_3) { create_task(:name => "abc") }
     let!(:task_4) { create_task }
+    let!(:task_5) { create_task(:name => "def%") }
+    let!(:task_6) { create_task(:name => "%def") }
+    let!(:task_7) { create_task(:name => "de%f") }
 
     it("key:eq single without 'eq' key")          { expect_success("filter[name]=#{task_1.name}", task_1) }
     it("key:eq array of values without 'eq' key") { expect_success("filter[name][]=#{task_1.name}&filter[name][]=#{task_2.name}", task_1, task_2) }
@@ -48,7 +51,11 @@ RSpec.describe("ApplicationController::Filter") do
     it("key:ends_with")                           { expect_success("filter[name][ends_with]=a", task_1) }
     it("key:starts_with")                         { expect_success("filter[name][starts_with]=b", task_2) }
     it("key:nil")                                 { expect_success("filter[name][nil]", task_4) }
-    it("key:not_nil")                             { expect_success("filter[name][not_nil]", task_1, task_2, task_3) }
+    it("key:not_nil")                             { expect_success("filter[name][not_nil]", task_1, task_2, task_3, task_5, task_6, task_7) }
+
+    it("key:ends_with %")                         { expect_success("filter[name][ends_with]=%", task_5) }
+    it("key:starts_with %")                       { expect_success("filter[name][starts_with]=%", task_6) }
+    it("key:contains %")                          { expect_success("filter[name][contains]=e%", task_7) }
   end
 
   context "integers" do
