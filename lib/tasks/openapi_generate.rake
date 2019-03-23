@@ -1,6 +1,16 @@
 class OpenapiGenerator
   require 'json'
 
+  # Let's get the latest api version based on the openapi.json routes
+  def api_version
+    @api_version ||= Rails.application.routes.routes.each_with_object([]) do |route, array|
+      matches = ActionDispatch::Routing::RouteWrapper
+                .new(route)
+                .path.match(/\A.*\/v(\d+.\d+)\/openapi.json.*\z/)
+      array << matches[1] if matches
+    end.max
+  end
+
   def rails_routes
     Rails.application.routes.routes.each_with_object([]) do |route, array|
       r = ActionDispatch::Routing::RouteWrapper.new(route)
@@ -12,7 +22,7 @@ class OpenapiGenerator
   end
 
   def openapi_file
-    Pathname.new(__dir__).join("../../public/doc/openapi-3-v0.1.0.json").to_s
+    @openapi_file ||= Pathname.new(__dir__).join("../../public/doc/openapi-3-v#{api_version}.0.json").to_s
   end
 
   def openapi_contents
