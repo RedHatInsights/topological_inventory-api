@@ -8,6 +8,7 @@ gem 'json-schema',        '~> 2.8'
 gem 'manageiq-loggers',   '~> 0.1'
 gem 'manageiq-messaging', '~> 0.1.2', :require => false
 gem 'manageiq-password',  '~> 0.2', ">= 0.2.1"
+gem 'mimemagic',          '~> 0.3.3'
 gem 'pg',                 '~> 1.0', :require => false
 gem 'puma',               '~> 3.0'
 gem 'rack-cors',          '>= 0.4.1'

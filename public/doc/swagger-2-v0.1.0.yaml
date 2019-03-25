@@ -718,6 +718,22 @@ paths:
             "$ref": "#/definitions/ServiceOfferingIcon"
         404:
           description: Not found
+  "/service_offering_icons/{id}/icon_data":
+    get:
+      summary: Show an existing ServiceOfferingIcon
+      operationId: showServiceOfferingIcon
+      description: Returns a ServiceOfferingIcon object
+      produces:
+      - image/*
+      parameters:
+      - "$ref": "#/parameters/ID"
+      responses:
+        200:
+          description: ServiceOfferingIcon info
+          schema:
+            type: string
+        404:
+          description: Not found
   "/service_offerings":
     get:
       summary: List ServiceOfferings
