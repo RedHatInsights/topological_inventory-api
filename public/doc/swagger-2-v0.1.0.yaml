@@ -2428,6 +2428,9 @@ definitions:
         format: date-time
         readOnly: true
         type: string
+      external_url:
+        readOnly: true
+        type: string
       extra:
         description: Extra information about this object in JSON format
         readOnly: true
