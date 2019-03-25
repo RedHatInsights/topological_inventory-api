@@ -1390,6 +1390,32 @@
         }
       }
     },
+    "/service_offering_icons/{id}/icon_data": {
+      "get": {
+        "summary": "Show an existing ServiceOfferingIcon",
+        "operationId": "showServiceOfferingIcon",
+        "description": "Returns a ServiceOfferingIcon object",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferingIcon info",
+            "schema": {
+              "$ref": "#/components/schemas/ServiceOfferingIcon"
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/service_offerings": {
       "get": {
         "summary": "List ServiceOfferings",
