@@ -13,8 +13,6 @@ module Api
         )
 
         head :no_content
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
       end
     end
   end

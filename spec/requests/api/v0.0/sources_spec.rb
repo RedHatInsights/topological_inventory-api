@@ -80,11 +80,12 @@ RSpec.describe("v0.0 - Sources") do
       it "failure: with an invalid id" do
         instance = Source.create!(attributes)
 
-        get(instance_path(instance.id * 1000))
+        missing_id = instance.id * 1000
+        get(instance_path(missing_id))
 
         expect(response).to have_attributes(
           :status => 404,
-          :parsed_body => ""
+          :parsed_body => {"errors"=>[{"detail"=>"Couldn't find Source with 'id'=#{missing_id}", "status"=>404}]}
         )
       end
     end
@@ -108,11 +109,12 @@ RSpec.describe("v0.0 - Sources") do
         instance = Source.create!(attributes)
         new_attributes = {"name" => "new name"}
 
-        patch(instance_path(instance.id * 1000), :params => new_attributes.to_json)
+        missing_id = instance.id * 1000
+        patch(instance_path(missing_id), :params => new_attributes.to_json)
 
         expect(response).to have_attributes(
           :status => 404,
-          :parsed_body => ""
+          :parsed_body => {"errors"=>[{"detail"=>"Couldn't find Source with 'id'=#{missing_id}", "status"=>404}]}
         )
       end
 
