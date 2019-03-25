@@ -1,6 +1,13 @@
 class OpenapiGenerator
   require 'json'
 
+  PARAMETERS_PATH = "/components/parameters".freeze
+  SCHEMAS_PATH = "/components/schemas".freeze
+
+  def path_parts(openapi_path)
+    openapi_path.split("/")[1..-1]
+  end
+
   # Let's get the latest api version based on the openapi.json routes
   def api_version
     @api_version ||= Rails.application.routes.routes.each_with_object([]) do |route, array|
@@ -86,7 +93,7 @@ class OpenapiGenerator
 
   def build_schema(klass_name)
     schemas[klass_name] = openapi_schema(klass_name)
-    "#/components/schemas/#{klass_name}"
+    "##{SCHEMAS_PATH}/#{klass_name}"
   end
 
   def parameters
@@ -95,7 +102,7 @@ class OpenapiGenerator
 
   def build_parameter(name, value = nil)
     parameters[name] = value
-    "#/components/parameters/#{name}"
+    "##{PARAMETERS_PATH}/#{name}"
   end
 
   def openapi_list_description(klass_name, primary_collection)
@@ -105,8 +112,8 @@ class OpenapiGenerator
       "operationId" => "list#{primary_collection}#{klass_name.pluralize}",
       "description" => "Returns an array of #{klass_name} objects",
       "parameters" => [
-        {"$ref" => "#/components/parameters/QueryLimit"},
-        {"$ref" => "#/components/parameters/QueryOffset"}
+        {"$ref" => "##{PARAMETERS_PATH}/QueryLimit"},
+        {"$ref" => "##{PARAMETERS_PATH}/QueryOffset"}
       ],
       "produces" => ["application/json"],
       "responses" => {
@@ -125,8 +132,8 @@ class OpenapiGenerator
     schemas[collection_name] = {
       "type" => "object",
       "properties" => {
-        "meta" => {"$ref" => "#/components/schemas/CollectionMetadata"},
-        "links" => {"$ref" => "#/components/schemas/CollectionLinks"},
+        "meta" => {"$ref" => "##{SCHEMAS_PATH}/CollectionMetadata"},
+        "links" => {"$ref" => "##{SCHEMAS_PATH}/CollectionLinks"},
         "data" => {
           "type" => "array",
           "items" => {"$ref" => build_schema(klass_name)}
@@ -134,7 +141,7 @@ class OpenapiGenerator
       }
     }
 
-    "#/components/schemas/#{collection_name}"
+    "##{SCHEMAS_PATH}/#{collection_name}"
   end
 
   def openapi_schema(klass_name)
@@ -158,15 +165,15 @@ class OpenapiGenerator
   def openapi_schema_properties_value(klass_name, model, key, value)
     if key == model.primary_key
       {
-        "$ref" => "#/components/schemas/ID"
+        "$ref" => "##{SCHEMAS_PATH}/ID"
       }
     elsif key.ends_with?("_id")
       properties_value = {}
       if GENERATOR_READ_ONLY_DEFINITIONS.include?(klass_name)
         # Everything under providers data is read only for now
-        properties_value["$ref"] = "#/components/schemas/ID"
+        properties_value["$ref"] = "##{SCHEMAS_PATH}/ID"
       else
-        properties_value["$ref"] = openapi_contents.dig("components", "schemas", klass_name, "properties", key, "$ref") || "#/components/schemas/ID"
+        properties_value["$ref"] = openapi_contents.dig(*path_parts(SCHEMAS_PATH), klass_name, "properties", key, "$ref") || "##{SCHEMAS_PATH}/ID"
       end
       properties_value
     else
@@ -185,14 +192,14 @@ class OpenapiGenerator
         properties_value["type"] = "boolean"
       when :jsonb
         ['type', 'items'].each do |property_key|
-          prop = openapi_contents.dig("components", "schemas", klass_name, "properties", key, property_key)
+          prop = openapi_contents.dig(*path_parts(SCHEMAS_PATH), klass_name, "properties", key, property_key)
           properties_value[property_key] = prop if prop.present?
         end
       end
 
       # Take existing attrs, that we won't generate
       ['example', 'format', 'readOnly', 'title', 'description'].each do |property_key|
-        property_value                 = openapi_contents.dig("components", "schemas", klass_name, "properties", key, property_key)
+        property_value                 = openapi_contents.dig(*path_parts(SCHEMAS_PATH), klass_name, "properties", key, property_key)
         properties_value[property_key] = property_value if property_value
       end
 
@@ -356,7 +363,7 @@ class OpenapiGenerator
     schemas["Tagging"] = {
       "type"       => "object",
       "properties" => {
-        "tag_id" => {"$ref" => "#/components/schemas/ID"},
+        "tag_id" => {"$ref" => "##{SCHEMAS_PATH}/ID"},
         "name"   => {"type" => "string", "readOnly" => true, "example" => "architecture"},
         "value"  => {"type" => "string", "readOnly" => true, "example" => "x86_64"}
       }
