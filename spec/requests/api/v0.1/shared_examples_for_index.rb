@@ -45,11 +45,12 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
       it "failure: with an invalid id" do
         instance = primary_collection.to_s.singularize.camelize.constantize.create!(attributes)
 
-        get(instance_path(instance.id * 1000))
+        missing_id = instance.id * 1000
+        get(instance_path(missing_id))
 
         expect(response).to have_attributes(
                               :status      => 404,
-                              :parsed_body => ""
+                              :parsed_body => {"errors" => [{"detail" => "Couldn't find #{primary_collection.to_s.singularize.camelize} with 'id'=#{missing_id}", "status" => 404}]}
                             )
       end
 
@@ -58,7 +59,7 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
 
         expect(response).to have_attributes(
                               :status      => 404,
-                              :parsed_body => ""
+                              :parsed_body => {"errors" => [{"detail" => "Couldn't find #{primary_collection.to_s.singularize.camelize} with 'id'=#{"non_numeric_id"}", "status" => 404}]}
                             )
       end
     end

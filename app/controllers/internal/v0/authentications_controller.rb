@@ -4,8 +4,6 @@ module Internal
       def show
         record = model.find(params_for_show[:id])
         render json: record.as_json(:prefixes => [request.path]).merge(encrypted_attributes(record))
-      rescue ActiveRecord::RecordNotFound
-        head :not_found
       end
 
       private

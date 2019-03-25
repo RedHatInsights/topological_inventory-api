@@ -78,11 +78,12 @@ RSpec.describe("v0.0 - SourceTypes") do
       it "failure: with an invalid id" do
         instance = SourceType.create!(attributes)
 
-        get(instance_path(instance.id * 1000))
+        missing_id = instance.id * 1000
+        get(instance_path(missing_id))
 
         expect(response).to have_attributes(
           :status => 404,
-          :parsed_body => ""
+          :parsed_body => {"errors"=>[{"detail"=>"Couldn't find SourceType with 'id'=#{missing_id}", "status"=>404}]}
         )
       end
     end
