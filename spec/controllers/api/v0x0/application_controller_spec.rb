@@ -8,6 +8,7 @@ RSpec.describe ApplicationController, :type => :request do
   let(:unknown_identity) { Base64.encode64({'identity' => { 'account_number' => '123abc'}}.to_json) }
 
   context "with tenancy enforcement" do
+    before { stub_const("ENV", "BYPASS_TENANCY" => nil) }
     after  { controller.send(:set_current_tenant,  nil) }
 
     it "get /source with tenant" do
