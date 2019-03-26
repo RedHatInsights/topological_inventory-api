@@ -108,35 +108,38 @@ class OpenapiGenerator
   def openapi_list_description(klass_name, primary_collection)
     primary_collection = nil if primary_collection == klass_name
     {
-      "summary" => "List #{klass_name.pluralize}#{" for #{primary_collection}" if primary_collection}",
+      "summary"     => "List #{klass_name.pluralize}#{" for #{primary_collection}" if primary_collection}",
       "operationId" => "list#{primary_collection}#{klass_name.pluralize}",
       "description" => "Returns an array of #{klass_name} objects",
-      "parameters" => [
-        {"$ref" => "##{PARAMETERS_PATH}/QueryLimit"},
-        {"$ref" => "##{PARAMETERS_PATH}/QueryOffset"}
+      "parameters"  => [
+        { "$ref" => "##{PARAMETERS_PATH}/QueryLimit"  },
+        { "$ref" => "##{PARAMETERS_PATH}/QueryOffset" }
       ],
-      "produces" => ["application/json"],
-      "responses" => {
-        200 => {
+      "responses"   => {
+        "200" => {
           "description" => "#{klass_name.pluralize} collection",
-          "schema" => {"$ref" => build_collection_schema(klass_name)}
+          "content"     => {
+            "application/json" => {
+              "schema" => { "$ref" => build_collection_schema(klass_name) }
+            }
+          }
         }
       }
     }.tap do |h|
-      h["parameters"] << {"$ref" => build_parameter("ID")} if primary_collection
+      h["parameters"] << { "$ref" => build_parameter("ID") } if primary_collection
     end
   end
 
   def build_collection_schema(klass_name)
     collection_name = "#{klass_name.pluralize}Collection"
     schemas[collection_name] = {
-      "type" => "object",
+      "type"       => "object",
       "properties" => {
-        "meta" => {"$ref" => "##{SCHEMAS_PATH}/CollectionMetadata"},
-        "links" => {"$ref" => "##{SCHEMAS_PATH}/CollectionLinks"},
-        "data" => {
-          "type" => "array",
-          "items" => {"$ref" => build_schema(klass_name)}
+        "meta"  => { "$ref" => "##{SCHEMAS_PATH}/CollectionMetadata" },
+        "links" => { "$ref" => "##{SCHEMAS_PATH}/CollectionLinks"    },
+        "data"  => {
+          "type"  => "array",
+          "items" => { "$ref" => build_schema(klass_name) }
         }
       }
     }
@@ -214,57 +217,61 @@ class OpenapiGenerator
 
   def openapi_show_description(klass_name)
     {
-      "summary" => "Show an existing #{klass_name}",
+      "summary"     => "Show an existing #{klass_name}",
       "operationId" => "show#{klass_name}",
       "description" => "Returns a #{klass_name} object",
-      "produces" => ["application/json"],
-      "parameters" => [{"$ref" => build_parameter("ID")}],
-      "responses" => {
-        200 => {
+      "parameters"  => [{ "$ref" => build_parameter("ID") }],
+      "responses"   => {
+        "200" => {
           "description" => "#{klass_name} info",
-          "schema" => {"$ref" => build_schema(klass_name)}
+          "content"     => {
+            "application/json" => {
+              "schema" => { "$ref" => build_schema(klass_name) }
+            }
+          }
         },
-        404 => {"description" => "Not found"}
+        "404" => {"description" => "Not found"}
       }
     }
   end
 
   def openapi_destroy_description(klass_name)
     {
-      "summary" => "Delete an existing #{klass_name}",
+      "summary"     => "Delete an existing #{klass_name}",
       "operationId" => "delete#{klass_name}",
       "description" => "Deletes a #{klass_name} object",
-      "produces" => ["application/json"],
-      "parameters" => [{"$ref" => build_parameter("ID")}],
-      "responses" => {
-        204 => {"description" => "#{klass_name} deleted"},
-        404 => {"description" => "Not found"}
+      "parameters"  => [{ "$ref" => build_parameter("ID") }],
+      "responses"   => {
+        "204" => { "description" => "#{klass_name} deleted" },
+        "404" => { "description" => "Not found"             }
       }
     }
   end
 
   def openapi_create_description(klass_name)
     {
-      "summary" => "Create a new #{klass_name}",
+      "summary"     => "Create a new #{klass_name}",
       "operationId" => "create#{klass_name}",
       "description" => "Creates a #{klass_name} object",
-      "produces" => ["application/json"],
-      "consumes" => ["application/json"],
-      "parameters" => [
-        {
-          "name" => "body",
-          "in" => "body",
-          "description" => "#{klass_name} attributes to create",
-          "required" => true,
-          "schema" => {"$ref" => build_schema(klass_name)}
-        }
-      ],
-      "responses" => {
-        201 => {
+      "requestBody" => {
+        "content"     => {
+          "application/json" => {
+            "schema" => { "$ref" => build_schema(klass_name) }
+          }
+        },
+        "description" => "#{klass_name} attributes to create",
+        "required"    => true
+      },
+      "responses"   => {
+        "201" => {
           "description" => "#{klass_name} creation successful",
-          "schema" => {
-            "type" => "object",
-            "items" => {"$ref" => build_schema(klass_name)}
+          "content"     => {
+            "application/json" => {
+              "schema" => {
+                "type"  => "object",
+                "items" => { "$ref" => build_schema(klass_name) }
+              }
+            }
           }
         }
       }
@@ -274,49 +281,53 @@ class OpenapiGenerator
   def openapi_update_description(klass_name, verb)
     action = verb == "patch" ? "Update" : "Replace"
     {
-      "summary" => "#{action} an existing #{klass_name}",
+      "summary"     => "#{action} an existing #{klass_name}",
       "operationId" => "#{action.downcase}#{klass_name}",
       "description" => "#{action}s a #{klass_name} object",
-      "produces" => ["application/json"],
-      "consumes" => ["application/json"],
-      "parameters" => [
-        {"$ref" => build_parameter("ID")},
-        {
-          "name" => "body",
-          "in" => "body",
-          "description" => "#{klass_name} attributes to update",
-          "required" => true,
-          "schema" => {"$ref" => build_schema(klass_name)}
-        }
+      "parameters"  => [
+        { "$ref" => build_parameter("ID") }
       ],
-      "responses" => {
-        204 => {"description" => "Updated, no content"},
-        400 => {"description" => "Bad request"},
-        404 => {"description" => "Not found"}
+      "requestBody" => {
+        "content"     => {
+          "application/json" => {
+            "schema" => { "$ref" => build_schema(klass_name) }
+          }
+        },
+        "description" => "#{klass_name} attributes to update",
+        "required"    => true
+      },
+      "responses"   => {
+        "204" => { "description" => "Updated, no content" },
+        "400" => { "description" => "Bad request"         },
+        "404" => { "description" => "Not found"           }
       }
     }
   end
 
   def run
     parameters["QueryOffset"] = {
-      "in" => "query",
-      "name" => "offset",
-      "type" => "integer",
-      "required" => false,
-      "default" => 0,
-      "minimum" => 0,
-      "description" => "The number of items to skip before starting to collect the result set."
+      "in"          => "query",
+      "name"        => "offset",
+      "description" => "The number of items to skip before starting to collect the result set.",
+      "required"    => false,
+      "schema"      => {
+        "type"    => "integer",
+        "minimum" => 0,
+        "default" => 0
+      }
     }
 
     parameters["QueryLimit"] = {
-      "in" => "query",
-      "name" => "limit",
-      "type" => "integer",
-      "required" => false,
-      "default" => 100,
-      "minimum" => 1,
-      "maximum" => 1000,
-      "description" => "The numbers of items to return per page."
+      "in"          => "query",
+      "name"        => "limit",
+      "description" => "The numbers of items to return per page.",
+      "required"    => false,
+      "schema"      => {
+        "type"    => "integer",
+        "minimum" => 1,
+        "maximum" => 1000,
+        "default" => 100
+      }
     }
 
     schemas["CollectionLinks"] = {

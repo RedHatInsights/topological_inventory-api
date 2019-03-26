@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "title": "Topological Inventory",
     "contact": {
-      "email": "support@redhat.com"
+      "email": "you@your-company.com"
     },
     "license": {
       "name": "Apache 2.0",
@@ -191,14 +191,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Authentications collection",
-            "schema": {
-              "$ref": "#/components/schemas/AuthenticationsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationsCollection"
+                }
+              }
             }
           }
         }
@@ -207,30 +208,28 @@
         "summary": "Create a new Authentication",
         "operationId": "createAuthentication",
         "description": "Creates a Authentication object",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Authentication attributes to create",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Authentication"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Authentication"
+              }
             }
-          }
-        ],
+          },
+          "description": "Authentication attributes to create",
+          "required": true
+        },
         "responses": {
           "201": {
             "description": "Authentication creation successful",
-            "schema": {
-              "type": "object",
-              "items": {
-                "$ref": "#/components/schemas/Authentication"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Authentication"
+                  }
+                }
               }
             }
           }
@@ -242,9 +241,6 @@
         "summary": "Show an existing Authentication",
         "operationId": "showAuthentication",
         "description": "Returns a Authentication object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -253,8 +249,12 @@
         "responses": {
           "200": {
             "description": "Authentication info",
-            "schema": {
-              "$ref": "#/components/schemas/Authentication"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Authentication"
+                }
+              }
             }
           },
           "404": {
@@ -266,26 +266,22 @@
         "summary": "Update an existing Authentication",
         "operationId": "updateAuthentication",
         "description": "Updates a Authentication object",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Authentication attributes to update",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Authentication"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Authentication"
+              }
+            }
+          },
+          "description": "Authentication attributes to update",
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "Updated, no content"
@@ -302,9 +298,6 @@
         "summary": "Delete an existing Authentication",
         "operationId": "deleteAuthentication",
         "description": "Deletes a Authentication object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -333,14 +326,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerGroups collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerGroupsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
             }
           }
         }
@@ -351,9 +345,6 @@
         "summary": "Show an existing ContainerGroup",
         "operationId": "showContainerGroup",
         "description": "Returns a ContainerGroup object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -362,8 +353,12 @@
         "responses": {
           "200": {
             "description": "ContainerGroup info",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerGroup"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroup"
+                }
+              }
             }
           },
           "404": {
@@ -388,14 +383,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Containers collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainersCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainersCollection"
+                }
+              }
             }
           }
         }
@@ -417,14 +413,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Tags collection",
-            "schema": {
-              "$ref": "#/components/schemas/TagsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
             }
           }
         }
@@ -443,14 +440,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerImages collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerImagesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerImagesCollection"
+                }
+              }
             }
           }
         }
@@ -461,9 +459,6 @@
         "summary": "Show an existing ContainerImage",
         "operationId": "showContainerImage",
         "description": "Returns a ContainerImage object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -472,8 +467,12 @@
         "responses": {
           "200": {
             "description": "ContainerImage info",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerImage"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerImage"
+                }
+              }
             }
           },
           "404": {
@@ -498,14 +497,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Tags collection",
-            "schema": {
-              "$ref": "#/components/schemas/TagsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
             }
           }
         }
@@ -524,14 +524,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerNodes collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerNodesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerNodesCollection"
+                }
+              }
             }
           }
         }
@@ -542,9 +543,6 @@
         "summary": "Show an existing ContainerNode",
         "operationId": "showContainerNode",
         "description": "Returns a ContainerNode object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -553,8 +551,12 @@
         "responses": {
           "200": {
             "description": "ContainerNode info",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerNode"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerNode"
+                }
+              }
             }
           },
           "404": {
@@ -579,14 +581,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerGroups collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerGroupsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
             }
           }
         }
@@ -608,14 +611,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Tags collection",
-            "schema": {
-              "$ref": "#/components/schemas/TagsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
             }
           }
         }
@@ -634,14 +638,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerProjects collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerProjectsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerProjectsCollection"
+                }
+              }
             }
           }
         }
@@ -652,9 +657,6 @@
         "summary": "Show an existing ContainerProject",
         "operationId": "showContainerProject",
         "description": "Returns a ContainerProject object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -663,8 +665,12 @@
         "responses": {
           "200": {
             "description": "ContainerProject info",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerProject"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerProject"
+                }
+              }
             }
           },
           "404": {
@@ -689,14 +695,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerGroups collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerGroupsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
             }
           }
         }
@@ -718,14 +725,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerResourceQuota collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerResourceQuotaCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerResourceQuotaCollection"
+                }
+              }
             }
           }
         }
@@ -747,14 +755,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerTemplates collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerTemplatesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
             }
           }
         }
@@ -776,14 +785,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Tags collection",
-            "schema": {
-              "$ref": "#/components/schemas/TagsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
             }
           }
         }
@@ -802,14 +812,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerResourceQuota collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerResourceQuotaCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerResourceQuotaCollection"
+                }
+              }
             }
           }
         }
@@ -820,9 +831,6 @@
         "summary": "Show an existing ContainerResourceQuota",
         "operationId": "showContainerResourceQuota",
         "description": "Returns a ContainerResourceQuota object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -831,8 +839,12 @@
         "responses": {
           "200": {
             "description": "ContainerResourceQuota info",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerResourceQuota"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerResourceQuota"
+                }
+              }
             }
           },
           "404": {
@@ -854,14 +866,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerTemplates collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerTemplatesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
             }
           }
         }
@@ -872,9 +885,6 @@
         "summary": "Show an existing ContainerTemplate",
         "operationId": "showContainerTemplate",
         "description": "Returns a ContainerTemplate object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -883,8 +893,12 @@
         "responses": {
           "200": {
             "description": "ContainerTemplate info",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerTemplate"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplate"
+                }
+              }
             }
           },
           "404": {
@@ -909,14 +923,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Tags collection",
-            "schema": {
-              "$ref": "#/components/schemas/TagsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
             }
           }
         }
@@ -935,14 +950,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Containers collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainersCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainersCollection"
+                }
+              }
             }
           }
         }
@@ -953,9 +969,6 @@
         "summary": "Show an existing Container",
         "operationId": "showContainer",
         "description": "Returns a Container object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -964,8 +977,12 @@
         "responses": {
           "200": {
             "description": "Container info",
-            "schema": {
-              "$ref": "#/components/schemas/Container"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Container"
+                }
+              }
             }
           },
           "404": {
@@ -987,14 +1004,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Endpoints collection",
-            "schema": {
-              "$ref": "#/components/schemas/EndpointsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EndpointsCollection"
+                }
+              }
             }
           }
         }
@@ -1003,30 +1021,28 @@
         "summary": "Create a new Endpoint",
         "operationId": "createEndpoint",
         "description": "Creates a Endpoint object",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Endpoint attributes to create",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Endpoint"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Endpoint"
+              }
             }
-          }
-        ],
+          },
+          "description": "Endpoint attributes to create",
+          "required": true
+        },
         "responses": {
           "201": {
             "description": "Endpoint creation successful",
-            "schema": {
-              "type": "object",
-              "items": {
-                "$ref": "#/components/schemas/Endpoint"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Endpoint"
+                  }
+                }
               }
             }
           }
@@ -1038,9 +1054,6 @@
         "summary": "Show an existing Endpoint",
         "operationId": "showEndpoint",
         "description": "Returns a Endpoint object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1049,8 +1062,12 @@
         "responses": {
           "200": {
             "description": "Endpoint info",
-            "schema": {
-              "$ref": "#/components/schemas/Endpoint"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Endpoint"
+                }
+              }
             }
           },
           "404": {
@@ -1062,26 +1079,22 @@
         "summary": "Update an existing Endpoint",
         "operationId": "updateEndpoint",
         "description": "Updates a Endpoint object",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Endpoint attributes to update",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Endpoint"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Endpoint"
+              }
+            }
+          },
+          "description": "Endpoint attributes to update",
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "Updated, no content"
@@ -1098,9 +1111,6 @@
         "summary": "Delete an existing Endpoint",
         "operationId": "deleteEndpoint",
         "description": "Deletes a Endpoint object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1132,14 +1142,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Authentications collection",
-            "schema": {
-              "$ref": "#/components/schemas/AuthenticationsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationsCollection"
+                }
+              }
             }
           }
         }
@@ -1158,14 +1169,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Flavors collection",
-            "schema": {
-              "$ref": "#/components/schemas/FlavorsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlavorsCollection"
+                }
+              }
             }
           }
         }
@@ -1176,9 +1188,6 @@
         "summary": "Show an existing Flavor",
         "operationId": "showFlavor",
         "description": "Returns a Flavor object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1187,8 +1196,12 @@
         "responses": {
           "200": {
             "description": "Flavor info",
-            "schema": {
-              "$ref": "#/components/schemas/Flavor"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Flavor"
+                }
+              }
             }
           },
           "404": {
@@ -1221,14 +1234,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "OrchestrationStacks collection",
-            "schema": {
-              "$ref": "#/components/schemas/OrchestrationStacksCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrchestrationStacksCollection"
+                }
+              }
             }
           }
         }
@@ -1239,9 +1253,6 @@
         "summary": "Show an existing OrchestrationStack",
         "operationId": "showOrchestrationStack",
         "description": "Returns a OrchestrationStack object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1250,8 +1261,12 @@
         "responses": {
           "200": {
             "description": "OrchestrationStack info",
-            "schema": {
-              "$ref": "#/components/schemas/OrchestrationStack"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrchestrationStack"
+                }
+              }
             }
           },
           "404": {
@@ -1273,14 +1288,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServiceInstances collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceInstancesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
             }
           }
         }
@@ -1291,9 +1307,6 @@
         "summary": "Show an existing ServiceInstance",
         "operationId": "showServiceInstance",
         "description": "Returns a ServiceInstance object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1302,8 +1315,12 @@
         "responses": {
           "200": {
             "description": "ServiceInstance info",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceInstance"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstance"
+                }
+              }
             }
           },
           "404": {
@@ -1325,14 +1342,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServiceOfferingIcons collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceOfferingIconsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingIconsCollection"
+                }
+              }
             }
           }
         }
@@ -1343,9 +1361,6 @@
         "summary": "Show an existing ServiceOfferingIcon",
         "operationId": "showServiceOfferingIcon",
         "description": "Returns a ServiceOfferingIcon object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1354,8 +1369,12 @@
         "responses": {
           "200": {
             "description": "ServiceOfferingIcon info",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceOfferingIcon"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingIcon"
+                }
+              }
             }
           },
           "404": {
@@ -1369,9 +1388,6 @@
         "summary": "Show an existing ServiceOfferingIcon",
         "operationId": "showServiceOfferingIcon",
         "description": "Returns a ServiceOfferingIcon object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1380,8 +1396,12 @@
         "responses": {
           "200": {
             "description": "ServiceOfferingIcon info",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceOfferingIcon"
+            "content": {
+              "image/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
             }
           },
           "404": {
@@ -1429,14 +1449,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServiceOfferings collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceOfferingsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
             }
           }
         }
@@ -1447,9 +1468,6 @@
         "summary": "Show an existing ServiceOffering",
         "operationId": "showServiceOffering",
         "description": "Returns a ServiceOffering object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1458,8 +1476,12 @@
         "responses": {
           "200": {
             "description": "ServiceOffering info",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceOffering"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOffering"
+                }
+              }
             }
           },
           "404": {
@@ -1484,14 +1506,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServiceInstances collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceInstancesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
             }
           }
         }
@@ -1513,14 +1536,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServicePlans collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServicePlansCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlansCollection"
+                }
+              }
             }
           }
         }
@@ -1542,14 +1566,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Tags collection",
-            "schema": {
-              "$ref": "#/components/schemas/TagsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
             }
           }
         }
@@ -1568,14 +1593,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServicePlans collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServicePlansCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlansCollection"
+                }
+              }
             }
           }
         }
@@ -1586,9 +1612,6 @@
         "summary": "Show an existing ServicePlan",
         "operationId": "showServicePlan",
         "description": "Returns a ServicePlan object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1597,8 +1620,12 @@
         "responses": {
           "200": {
             "description": "ServicePlan info",
-            "schema": {
-              "$ref": "#/components/schemas/ServicePlan"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlan"
+                }
+              }
             }
           },
           "404": {
@@ -1632,7 +1659,7 @@
           "200": {
             "description": "Returns a task ID for the order",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
@@ -1666,14 +1693,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServiceInstances collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceInstancesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
             }
           }
         }
@@ -1692,14 +1720,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "SourceTypes collection",
-            "schema": {
-              "$ref": "#/components/schemas/SourceTypesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceTypesCollection"
+                }
+              }
             }
           }
         }
@@ -1708,30 +1737,28 @@
         "summary": "Create a new SourceType",
         "operationId": "createSourceType",
         "description": "Creates a SourceType object",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "SourceType attributes to create",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/SourceType"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SourceType"
+              }
             }
-          }
-        ],
+          },
+          "description": "SourceType attributes to create",
+          "required": true
+        },
         "responses": {
           "201": {
             "description": "SourceType creation successful",
-            "schema": {
-              "type": "object",
-              "items": {
-                "$ref": "#/components/schemas/SourceType"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/SourceType"
+                  }
+                }
               }
             }
           }
@@ -1743,9 +1770,6 @@
         "summary": "Show an existing SourceType",
         "operationId": "showSourceType",
         "description": "Returns a SourceType object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1754,8 +1778,12 @@
         "responses": {
           "200": {
             "description": "SourceType info",
-            "schema": {
-              "$ref": "#/components/schemas/SourceType"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceType"
+                }
+              }
             }
           },
           "404": {
@@ -1780,14 +1808,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Availabilities collection",
-            "schema": {
-              "$ref": "#/components/schemas/AvailabilitiesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilitiesCollection"
+                }
+              }
             }
           }
         }
@@ -1809,14 +1838,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Sources collection",
-            "schema": {
-              "$ref": "#/components/schemas/SourcesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourcesCollection"
+                }
+              }
             }
           }
         }
@@ -1835,14 +1865,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Sources collection",
-            "schema": {
-              "$ref": "#/components/schemas/SourcesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourcesCollection"
+                }
+              }
             }
           }
         }
@@ -1851,30 +1882,28 @@
         "summary": "Create a new Source",
         "operationId": "createSource",
         "description": "Creates a Source object",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Source attributes to create",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Source"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Source"
+              }
             }
-          }
-        ],
+          },
+          "description": "Source attributes to create",
+          "required": true
+        },
         "responses": {
           "201": {
             "description": "Source creation successful",
-            "schema": {
-              "type": "object",
-              "items": {
-                "$ref": "#/components/schemas/Source"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Source"
+                  }
+                }
               }
             }
           }
@@ -1886,9 +1915,6 @@
         "summary": "Show an existing Source",
         "operationId": "showSource",
         "description": "Returns a Source object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1897,8 +1923,12 @@
         "responses": {
           "200": {
             "description": "Source info",
-            "schema": {
-              "$ref": "#/components/schemas/Source"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Source"
+                }
+              }
             }
           },
           "404": {
@@ -1910,26 +1940,22 @@
         "summary": "Update an existing Source",
         "operationId": "updateSource",
         "description": "Updates a Source object",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Source attributes to update",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Source"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Source"
+              }
+            }
+          },
+          "description": "Source attributes to update",
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "Updated, no content"
@@ -1946,9 +1972,6 @@
         "summary": "Delete an existing Source",
         "operationId": "deleteSource",
         "description": "Deletes a Source object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -2009,14 +2032,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Availabilities collection",
-            "schema": {
-              "$ref": "#/components/schemas/AvailabilitiesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilitiesCollection"
+                }
+              }
             }
           }
         }
@@ -2038,14 +2062,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerGroups collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerGroupsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
             }
           }
         }
@@ -2067,14 +2092,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerImages collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerImagesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerImagesCollection"
+                }
+              }
             }
           }
         }
@@ -2096,14 +2122,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerNodes collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerNodesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerNodesCollection"
+                }
+              }
             }
           }
         }
@@ -2125,14 +2152,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerProjects collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerProjectsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerProjectsCollection"
+                }
+              }
             }
           }
         }
@@ -2154,14 +2182,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerTemplates collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerTemplatesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
             }
           }
         }
@@ -2183,14 +2212,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Containers collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainersCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainersCollection"
+                }
+              }
             }
           }
         }
@@ -2212,14 +2242,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Endpoints collection",
-            "schema": {
-              "$ref": "#/components/schemas/EndpointsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EndpointsCollection"
+                }
+              }
             }
           }
         }
@@ -2241,14 +2272,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "OrchestrationStacks collection",
-            "schema": {
-              "$ref": "#/components/schemas/OrchestrationStacksCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrchestrationStacksCollection"
+                }
+              }
             }
           }
         }
@@ -2270,14 +2302,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServiceInstances collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceInstancesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
             }
           }
         }
@@ -2299,14 +2332,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServiceOfferings collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceOfferingsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
             }
           }
         }
@@ -2328,14 +2362,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServicePlans collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServicePlansCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlansCollection"
+                }
+              }
             }
           }
         }
@@ -2357,14 +2392,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Vms collection",
-            "schema": {
-              "$ref": "#/components/schemas/VmsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
             }
           }
         }
@@ -2386,14 +2422,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "VolumeTypes collection",
-            "schema": {
-              "$ref": "#/components/schemas/VolumeTypesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeTypesCollection"
+                }
+              }
             }
           }
         }
@@ -2415,14 +2452,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Volumes collection",
-            "schema": {
-              "$ref": "#/components/schemas/VolumesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
             }
           }
         }
@@ -2441,14 +2479,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Tags collection",
-            "schema": {
-              "$ref": "#/components/schemas/TagsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
             }
           }
         }
@@ -2459,9 +2498,6 @@
         "summary": "Show an existing Tag",
         "operationId": "showTag",
         "description": "Returns a Tag object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -2470,8 +2506,12 @@
         "responses": {
           "200": {
             "description": "Tag info",
-            "schema": {
-              "$ref": "#/components/schemas/Tag"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
             }
           },
           "404": {
@@ -2496,14 +2536,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerGroups collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerGroupsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
             }
           }
         }
@@ -2525,14 +2566,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerImages collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerImagesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerImagesCollection"
+                }
+              }
             }
           }
         }
@@ -2554,14 +2596,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerNodes collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerNodesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerNodesCollection"
+                }
+              }
             }
           }
         }
@@ -2583,14 +2626,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerProjects collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerProjectsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerProjectsCollection"
+                }
+              }
             }
           }
         }
@@ -2612,14 +2656,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ContainerTemplates collection",
-            "schema": {
-              "$ref": "#/components/schemas/ContainerTemplatesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
             }
           }
         }
@@ -2641,14 +2686,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ServiceOfferings collection",
-            "schema": {
-              "$ref": "#/components/schemas/ServiceOfferingsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
             }
           }
         }
@@ -2670,14 +2716,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Vms collection",
-            "schema": {
-              "$ref": "#/components/schemas/VmsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
             }
           }
         }
@@ -2696,14 +2743,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Tasks collection",
-            "schema": {
-              "$ref": "#/components/schemas/TasksCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TasksCollection"
+                }
+              }
             }
           }
         }
@@ -2714,9 +2762,6 @@
         "summary": "Show an existing Task",
         "operationId": "showTask",
         "description": "Returns a Task object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -2725,8 +2770,12 @@
         "responses": {
           "200": {
             "description": "Task info",
-            "schema": {
-              "$ref": "#/components/schemas/Task"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
             }
           },
           "404": {
@@ -2738,26 +2787,22 @@
         "summary": "Update an existing Task",
         "operationId": "updateTask",
         "description": "Updates a Task object",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Task attributes to update",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Task"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Task"
+              }
+            }
+          },
+          "description": "Task attributes to update",
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "Updated, no content"
@@ -2784,14 +2829,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Vms collection",
-            "schema": {
-              "$ref": "#/components/schemas/VmsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
             }
           }
         }
@@ -2802,9 +2848,6 @@
         "summary": "Show an existing Vm",
         "operationId": "showVm",
         "description": "Returns a Vm object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -2813,8 +2856,12 @@
         "responses": {
           "200": {
             "description": "Vm info",
-            "schema": {
-              "$ref": "#/components/schemas/Vm"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vm"
+                }
+              }
             }
           },
           "404": {
@@ -2839,14 +2886,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Tags collection",
-            "schema": {
-              "$ref": "#/components/schemas/TagsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
             }
           }
         }
@@ -2868,14 +2916,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "VolumeAttachments collection",
-            "schema": {
-              "$ref": "#/components/schemas/VolumeAttachmentsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeAttachmentsCollection"
+                }
+              }
             }
           }
         }
@@ -2897,14 +2946,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Volumes collection",
-            "schema": {
-              "$ref": "#/components/schemas/VolumesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
             }
           }
         }
@@ -2923,14 +2973,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "VolumeAttachments collection",
-            "schema": {
-              "$ref": "#/components/schemas/VolumeAttachmentsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeAttachmentsCollection"
+                }
+              }
             }
           }
         }
@@ -2941,9 +2992,6 @@
         "summary": "Show an existing VolumeAttachment",
         "operationId": "showVolumeAttachment",
         "description": "Returns a VolumeAttachment object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -2952,8 +3000,12 @@
         "responses": {
           "200": {
             "description": "VolumeAttachment info",
-            "schema": {
-              "$ref": "#/components/schemas/VolumeAttachment"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeAttachment"
+                }
+              }
             }
           },
           "404": {
@@ -2975,14 +3027,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "VolumeTypes collection",
-            "schema": {
-              "$ref": "#/components/schemas/VolumeTypesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeTypesCollection"
+                }
+              }
             }
           }
         }
@@ -2993,9 +3046,6 @@
         "summary": "Show an existing VolumeType",
         "operationId": "showVolumeType",
         "description": "Returns a VolumeType object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -3004,8 +3054,12 @@
         "responses": {
           "200": {
             "description": "VolumeType info",
-            "schema": {
-              "$ref": "#/components/schemas/VolumeType"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeType"
+                }
+              }
             }
           },
           "404": {
@@ -3027,14 +3081,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Volumes collection",
-            "schema": {
-              "$ref": "#/components/schemas/VolumesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
             }
           }
         }
@@ -3045,9 +3100,6 @@
         "summary": "Show an existing Volume",
         "operationId": "showVolume",
         "description": "Returns a Volume object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -3056,8 +3108,12 @@
         "responses": {
           "200": {
             "description": "Volume info",
-            "schema": {
-              "$ref": "#/components/schemas/Volume"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Volume"
+                }
+              }
             }
           },
           "404": {
@@ -3070,7 +3126,20 @@
   "servers": [
     {
       "url": "https://cloud.redhat.com/{basePath}",
+      "description": "Production Server",
       "variables": {
+        "basePath": {
+          "default": "/api/topological-inventory/v0.1"
+        }
+      }
+    },
+    {
+      "url": "http://localhost:{port}/{basePath}",
+      "description": "Development Server",
+      "variables": {
+        "port": {
+          "default": "3000"
+        },
         "basePath": {
           "default": "/api/topological-inventory/v0.1"
         }
@@ -3092,21 +3161,25 @@
       "QueryLimit": {
         "in": "query",
         "name": "limit",
-        "type": "integer",
+        "description": "The numbers of items to return per page.",
         "required": false,
-        "default": 100,
-        "minimum": 1,
-        "maximum": 1000,
-        "description": "The numbers of items to return per page."
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000,
+          "default": 100
+        }
       },
       "QueryOffset": {
         "in": "query",
         "name": "offset",
-        "type": "integer",
+        "description": "The number of items to skip before starting to collect the result set.",
         "required": false,
-        "default": 0,
-        "minimum": 0,
-        "description": "The number of items to skip before starting to collect the result set."
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0
+        }
       }
     },
     "securitySchemes": {
@@ -3560,7 +3633,7 @@
         "properties": {
           "addresses": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "allocatable_cpus": {
             "readOnly": true,
@@ -3581,7 +3654,7 @@
           },
           "conditions": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "cpus": {
             "example": 4,
@@ -3622,7 +3695,7 @@
           },
           "node_info": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "pods": {
             "readOnly": true,
@@ -3808,11 +3881,11 @@
           },
           "spec": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "status": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "updated_at": {
             "format": "date-time",
@@ -4196,6 +4269,10 @@
           },
           "created_at": {
             "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "external_url": {
             "readOnly": true,
             "type": "string"
           },
