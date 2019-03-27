@@ -3,7 +3,7 @@ require_relative "shared_examples_for_index"
 RSpec.describe("v0.1 - ServiceOfferingIcon") do
   let(:source) { Source.create!(:name => "name", :source_type => source_type, :tenant => tenant) }
   let(:source_type) { SourceType.create!(:vendor => "vendor", :product_name => "product_name", :name => "name") }
-  let(:tenant) { Tenant.create! }
+  let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
   let(:data) { '<svg width=\"580\" height=\"400\" xmlns=\"http://www.w3.org/2000/svg\"> <!-- Created with Method Draw -'\
     'http://github.com/duopixel/Method-Draw/ --> <g>  <title>background</title>  <rect fill=\"#ff0000\" '\
     'id=\"canvas_background\" height=\"402\" width=\"582\" y=\"-1\" x=\"-1\"/>  <g display=\"none\" overflow=\"visible\"'\

@@ -1,7 +1,7 @@
 RSpec.describe("v0.1 - Authentications") do
   let(:attributes)      { {"username" => "test_name", "password" => "Test Password", "tenant_id" => tenant.id.to_s, "resource_type" => "Tenant", "resource_id" => tenant.id.to_s} }
   let(:collection_path) { "/api/v0.1/authentications" }
-  let(:tenant)          { Tenant.create! }
+  let(:tenant)          { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   describe("/api/v0.1/authentications") do
     context "get" do

@@ -3,7 +3,7 @@ require_relative "shared_examples_for_index"
 RSpec.describe("v0.1 - ContainerProject") do
   let(:source) { Source.create!(:name => "name", :source_type => source_type, :tenant => tenant) }
   let(:source_type) { SourceType.create!(:vendor => "vendor", :product_name => "product_name", :name => "name") }
-  let(:tenant) { Tenant.create! }
+  let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   let(:attributes) do
     {

@@ -2,7 +2,7 @@ RSpec.describe("v0.0 - Sources") do
   let(:attributes)      { {"name" => "my source", "source_type_id" => source_type.id.to_s, "tenant_id" => tenant.id.to_s} }
   let(:collection_path) { "/api/v0.0/sources" }
   let(:source_type)     { SourceType.create!(:name => "SourceType", :vendor => "Some Vendor", :product_name => "Product Name") }
-  let(:tenant)          { Tenant.create! }
+  let(:tenant)          { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   describe("/api/v0.0/sources") do
     context "get" do

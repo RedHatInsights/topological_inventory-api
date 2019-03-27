@@ -1,5 +1,5 @@
 RSpec.describe("ApplicationController::Filter") do
-  let(:tenant) { Tenant.create! }
+  let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   def create_task(attrs = {})
     Task.create!(

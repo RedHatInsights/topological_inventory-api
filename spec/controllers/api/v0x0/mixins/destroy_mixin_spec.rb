@@ -1,7 +1,7 @@
 describe Api::V0::Mixins::DestroyMixin do
   describe Api::V0x0::SourcesController, :type => :request do
     let!(:source_1)   { Source.create!(:source_type => source_type, :tenant => tenant, :name => "test_source 1", :uid => SecureRandom.uuid) }
-    let!(:tenant)     { Tenant.create! }
+    let!(:tenant)     { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
     let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
 
     it "Primary Collection: delete /sources/:id destroys a Source" do

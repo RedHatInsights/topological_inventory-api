@@ -7,7 +7,7 @@ RSpec.describe("v0.1 - Container") do
   let(:container_project) { ContainerProject.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
   let(:source)            { Source.create!(:name => "name", :source_type => source_type, :tenant => tenant) }
   let(:source_type)       { SourceType.create!(:vendor => "vendor", :product_name => "product_name", :name => "name") }
-  let(:tenant)            { Tenant.create! }
+  let(:tenant)            { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   let(:attributes) do
     {
