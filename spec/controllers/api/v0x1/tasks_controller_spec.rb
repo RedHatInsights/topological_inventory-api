@@ -4,7 +4,7 @@ RSpec.describe Api::V0x1::TasksController, :type => :request do
   it("Uses IndexMixin")   { expect(described_class.instance_method(:index).owner).to eq(Api::V0x1::Mixins::IndexMixin) }
   it("Uses ShowMixin")    { expect(described_class.instance_method(:show).owner).to eq(Api::V0::Mixins::ShowMixin) }
 
-  let(:tenant) { Tenant.create! }
+  let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
   let(:client) { instance_double("ManageIQ::Messaging::Client") }
 
   before do
