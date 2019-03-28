@@ -5,7 +5,6 @@ RSpec.describe ApplicationController, :type => :request do
 
   context "with tenancy enforcement" do
     before { stub_const("ENV", "BYPASS_TENANCY" => nil) }
-    after  { controller.send(:set_current_tenant,  nil) }
 
     it "get /source with tenant" do
       headers = { "CONTENT_TYPE" => "application/json", "x-rh-identity" => identity }
@@ -43,7 +42,6 @@ RSpec.describe ApplicationController, :type => :request do
 
   context "without tenancy enforcement" do
     before { stub_const("ENV", "BYPASS_TENANCY" => "true") }
-    after { controller.send(:set_current_tenant,  nil) }
 
     it "get /sources without identity" do
       headers = { "CONTENT_TYPE" => "application/json" }

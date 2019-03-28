@@ -4,8 +4,6 @@ module Spec
       extend ActiveSupport::Concern
 
       included do
-        after  { controller.send(:set_current_tenant,  nil) if controller }
-
         let!(:tenant)           { Tenant.create!(:external_tenant => external_tenant) }
         let!(:external_tenant)  { rand(1000).to_s }
         let!(:unknown_tenant)   { rand(1000).to_s }

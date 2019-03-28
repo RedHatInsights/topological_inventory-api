@@ -21,8 +21,10 @@ class ApplicationController < ActionController::API
   end
 
   private
+
   set_current_tenant_through_filter
   before_action :set_the_current_tenant
+  after_action  :unset_the_current_tenant
 
   def set_the_current_tenant
     return unless Tenant.tenancy_enabled?
@@ -43,21 +45,14 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def user_identity
-    # "x-rh-identity" => {
-    #   "identity" => {
-    #     "account_number" => 123456,
-    #     "user" => {},
-    #     "system" => {},
-    #     "internal" => {},
-    #     "type" => "String"
-    #   }
-    # }
-    ident_key = "x-rh-identity"
-    return unless request.headers.key?(ident_key)
+  def unset_the_current_tenant
+    set_current_tenant(nil)
+  end
 
-    ident = JSON.parse(Base64.decode64(request.headers[ident_key]))
-    ident.fetch_path("identity", "account_number")
+  def user_identity
+    ManageIQ::API::Common::Request.with_request(request) do |current|
+      current.user.tenant if current.headers.key?(ManageIQ::API::Common::Request::IDENTITY_KEY)
+    end
   end
 
   private_class_method def self.model
