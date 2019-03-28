@@ -6,9 +6,13 @@ module Api
       include Api::V0::Mixins::ShowMixin
       include Api::V0::Mixins::UpdateMixin
 
-      def set_the_current_tenant
-        # Auto-create tenant if creating a new source and tenant does not exist
-        Tenant.find_or_create_by(:external_tenant => user_identity) if action_name == "create"
+      def with_current_request
+        ManageIQ::API::Common::Request.with_request(request) do |current|
+          if Tenant.tenancy_enabled?
+            # Auto-create tenant if creating a new source and tenant does not exist
+            Tenant.find_or_create_by(:external_tenant => current.user.tenant) if action_name == "create" rescue KeyError
+          end
+        end
 
         super
       end

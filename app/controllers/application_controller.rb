@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
   ActionController::Parameters.action_on_unpermitted_parameters = :raise
 
+  around_action :with_current_request
+
   rescue_from ActionController::UnpermittedParameters do |exception|
     error_document = TopologicalInventory::Api::ErrorDocument.new.add(exception.message)
     render :json => error_document.to_h, :status => error_document.status
@@ -22,36 +24,24 @@ class ApplicationController < ActionController::API
 
   private
 
-  set_current_tenant_through_filter
-  before_action :set_the_current_tenant
-  after_action  :unset_the_current_tenant
+  class NoTenantError < StandardError; end
 
-  def set_the_current_tenant
-    return unless Tenant.tenancy_enabled?
-
-    tenant = Tenant.find_by(:external_tenant => user_identity)
-    if tenant
-      set_current_tenant(tenant)
-    else
-      error_document = {
-          "errors" => [
-              {
-                  "status" => "401",
-                  "detail" => "Account number not present or not found"
-              }
-          ]
-      }
-      render :json => error_document, :status => :unauthorized
-    end
-  end
-
-  def unset_the_current_tenant
-    set_current_tenant(nil)
-  end
-
-  def user_identity
+  def with_current_request
     ManageIQ::API::Common::Request.with_request(request) do |current|
-      current.user.tenant if current.headers.key?(ManageIQ::API::Common::Request::IDENTITY_KEY)
+      begin
+        if Tenant.tenancy_enabled?
+          tenant = Tenant.find_by(:external_tenant => current.user.tenant)
+          raise NoTenantError unless tenant.present?
+
+          ActsAsTenant.with_tenant(tenant) { yield }
+        else
+          ActsAsTenant.without_tenant { yield }
+        end
+      rescue NoTenantError
+        render :json => { :message => 'Unauthorized' }, :status => :unauthorized
+      rescue KeyError
+        render :json => { :message => 'Unauthorized' }, :status => :unauthorized
+      end
     end
   end
 
