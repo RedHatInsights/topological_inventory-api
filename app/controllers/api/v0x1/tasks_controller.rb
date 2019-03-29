@@ -6,9 +6,9 @@ module Api
       def update
         model.update(params.require(:id), params_for_update)
 
-        messaging_client.publish_message(
+        messaging_client.publish_topic(
           :service => "platform.topological-inventory.task-output-stream",
-          :message => "Task.update",
+          :event   => "Task.update",
           :payload => params_for_update.to_h.merge("task_id" => params.require(:id))
         )
 

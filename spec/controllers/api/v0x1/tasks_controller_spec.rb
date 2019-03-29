@@ -9,14 +9,14 @@ RSpec.describe Api::V0x1::TasksController, :type => :request do
 
   before do
     allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
-    allow(client).to receive(:publish_message)
+    allow(client).to receive(:publish_topic)
   end
 
   it "patch /tasks/:id updates a Task" do
     task = Task.create!(:state => "running", :status => "ok", :context => "context1", :tenant => tenant)
-    expect(client).to receive(:publish_message).with(
+    expect(client).to receive(:publish_topic).with(
       :service => "platform.topological-inventory.task-output-stream",
-      :message => "Task.update",
+      :event   => "Task.update",
       :payload => {"state" => "completed", "status" => "ok", "context" => "context2", "task_id" => task.id.to_s}
     )
 
