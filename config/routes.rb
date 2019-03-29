@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
     namespace :v0x1, :path => "v0.1" do
       get "/openapi.json", :to => "root#openapi"
+      resources :application_types,       :only => [:index, :show]
+      resources :applications,            :only => [:create, :destroy, :index, :show]
       resources :authentications,         :only => [:create, :destroy, :index, :show, :update]
       resources :containers,              :only => [:index, :show]
       resources :container_groups,        :only => [:index, :show] do
@@ -58,6 +60,7 @@ Rails.application.routes.draw do
         resources :sources,        :only => [:index]
       end
       resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
+        resources :applications,            :only => [:index]
         resources :availabilities,          :only => [:index]
         resources :containers,              :only => [:index]
         resources :container_groups,        :only => [:index]

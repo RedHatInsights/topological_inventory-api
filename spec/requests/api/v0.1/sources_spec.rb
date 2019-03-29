@@ -10,6 +10,7 @@ RSpec.describe("v0.0 - Sources") do
     "test_index_and_subcollections",
     "sources",
     [
+      "applications",
       "container_groups",
       "container_images",
       "container_nodes",
