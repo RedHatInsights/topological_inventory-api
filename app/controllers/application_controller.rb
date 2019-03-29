@@ -37,9 +37,7 @@ class ApplicationController < ActionController::API
         else
           ActsAsTenant.without_tenant { yield }
         end
-      rescue NoTenantError
-        render :json => { :message => 'Unauthorized' }, :status => :unauthorized
-      rescue KeyError
+      rescue NoTenantError, KeyError
         render :json => { :message => 'Unauthorized' }, :status => :unauthorized
       end
     end
