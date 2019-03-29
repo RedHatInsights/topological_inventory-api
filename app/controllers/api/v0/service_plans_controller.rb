@@ -31,8 +31,8 @@ module Api
 
       def payload_for_order(task, service_plan)
         {
-          :identity        => ManageIQ::Api::Common::Request.current_forwardable,
-          :order_params    => params_for_order
+          :identity        => ManageIQ::API::Common::Request.current_forwardable,
+          :order_params    => params_for_order,
           :service_plan_id => service_plan.id.to_s,
           :task_id         => task.id.to_s,
         }
