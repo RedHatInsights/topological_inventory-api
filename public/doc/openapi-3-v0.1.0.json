@@ -33,14 +33,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "ApplicationTypes collection",
-            "schema": {
-              "$ref": "#/components/schemas/ApplicationTypesCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationTypesCollection"
+                }
+              }
             }
           }
         }
@@ -51,9 +52,6 @@
         "summary": "Show an existing ApplicationType",
         "operationId": "showApplicationType",
         "description": "Returns a ApplicationType object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -62,8 +60,12 @@
         "responses": {
           "200": {
             "description": "ApplicationType info",
-            "schema": {
-              "$ref": "#/components/schemas/ApplicationType"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationType"
+                }
+              }
             }
           },
           "404": {
@@ -85,14 +87,15 @@
             "$ref": "#/components/parameters/QueryOffset"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Applications collection",
-            "schema": {
-              "$ref": "#/components/schemas/ApplicationsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationsCollection"
+                }
+              }
             }
           }
         }
@@ -101,30 +104,28 @@
         "summary": "Create a new Application",
         "operationId": "createApplication",
         "description": "Creates a Application object",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Application attributes to create",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Application"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Application"
+              }
             }
-          }
-        ],
+          },
+          "description": "Application attributes to create",
+          "required": true
+        },
         "responses": {
           "201": {
             "description": "Application creation successful",
-            "schema": {
-              "type": "object",
-              "items": {
-                "$ref": "#/components/schemas/Application"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                }
               }
             }
           }
@@ -136,9 +137,6 @@
         "summary": "Show an existing Application",
         "operationId": "showApplication",
         "description": "Returns a Application object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -147,8 +145,12 @@
         "responses": {
           "200": {
             "description": "Application info",
-            "schema": {
-              "$ref": "#/components/schemas/Application"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Application"
+                }
+              }
             }
           },
           "404": {
@@ -160,9 +162,6 @@
         "summary": "Delete an existing Application",
         "operationId": "deleteApplication",
         "description": "Deletes a Application object",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1388,33 +1387,6 @@
         "summary": "Show an existing ServiceOfferingIcon",
         "operationId": "showServiceOfferingIcon",
         "description": "Returns a ServiceOfferingIcon object",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ID"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "ServiceOfferingIcon info",
-            "content": {
-              "image/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found"
-          }
-        }
-      }
-    },
-    "/service_offering_icons/{id}/icon_data": {
-      "get": {
-        "summary": "Show an existing ServiceOfferingIcon",
-        "operationId": "showServiceOfferingIcon",
-        "description": "Returns a ServiceOfferingIcon object",
         "produces": [
           "application/json"
         ],
@@ -2003,14 +1975,15 @@
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "Applications collection",
-            "schema": {
-              "$ref": "#/components/schemas/ApplicationsCollection"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationsCollection"
+                }
+              }
             }
           }
         }
@@ -3206,6 +3179,9 @@
           "source_id": {
             "$ref": "#/components/schemas/ID"
           },
+          "tenant_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "updated_at": {
             "format": "date-time",
             "readOnly": true,
@@ -4269,10 +4245,6 @@
           },
           "created_at": {
             "format": "date-time",
-            "readOnly": true,
-            "type": "string"
-          },
-          "external_url": {
             "readOnly": true,
             "type": "string"
           },
