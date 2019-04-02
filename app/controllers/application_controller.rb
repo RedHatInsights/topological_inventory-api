@@ -24,20 +24,18 @@ class ApplicationController < ActionController::API
 
   private
 
-  class NoTenantError < StandardError; end
-
   def with_current_request
     ManageIQ::API::Common::Request.with_request(request) do |current|
       begin
         if Tenant.tenancy_enabled?
           tenant = Tenant.find_by(:external_tenant => current.user.tenant)
-          raise NoTenantError unless tenant.present?
+          raise TopologicalInventory::Api::NoTenantError unless tenant.present?
 
           ActsAsTenant.with_tenant(tenant) { yield }
         else
           ActsAsTenant.without_tenant { yield }
         end
-      rescue NoTenantError, KeyError
+      rescue TopologicalInventory::Api::NoTenantError, KeyError
         render :json => { :message => 'Unauthorized' }, :status => :unauthorized
       end
     end
