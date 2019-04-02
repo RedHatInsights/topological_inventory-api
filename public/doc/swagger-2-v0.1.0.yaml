@@ -3024,6 +3024,26 @@ definitions:
         type: array
         items:
           "$ref": "#/definitions/Task"
+  Tenant:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        format: uuid
+      name:
+        type: string
+        example: Sample Tenant
+        title: Name
+        readOnly: true
+      description:
+        type: string
+        description: Description of the Tenant
+        readOnly: true
+      external_tenant:
+        type: string
+        description: External tenant identifier
+        readOnly: true
   Vm:
     type: object
     properties:
