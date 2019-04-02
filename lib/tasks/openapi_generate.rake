@@ -194,6 +194,7 @@ class OpenapiGenerator
       when :boolean
         properties_value["type"] = "boolean"
       when :jsonb
+        properties_value["type"] = "object"
         ['type', 'items'].each do |property_key|
           prop = openapi_contents.dig(*path_parts(SCHEMAS_PATH), klass_name, "properties", key, property_key)
           properties_value[property_key] = prop if prop.present?
