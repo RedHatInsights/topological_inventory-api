@@ -66,10 +66,11 @@ RSpec.describe("v0.0 - Sources") do
         headers = { "CONTENT_TYPE" => "application/json", "x-rh-identity" => unknown_identity }
         post(collection_path, :headers => headers, :params => {:source_type_id => source_type.id.to_s, :name => "abc"}.to_json)
 
-        expect(Tenant.find_by(:external_tenant => unknown_tenant)).not_to be_nil
+        tenant = Tenant.find_by(:external_tenant => unknown_tenant)
+        expect(tenant).not_to be_nil
 
         expect(response.status).to eq(201)
-        expect(Source.find_by(:tenant_id => tenant.id))
+        expect(Source.find_by(:tenant_id => tenant.id)).not_to be_nil
       end
     end
   end
