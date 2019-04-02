@@ -11,7 +11,7 @@ module Api
         messaging_client.publish_message(
           :service => "platform.topological-inventory.operations-openshift",
           :message => "ServicePlan.order",
-          :payload => {:task_id => task.id.to_s, :service_plan_id => service_plan.id.to_s, :order_params => params_for_order}
+          :payload => payload_for_order(task, service_plan)
         )
 
         render :json => {:task_id => task.id}
@@ -27,6 +27,15 @@ module Api
           :service_parameters          => {},
           :provider_control_parameters => {}
         ).to_h
+      end
+
+      def payload_for_order(task, service_plan)
+        {
+          :identity        => ManageIQ::API::Common::Request.current_forwardable,
+          :order_params    => params_for_order,
+          :service_plan_id => service_plan.id.to_s,
+          :task_id         => task.id.to_s,
+        }
       end
     end
   end

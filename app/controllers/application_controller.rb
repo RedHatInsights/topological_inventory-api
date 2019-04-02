@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
   ActionController::Parameters.action_on_unpermitted_parameters = :raise
 
+  around_action :with_current_request
+
   rescue_from ActionController::UnpermittedParameters do |exception|
     error_document = TopologicalInventory::Api::ErrorDocument.new.add(exception.message)
     render :json => error_document.to_h, :status => error_document.status
@@ -21,6 +23,23 @@ class ApplicationController < ActionController::API
   end
 
   private
+
+  def with_current_request
+    ManageIQ::API::Common::Request.with_request(request) do |current|
+      begin
+        if Tenant.tenancy_enabled?
+          tenant = Tenant.find_by(:external_tenant => current.user.tenant)
+          raise TopologicalInventory::Api::NoTenantError unless tenant.present?
+
+          ActsAsTenant.with_tenant(tenant) { yield }
+        else
+          ActsAsTenant.without_tenant { yield }
+        end
+      rescue TopologicalInventory::Api::NoTenantError, KeyError
+        render :json => { :message => 'Unauthorized' }, :status => :unauthorized
+      end
+    end
+  end
 
   private_class_method def self.model
     @model ||= controller_name.classify.constantize
