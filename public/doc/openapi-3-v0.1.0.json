@@ -3424,6 +3424,11 @@
           "id": {
             "$ref": "#/components/schemas/ID"
           },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
           "memory_limit": {
             "readOnly": true,
             "type": "integer"
@@ -4447,6 +4452,11 @@
           "id": {
             "$ref": "#/components/schemas/ID"
           },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
           "source_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -4720,6 +4730,11 @@
           "id": {
             "$ref": "#/components/schemas/ID"
           },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
           "name": {
             "example": "architecture",
             "readOnly": true,
@@ -4827,6 +4842,32 @@
             "items": {
               "$ref": "#/components/schemas/Task"
             }
+          }
+        }
+      },
+      "Tenant": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "example": "Sample Tenant",
+            "title": "Name",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the Tenant",
+            "readOnly": true
+          },
+          "external_tenant": {
+            "type": "string",
+            "description": "External tenant identifier",
+            "readOnly": true
           }
         }
       },
@@ -5034,6 +5075,11 @@
           },
           "id": {
             "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
           },
           "state": {
             "example": "attached",
