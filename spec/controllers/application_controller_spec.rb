@@ -20,7 +20,8 @@ RSpec.describe ApplicationController, :type => :request do
 
       get("/api/v0.0/sources/#{source.id}", :headers => headers)
 
-      expect(response.status).to eq(401)
+      expect(response.status).to eq(404)
+      expect(Tenant.find_by(:external_tenant => unknown_tenant)).not_to be_nil
     end
 
     it "get /sources with tenant" do
@@ -36,7 +37,8 @@ RSpec.describe ApplicationController, :type => :request do
 
       get("/api/v0.0/sources", :headers => headers)
 
-      expect(response.status).to eq(401)
+      expect(response.status).to eq(200)
+      expect(Tenant.find_by(:external_tenant => unknown_tenant)).not_to be_nil
     end
   end
 
