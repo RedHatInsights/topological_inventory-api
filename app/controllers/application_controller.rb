@@ -28,7 +28,7 @@ class ApplicationController < ActionController::API
     ManageIQ::API::Common::Request.with_request(request) do |current|
       begin
         if Tenant.tenancy_enabled?
-          tenant = Tenant.find_by(:external_tenant => current.user.tenant)
+          tenant = Tenant.find_or_create_by(:external_tenant => current.user.tenant) if current.user.tenant
           raise TopologicalInventory::Api::NoTenantError unless tenant.present?
 
           ActsAsTenant.with_tenant(tenant) { yield }
