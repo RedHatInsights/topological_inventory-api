@@ -6,7 +6,7 @@ RSpec.describe Internal::V0x0::TenantsController, :type => :request do
 
     expect(response.status).to eq(200)
     expect(response.parsed_body).to include(
-      "id"              => tenant.id,
+      "id"              => tenant.id.to_s,
       "name"            => "default",
       "external_tenant" => "external_tenant_uuid"
     )
