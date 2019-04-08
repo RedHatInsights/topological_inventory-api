@@ -6,9 +6,8 @@ module OpenApi
     end
 
     def load_file(file)
-      yaml = YAML.load_file(file)
-      doc  = DocV2.new(yaml) if yaml["swagger"] == "2.0"
-      store_doc(doc)
+      openapi_spec = JSON.parse(File.read(file))
+      store_doc(DocV3.new(openapi_spec))
     end
 
     def store_doc(doc)

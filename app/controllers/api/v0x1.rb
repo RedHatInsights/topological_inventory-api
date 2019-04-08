@@ -2,7 +2,7 @@ module Api
   module V0x1
     class RootController < ApplicationController
       def openapi
-        render :json => Api::Docs["0.1"].to_json
+        render :json => Api::Docs["0.1"].content.to_json
       end
     end
 
