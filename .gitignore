@@ -15,3 +15,5 @@
 /pkg/
 /spec/reports/
 /tmp/
+/public/doc/*.jar
+/public/doc/openapi*generator.yaml
