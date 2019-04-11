@@ -69,6 +69,10 @@ class OpenapiGenerator
           when "destroy" then openapi_destroy_description(klass_name)
           when "create"  then openapi_create_description(klass_name)
           when "update"  then openapi_update_description(klass_name, verb)
+          else
+            if verb == "get" && GENERATOR_IMAGE_MEDIA_TYPE_DEFINITIONS.include?(route.action.camelize)
+              openapi_show_image_media_type_description(route.action.camelize, primary_collection)
+            end
         end
 
       unless expected_paths[sub_path][verb]
@@ -229,6 +233,30 @@ class OpenapiGenerator
           "content"     => {
             "application/json" => {
               "schema" => { "$ref" => build_schema(klass_name) }
+            }
+          }
+        },
+        "404" => {"description" => "Not found"}
+      }
+    }
+  end
+
+  def openapi_show_image_media_type_description(klass_name, primary_collection)
+    primary_collection = nil if primary_collection == klass_name
+    {
+      "summary"     => "Show an existing #{primary_collection} #{klass_name}",
+      "operationId" => "show#{primary_collection}#{klass_name}",
+      "description" => "Returns a #{primary_collection} #{klass_name}",
+      "parameters"  => [{ "$ref" => build_parameter("ID") }],
+      "responses"   => {
+        "200" => {
+          "description" => "#{primary_collection} #{klass_name}",
+          "content"     => {
+            "image/*" => {
+              "schema" => {
+                "type"   => "string",
+                "format" => "binary"
+              }
             }
           }
         },
@@ -420,6 +448,9 @@ GENERATOR_READ_ONLY_DEFINITIONS = [
 ].to_set.freeze
 GENERATOR_READ_ONLY_ATTRIBUTES = [
   :created_at, :updated_at, :archived_at, :last_seen_at
+].to_set.freeze
+GENERATOR_IMAGE_MEDIA_TYPE_DEFINITIONS = [
+  'IconData'
 ].to_set.freeze
 
 namespace :openapi do

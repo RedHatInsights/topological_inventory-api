@@ -1462,9 +1462,9 @@
     },
     "/service_offering_icons/{id}/icon_data": {
       "get": {
-        "summary": "Show an existing ServiceOfferingIcon",
-        "operationId": "showServiceOfferingIcon",
-        "description": "Returns a ServiceOfferingIcon object",
+        "summary": "Show an existing ServiceOfferingIcon IconData",
+        "operationId": "showServiceOfferingIconIconData",
+        "description": "Returns a ServiceOfferingIcon IconData",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
@@ -1472,11 +1472,12 @@
         ],
         "responses": {
           "200": {
-            "description": "ServiceOfferingIcon info",
+            "description": "ServiceOfferingIcon IconData",
             "content": {
-              "application/json": {
+              "image/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/ServiceOfferingIcon"
+                  "type": "string",
+                  "format": "binary"
                 }
               }
             }
@@ -5057,32 +5058,6 @@
             "items": {
               "$ref": "#/components/schemas/Task"
             }
-          }
-        }
-      },
-      "Tenant": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string",
-            "example": "Sample Tenant",
-            "title": "Name",
-            "readOnly": true
-          },
-          "description": {
-            "type": "string",
-            "description": "Description of the Tenant",
-            "readOnly": true
-          },
-          "external_tenant": {
-            "type": "string",
-            "description": "External tenant identifier",
-            "readOnly": true
           }
         }
       },
