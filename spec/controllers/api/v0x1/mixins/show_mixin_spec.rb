@@ -3,8 +3,8 @@ describe Api::V0::Mixins::ShowMixin do
     include ::Spec::Support::TenantIdentity
 
     let(:headers)     { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
-    let!(:source_1)   { Source.create!(:tenant => tenant, :name => "test_source 1", :uid => SecureRandom.uuid) }
-    let!(:source_2)   { Source.create!(:tenant => tenant, :name => "test_source 2", :uid => SecureRandom.uuid) }
+    let!(:source_1)   { Source.create!(:tenant => tenant, :uid => SecureRandom.uuid) }
+    let!(:source_2)   { Source.create!(:tenant => tenant, :uid => SecureRandom.uuid) }
 
     it "Primary Collection: get /sources lists all Sources" do
       get(api_v0x1_source_url(source_1.id), :headers => headers)

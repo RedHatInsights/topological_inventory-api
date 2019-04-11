@@ -8,7 +8,7 @@ RSpec.describe("v0.1 - Container") do
   let(:container_group)   { ContainerGroup.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid, :container_project => container_project, :container_node => container_node) }
   let(:container_node)    { ContainerNode.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
   let(:container_project) { ContainerProject.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
-  let(:source)            { Source.create!(:name => "name", :tenant => tenant) }
+  let(:source)            { Source.create!(:tenant => tenant) }
 
   let(:attributes) do
     {

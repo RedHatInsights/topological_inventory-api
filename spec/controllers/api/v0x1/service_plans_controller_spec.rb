@@ -19,7 +19,7 @@ RSpec.describe Api::V0x1::ServicePlansController, :type => :request do
       )
     end
     let(:source_region) { SourceRegion.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
-    let(:source) { Source.create!(:tenant => tenant, :uid => SecureRandom.uuid, :name => "test_source") }
+    let(:source) { Source.create!(:tenant => tenant, :uid => SecureRandom.uuid) }
     let(:subscription) { Subscription.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
     let(:service_offering) do
       ServiceOffering.create!(

@@ -5,7 +5,7 @@ RSpec.describe("v0.1 - ContainerResourceQuota") do
 
   let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
   let(:container_project) { ContainerProject.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
-  let(:source) { Source.create!(:name => "name", :tenant => tenant) }
+  let(:source) { Source.create!(:tenant => tenant) }
 
   let(:attributes) do
     {

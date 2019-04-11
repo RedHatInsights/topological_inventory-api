@@ -4,7 +4,7 @@ RSpec.describe("v0.1 - VolumeAttachment") do
   include ::Spec::Support::TenantIdentity
 
   let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
-  let(:source) { Source.create!(:name => "name", :tenant => tenant) }
+  let(:source) { Source.create!(:tenant => tenant) }
   let(:vm) { Vm.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }
   let(:volume) { Volume.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }
 
