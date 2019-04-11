@@ -1,4 +1,4 @@
-RSpec.describe("ApplicationController::Filter") do
+RSpec.describe("::ManageIQ::API::Common::Filter") do
   let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   def create_task(attrs = {})

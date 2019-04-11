@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
     render :json => error_document.to_h, :status => :not_found
   end
 
-  rescue_from ApplicationController::Filter::Error do |exception|
+  rescue_from ManageIQ::API::Common::Filter::Error do |exception|
     render :json => exception.error_document.to_h, :status => exception.error_document.status
   end
 
@@ -140,7 +140,7 @@ class ApplicationController < ActionController::API
   end
 
   def filtered
-    ApplicationController::Filter.new(model, safe_params_for_list[:filter], api_doc_definition).apply
+    ManageIQ::API::Common::Filter.new(model, safe_params_for_list[:filter], api_doc_definition).apply
   end
 
   def pagination_limit
