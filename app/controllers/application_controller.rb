@@ -4,12 +4,12 @@ class ApplicationController < ActionController::API
   around_action :with_current_request
 
   rescue_from ActionController::UnpermittedParameters do |exception|
-    error_document = TopologicalInventory::Api::ErrorDocument.new.add(exception.message)
+    error_document = ManageIQ::API::Common::ErrorDocument.new.add(exception.message)
     render :json => error_document.to_h, :status => error_document.status
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    error_document = TopologicalInventory::Api::ErrorDocument.new.add(404, exception.message)
+    error_document = ManageIQ::API::Common::ErrorDocument.new.add(404, exception.message)
     render :json => error_document.to_h, :status => :not_found
   end
 
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::API
   end
 
   rescue_from TopologicalInventory::Api::BodyParseError do |exception|
-    error_document = TopologicalInventory::Api::ErrorDocument.new.add("Failed to parse POST body, expected JSON")
+    error_document = ManageIQ::API::Common::ErrorDocument.new.add("Failed to parse POST body, expected JSON")
     render :json => error_document.to_h, :status => error_document.status
   end
 
