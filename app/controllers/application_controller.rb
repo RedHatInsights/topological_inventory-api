@@ -29,13 +29,12 @@ class ApplicationController < ActionController::API
       begin
         if Tenant.tenancy_enabled? && current.required_auth?
           tenant = Tenant.find_or_create_by(:external_tenant => current.user.tenant) if current.user.tenant
-          raise TopologicalInventory::Api::NoTenantError unless tenant.present?
 
           ActsAsTenant.with_tenant(tenant) { yield }
         else
           ActsAsTenant.without_tenant { yield }
         end
-      rescue TopologicalInventory::Api::NoTenantError, KeyError, ManageIQ::API::Common::IdentityError
+      rescue KeyError, ManageIQ::API::Common::IdentityError
         render :json => { :message => 'Unauthorized' }, :status => :unauthorized
       end
     end
