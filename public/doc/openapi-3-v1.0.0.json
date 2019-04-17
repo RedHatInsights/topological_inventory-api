@@ -1,0 +1,5389 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Topological Inventory",
+    "version": "1.0.0",
+    "title": "Topological Inventory",
+    "contact": {
+      "email": "support@redhat.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "security": [
+    {
+      "UserSecurity": [
+
+      ]
+    }
+  ],
+  "paths": {
+    "/application_types": {
+      "get": {
+        "summary": "List ApplicationTypes",
+        "operationId": "listApplicationTypes",
+        "description": "Returns an array of ApplicationType objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ApplicationTypes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationTypesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/application_types/{id}": {
+      "get": {
+        "summary": "Show an existing ApplicationType",
+        "operationId": "showApplicationType",
+        "description": "Returns a ApplicationType object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ApplicationType info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationType"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/applications": {
+      "get": {
+        "summary": "List Applications",
+        "operationId": "listApplications",
+        "description": "Returns an array of Application objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Applications collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Application",
+        "operationId": "createApplication",
+        "description": "Creates a Application object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Application"
+              }
+            }
+          },
+          "description": "Application attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Application creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/applications/{id}": {
+      "get": {
+        "summary": "Show an existing Application",
+        "operationId": "showApplication",
+        "description": "Returns a Application object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Application info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Application"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing Application",
+        "operationId": "deleteApplication",
+        "description": "Deletes a Application object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Application deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/authentications": {
+      "get": {
+        "summary": "List Authentications",
+        "operationId": "listAuthentications",
+        "description": "Returns an array of Authentication objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authentications collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Authentication",
+        "operationId": "createAuthentication",
+        "description": "Creates a Authentication object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Authentication"
+              }
+            }
+          },
+          "description": "Authentication attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Authentication creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Authentication"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authentications/{id}": {
+      "get": {
+        "summary": "Show an existing Authentication",
+        "operationId": "showAuthentication",
+        "description": "Returns a Authentication object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authentication info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Authentication"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an existing Authentication",
+        "operationId": "updateAuthentication",
+        "description": "Updates a Authentication object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Authentication"
+              }
+            }
+          },
+          "description": "Authentication attributes to update",
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Updated, no content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing Authentication",
+        "operationId": "deleteAuthentication",
+        "description": "Deletes a Authentication object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Authentication deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/container_groups": {
+      "get": {
+        "summary": "List ContainerGroups",
+        "operationId": "listContainerGroups",
+        "description": "Returns an array of ContainerGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_groups/{id}": {
+      "get": {
+        "summary": "Show an existing ContainerGroup",
+        "operationId": "showContainerGroup",
+        "description": "Returns a ContainerGroup object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerGroup info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroup"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/container_groups/{id}/containers": {
+      "get": {
+        "summary": "List Containers for ContainerGroup",
+        "operationId": "listContainerGroupContainers",
+        "description": "Returns an array of Container objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Containers collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_groups/{id}/tags": {
+      "get": {
+        "summary": "List Tags for ContainerGroup",
+        "operationId": "listContainerGroupTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_images": {
+      "get": {
+        "summary": "List ContainerImages",
+        "operationId": "listContainerImages",
+        "description": "Returns an array of ContainerImage objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerImages collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerImagesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_images/{id}": {
+      "get": {
+        "summary": "Show an existing ContainerImage",
+        "operationId": "showContainerImage",
+        "description": "Returns a ContainerImage object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerImage info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerImage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/container_images/{id}/tags": {
+      "get": {
+        "summary": "List Tags for ContainerImage",
+        "operationId": "listContainerImageTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_nodes": {
+      "get": {
+        "summary": "List ContainerNodes",
+        "operationId": "listContainerNodes",
+        "description": "Returns an array of ContainerNode objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerNodes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerNodesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_nodes/{id}": {
+      "get": {
+        "summary": "Show an existing ContainerNode",
+        "operationId": "showContainerNode",
+        "description": "Returns a ContainerNode object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerNode info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerNode"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/container_nodes/{id}/container_groups": {
+      "get": {
+        "summary": "List ContainerGroups for ContainerNode",
+        "operationId": "listContainerNodeContainerGroups",
+        "description": "Returns an array of ContainerGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_nodes/{id}/tags": {
+      "get": {
+        "summary": "List Tags for ContainerNode",
+        "operationId": "listContainerNodeTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_projects": {
+      "get": {
+        "summary": "List ContainerProjects",
+        "operationId": "listContainerProjects",
+        "description": "Returns an array of ContainerProject objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerProjects collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerProjectsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_projects/{id}": {
+      "get": {
+        "summary": "Show an existing ContainerProject",
+        "operationId": "showContainerProject",
+        "description": "Returns a ContainerProject object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerProject info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerProject"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/container_projects/{id}/container_groups": {
+      "get": {
+        "summary": "List ContainerGroups for ContainerProject",
+        "operationId": "listContainerProjectContainerGroups",
+        "description": "Returns an array of ContainerGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_projects/{id}/container_resource_quotas": {
+      "get": {
+        "summary": "List ContainerResourceQuota for ContainerProject",
+        "operationId": "listContainerProjectContainerResourceQuota",
+        "description": "Returns an array of ContainerResourceQuota objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerResourceQuota collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerResourceQuotaCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_projects/{id}/container_templates": {
+      "get": {
+        "summary": "List ContainerTemplates for ContainerProject",
+        "operationId": "listContainerProjectContainerTemplates",
+        "description": "Returns an array of ContainerTemplate objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerTemplates collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_projects/{id}/tags": {
+      "get": {
+        "summary": "List Tags for ContainerProject",
+        "operationId": "listContainerProjectTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_resource_quotas": {
+      "get": {
+        "summary": "List ContainerResourceQuota",
+        "operationId": "listContainerResourceQuota",
+        "description": "Returns an array of ContainerResourceQuota objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerResourceQuota collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerResourceQuotaCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_resource_quotas/{id}": {
+      "get": {
+        "summary": "Show an existing ContainerResourceQuota",
+        "operationId": "showContainerResourceQuota",
+        "description": "Returns a ContainerResourceQuota object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerResourceQuota info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerResourceQuota"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/container_templates": {
+      "get": {
+        "summary": "List ContainerTemplates",
+        "operationId": "listContainerTemplates",
+        "description": "Returns an array of ContainerTemplate objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerTemplates collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/container_templates/{id}": {
+      "get": {
+        "summary": "Show an existing ContainerTemplate",
+        "operationId": "showContainerTemplate",
+        "description": "Returns a ContainerTemplate object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerTemplate info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplate"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/container_templates/{id}/tags": {
+      "get": {
+        "summary": "List Tags for ContainerTemplate",
+        "operationId": "listContainerTemplateTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/containers": {
+      "get": {
+        "summary": "List Containers",
+        "operationId": "listContainers",
+        "description": "Returns an array of Container objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Containers collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/containers/{id}": {
+      "get": {
+        "summary": "Show an existing Container",
+        "operationId": "showContainer",
+        "description": "Returns a Container object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Container info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Container"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/endpoints": {
+      "get": {
+        "summary": "List Endpoints",
+        "operationId": "listEndpoints",
+        "description": "Returns an array of Endpoint objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Endpoints collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EndpointsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Endpoint",
+        "operationId": "createEndpoint",
+        "description": "Creates a Endpoint object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Endpoint"
+              }
+            }
+          },
+          "description": "Endpoint attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Endpoint creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Endpoint"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/endpoints/{id}": {
+      "get": {
+        "summary": "Show an existing Endpoint",
+        "operationId": "showEndpoint",
+        "description": "Returns a Endpoint object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Endpoint info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Endpoint"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an existing Endpoint",
+        "operationId": "updateEndpoint",
+        "description": "Updates a Endpoint object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Endpoint"
+              }
+            }
+          },
+          "description": "Endpoint attributes to update",
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Updated, no content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing Endpoint",
+        "operationId": "deleteEndpoint",
+        "description": "Deletes a Endpoint object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Endpoint deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/endpoints/{id}/authentications": {
+      "get": {
+        "summary": "List Authentications for Endpoint",
+        "operationId": "listEndpointAuthentications",
+        "description": "Returns an array of Authentication objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authentications collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flavors": {
+      "get": {
+        "summary": "List Flavors",
+        "operationId": "listFlavors",
+        "description": "Returns an array of Flavor objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Flavors collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlavorsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flavors/{id}": {
+      "get": {
+        "summary": "Show an existing Flavor",
+        "operationId": "showFlavor",
+        "description": "Returns a Flavor object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Flavor info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Flavor"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "summary": "Return this API document in JSON format",
+        "operationId": "getDocumentation",
+        "responses": {
+          "200": {
+            "description": "The API document for this version of the API"
+          }
+        }
+      }
+    },
+    "/orchestration_stacks": {
+      "get": {
+        "summary": "List OrchestrationStacks",
+        "operationId": "listOrchestrationStacks",
+        "description": "Returns an array of OrchestrationStack objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OrchestrationStacks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrchestrationStacksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orchestration_stacks/{id}": {
+      "get": {
+        "summary": "Show an existing OrchestrationStack",
+        "operationId": "showOrchestrationStack",
+        "description": "Returns a OrchestrationStack object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OrchestrationStack info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrchestrationStack"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/service_instances": {
+      "get": {
+        "summary": "List ServiceInstances",
+        "operationId": "listServiceInstances",
+        "description": "Returns an array of ServiceInstance objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstances collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_instances/{id}": {
+      "get": {
+        "summary": "Show an existing ServiceInstance",
+        "operationId": "showServiceInstance",
+        "description": "Returns a ServiceInstance object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstance info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstance"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/service_offering_icons": {
+      "get": {
+        "summary": "List ServiceOfferingIcons",
+        "operationId": "listServiceOfferingIcons",
+        "description": "Returns an array of ServiceOfferingIcon objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferingIcons collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingIconsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_offering_icons/{id}": {
+      "get": {
+        "summary": "Show an existing ServiceOfferingIcon",
+        "operationId": "showServiceOfferingIcon",
+        "description": "Returns a ServiceOfferingIcon object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferingIcon info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingIcon"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/service_offering_icons/{id}/icon_data": {
+      "get": {
+        "summary": "Show an existing ServiceOfferingIcon IconData",
+        "operationId": "showServiceOfferingIconIconData",
+        "description": "Returns a ServiceOfferingIcon IconData",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferingIcon IconData",
+            "content": {
+              "image/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/service_offerings": {
+      "get": {
+        "summary": "List ServiceOfferings",
+        "operationId": "listServiceOfferings",
+        "description": "Returns an array of ServiceOffering objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferings collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_offerings/{id}": {
+      "get": {
+        "summary": "Show an existing ServiceOffering",
+        "operationId": "showServiceOffering",
+        "description": "Returns a ServiceOffering object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOffering info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOffering"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/service_offerings/{id}/service_instances": {
+      "get": {
+        "summary": "List ServiceInstances for ServiceOffering",
+        "operationId": "listServiceOfferingServiceInstances",
+        "description": "Returns an array of ServiceInstance objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstances collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_offerings/{id}/service_plans": {
+      "get": {
+        "summary": "List ServicePlans for ServiceOffering",
+        "operationId": "listServiceOfferingServicePlans",
+        "description": "Returns an array of ServicePlan objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServicePlans collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlansCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_offerings/{id}/tags": {
+      "get": {
+        "summary": "List Tags for ServiceOffering",
+        "operationId": "listServiceOfferingTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_plans": {
+      "get": {
+        "summary": "List ServicePlans",
+        "operationId": "listServicePlans",
+        "description": "Returns an array of ServicePlan objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServicePlans collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlansCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_plans/{id}": {
+      "get": {
+        "summary": "Show an existing ServicePlan",
+        "operationId": "showServicePlan",
+        "description": "Returns a ServicePlan object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServicePlan info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlan"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/service_plans/{id}/order": {
+      "post": {
+        "summary": "Order an existing ServicePlan",
+        "operationId": "orderServicePlan",
+        "description": "Returns a Task id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderParameters"
+              }
+            }
+          },
+          "description": "Order parameters defining the service and provider control",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns a task ID for the order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "task_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        }
+      }
+    },
+    "/service_plans/{id}/service_instances": {
+      "get": {
+        "summary": "List ServiceInstances for ServicePlan",
+        "operationId": "listServicePlanServiceInstances",
+        "description": "Returns an array of ServiceInstance objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstances collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_types": {
+      "get": {
+        "summary": "List SourceTypes",
+        "operationId": "listSourceTypes",
+        "description": "Returns an array of SourceType objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SourceTypes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceTypesCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new SourceType",
+        "operationId": "createSourceType",
+        "description": "Creates a SourceType object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SourceType"
+              }
+            }
+          },
+          "description": "SourceType attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "SourceType creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/SourceType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_types/{id}": {
+      "get": {
+        "summary": "Show an existing SourceType",
+        "operationId": "showSourceType",
+        "description": "Returns a SourceType object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SourceType info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceType"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/source_types/{id}/availabilities": {
+      "get": {
+        "summary": "List Availabilities for SourceType",
+        "operationId": "listSourceTypeAvailabilities",
+        "description": "Returns an array of Availability objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Availabilities collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilitiesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_types/{id}/sources": {
+      "get": {
+        "summary": "List Sources for SourceType",
+        "operationId": "listSourceTypeSources",
+        "description": "Returns an array of Source objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sources collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourcesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources": {
+      "get": {
+        "summary": "List Sources",
+        "operationId": "listSources",
+        "description": "Returns an array of Source objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sources collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourcesCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Source",
+        "operationId": "createSource",
+        "description": "Creates a Source object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Source"
+              }
+            }
+          },
+          "description": "Source attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Source creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Source"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}": {
+      "get": {
+        "summary": "Show an existing Source",
+        "operationId": "showSource",
+        "description": "Returns a Source object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Source info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Source"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an existing Source",
+        "operationId": "updateSource",
+        "description": "Updates a Source object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Source"
+              }
+            }
+          },
+          "description": "Source attributes to update",
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Updated, no content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing Source",
+        "operationId": "deleteSource",
+        "description": "Deletes a Source object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Source deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/sources/{id}/applications": {
+      "get": {
+        "summary": "List Applications for Source",
+        "operationId": "listSourceApplications",
+        "description": "Returns an array of Application objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Applications collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/availabilities": {
+      "get": {
+        "summary": "List Availabilities for Source",
+        "operationId": "listSourceAvailabilities",
+        "description": "Returns an array of Availability objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Availabilities collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilitiesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/container_groups": {
+      "get": {
+        "summary": "List ContainerGroups for Source",
+        "operationId": "listSourceContainerGroups",
+        "description": "Returns an array of ContainerGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/container_images": {
+      "get": {
+        "summary": "List ContainerImages for Source",
+        "operationId": "listSourceContainerImages",
+        "description": "Returns an array of ContainerImage objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerImages collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerImagesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/container_nodes": {
+      "get": {
+        "summary": "List ContainerNodes for Source",
+        "operationId": "listSourceContainerNodes",
+        "description": "Returns an array of ContainerNode objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerNodes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerNodesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/container_projects": {
+      "get": {
+        "summary": "List ContainerProjects for Source",
+        "operationId": "listSourceContainerProjects",
+        "description": "Returns an array of ContainerProject objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerProjects collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerProjectsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/container_templates": {
+      "get": {
+        "summary": "List ContainerTemplates for Source",
+        "operationId": "listSourceContainerTemplates",
+        "description": "Returns an array of ContainerTemplate objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerTemplates collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/containers": {
+      "get": {
+        "summary": "List Containers for Source",
+        "operationId": "listSourceContainers",
+        "description": "Returns an array of Container objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Containers collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/endpoints": {
+      "get": {
+        "summary": "List Endpoints for Source",
+        "operationId": "listSourceEndpoints",
+        "description": "Returns an array of Endpoint objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Endpoints collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EndpointsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/orchestration_stacks": {
+      "get": {
+        "summary": "List OrchestrationStacks for Source",
+        "operationId": "listSourceOrchestrationStacks",
+        "description": "Returns an array of OrchestrationStack objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OrchestrationStacks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrchestrationStacksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/service_instances": {
+      "get": {
+        "summary": "List ServiceInstances for Source",
+        "operationId": "listSourceServiceInstances",
+        "description": "Returns an array of ServiceInstance objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstances collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/service_offerings": {
+      "get": {
+        "summary": "List ServiceOfferings for Source",
+        "operationId": "listSourceServiceOfferings",
+        "description": "Returns an array of ServiceOffering objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferings collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/service_plans": {
+      "get": {
+        "summary": "List ServicePlans for Source",
+        "operationId": "listSourceServicePlans",
+        "description": "Returns an array of ServicePlan objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServicePlans collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlansCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/vms": {
+      "get": {
+        "summary": "List Vms for Source",
+        "operationId": "listSourceVms",
+        "description": "Returns an array of Vm objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vms collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/volume_types": {
+      "get": {
+        "summary": "List VolumeTypes for Source",
+        "operationId": "listSourceVolumeTypes",
+        "description": "Returns an array of VolumeType objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "VolumeTypes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeTypesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/volumes": {
+      "get": {
+        "summary": "List Volumes for Source",
+        "operationId": "listSourceVolumes",
+        "description": "Returns an array of Volume objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volumes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags": {
+      "get": {
+        "summary": "List Tags",
+        "operationId": "listTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}": {
+      "get": {
+        "summary": "Show an existing Tag",
+        "operationId": "showTag",
+        "description": "Returns a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tag info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/tags/{id}/container_groups": {
+      "get": {
+        "summary": "List ContainerGroups for Tag",
+        "operationId": "listTagContainerGroups",
+        "description": "Returns an array of ContainerGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/container_images": {
+      "get": {
+        "summary": "List ContainerImages for Tag",
+        "operationId": "listTagContainerImages",
+        "description": "Returns an array of ContainerImage objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerImages collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerImagesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/container_nodes": {
+      "get": {
+        "summary": "List ContainerNodes for Tag",
+        "operationId": "listTagContainerNodes",
+        "description": "Returns an array of ContainerNode objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerNodes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerNodesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/container_projects": {
+      "get": {
+        "summary": "List ContainerProjects for Tag",
+        "operationId": "listTagContainerProjects",
+        "description": "Returns an array of ContainerProject objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerProjects collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerProjectsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/container_templates": {
+      "get": {
+        "summary": "List ContainerTemplates for Tag",
+        "operationId": "listTagContainerTemplates",
+        "description": "Returns an array of ContainerTemplate objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ContainerTemplates collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/service_offerings": {
+      "get": {
+        "summary": "List ServiceOfferings for Tag",
+        "operationId": "listTagServiceOfferings",
+        "description": "Returns an array of ServiceOffering objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferings collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/vms": {
+      "get": {
+        "summary": "List Vms for Tag",
+        "operationId": "listTagVms",
+        "description": "Returns an array of Vm objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vms collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks": {
+      "get": {
+        "summary": "List Tasks",
+        "operationId": "listTasks",
+        "description": "Returns an array of Task objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tasks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TasksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "summary": "Show an existing Task",
+        "operationId": "showTask",
+        "description": "Returns a Task object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an existing Task",
+        "operationId": "updateTask",
+        "description": "Updates a Task object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Task"
+              }
+            }
+          },
+          "description": "Task attributes to update",
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Updated, no content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/vms": {
+      "get": {
+        "summary": "List Vms",
+        "operationId": "listVms",
+        "description": "Returns an array of Vm objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vms collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vms/{id}": {
+      "get": {
+        "summary": "Show an existing Vm",
+        "operationId": "showVm",
+        "description": "Returns a Vm object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vm info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vm"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/vms/{id}/tags": {
+      "get": {
+        "summary": "List Tags for Vm",
+        "operationId": "listVmTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vms/{id}/volume_attachments": {
+      "get": {
+        "summary": "List VolumeAttachments for Vm",
+        "operationId": "listVmVolumeAttachments",
+        "description": "Returns an array of VolumeAttachment objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "VolumeAttachments collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeAttachmentsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vms/{id}/volumes": {
+      "get": {
+        "summary": "List Volumes for Vm",
+        "operationId": "listVmVolumes",
+        "description": "Returns an array of Volume objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volumes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/volume_attachments": {
+      "get": {
+        "summary": "List VolumeAttachments",
+        "operationId": "listVolumeAttachments",
+        "description": "Returns an array of VolumeAttachment objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "VolumeAttachments collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeAttachmentsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/volume_attachments/{id}": {
+      "get": {
+        "summary": "Show an existing VolumeAttachment",
+        "operationId": "showVolumeAttachment",
+        "description": "Returns a VolumeAttachment object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "VolumeAttachment info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeAttachment"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/volume_types": {
+      "get": {
+        "summary": "List VolumeTypes",
+        "operationId": "listVolumeTypes",
+        "description": "Returns an array of VolumeType objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "VolumeTypes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeTypesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/volume_types/{id}": {
+      "get": {
+        "summary": "Show an existing VolumeType",
+        "operationId": "showVolumeType",
+        "description": "Returns a VolumeType object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "VolumeType info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumeType"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/volumes": {
+      "get": {
+        "summary": "List Volumes",
+        "operationId": "listVolumes",
+        "description": "Returns an array of Volume objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volumes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/volumes/{id}": {
+      "get": {
+        "summary": "Show an existing Volume",
+        "operationId": "showVolume",
+        "description": "Returns a Volume object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volume info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Volume"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://cloud.redhat.com/{basePath}",
+      "description": "Production Server",
+      "variables": {
+        "basePath": {
+          "default": "/api/topological-inventory/v1.0"
+        }
+      }
+    },
+    {
+      "url": "http://localhost:{port}/{basePath}",
+      "description": "Development Server",
+      "variables": {
+        "port": {
+          "default": "3000"
+        },
+        "basePath": {
+          "default": "/api/topological-inventory/v1.0"
+        }
+      }
+    }
+  ],
+  "components": {
+    "parameters": {
+      "ID": {
+        "name": "id",
+        "in": "path",
+        "description": "ID of the resource",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "/^\\d+$/"
+        }
+      },
+      "QueryFilter": {
+        "in": "query",
+        "name": "filter",
+        "description": "Filter for querying collections.",
+        "required": false,
+        "style": "deepObject",
+        "explode": true,
+        "schema": {
+          "type": "object"
+        }
+      },
+      "QueryLimit": {
+        "in": "query",
+        "name": "limit",
+        "description": "The numbers of items to return per page.",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000,
+          "default": 100
+        }
+      },
+      "QueryOffset": {
+        "in": "query",
+        "name": "offset",
+        "description": "The number of items to skip before starting to collect the result set.",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0
+        }
+      }
+    },
+    "securitySchemes": {
+      "UserSecurity": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "Application": {
+        "type": "object",
+        "properties": {
+          "application_type_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "tenant_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ApplicationType": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "name": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ApplicationTypesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApplicationType"
+            }
+          }
+        }
+      },
+      "ApplicationsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Application"
+            }
+          }
+        }
+      },
+      "Authentication": {
+        "type": "object",
+        "properties": {
+          "authtype": {
+            "example": "openshift_default",
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "name": {
+            "example": "OpenShift default",
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "resource_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "resource_type": {
+            "example": "Endpoint",
+            "type": "string"
+          },
+          "status": {
+            "example": "valid",
+            "type": "string"
+          },
+          "status_details": {
+            "type": "string"
+          },
+          "tenant_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "username": {
+            "example": "user@example.com",
+            "type": "string"
+          }
+        }
+      },
+      "AuthenticationsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Authentication"
+            }
+          }
+        }
+      },
+      "AvailabilitiesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Availability"
+            }
+          }
+        }
+      },
+      "Availability": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "availability": {
+            "example": "available",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "identifier": {
+            "example": "/service_offerings",
+            "readOnly": true,
+            "type": "string"
+          },
+          "last_checked_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "last_valid_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "resource_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "resource_type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "CollectionLinks": {
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": "string"
+          },
+          "last": {
+            "type": "string"
+          },
+          "prev": {
+            "type": "string"
+          },
+          "next": {
+            "type": "string"
+          }
+        }
+      },
+      "CollectionMetadata": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "Container": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "container_group_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "container_image_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "cpu_limit": {
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "cpu_request": {
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "memory_limit": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "memory_request": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "name": {
+            "example": "docker-build",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ContainerGroup": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "container_node_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "container_project_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "ipaddress": {
+            "example": "192.0.2.1",
+            "readOnly": true,
+            "title": "IP Address",
+            "type": "string"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "Sample Group",
+            "readOnly": true,
+            "title": "Name",
+            "type": "string"
+          },
+          "resource_version": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ContainerGroupsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContainerGroup"
+            }
+          }
+        }
+      },
+      "ContainerImage": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "openshift3/postgresql-92-rhel7",
+            "readOnly": true,
+            "type": "string"
+          },
+          "resource_version": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "tag": {
+            "example": "latest",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ContainerImagesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContainerImage"
+            }
+          }
+        }
+      },
+      "ContainerNode": {
+        "type": "object",
+        "properties": {
+          "addresses": {
+            "readOnly": true,
+            "type": "object"
+          },
+          "allocatable_cpus": {
+            "readOnly": true,
+            "type": "number"
+          },
+          "allocatable_memory": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "allocatable_pods": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "conditions": {
+            "readOnly": true,
+            "type": "object"
+          },
+          "cpus": {
+            "example": 4,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "lives_on_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "lives_on_type": {
+            "example": "Vm",
+            "readOnly": true,
+            "type": "string"
+          },
+          "memory": {
+            "example": 4294967296,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "name": {
+            "example": "Sample Group",
+            "readOnly": true,
+            "title": "Name",
+            "type": "string"
+          },
+          "node_info": {
+            "readOnly": true,
+            "type": "object"
+          },
+          "pods": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "resource_version": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ContainerNodesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContainerNode"
+            }
+          }
+        }
+      },
+      "ContainerProject": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "display_name": {
+            "example": "This is a sample display name for a project",
+            "readOnly": true,
+            "title": "Display Name",
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "Sample Project",
+            "readOnly": true,
+            "title": "Name",
+            "type": "string"
+          },
+          "resource_version": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "status_phase": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ContainerProjectsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContainerProject"
+            }
+          }
+        }
+      },
+      "ContainerResourceQuota": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "container_project_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "resource_version": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "spec": {
+            "readOnly": true,
+            "type": "object"
+          },
+          "status": {
+            "readOnly": true,
+            "type": "object"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ContainerResourceQuotaCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContainerResourceQuota"
+            }
+          }
+        }
+      },
+      "ContainerTemplate": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "container_project_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "Sample Project",
+            "readOnly": true,
+            "title": "Name",
+            "type": "string"
+          },
+          "resource_version": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ContainerTemplatesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContainerTemplate"
+            }
+          }
+        }
+      },
+      "ContainersCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Container"
+            }
+          }
+        }
+      },
+      "Endpoint": {
+        "type": "object",
+        "properties": {
+          "certificate_authority": {
+            "description": "Optional X.509 Certificate Authority",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "default": {
+            "type": "boolean"
+          },
+          "host": {
+            "description": "URI host component",
+            "example": "www.example.com",
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "path": {
+            "description": "URI path component",
+            "example": "/api/v1",
+            "type": "string"
+          },
+          "port": {
+            "description": "URI port component",
+            "example": 80,
+            "type": "integer"
+          },
+          "role": {
+            "example": "default",
+            "type": "string"
+          },
+          "scheme": {
+            "description": "URI scheme component",
+            "example": "https",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "tenant_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "verify_ssl": {
+            "description": "Should SSL be verified",
+            "example": true,
+            "type": "boolean"
+          }
+        }
+      },
+      "EndpointsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Endpoint"
+            }
+          }
+        }
+      },
+      "Flavor": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "cpus": {
+            "description": "Number of CPUs",
+            "example": 2,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "disk_count": {
+            "description": "The number of default disks",
+            "example": 2,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "disk_size": {
+            "description": "Size of the default disks in bytes",
+            "example": 17179869184,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "extra": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "memory": {
+            "description": "Amount of RAM in bytes",
+            "example": 17179869184,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "name": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "FlavorsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Flavor"
+            }
+          }
+        }
+      },
+      "ID": {
+        "type": "string",
+        "description": "ID of the resource",
+        "pattern": "/^\\d+$/",
+        "readOnly": true
+      },
+      "OrchestrationStack": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Description of the OrchestrationStack",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "Sample OrchestrationStack",
+            "readOnly": true,
+            "title": "Name",
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "OrchestrationStacksCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrchestrationStack"
+            }
+          }
+        }
+      },
+      "OrderParameters": {
+        "type": "object",
+        "properties": {
+          "service_parameters": {
+            "type": "object",
+            "description": "JSON object with provisioning parameters"
+          },
+          "provider_control_parameters": {
+            "type": "object",
+            "description": "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
+          }
+        }
+      },
+      "ServiceInstance": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "external_url": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "description": "Extra information about this object in JSON format",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "Sample ServiceInstance",
+            "readOnly": true,
+            "title": "Name",
+            "type": "string"
+          },
+          "service_offering_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "service_plan_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ServiceInstancesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceInstance"
+            }
+          }
+        }
+      },
+      "ServiceOffering": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "example": "This is a short description",
+            "readOnly": true,
+            "title": "Description",
+            "type": "string"
+          },
+          "display_name": {
+            "example": "MariaDB (Ephemeral)",
+            "readOnly": true,
+            "title": "Display Name",
+            "type": "string"
+          },
+          "distributor": {
+            "example": "Red Hat, Inc.",
+            "readOnly": true,
+            "title": "Distributor",
+            "type": "string"
+          },
+          "documentation_url": {
+            "example": "https://github.com/sclorg/mariadb-container/blob/master/10.2/root/usr/share/container-scripts/mysql/README.md",
+            "readOnly": true,
+            "title": "Documentation URL",
+            "type": "string"
+          },
+          "extra": {
+            "description": "Extra information about this object in JSON format",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "long_description": {
+            "example": "This template provides a standalone MariaDB server with a database created...",
+            "readOnly": true,
+            "title": "Long Description",
+            "type": "string"
+          },
+          "name": {
+            "example": "Sample Service Offering",
+            "readOnly": true,
+            "title": "Name",
+            "type": "string"
+          },
+          "service_offering_icon_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "description": "The native reference used by the Source to refer to this object",
+            "example": "object-12345_67890",
+            "readOnly": true,
+            "title": "Source reference",
+            "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "support_url": {
+            "example": "https://access.redhat.com",
+            "readOnly": true,
+            "title": "Support URL",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ServiceOfferingIcon": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "description": "Raw icon data",
+            "readOnly": true,
+            "title": "Icon Data",
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "example": "icon-mariadb",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ServiceOfferingIconsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceOfferingIcon"
+            }
+          }
+        }
+      },
+      "ServiceOfferingsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceOffering"
+            }
+          }
+        }
+      },
+      "ServicePlan": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "create_json_schema": {
+            "readOnly": true,
+            "type": "object"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "example": "This is a sample description for a provider",
+            "readOnly": true,
+            "title": "Description",
+            "type": "string"
+          },
+          "extra": {
+            "description": "Extra information about this object in JSON format",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "Sample Provider",
+            "readOnly": true,
+            "title": "Name",
+            "type": "string"
+          },
+          "resource_version": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "service_offering_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "update_json_schema": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ServicePlansCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServicePlan"
+            }
+          }
+        }
+      },
+      "Source": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "name": {
+            "example": "Sample Provider",
+            "title": "Name",
+            "type": "string"
+          },
+          "source_type_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "tenant_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "uid": {
+            "readOnly": true,
+            "title": "Unique ID of the inventory source installation",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "version": {
+            "example": "6.5.0",
+            "readOnly": true,
+            "title": "Version",
+            "type": "string"
+          }
+        }
+      },
+      "SourceType": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "name": {
+            "example": "openshift",
+            "type": "string"
+          },
+          "product_name": {
+            "example": "OpenShift",
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "vendor": {
+            "example": "Red Hat",
+            "type": "string"
+          }
+        }
+      },
+      "SourceTypesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SourceType"
+            }
+          }
+        }
+      },
+      "SourcesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Source"
+            }
+          }
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "example": "Instruction set architecture",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "architecture",
+            "readOnly": true,
+            "type": "string"
+          },
+          "namespace": {
+            "example": "openshift",
+            "readOnly": true,
+            "type": "string"
+          },
+          "value": {
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "Tagging": {
+        "type": "object",
+        "properties": {
+          "tag_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "architecture"
+          },
+          "value": {
+            "type": "string",
+            "readOnly": true,
+            "example": "x86_64"
+          }
+        }
+      },
+      "TagsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "completed_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "context": {
+            "example": "Extra information about this task, e.g. new inventory items created by this task",
+            "title": "Context",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "name": {
+            "example": "Order Service Plan",
+            "title": "Name",
+            "type": "string"
+          },
+          "state": {
+            "example": "Running",
+            "title": "State",
+            "type": "string"
+          },
+          "status": {
+            "example": "Error",
+            "title": "Status",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "TasksCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            }
+          }
+        }
+      },
+      "Vm": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "cpus": {
+            "description": "Total number of CPUs",
+            "example": 2,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Description of the Vm",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "flavor_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "host_inventory_uuid": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "hostname": {
+            "example": "localhost.localdomain",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "mac_addresses": {
+            "items": {
+              "type": "string"
+            },
+            "readOnly": true,
+            "type": "array"
+          },
+          "memory": {
+            "description": "Total RAM in bytes",
+            "example": 17179869184,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "name": {
+            "example": "Sample Vm",
+            "readOnly": true,
+            "title": "Name",
+            "type": "string"
+          },
+          "orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "power_state": {
+            "example": "running",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "uid_ems": {
+            "description": "Cross-Source Unique Reference",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "VmsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Vm"
+            }
+          }
+        }
+      },
+      "Volume": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "vol-00627bf31217a7bc0",
+            "readOnly": true,
+            "type": "string"
+          },
+          "size": {
+            "description": "Size of the volume in bytes",
+            "example": 8589934592,
+            "readOnly": true,
+            "type": "integer"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "state": {
+            "example": "in-use",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "volume_type_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        }
+      },
+      "VolumeAttachment": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "example": "/dev/xvda",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "state": {
+            "example": "attached",
+            "readOnly": true,
+            "type": "string"
+          },
+          "vm_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "volume_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        }
+      },
+      "VolumeAttachmentsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VolumeAttachment"
+            }
+          }
+        }
+      },
+      "VolumeType": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "example": "Magnetic",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "example": "standard",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "VolumeTypesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VolumeType"
+            }
+          }
+        }
+      },
+      "VolumesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Volume"
+            }
+          }
+        }
+      }
+    }
+  }
+}
