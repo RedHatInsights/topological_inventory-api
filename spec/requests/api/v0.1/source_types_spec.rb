@@ -1,6 +1,9 @@
 require_relative "shared_examples_for_index"
 
 RSpec.describe("v0.1 - SourceTypes") do
+  include ::Spec::Support::TenantIdentity
+
+  let(:headers)         { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
   let(:attributes)      { {"name" => "test_name", "product_name" => "Test Product", "vendor" => "TestVendor"} }
   let(:collection_path) { "/api/v0.1/source_types" }
 
@@ -13,7 +16,7 @@ RSpec.describe("v0.1 - SourceTypes") do
   describe("/api/v0.1/source_types") do
     context "post" do
       it "success: with valid body" do
-        post(collection_path, :params => attributes.to_json)
+        post(collection_path, :params => attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 201,
@@ -23,7 +26,7 @@ RSpec.describe("v0.1 - SourceTypes") do
       end
 
       it "failure: with no body" do
-        post(collection_path)
+        post(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -33,7 +36,7 @@ RSpec.describe("v0.1 - SourceTypes") do
       end
 
       it "failure: with extra attributes" do
-        post(collection_path, :params => attributes.merge("aaa" => "bbb").to_json)
+        post(collection_path, :params => attributes.merge("aaa" => "bbb").to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,

@@ -4,7 +4,7 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
   describe("/api/v0.1/#{primary_collection}") do
     context "get" do
       it "success: empty collection" do
-        get(collection_path)
+        get(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
                               :status      => 200,
@@ -15,7 +15,7 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
       it "success: non-empty collection" do
         primary_collection.to_s.singularize.camelize.constantize.create!(attributes)
 
-        get(collection_path)
+        get(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
                               :status      => 200,
@@ -34,7 +34,7 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
       it "success: with a valid id" do
         instance = primary_collection.to_s.singularize.camelize.constantize.create!(attributes)
 
-        get(instance_path(instance.id))
+        get(instance_path(instance.id), :headers => headers)
 
         expect(response).to have_attributes(
                               :status      => 200,
@@ -46,7 +46,7 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
         instance = primary_collection.to_s.singularize.camelize.constantize.create!(attributes)
 
         missing_id = instance.id * 1000
-        get(instance_path(missing_id))
+        get(instance_path(missing_id), :headers => headers)
 
         expect(response).to have_attributes(
                               :status      => 404,
@@ -55,7 +55,7 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
       end
 
       it "failure: with an invalid non-numeric id" do
-        get(instance_path("non_numeric_id"))
+        get(instance_path("non_numeric_id"), :headers => headers)
 
         expect(response).to have_attributes(
                               :status      => 404,
@@ -78,7 +78,7 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
           it "success: with a valid id" do
             instance = primary_collection.to_s.singularize.camelize.constantize.create!(attributes)
 
-            get(subcollection_path(instance.id))
+            get(subcollection_path(instance.id), :headers => headers)
 
             expect(response).to have_attributes(
                                   :status      => 200,
@@ -91,7 +91,7 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
             missing_id = (instance.id * 1000)
             expect(primary_collection.to_s.singularize.camelize.constantize.exists?(missing_id)).to eq(false)
 
-            get(subcollection_path(missing_id))
+            get(subcollection_path(missing_id), :headers => headers)
 
             expect(response).to have_attributes(
                                   :status      => 404,
@@ -100,7 +100,7 @@ RSpec.shared_examples "test_index_and_subcollections" do |primary_collection, su
           end
 
           it "failure: with an invalid non-numeric id" do
-            get(subcollection_path("non_numeric_id"))
+            get(subcollection_path("non_numeric_id"), :headers => headers)
 
             expect(response).to have_attributes(
                                   :status      => 404,

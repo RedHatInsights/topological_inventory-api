@@ -1,7 +1,9 @@
 require_relative "shared_examples_for_index"
 
 RSpec.describe("v0.1 - Task") do
-  let(:tenant)            { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
+  include ::Spec::Support::TenantIdentity
+
+  let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
 
   let(:attributes) do
     {

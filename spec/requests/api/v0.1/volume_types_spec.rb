@@ -1,9 +1,11 @@
 require_relative "shared_examples_for_index"
 
 RSpec.describe("v0.1 - VolumeType") do
+  include ::Spec::Support::TenantIdentity
+
+  let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
   let(:source) { Source.create!(:name => "name", :source_type => source_type, :tenant => tenant) }
   let(:source_type) { SourceType.create!(:vendor => "vendor", :product_name => "product_name", :name => "name") }
-  let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   let(:attributes) do
     {

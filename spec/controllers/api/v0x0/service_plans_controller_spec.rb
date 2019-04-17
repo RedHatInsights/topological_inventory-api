@@ -1,6 +1,9 @@
 require "manageiq-messaging"
 
 RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
+  include ::Spec::Support::TenantIdentity
+  let(:headers) { {"x-rh-identity" => identity} }
+
   it("Uses IndexMixin") { expect(described_class.instance_method(:index).owner).to eq(Api::V0::Mixins::IndexMixin) }
   it("Uses ShowMixin")  { expect(described_class.instance_method(:show).owner).to eq(Api::V0::Mixins::ShowMixin) }
 
@@ -20,7 +23,6 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
     end
     let(:source_region) { SourceRegion.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
     let(:source) { Source.create!(:tenant => tenant, :source_type => source_type, :uid => SecureRandom.uuid, :name => "test_source") }
-    let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
     let(:subscription) { Subscription.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
     let(:service_offering) do
       ServiceOffering.create!(
@@ -54,14 +56,14 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
         expect(client).to receive(:publish_message).with(
           :service => "platform.topological-inventory.operations-openshift",
           :message => "ServicePlan.order",
-          :payload => {:request_context => {}, :params => {:task_id => kind_of(String), :service_plan_id => service_plan.id.to_s, :order_params => payload}}
+          :payload => {:request_context => headers, :params => {:task_id => kind_of(String), :service_plan_id => service_plan.id.to_s, :order_params => payload}}
         )
 
-        post "/api/v0.0/service_plans/#{service_plan.id}/order", :params => payload
+        post "/api/v0.0/service_plans/#{service_plan.id}/order", :params => payload, :headers => headers
       end
 
       it "returns json with the task id" do
-        post "/api/v0.0/service_plans/#{service_plan.id}/order", :params => payload
+        post "/api/v0.0/service_plans/#{service_plan.id}/order", :params => payload, :headers => headers
 
         @body = JSON.parse(response.body)
         expect(@body).to have_key("task_id")
@@ -70,7 +72,7 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
 
     context "with a malicious service plan id" do
       it "returns an error" do
-        post "/api/v0.0/service_plans/;myfakeSQLinjection/order"
+        post "/api/v0.0/service_plans/;myfakeSQLinjection/order", :headers => headers
 
         expect(response.status).to eq(400)
       end
@@ -78,7 +80,7 @@ RSpec.describe Api::V0x0::ServicePlansController, :type => :request do
       it "does not try to look the model up by the fake ID" do
         expect(ServicePlan).to_not receive(:find).with(";myfakeSQLinjection")
 
-        post "/api/v0.0/service_plans/;myfakeSQLinjection/order"
+        post "/api/v0.0/service_plans/;myfakeSQLinjection/order", :headers => headers
       end
     end
   end

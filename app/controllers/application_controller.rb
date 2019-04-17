@@ -35,7 +35,7 @@ class ApplicationController < ActionController::API
         else
           ActsAsTenant.without_tenant { yield }
         end
-      rescue TopologicalInventory::Api::NoTenantError, KeyError
+      rescue TopologicalInventory::Api::NoTenantError, KeyError, ManageIQ::API::Common::IdentityError
         render :json => { :message => 'Unauthorized' }, :status => :unauthorized
       end
     end

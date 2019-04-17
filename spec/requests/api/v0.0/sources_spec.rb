@@ -1,13 +1,15 @@
 RSpec.describe("v0.0 - Sources") do
+  include ::Spec::Support::TenantIdentity
+
+  let(:headers)         { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
   let(:attributes)      { {"name" => "my source", "source_type_id" => source_type.id.to_s, "tenant_id" => tenant.id.to_s} }
   let(:collection_path) { "/api/v0.0/sources" }
   let(:source_type)     { SourceType.create!(:name => "SourceType", :vendor => "Some Vendor", :product_name => "Product Name") }
-  let(:tenant)          { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   describe("/api/v0.0/sources") do
     context "get" do
       it "success: empty collection" do
-        get(collection_path)
+        get(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 200,
@@ -18,7 +20,7 @@ RSpec.describe("v0.0 - Sources") do
       it "success: non-empty collection" do
         Source.create!(attributes)
 
-        get(collection_path)
+        get(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 200,
@@ -29,7 +31,7 @@ RSpec.describe("v0.0 - Sources") do
 
     context "post" do
       it "success: with valid body" do
-        post(collection_path, :params => attributes.to_json)
+        post(collection_path, :params => attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 201,
@@ -39,7 +41,7 @@ RSpec.describe("v0.0 - Sources") do
       end
 
       it "failure: with no body" do
-        post(collection_path)
+        post(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -49,7 +51,7 @@ RSpec.describe("v0.0 - Sources") do
       end
 
       it "failure: with extra attributes" do
-        post(collection_path, :params => attributes.merge("aaa" => "bbb").to_json)
+        post(collection_path, :params => attributes.merge("aaa" => "bbb").to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -69,7 +71,7 @@ RSpec.describe("v0.0 - Sources") do
       it "success: with a valid id" do
         instance = Source.create!(attributes)
 
-        get(instance_path(instance.id))
+        get(instance_path(instance.id), :headers => headers)
 
         expect(response).to have_attributes(
           :status => 200,
@@ -81,7 +83,7 @@ RSpec.describe("v0.0 - Sources") do
         instance = Source.create!(attributes)
 
         missing_id = instance.id * 1000
-        get(instance_path(missing_id))
+        get(instance_path(missing_id), :headers => headers)
 
         expect(response).to have_attributes(
           :status => 404,
@@ -95,7 +97,7 @@ RSpec.describe("v0.0 - Sources") do
         instance = Source.create!(attributes)
         new_attributes = {"name" => "new name"}
 
-        patch(instance_path(instance.id), :params => new_attributes.to_json)
+        patch(instance_path(instance.id), :params => new_attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 204,
@@ -110,7 +112,7 @@ RSpec.describe("v0.0 - Sources") do
         new_attributes = {"name" => "new name"}
 
         missing_id = instance.id * 1000
-        patch(instance_path(missing_id), :params => new_attributes.to_json)
+        patch(instance_path(missing_id), :params => new_attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 404,
@@ -122,7 +124,7 @@ RSpec.describe("v0.0 - Sources") do
         instance = Source.create!(attributes)
         new_attributes = {"aaaaa" => "bbbbb"}
 
-        patch(instance_path(instance.id), :params => new_attributes.to_json)
+        patch(instance_path(instance.id), :params => new_attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -134,7 +136,7 @@ RSpec.describe("v0.0 - Sources") do
         instance = Source.create!(attributes)
         new_attributes = {"uid" => "xxxxx"}
 
-        patch(instance_path(instance.id), :params => new_attributes.to_json)
+        patch(instance_path(instance.id), :params => new_attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -174,7 +176,7 @@ RSpec.describe("v0.0 - Sources") do
           it "success: with a valid id" do
             instance = Source.create!(attributes)
 
-            get(subcollection_path(instance.id))
+            get(subcollection_path(instance.id), :headers => headers)
 
             expect(response).to have_attributes(
               :status => 200,
@@ -187,7 +189,7 @@ RSpec.describe("v0.0 - Sources") do
             missing_id = (instance.id * 1000)
             expect(Source.exists?(missing_id)).to eq(false)
 
-            get(subcollection_path(missing_id))
+            get(subcollection_path(missing_id), :headers => headers)
 
             expect(response).to have_attributes(
               :status => 404,

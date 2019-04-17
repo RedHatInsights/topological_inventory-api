@@ -1,5 +1,6 @@
 RSpec.describe("::ManageIQ::API::Common::Filter") do
-  let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
+  include ::Spec::Support::TenantIdentity
+  let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
 
   def create_task(attrs = {})
     Task.create!(
@@ -12,7 +13,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
   end
 
   def expect_failure(query, *errors)
-    get(URI.escape("/api/v0.1/tasks?#{query}"))
+    get(URI.escape("/api/v0.1/tasks?#{query}"), :headers => headers)
 
     expect(response).to have_attributes(
       :parsed_body => {
@@ -23,7 +24,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
   end
 
   def expect_success(query, *results)
-    get(URI.escape("/api/v0.1/tasks?#{query}"))
+    get(URI.escape("/api/v0.1/tasks?#{query}"), :headers => headers)
 
     expect(response).to have_attributes(
       :parsed_body => paginated_response(results.length, results.collect { |i| a_hash_including("id" => i.id.to_s) }),
@@ -118,7 +119,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       source = Source.create!(:source_type => source_type, :tenant => tenant, :name => "a")
       Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
 
-      get("/api/v0.1/vms?filter[mac_addresses]=a")
+      get("/api/v0.1/vms?filter[mac_addresses]=a", :headers => headers)
 
       expect(response.status).to eq(400)
       expect(response.parsed_body["errors"]).to eq([{"detail"=>"unsupported attribute type for: mac_addresses", "status"=>400}])
@@ -129,7 +130,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       source = Source.create!(:source_type => source_type, :tenant => tenant, :name => "a")
       Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
 
-      get("/api/v0.1/vms?filter[bogus_attribute]=a")
+      get("/api/v0.1/vms?filter[bogus_attribute]=a", :headers => headers)
 
       expect(response.status).to eq(400)
       expect(response.parsed_body["errors"]).to eq([{"detail"=>"found unpermitted parameter: bogus_attribute", "status"=>400}])
@@ -140,7 +141,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       source = Source.create!(:source_type => source_type, :tenant => tenant, :name => "a")
       Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
 
-      get("/api/v0.1/vms?filter[mac_addresses]=a&filter[name]=a&filter[bogus_attribute]=b")
+      get("/api/v0.1/vms?filter[mac_addresses]=a&filter[name]=a&filter[bogus_attribute]=b", :headers => headers)
 
       expect(response.status).to eq(400)
       expect(response.parsed_body["errors"]).to eq(

@@ -3,10 +3,10 @@ require_relative "shared_examples_for_index"
 RSpec.describe("v0.0 - Sources") do
   include ::Spec::Support::TenantIdentity
 
+  let(:headers)         { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
   let(:attributes)      { {"name" => "my source", "source_type_id" => source_type.id.to_s, "tenant_id" => tenant.id.to_s} }
   let(:collection_path) { "/api/v0.1/sources" }
   let(:source_type)     { SourceType.create!(:name => "SourceType", :vendor => "Some Vendor", :product_name => "Product Name") }
-  let(:tenant)          { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   include_examples(
     "test_index_and_subcollections",
@@ -33,7 +33,7 @@ RSpec.describe("v0.0 - Sources") do
   describe("/api/v0.1/sources") do
     context "post" do
       it "success: with valid body" do
-        post(collection_path, :params => attributes.to_json)
+        post(collection_path, :params => attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 201,
@@ -43,7 +43,7 @@ RSpec.describe("v0.0 - Sources") do
       end
 
       it "failure: with no body" do
-        post(collection_path)
+        post(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -53,7 +53,7 @@ RSpec.describe("v0.0 - Sources") do
       end
 
       it "failure: with extra attributes" do
-        post(collection_path, :params => attributes.merge("aaa" => "bbb").to_json)
+        post(collection_path, :params => attributes.merge("aaa" => "bbb").to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -86,7 +86,7 @@ RSpec.describe("v0.0 - Sources") do
         instance = Source.create!(attributes)
         new_attributes = {"name" => "new name"}
 
-        patch(instance_path(instance.id), :params => new_attributes.to_json)
+        patch(instance_path(instance.id), :params => new_attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 204,
@@ -101,7 +101,7 @@ RSpec.describe("v0.0 - Sources") do
         new_attributes = {"name" => "new name"}
 
         missing_id = instance.id * 1000
-        patch(instance_path(missing_id), :params => new_attributes.to_json)
+        patch(instance_path(missing_id), :params => new_attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 404,
@@ -113,7 +113,7 @@ RSpec.describe("v0.0 - Sources") do
         instance = Source.create!(attributes)
         new_attributes = {"aaaaa" => "bbbbb"}
 
-        patch(instance_path(instance.id), :params => new_attributes.to_json)
+        patch(instance_path(instance.id), :params => new_attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -125,7 +125,7 @@ RSpec.describe("v0.0 - Sources") do
         instance = Source.create!(attributes)
         new_attributes = {"uid" => "xxxxx"}
 
-        patch(instance_path(instance.id), :params => new_attributes.to_json)
+        patch(instance_path(instance.id), :params => new_attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
