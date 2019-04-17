@@ -58,7 +58,7 @@ RSpec.describe("v0.0 - Containers") do
 
         expect(response).to have_attributes(
           :status => 404,
-          :parsed_body => {"errors"=>[{"detail"=>"Couldn't find Container with 'id'=#{missing_id}", "status"=>404}]}
+          :parsed_body => {"errors"=>[{"detail"=>"Record not found", "status"=>404}]}
         )
       end
     end

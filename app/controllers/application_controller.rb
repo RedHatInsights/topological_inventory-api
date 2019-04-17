@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    error_document = ManageIQ::API::Common::ErrorDocument.new.add(404, exception.message)
+    error_document = ManageIQ::API::Common::ErrorDocument.new.add(404, "Record not found")
     render :json => error_document.to_h, :status => :not_found
   end
 

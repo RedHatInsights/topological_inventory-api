@@ -56,7 +56,7 @@ RSpec.describe("v0.1 - ServiceOfferingIcon") do
 
         expect(response).to have_attributes(
                               :status      => 404,
-                              :parsed_body => {"errors"=>[{"detail"=>"Couldn't find ServiceOfferingIcon with 'id'=#{missing_id}", "status"=>404}]},
+                              :parsed_body => {"errors"=>[{"detail"=>"Record not found", "status"=>404}]},
                             )
       end
 
@@ -65,7 +65,7 @@ RSpec.describe("v0.1 - ServiceOfferingIcon") do
 
         expect(response).to have_attributes(
                               :status      => 404,
-                              :parsed_body => {"errors"=>[{"detail"=>"Couldn't find ServiceOfferingIcon with 'id'=0", "status"=>404}]},
+                              :parsed_body => {"errors"=>[{"detail"=>"Record not found", "status"=>404}]},
                             )
       end
     end
