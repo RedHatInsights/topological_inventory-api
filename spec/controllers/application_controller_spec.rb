@@ -40,6 +40,14 @@ RSpec.describe ApplicationController, :type => :request do
       expect(response.status).to eq(200)
       expect(Tenant.find_by(:external_tenant => unknown_tenant)).not_to be_nil
     end
+
+    it "get /sources with no identity" do
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      get("/api/v0.0/sources", :headers => headers)
+
+      expect(response.status).to eq(401)
+    end
   end
 
   context "without tenancy enforcement" do

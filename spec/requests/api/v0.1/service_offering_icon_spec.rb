@@ -1,9 +1,11 @@
 require_relative "shared_examples_for_index"
 
 RSpec.describe("v0.1 - ServiceOfferingIcon") do
+  include ::Spec::Support::TenantIdentity
+
+  let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
   let(:source) { Source.create!(:name => "name", :source_type => source_type, :tenant => tenant) }
   let(:source_type) { SourceType.create!(:vendor => "vendor", :product_name => "product_name", :name => "name") }
-  let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
   let(:data) { '<svg width=\"580\" height=\"400\" xmlns=\"http://www.w3.org/2000/svg\"> <!-- Created with Method Draw -'\
     'http://github.com/duopixel/Method-Draw/ --> <g>  <title>background</title>  <rect fill=\"#ff0000\" '\
     'id=\"canvas_background\" height=\"402\" width=\"582\" y=\"-1\" x=\"-1\"/>  <g display=\"none\" overflow=\"visible\"'\
@@ -38,7 +40,7 @@ RSpec.describe("v0.1 - ServiceOfferingIcon") do
       it "success: with a valid id" do
         instance = primary_collection.to_s.singularize.camelize.constantize.create!(attributes)
 
-        get(subcollection_path(instance.id))
+        get(subcollection_path(instance.id), :headers => headers)
 
         expect(response).to have_attributes(
                               :status       => 200,
@@ -52,20 +54,20 @@ RSpec.describe("v0.1 - ServiceOfferingIcon") do
         missing_id = (instance.id * 1000)
         expect(primary_collection.to_s.singularize.camelize.constantize.exists?(missing_id)).to eq(false)
 
-        get(subcollection_path(missing_id))
+        get(subcollection_path(missing_id), :headers => headers)
 
         expect(response).to have_attributes(
                               :status      => 404,
-                              :parsed_body => {"errors"=>[{"detail"=>"Couldn't find ServiceOfferingIcon with 'id'=#{missing_id}", "status"=>404}]},
+                              :parsed_body => {"errors"=>[{"detail"=>"Record not found", "status"=>404}]},
                             )
       end
 
       it "failure: with an invalid non-numeric id" do
-        get(subcollection_path("non_numeric_id"))
+        get(subcollection_path("non_numeric_id"), :headers => headers)
 
         expect(response).to have_attributes(
                               :status      => 404,
-                              :parsed_body => {"errors"=>[{"detail"=>"Couldn't find ServiceOfferingIcon with 'id'=0", "status"=>404}]},
+                              :parsed_body => {"errors"=>[{"detail"=>"Record not found", "status"=>404}]},
                             )
       end
     end

@@ -1,12 +1,14 @@
 RSpec.describe("v0.1 - Authentications") do
+  include ::Spec::Support::TenantIdentity
+
+  let(:headers)         { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
   let(:attributes)      { {"username" => "test_name", "password" => "Test Password", "tenant_id" => tenant.id.to_s, "resource_type" => "Tenant", "resource_id" => tenant.id.to_s} }
   let(:collection_path) { "/api/v0.1/authentications" }
-  let(:tenant)          { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   describe("/api/v0.1/authentications") do
     context "get" do
       it "success: empty collection" do
-        get(collection_path)
+        get(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 200,
@@ -17,7 +19,7 @@ RSpec.describe("v0.1 - Authentications") do
       it "success: non-empty collection" do
         Authentication.create!(attributes)
 
-        get(collection_path)
+        get(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 200,
@@ -28,7 +30,7 @@ RSpec.describe("v0.1 - Authentications") do
 
     context "post" do
       it "success: with valid body" do
-        post(collection_path, :params => attributes.to_json)
+        post(collection_path, :params => attributes.to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 201,
@@ -38,7 +40,7 @@ RSpec.describe("v0.1 - Authentications") do
       end
 
       it "failure: with no body" do
-        post(collection_path)
+        post(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -48,7 +50,7 @@ RSpec.describe("v0.1 - Authentications") do
       end
 
       it "failure: with extra attributes" do
-        post(collection_path, :params => attributes.merge("aaa" => "bbb").to_json)
+        post(collection_path, :params => attributes.merge("aaa" => "bbb").to_json, :headers => headers)
 
         expect(response).to have_attributes(
           :status => 400,
@@ -68,7 +70,7 @@ RSpec.describe("v0.1 - Authentications") do
       it "success: with a valid id" do
         instance = Authentication.create!(attributes)
 
-        get(instance_path(instance.id))
+        get(instance_path(instance.id), :headers => headers)
 
         expect(response).to have_attributes(
           :status => 200,
@@ -80,11 +82,11 @@ RSpec.describe("v0.1 - Authentications") do
         instance = Authentication.create!(attributes)
 
         missing_id = instance.id * 1000
-        get(instance_path(missing_id))
+        get(instance_path(missing_id), :headers => headers)
 
         expect(response).to have_attributes(
           :status => 404,
-          :parsed_body => {"errors"=>[{"detail"=>"Couldn't find Authentication with 'id'=#{missing_id}", "status"=>404}]}
+          :parsed_body => {"errors"=>[{"detail"=>"Record not found", "status"=>404}]}
         )
       end
     end

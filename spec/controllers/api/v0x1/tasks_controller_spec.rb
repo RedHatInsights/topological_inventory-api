@@ -4,8 +4,10 @@ RSpec.describe Api::V0x1::TasksController, :type => :request do
   it("Uses IndexMixin")   { expect(described_class.instance_method(:index).owner).to eq(Api::V0x1::Mixins::IndexMixin) }
   it("Uses ShowMixin")    { expect(described_class.instance_method(:show).owner).to eq(Api::V0::Mixins::ShowMixin) }
 
-  let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
-  let(:client) { instance_double("ManageIQ::Messaging::Client") }
+  include ::Spec::Support::TenantIdentity
+
+  let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
+  let(:client)  { instance_double("ManageIQ::Messaging::Client") }
 
   before do
     allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
@@ -20,7 +22,7 @@ RSpec.describe Api::V0x1::TasksController, :type => :request do
       :payload => {"state" => "completed", "status" => "ok", "context" => "context2", "task_id" => task.id.to_s}
     )
 
-    patch(api_v0x1_task_url(task.id), :params => {:state => "completed", :status => "ok", :context => "context2"}.to_json)
+    patch(api_v0x1_task_url(task.id), :params => {:state => "completed", :status => "ok", :context => "context2"}.to_json, :headers => headers)
 
     expect(task.reload.state).to eq("completed")
     expect(task.reload.status).to eq("ok")

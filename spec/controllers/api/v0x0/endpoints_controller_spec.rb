@@ -4,12 +4,13 @@ RSpec.describe Api::V0x0::EndpointsController, :type => :request do
   it("Uses ShowMixin")    { expect(described_class.instance_method(:show).owner).to eq(Api::V0::Mixins::ShowMixin) }
   it("Uses UpdateMixin")  { expect(described_class.instance_method(:update).owner).to eq(Api::V0::Mixins::UpdateMixin) }
 
+  include ::Spec::Support::TenantIdentity
+
+  let(:headers)     { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
   let(:source)      { Source.create!(:source_type => source_type, :tenant => tenant, :uid => SecureRandom.uuid, :name => "test_source") }
   let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
-  let(:tenant)      { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
   it "post /endpoints creates an Endpoint" do
-    headers = { "CONTENT_TYPE" => "application/json" }
     post(
       api_v0x0_endpoints_url,
       :params => {
@@ -22,7 +23,8 @@ RSpec.describe Api::V0x0::EndpointsController, :type => :request do
         :scheme                => "https",
         :verify_ssl            => true,
         :certificate_authority => "-----BEGIN CERTIFICATE-----\nabcd\n-----END CERTIFICATE-----",
-      }.to_json
+      }.to_json,
+      :headers => headers
     )
 
     endpoint = Endpoint.first
