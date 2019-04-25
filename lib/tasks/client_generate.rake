@@ -1,6 +1,6 @@
 #
 # Usage: bundle exec rake client:generate
-#        bundle exec rake client:generate[/alternate_ruby_client_dir]
+#        bundle exec rake client:generate[/alternate_client_dir, alternate_client_lang]
 #
 class ClientGenerator
   require 'json'
@@ -66,17 +66,10 @@ class ClientGenerator
 end
 
 namespace :client do
-  desc "Generate the Topological Inventory API Ruby Client"
-  task :generate, [:client_dir] => [:environment] do |_task, args|
+  desc "Generate the Topological Inventory API Client (by default in Ruby)"
+  task :generate, [:client_dir, :language] => [:environment] do |_task, args|
     default_client_dir = Pathname.new(Rails.root.join("..", "topological_inventory-api-client-ruby"))
-    args.with_defaults(:client_dir => default_client_dir)
-    ClientGenerator.new.generate_client(args[:client_dir], "ruby")
-  end
-
-  desc "Generate the Topological Inventory API Bash Client"
-  task :generate_bash, [:client_dir] => [:environment] do |_task, args|
-    default_client_dir = Pathname.new(Rails.root.join("..", "topological_inventory-api-client-bash"))
-    args.with_defaults(:client_dir => default_client_dir)
-    ClientGenerator.new.generate_client(args[:client_dir], "bash")
+    args.with_defaults(:client_dir => default_client_dir, :language => "ruby")
+    ClientGenerator.new.generate_client(args[:client_dir], args[:language])
   end
 end
