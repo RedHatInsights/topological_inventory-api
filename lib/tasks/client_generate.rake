@@ -68,8 +68,10 @@ end
 namespace :client do
   desc "Generate the Topological Inventory API Client (by default in Ruby)"
   task :generate, [:client_dir, :language] => [:environment] do |_task, args|
-    default_client_dir = Pathname.new(Rails.root.join("..", "topological_inventory-api-client-ruby"))
-    args.with_defaults(:client_dir => default_client_dir, :language => "ruby")
+    args.with_defaults(:language => "ruby")
+    default_client_dir = Pathname.new(Rails.root.join("..", "topological_inventory-api-client-#{args[:language]}"))
+    args.with_defaults(:client_dir => default_client_dir)
+
     ClientGenerator.new.generate_client(args[:client_dir], args[:language])
   end
 end
