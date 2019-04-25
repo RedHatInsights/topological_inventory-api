@@ -9,7 +9,14 @@ describe "Swagger stuff" do
     end
   end
 
-  let(:swagger_routes) { Api::Docs.routes }
+  let(:swagger_routes) do
+    published_versions = rails_routes.collect do |rails_route|
+      (version_match = rails_route[:path].match(/\/api\/topological-inventory\/v([\d]+\.[\d])\/openapi.json$/)) && version_match[1]
+    end.compact
+    Api::Docs.routes.select do |spec_route|
+      published_versions.include?(spec_route[:path].match(/\/api\/topological-inventory\/v([\d]+\.[\d])\//)[1])
+    end
+  end
 
   describe "Routing" do
     include Rails.application.routes.url_helpers
@@ -49,7 +56,7 @@ describe "Swagger stuff" do
       it "with a random prefix" do
         expect(ENV["PATH_PREFIX"]).not_to be_nil
         expect(ENV["APP_NAME"]).not_to be_nil
-        expect(api_v0x0_sources_url(:only_path => true)).to eq("/#{URI.encode(ENV["PATH_PREFIX"])}/#{URI.encode(ENV["APP_NAME"])}/v0.0/sources")
+        expect(api_v1x0_sources_url(:only_path => true)).to eq("/#{URI.encode(ENV["PATH_PREFIX"])}/#{URI.encode(ENV["APP_NAME"])}/v1.0/sources")
       end
 
       it "with extra slashes" do
@@ -57,7 +64,7 @@ describe "Swagger stuff" do
         ENV["APP_NAME"] = "/appname/"
         Rails.application.reload_routes!
 
-        expect(api_v0x0_sources_url(:only_path => true)).to eq("/example/path/prefix/appname/v0.0/sources")
+        expect(api_v1x0_sources_url(:only_path => true)).to eq("/example/path/prefix/appname/v1.0/sources")
       end
 
       it "doesn't use the APP_NAME when PATH_PREFIX is empty" do
@@ -65,7 +72,7 @@ describe "Swagger stuff" do
         Rails.application.reload_routes!
 
         expect(ENV["APP_NAME"]).not_to be_nil
-        expect(api_v0x0_sources_url(:only_path => true)).to eq("/api/v0.0/sources")
+        expect(api_v1x0_sources_url(:only_path => true)).to eq("/api/v1.0/sources")
       end
     end
 
@@ -110,14 +117,15 @@ describe "Swagger stuff" do
     let(:tag) { Tag.create!(:tenant => tenant, :name => "Operation", :description => "Desc") }
     let(:tenant) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
 
-    context "v0.0" do
-      let(:version) { "0.0" }
-      Api::Docs["0.0"].definitions.each do |definition_name, schema|
-        next if definition_name.in?(["OrderParameters", "Tagging"])
+    context "v1.0" do
+      let(:version) { "1.0" }
+      Api::Docs["1.0"].definitions.each do |definition_name, schema|
+        next if definition_name.in?(["CollectionLinks", "CollectionMetadata", "OrderParameters", "Tagging"])
+        definition_name = definition_name.sub(/Collection\z/, "").singularize
 
         it "#{definition_name} matches the JSONSchema" do
           const = definition_name.constantize
-          expect(send(definition_name.underscore).as_json(:prefixes => ["api/v0x0/#{definition_name.underscore}"])).to match_json_schema("0.0", definition_name)
+          expect(send(definition_name.underscore).as_json(:prefixes => ["api/v1x0/#{definition_name.underscore}"])).to match_json_schema("1.0", definition_name)
         end
       end
     end
