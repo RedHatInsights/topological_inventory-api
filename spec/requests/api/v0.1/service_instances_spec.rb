@@ -4,8 +4,7 @@ RSpec.describe("v0.1 - ServiceInstance") do
   include ::Spec::Support::TenantIdentity
 
   let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
-  let(:source) { Source.create!(:name => "name", :source_type => source_type, :tenant => tenant) }
-  let(:source_type) { SourceType.create!(:vendor => "vendor", :product_name => "product_name", :name => "name") }
+  let(:source) { Source.create!(:tenant => tenant) }
   let(:source_region) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
   let(:subscription) { Subscription.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }
   let(:source_region) { SourceRegion.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }

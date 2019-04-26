@@ -8,8 +8,7 @@ RSpec.describe("v1.0 - Container") do
   let(:container_group)   { ContainerGroup.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid, :container_project => container_project, :container_node => container_node) }
   let(:container_node)    { ContainerNode.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
   let(:container_project) { ContainerProject.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
-  let(:source)            { Source.create!(:name => "name", :source_type => source_type, :tenant => tenant) }
-  let(:source_type)       { SourceType.create!(:vendor => "vendor", :product_name => "product_name", :name => "name") }
+  let(:source)            { Source.create!(:tenant => tenant) }
 
   let(:attributes) do
     {

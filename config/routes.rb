@@ -14,9 +14,6 @@ Rails.application.routes.draw do
 
     namespace :v1x0, :path => "v1.0" do
       get "/openapi.json", :to => "root#openapi"
-      resources :application_types,       :only => [:index, :show]
-      resources :applications,            :only => [:create, :destroy, :index, :show]
-      resources :authentications,         :only => [:create, :destroy, :index, :show, :update]
       resources :containers,              :only => [:index, :show]
       resources :container_groups,        :only => [:index, :show] do
         resources :containers, :only => [:index]
@@ -39,9 +36,6 @@ Rails.application.routes.draw do
       resources :container_templates,     :only => [:index, :show] do
         resources :tags, :only => [:index]
       end
-      resources :endpoints,               :only => [:create, :destroy, :index, :show, :update] do
-        resources :authentications, :only => [:index]
-      end
       resources :flavors,                 :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show]
       resources :service_offering_icons,  :only => [:index, :show] do
@@ -57,12 +51,7 @@ Rails.application.routes.draw do
         post "order", :to => "service_plans#order"
         resources :service_instances, :only => [:index]
       end
-      resources :source_types, :only => [:create, :index, :show] do
-        resources :availabilities, :only => [:index]
-        resources :sources,        :only => [:index]
-      end
       resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
-        resources :applications,            :only => [:index]
         resources :availabilities,          :only => [:index]
         resources :containers,              :only => [:index]
         resources :container_groups,        :only => [:index]
@@ -70,7 +59,6 @@ Rails.application.routes.draw do
         resources :container_nodes,         :only => [:index]
         resources :container_projects,      :only => [:index]
         resources :container_templates,     :only => [:index]
-        resources :endpoints,               :only => [:index]
         resources :orchestration_stacks,    :only => [:index]
         resources :service_instances,       :only => [:index]
         resources :service_offerings,       :only => [:index]
@@ -101,9 +89,6 @@ Rails.application.routes.draw do
 
     namespace :v0x1, :path => "v0.1" do
       get "/openapi.json", :to => "root#openapi"
-      resources :application_types,       :only => [:index, :show]
-      resources :applications,            :only => [:create, :destroy, :index, :show]
-      resources :authentications,         :only => [:create, :destroy, :index, :show, :update]
       resources :containers,              :only => [:index, :show]
       resources :container_groups,        :only => [:index, :show] do
         resources :containers, :only => [:index]
@@ -126,9 +111,6 @@ Rails.application.routes.draw do
       resources :container_templates,     :only => [:index, :show] do
         resources :tags, :only => [:index]
       end
-      resources :endpoints,               :only => [:create, :destroy, :index, :show, :update] do
-        resources :authentications, :only => [:index]
-      end
       resources :flavors,                 :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show]
       resources :service_offering_icons,  :only => [:index, :show] do
@@ -144,12 +126,7 @@ Rails.application.routes.draw do
         post "order", :to => "service_plans#order"
         resources :service_instances, :only => [:index]
       end
-      resources :source_types, :only => [:create, :index, :show] do
-        resources :availabilities, :only => [:index]
-        resources :sources,        :only => [:index]
-      end
-      resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
-        resources :applications,            :only => [:index]
+      resources :sources,                 :only => [:index, :show] do
         resources :availabilities,          :only => [:index]
         resources :containers,              :only => [:index]
         resources :container_groups,        :only => [:index]
@@ -157,7 +134,6 @@ Rails.application.routes.draw do
         resources :container_nodes,         :only => [:index]
         resources :container_projects,      :only => [:index]
         resources :container_templates,     :only => [:index]
-        resources :endpoints,               :only => [:index]
         resources :orchestration_stacks,    :only => [:index]
         resources :service_instances,       :only => [:index]
         resources :service_offerings,       :only => [:index]
@@ -191,8 +167,7 @@ Rails.application.routes.draw do
     routing_helper.redirect_major_version("v0.0", "internal", :via => [:get])
 
     namespace :v0x0, :path => "v0.0" do
-      resources :authentications, :only => [:show]
-      resources :tenants,         :only => [:index, :show]
+      resources :tenants, :only => [:index, :show]
     end
   end
 end

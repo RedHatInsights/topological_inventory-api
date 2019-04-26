@@ -41,7 +41,6 @@ describe "Swagger stuff" do
         ]
         internal_api_routes = [
           {:path => "/internal/v0/*path",                 :verb => "GET"},
-          {:path => "/internal/v0.0/authentications/:id", :verb => "GET"},
           {:path => "/internal/v0.0/tenants",             :verb => "GET"},
           {:path => "/internal/v0.0/tenants/:id",         :verb => "GET"},
         ]
@@ -91,7 +90,6 @@ describe "Swagger stuff" do
 
   describe "Model serialization" do
     let(:doc) { Api::Docs[version] }
-    let(:authentication) { Authentication.create!(doc.example_attributes("Authentication").symbolize_keys.merge(:tenant => tenant, :resource => endpoint)) }
     let(:container) { Container.create!(doc.example_attributes("Container").symbolize_keys.merge(:tenant => tenant, :container_group => container_group, :container_image => container_image)) }
     let(:container_group) { ContainerGroup.create!(doc.example_attributes("ContainerGroup").symbolize_keys.merge(:tenant => tenant, :source => source, :container_node => container_node, :container_project => container_project, :source_created_at => Time.now, :source_ref => SecureRandom.uuid)) }
     let(:container_image) { ContainerImage.create!(doc.example_attributes("ContainerImage").symbolize_keys.merge(:tenant => tenant, :source => source, :source_created_at => Time.now, :source_ref => SecureRandom.uuid)) }
@@ -105,9 +103,8 @@ describe "Swagger stuff" do
     let(:service_offering) { ServiceOffering.create!(doc.example_attributes("ServiceOffering").symbolize_keys.merge(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid, :source_created_at => Time.now, :source_region => source_region, :subscription => subscription)) }
     let(:service_offering_icon) { ServiceOfferingIcon.create!(doc.example_attributes("ServiceOfferingIcon").symbolize_keys.merge(:tenant => tenant, :source => source, :source_ref => "icon-ruby")) }
     let(:service_plan) { ServicePlan.create!(doc.example_attributes("ServicePlan").symbolize_keys.merge(:tenant => tenant, :source => source, :service_offering => service_offering, :source_ref => SecureRandom.uuid, :source_created_at => Time.now, :create_json_schema => {}, :update_json_schema => {}, :source_region => source_region, :subscription => subscription)) }
-    let(:source) { Source.create!(doc.example_attributes("Source").symbolize_keys.merge(:source_type => source_type, :tenant => tenant, :uid => SecureRandom.uuid)) }
+    let(:source) { Source.create!(doc.example_attributes("Source").symbolize_keys.merge(:tenant => tenant, :uid => SecureRandom.uuid)) }
     let(:source_region) { SourceRegion.create!(:source => source, :tenant => tenant, :source_ref => SecureRandom.uuid) }
-    let(:source_type) { SourceType.create!(:name => "openshift", :product_name => "OpenShift", :vendor => "Red Hat") }
     let(:subscription) { Subscription.create!(:source => source, :tenant => tenant, :source_ref => SecureRandom.uuid) }
     let(:vm) { Vm.create!(doc.example_attributes("Vm").symbolize_keys.merge(:source => source, :tenant => tenant, :source_ref => SecureRandom.uuid, :uid_ems => SecureRandom.uuid)) }
     let(:volume_attachment) { VolumeAttachment.create!(doc.example_attributes("VolumeAttachment").symbolize_keys.merge(:tenant => tenant, :vm => vm, :volume => volume)) }

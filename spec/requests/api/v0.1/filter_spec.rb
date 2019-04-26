@@ -115,8 +115,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
     end
 
     it "unsupported attribute type" do
-      source_type = SourceType.create!(:name => "a", :vendor => "a", :product_name => "a")
-      source = Source.create!(:source_type => source_type, :tenant => tenant, :name => "a")
+      source = Source.create!(:tenant => tenant)
       Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
 
       get("/api/v0.1/vms?filter[mac_addresses]=a", :headers => headers)
@@ -126,8 +125,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
     end
 
     it "invalid attribute" do
-      source_type = SourceType.create!(:name => "a", :vendor => "a", :product_name => "a")
-      source = Source.create!(:source_type => source_type, :tenant => tenant, :name => "a")
+      source = Source.create!(:tenant => tenant)
       Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
 
       get("/api/v0.1/vms?filter[bogus_attribute]=a", :headers => headers)
@@ -137,8 +135,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
     end
 
     it "multiple invalid attributes mixed with a valid attribute" do
-      source_type = SourceType.create!(:name => "a", :vendor => "a", :product_name => "a")
-      source = Source.create!(:source_type => source_type, :tenant => tenant, :name => "a")
+      source = Source.create!(:tenant => tenant)
       Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
 
       get("/api/v0.1/vms?filter[mac_addresses]=a&filter[name]=a&filter[bogus_attribute]=b", :headers => headers)

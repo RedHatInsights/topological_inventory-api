@@ -4,8 +4,7 @@ RSpec.describe("v0.1 - ServiceOfferingIcon") do
   include ::Spec::Support::TenantIdentity
 
   let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
-  let(:source) { Source.create!(:name => "name", :source_type => source_type, :tenant => tenant) }
-  let(:source_type) { SourceType.create!(:vendor => "vendor", :product_name => "product_name", :name => "name") }
+  let(:source) { Source.create!(:tenant => tenant) }
   let(:data) { '<svg width=\"580\" height=\"400\" xmlns=\"http://www.w3.org/2000/svg\"> <!-- Created with Method Draw -'\
     'http://github.com/duopixel/Method-Draw/ --> <g>  <title>background</title>  <rect fill=\"#ff0000\" '\
     'id=\"canvas_background\" height=\"402\" width=\"582\" y=\"-1\" x=\"-1\"/>  <g display=\"none\" overflow=\"visible\"'\
