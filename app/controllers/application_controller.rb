@@ -27,6 +27,8 @@ class ApplicationController < ActionController::API
   def with_current_request
     ManageIQ::API::Common::Request.with_request(request) do |current|
       begin
+        raise ManageIQ::API::Common::EntitlementError unless request_is_entitled?(current)
+
         if Tenant.tenancy_enabled? && current.required_auth?
           tenant = Tenant.find_or_create_by(:external_tenant => current.user.tenant) if current.user.tenant
 
@@ -36,6 +38,8 @@ class ApplicationController < ActionController::API
         end
       rescue KeyError, ManageIQ::API::Common::IdentityError
         render :json => { :message => 'Unauthorized' }, :status => :unauthorized
+      rescue ManageIQ::API::Common::EntitlementError
+        render :json => { :message => 'Forbidden' }, :status => :forbidden
       end
     end
   end
@@ -50,6 +54,22 @@ class ApplicationController < ActionController::API
 
   private_class_method def self.api_version
     @api_version ||= name.split("::")[1].downcase
+  end
+
+  def request_is_entitled?(current)
+    # Todo - This needs some discussion because calling current.entitlement will raise IdentityError if there
+    # is no x-rh-identity key in the header but topology does not require that header if tenancy is bypassed.
+    # The test "get /sources without identity" will fail without this change. See -
+    # https://github.com/ManageIQ/topological_inventory-api/blob/5ee5c96a1ca09553153971bc0548790cc25b5ca2/spec/controllers/application_controller_spec.rb#L55
+    entitlement = begin
+      current.entitlement
+    rescue ManageIQ::API::Common::IdentityError
+      nil
+    end
+    return true unless entitlement
+
+    required_entitlements = %i[hybrid_cloud? insights?]
+    required_entitlements.map { |e| current.entitlement.send(e) }.any?
   end
 
   def body_params
