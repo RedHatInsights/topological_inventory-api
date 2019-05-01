@@ -57,7 +57,7 @@ class ApplicationController < ActionController::API
 
   def request_is_entitled?(entitlement)
     required_entitlements = %i[hybrid_cloud? insights?]
-    required_entitlements.map { |e| entitlement.send(e) }.any?
+    required_entitlements.any? { |e| entitlement.send(e) }
   end
 
   def body_params
