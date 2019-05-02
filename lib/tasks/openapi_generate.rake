@@ -3,6 +3,8 @@ class OpenapiGenerator
 
   PARAMETERS_PATH = "/components/parameters".freeze
   SCHEMAS_PATH = "/components/schemas".freeze
+  INTEGER_TIME_COMPARATORS = ["eq", "gt", "gte", "lt", "lte", "nil", "not_nil"].freeze
+  STRING_COMPARATORS       = ["contains", "eq", "starts_with", "ends_with", "nil", "not_nil"].freeze
 
   def path_parts(openapi_path)
     openapi_path.split("/")[1..-1]
@@ -368,7 +370,10 @@ class OpenapiGenerator
       "style"       => "deepObject",
       "explode"     => true,
       "schema"      => {
-        "type" => "object"
+        "oneOf" => [
+          { "$ref" => "##{SCHEMAS_PATH}/FilterKeyValueSyntax"         },
+          { "$ref" => "##{SCHEMAS_PATH}/FilterKeyOperatorValueSyntax" }
+        ]
       }
     }
 
@@ -409,6 +414,34 @@ class OpenapiGenerator
         "provider_control_parameters" => {
           "type" => "object",
           "description" => "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
+        }
+      }
+    }
+
+    schemas["FilterKeyValueSyntax"] = {
+      "required"   => ["key", "value"],
+      "properties" => {
+        "key"   => {
+          "type" => "string"
+        },
+        "value" => {
+          "type" => "string"
+        }
+      }
+    }
+
+    schemas["FilterKeyOperatorValueSyntax"] = {
+      "required"   => ["key", "operator", "value"],
+      "properties" => {
+        "key"      => {
+          "type" => "string"
+        },
+        "operator" => {
+          "type" => "string",
+          "enum" => (INTEGER_TIME_COMPARATORS + STRING_COMPARATORS).uniq
+        },
+        "value"    => {
+          "type" => "string"
         }
       }
     }

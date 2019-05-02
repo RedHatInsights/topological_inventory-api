@@ -2653,7 +2653,14 @@
         "style": "deepObject",
         "explode": true,
         "schema": {
-          "type": "object"
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/FilterKeyValueSyntax"
+            },
+            {
+              "$ref": "#/components/schemas/FilterKeyOperatorValueSyntax"
+            }
+          ]
         }
       },
       "QueryLimit": {
@@ -3365,6 +3372,50 @@
             "items": {
               "$ref": "#/components/schemas/Container"
             }
+          }
+        }
+      },
+      "FilterKeyOperatorValueSyntax": {
+        "required": [
+          "key",
+          "operator",
+          "value"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "eq",
+              "gt",
+              "gte",
+              "lt",
+              "lte",
+              "nil",
+              "not_nil",
+              "contains",
+              "starts_with",
+              "ends_with"
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "FilterKeyValueSyntax": {
+        "required": [
+          "key",
+          "value"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
           }
         }
       },
