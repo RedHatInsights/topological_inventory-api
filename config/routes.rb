@@ -51,7 +51,7 @@ Rails.application.routes.draw do
         post "order", :to => "service_plans#order"
         resources :service_instances, :only => [:index]
       end
-      resources :sources,                 :only => [:create, :destroy, :index, :show, :update] do
+      resources :sources,                 :only => [:index, :show] do
         resources :availabilities,          :only => [:index]
         resources :containers,              :only => [:index]
         resources :container_groups,        :only => [:index]

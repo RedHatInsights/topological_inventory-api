@@ -1333,37 +1333,6 @@
             }
           }
         }
-      },
-      "post": {
-        "summary": "Create a new Source",
-        "operationId": "createSource",
-        "description": "Creates a Source object",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Source"
-              }
-            }
-          },
-          "description": "Source attributes to create",
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Source creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "items": {
-                    "$ref": "#/components/schemas/Source"
-                  }
-                }
-              }
-            }
-          }
-        }
       }
     },
     "/sources/{id}": {
@@ -1386,56 +1355,6 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "Not found"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update an existing Source",
-        "operationId": "updateSource",
-        "description": "Updates a Source object",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ID"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Source"
-              }
-            }
-          },
-          "description": "Source attributes to update",
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "Updated, no content"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "404": {
-            "description": "Not found"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete an existing Source",
-        "operationId": "deleteSource",
-        "description": "Deletes a Source object",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ID"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Source deleted"
           },
           "404": {
             "description": "Not found"
