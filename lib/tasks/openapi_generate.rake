@@ -344,6 +344,8 @@ class OpenapiGenerator
       "types.String"
     when "number"
       format == "double" ? "types.Float" : "types.Int"
+    when "boolean"
+      "types.Boolean"
     when "integer"
       "types.Int"
     end
