@@ -6,369 +6,369 @@ module Api
       name "ContainerGroup"
       description "A ContainerGroup"
 
-      field "archived_at", types.String
-      field "container_node_id", types.String
-      field "container_project_id", types.String
-      field "created_at", types.String
-      field "id", types.String
-      field "ipaddress", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "resource_version", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :container_node_id, types.String, "ID of the resource"
+      field :container_project_id, types.String, "ID of the resource"
+      field :created_at, types.String
+      field :id, types.String, "ID of the resource"
+      field :ipaddress, types.String
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :resource_version, types.String
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :updated_at, types.String
     end
 
     ContainerImageType = ::GraphQL::ObjectType.define do
       name "ContainerImage"
       description "A ContainerImage"
 
-      field "archived_at", types.String
-      field "created_at", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "resource_version", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "tag", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :created_at, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :resource_version, types.String
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :tag, types.String
+      field :updated_at, types.String
     end
 
     ContainerNodeType = ::GraphQL::ObjectType.define do
       name "ContainerNode"
       description "A ContainerNode"
 
-      field "allocatable_cpus", types.Int
-      field "allocatable_memory", types.Int
-      field "allocatable_pods", types.Int
-      field "archived_at", types.String
-      field "cpus", types.Int
-      field "created_at", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "lives_on_id", types.String
-      field "lives_on_type", types.String
-      field "memory", types.Int
-      field "name", types.String
-      field "pods", types.Int
-      field "resource_version", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "updated_at", types.String
+      field :allocatable_cpus, types.Int
+      field :allocatable_memory, types.Int
+      field :allocatable_pods, types.Int
+      field :archived_at, types.String
+      field :cpus, types.Int
+      field :created_at, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :lives_on_id, types.String, "ID of the resource"
+      field :lives_on_type, types.String
+      field :memory, types.Int
+      field :name, types.String
+      field :pods, types.Int
+      field :resource_version, types.String
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :updated_at, types.String
     end
 
     ContainerProjectType = ::GraphQL::ObjectType.define do
       name "ContainerProject"
       description "A ContainerProject"
 
-      field "archived_at", types.String
-      field "created_at", types.String
-      field "display_name", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "resource_version", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "status_phase", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :created_at, types.String
+      field :display_name, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :resource_version, types.String
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :status_phase, types.String
+      field :updated_at, types.String
     end
 
     ContainerResourceQuotaType = ::GraphQL::ObjectType.define do
       name "ContainerResourceQuota"
       description "A ContainerResourceQuota"
 
-      field "archived_at", types.String
-      field "container_project_id", types.String
-      field "created_at", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "resource_version", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :container_project_id, types.String, "ID of the resource"
+      field :created_at, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :resource_version, types.String
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :updated_at, types.String
     end
 
     ContainerTemplateType = ::GraphQL::ObjectType.define do
       name "ContainerTemplate"
       description "A ContainerTemplate"
 
-      field "archived_at", types.String
-      field "container_project_id", types.String
-      field "created_at", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "resource_version", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :container_project_id, types.String, "ID of the resource"
+      field :created_at, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :resource_version, types.String
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :updated_at, types.String
     end
 
     ContainerType = ::GraphQL::ObjectType.define do
       name "Container"
       description "A Container"
 
-      field "archived_at", types.String
-      field "container_group_id", types.String
-      field "container_image_id", types.String
-      field "cpu_limit", types.Float
-      field "cpu_request", types.Float
-      field "created_at", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "memory_limit", types.Int
-      field "memory_request", types.Int
-      field "name", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :container_group_id, types.String, "ID of the resource"
+      field :container_image_id, types.String, "ID of the resource"
+      field :cpu_limit, types.Float
+      field :cpu_request, types.Float
+      field :created_at, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :memory_limit, types.Int
+      field :memory_request, types.Int
+      field :name, types.String
+      field :updated_at, types.String
     end
 
     FlavorType = ::GraphQL::ObjectType.define do
       name "Flavor"
       description "A Flavor"
 
-      field "archived_at", types.String
-      field "cpus", types.Int
-      field "created_at", types.String
-      field "disk_count", types.Int
-      field "disk_size", types.Int
-      field "extra", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "memory", types.Int
-      field "name", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :cpus, types.Int, "Number of CPUs"
+      field :created_at, types.String
+      field :disk_count, types.Int, "The number of default disks"
+      field :disk_size, types.Int, "Size of the default disks in bytes"
+      field :extra, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :memory, types.Int, "Amount of RAM in bytes"
+      field :name, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :updated_at, types.String
     end
 
     OrchestrationStackType = ::GraphQL::ObjectType.define do
       name "OrchestrationStack"
       description "A OrchestrationStack"
 
-      field "archived_at", types.String
-      field "created_at", types.String
-      field "description", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :created_at, types.String
+      field :description, types.String, "Description of the OrchestrationStack"
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :updated_at, types.String
     end
 
     ServiceInstanceType = ::GraphQL::ObjectType.define do
       name "ServiceInstance"
       description "A ServiceInstance"
 
-      field "archived_at", types.String
-      field "created_at", types.String
-      field "external_url", types.String
-      field "extra", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "service_offering_id", types.String
-      field "service_plan_id", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "source_region_id", types.String
-      field "subscription_id", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :created_at, types.String
+      field :external_url, types.String
+      field :extra, types.String, "Extra information about this object in JSON format"
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :service_offering_id, types.String, "ID of the resource"
+      field :service_plan_id, types.String, "ID of the resource"
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :source_region_id, types.String, "ID of the resource"
+      field :subscription_id, types.String, "ID of the resource"
+      field :updated_at, types.String
     end
 
     ServiceOfferingIconType = ::GraphQL::ObjectType.define do
       name "ServiceOfferingIcon"
       description "A ServiceOfferingIcon"
 
-      field "created_at", types.String
-      field "data", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "updated_at", types.String
+      field :created_at, types.String
+      field :data, types.String, "Raw icon data"
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :updated_at, types.String
     end
 
     ServiceOfferingType = ::GraphQL::ObjectType.define do
       name "ServiceOffering"
       description "A ServiceOffering"
 
-      field "archived_at", types.String
-      field "created_at", types.String
-      field "description", types.String
-      field "display_name", types.String
-      field "distributor", types.String
-      field "documentation_url", types.String
-      field "extra", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "long_description", types.String
-      field "name", types.String
-      field "service_offering_icon_id", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "source_region_id", types.String
-      field "subscription_id", types.String
-      field "support_url", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :created_at, types.String
+      field :description, types.String
+      field :display_name, types.String
+      field :distributor, types.String
+      field :documentation_url, types.String
+      field :extra, types.String, "Extra information about this object in JSON format"
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :long_description, types.String
+      field :name, types.String
+      field :service_offering_icon_id, types.String, "ID of the resource"
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String, "The native reference used by the Source to refer to this object"
+      field :source_region_id, types.String, "ID of the resource"
+      field :subscription_id, types.String, "ID of the resource"
+      field :support_url, types.String
+      field :updated_at, types.String
     end
 
     ServicePlanType = ::GraphQL::ObjectType.define do
       name "ServicePlan"
       description "A ServicePlan"
 
-      field "archived_at", types.String
-      field "created_at", types.String
-      field "description", types.String
-      field "extra", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "resource_version", types.String
-      field "service_offering_id", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "source_region_id", types.String
-      field "subscription_id", types.String
-      field "update_json_schema", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :created_at, types.String
+      field :description, types.String
+      field :extra, types.String, "Extra information about this object in JSON format"
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :resource_version, types.String
+      field :service_offering_id, types.String, "ID of the resource"
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :source_region_id, types.String, "ID of the resource"
+      field :subscription_id, types.String, "ID of the resource"
+      field :update_json_schema, types.String
+      field :updated_at, types.String
     end
 
     SourceType = ::GraphQL::ObjectType.define do
       name "Source"
       description "A Source"
 
-      field "created_at", types.String
-      field "id", types.String
-      field "tenant_id", types.String
-      field "uid", types.String
-      field "updated_at", types.String
+      field :created_at, types.String
+      field :id, types.String, "ID of the resource"
+      field :tenant_id, types.String, "ID of the resource"
+      field :uid, types.String
+      field :updated_at, types.String
     end
 
     TagType = ::GraphQL::ObjectType.define do
       name "Tag"
       description "A Tag"
 
-      field "created_at", types.String
-      field "description", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "namespace", types.String
-      field "value", types.String
+      field :created_at, types.String
+      field :description, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :namespace, types.String
+      field :value, types.String
     end
 
     TaskType = ::GraphQL::ObjectType.define do
       name "Task"
       description "A Task"
 
-      field "completed_at", types.String
-      field "context", types.String
-      field "created_at", types.String
-      field "id", types.String
-      field "name", types.String
-      field "state", types.String
-      field "status", types.String
-      field "updated_at", types.String
+      field :completed_at, types.String
+      field :context, types.String
+      field :created_at, types.String
+      field :id, types.String, "ID of the resource"
+      field :name, types.String
+      field :state, types.String
+      field :status, types.String
+      field :updated_at, types.String
     end
 
     VmType = ::GraphQL::ObjectType.define do
       name "Vm"
       description "A Vm"
 
-      field "archived_at", types.String
-      field "cpus", types.Int
-      field "created_at", types.String
-      field "description", types.String
-      field "extra", types.String
-      field "flavor_id", types.String
-      field "host_inventory_uuid", types.String
-      field "hostname", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "memory", types.Int
-      field "name", types.String
-      field "orchestration_stack_id", types.String
-      field "power_state", types.String
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "uid_ems", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :cpus, types.Int, "Total number of CPUs"
+      field :created_at, types.String
+      field :description, types.String, "Description of the Vm"
+      field :extra, types.String
+      field :flavor_id, types.String, "ID of the resource"
+      field :host_inventory_uuid, types.String
+      field :hostname, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :memory, types.Int, "Total RAM in bytes"
+      field :name, types.String
+      field :orchestration_stack_id, types.String, "ID of the resource"
+      field :power_state, types.String
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :uid_ems, types.String, "Cross-Source Unique Reference"
+      field :updated_at, types.String
     end
 
     VolumeAttachmentType = ::GraphQL::ObjectType.define do
       name "VolumeAttachment"
       description "A VolumeAttachment"
 
-      field "device", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "state", types.String
-      field "vm_id", types.String
-      field "volume_id", types.String
+      field :device, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :state, types.String
+      field :vm_id, types.String, "ID of the resource"
+      field :volume_id, types.String, "ID of the resource"
     end
 
     VolumeTypeType = ::GraphQL::ObjectType.define do
       name "VolumeType"
       description "A VolumeType"
 
-      field "archived_at", types.String
-      field "created_at", types.String
-      field "description", types.String
-      field "extra", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "updated_at", types.String
+      field :archived_at, types.String
+      field :created_at, types.String
+      field :description, types.String
+      field :extra, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :updated_at, types.String
     end
 
     VolumeType = ::GraphQL::ObjectType.define do
       name "Volume"
       description "A Volume"
 
-      field "archived_at", types.String
-      field "created_at", types.String
-      field "extra", types.String
-      field "id", types.String
-      field "last_seen_at", types.String
-      field "name", types.String
-      field "size", types.Int
-      field "source_created_at", types.String
-      field "source_deleted_at", types.String
-      field "source_id", types.String
-      field "source_ref", types.String
-      field "source_region_id", types.String
-      field "state", types.String
-      field "updated_at", types.String
-      field "volume_type_id", types.String
+      field :archived_at, types.String
+      field :created_at, types.String
+      field :extra, types.String
+      field :id, types.String, "ID of the resource"
+      field :last_seen_at, types.String
+      field :name, types.String
+      field :size, types.Int, "Size of the volume in bytes"
+      field :source_created_at, types.String
+      field :source_deleted_at, types.String
+      field :source_id, types.String, "ID of the resource"
+      field :source_ref, types.String
+      field :source_region_id, types.String, "ID of the resource"
+      field :state, types.String
+      field :updated_at, types.String
+      field :volume_type_id, types.String, "ID of the resource"
     end
 
     QueryType = ::GraphQL::ObjectType.define do
@@ -379,10 +379,11 @@ module Api
         :container_groups, :container_images, :container_nodes, :container_projects, :container_resource_quotas, :container_templates, :containers, :flavors, :orchestration_stacks, :service_instances, :service_offering_icons, :service_offerings, :service_plans, :sources, :tags, :tasks, :vms, :volume_attachments, :volume_types, :volumes
       ].each do |collection|
 
-        klass_name = collection.camelize.singularize
-        resource_type = "#{klass_name}Type"
+        klass_name = collection.to_s.camelize.singularize
+        model_class = klass_name.constantize
+        resource_type = "Api::GraphQL::#{klass_name}Type"
         field collection.to_sym do
-          type types[resource_type]
+          type types[resource_type.constantize]
           argument :id, types.String
           description model_class.name.pluralize
           resolve lambda { |_obj, args, _ctx|

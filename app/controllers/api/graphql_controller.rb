@@ -1,7 +1,9 @@
+require 'api/graphql'
+
 module Api
   class GraphqlController < ApplicationController
     def query
-      result = GraphQL::Schema.execute(
+      result = Api::GraphQL::Schema.execute(
         params[:query],
         :variables => params[:variables]
       )

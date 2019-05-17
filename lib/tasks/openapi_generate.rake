@@ -363,10 +363,11 @@ class OpenapiGenerator
     sfd.puts("        #{collection_list}")
     sfd.puts("      ].each do |collection|")
     sfd.puts("")
-    sfd.puts("        klass_name = collection.camelize.singularize")
-    sfd.puts("        resource_type = \"\#{klass_name}Type\"")
+    sfd.puts("        klass_name = collection.to_s.camelize.singularize")
+    sfd.puts("        model_class = klass_name.constantize")
+    sfd.puts("        resource_type = \"Api::GraphQL::\#{klass_name}Type\"")
     sfd.puts("        field collection.to_sym do")
-    sfd.puts("          type types[resource_type]")
+    sfd.puts("          type types[resource_type.constantize]")
     sfd.puts("          argument :id, types.String")
     sfd.puts("          description model_class.name.pluralize")
     sfd.puts("          resolve lambda { |_obj, args, _ctx|")
@@ -417,8 +418,9 @@ class OpenapiGenerator
         format    = property_schema["format"] || ""
         type      = property_schema["type"]
         graphql_type = graphql_type(format, type)
+        desc_append = property_schema["description"] ? ", \"#{property_schema['description']}\"" : ""
         if graphql_type
-          sfd.puts("      field \"#{property_name}\", #{graphql_type(format, type)}")
+          sfd.puts("      field :#{property_name}, #{graphql_type(format, type)}#{desc_append}")
         end
       end
       sfd.puts("    end")
