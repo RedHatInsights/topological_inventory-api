@@ -1,7 +1,7 @@
 module Api
   class GraphqlController < ApplicationController
     def query
-      result = Schema.execute(
+      result = GraphQL::Schema.execute(
         params[:query],
         :variables => params[:variables]
       )
