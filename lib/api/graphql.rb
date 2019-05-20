@@ -382,8 +382,8 @@ module Api
         :container_groups, :container_images, :container_nodes, :container_projects, :container_resource_quotas, :container_templates, :containers, :flavors, :orchestration_stacks, :service_instances, :service_offering_icons, :service_offerings, :service_plans, :sources, :tags, :tasks, :vms, :volume_attachments, :volume_types, :volumes
       ].each do |collection|
 
-        klass_name = collection.to_s.camelize.singularize
-        model_class = klass_name.constantize
+        klass_name    = collection.to_s.camelize.singularize
+        model_class   = klass_name.constantize
         resource_type = "Api::GraphQL::#{klass_name}Type"
         field collection.to_sym do
           type types[resource_type.constantize]

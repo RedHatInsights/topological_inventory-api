@@ -1,0 +1,13 @@
+    <%= klass_name %>Type = ::GraphQL::ObjectType.define do
+      name "<%= klass_name %>"
+      description "A <%= klass_name %>"
+
+<% for property in model_properties %>
+<%   property_name, property_type, property_description = property %>
+<%   if property_description.nil? %>
+      field :<%= property_name %>, <%=property_type%>
+<%   else %>
+      field :<%= property_name %>, <%= property_type %>, "<%= property_description %>"
+<%   end %>
+<% end %>
+    end

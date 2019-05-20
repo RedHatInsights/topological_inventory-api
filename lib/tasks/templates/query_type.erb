@@ -1,0 +1,26 @@
+
+    QueryType = ::GraphQL::ObjectType.define do
+      name "Query"
+      description "The query root of this schema"
+
+      [
+        <%= collections.map { |c| ":#{c}" }.join(", ") %>
+      ].each do |collection|
+
+        klass_name    = collection.to_s.camelize.singularize
+        model_class   = klass_name.constantize
+        resource_type = "Api::GraphQL::#{klass_name}Type"
+        field collection.to_sym do
+          type types[resource_type.constantize]
+          argument :id, types.String
+          description model_class.name.pluralize
+          resolve lambda { |_obj, args, _ctx|
+            args[:id] ? model_class.where(:id => args[:id]) : model_class.all
+          }
+        end
+      end
+    end
+
+    Schema = ::GraphQL::Schema.define do
+      query QueryType
+    end
