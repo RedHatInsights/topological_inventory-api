@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 plugin "bundler-inject", "~> 1.1"
 require File.join(Bundler::Plugin.index.load_paths("bundler-inject")[0], "bundler-inject") rescue nil
 
-gem 'graphql'
+gem 'graphql',            '~> 1.7'
+gem 'graphql-batch',      '~> 0.3.8'
+gem 'graphql-preload',    '~> 1.0'
 gem 'jbuilder',           '~> 2.0'
 gem 'json-schema',        '~> 2.8'
 gem 'manageiq-loggers',   '~> 0.1'

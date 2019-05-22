@@ -16,7 +16,9 @@ module GraphqlGenerator
     File.read(Pathname.new(__dir__).join("../../lib/tasks/templates/#{type}.erb").to_s)
   end
 
-  def self.graphql_type(format, type)
+  def self.graphql_type(property_name, format, type)
+    return "!types.ID" if property_name == "id"
+
     case type
     when "string"
       format == "date-time" ? "Types::DateTime" : "types.String"
@@ -27,6 +29,24 @@ module GraphqlGenerator
     when "integer"
       "Types::BigInt"
     end
+  end
+
+  def self.resource_associations(openapi_content, collection)
+    collection_is_associated = openapi_content["paths"].keys.any? do |path|
+      path.match("^/[^/]*/{id}/#{collection}$") &&
+        openapi_content.dig("paths", path, "get")
+    end
+    collection_associations = []
+    openapi_content["paths"].keys.each do |path|
+      subcollection_match = path.match("^/#{collection}/{id}/([^/]*)$")
+      next unless subcollection_match
+
+      subcollection = subcollection_match[1]
+      next unless openapi_content.dig("paths", "/#{subcollection}/{id}", "get")
+
+      collection_associations << subcollection
+    end
+    [collection_is_associated ? true : false, collection_associations.sort]
   end
 
   def self.generate(openapi_content)
@@ -56,11 +76,13 @@ module GraphqlGenerator
         property_schema = openapi_content.dig(*path_parts(property_schema["$ref"])) if property_schema["$ref"]
         format       = property_schema["format"] || ""
         type         = property_schema["type"]
-        graphql_type = graphql_type(format, type)
+        graphql_type = graphql_type(property_name, format, type)
         description  = property_schema["description"]
-        model_properties << [property_name, graphql_type(format, type), description] if graphql_type
+        model_properties << [property_name, graphql_type, description] if graphql_type
       end
-      graphql_model_types << ERB.new(template("model_type"), nil, '<>').result(binding) # uses klass_name and model_properties
+
+      model_is_associated, model_associations = resource_associations(openapi_content, collection)
+      graphql_model_types << ERB.new(template("model_type"), nil, '<>').result(binding)
     end
     graphql_query_type = ERB.new(template("query_type"), nil, '<>').result(binding)
     graphql_schema = ERB.new(template("graphql"), nil, '<>').result(binding)
