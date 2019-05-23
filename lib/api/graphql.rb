@@ -534,17 +534,17 @@ module Api
         resource_type = "Api::GraphQL::#{klass_name}Type".constantize
 
         field collection.to_s.singularize.to_sym do
-          type types[resource_type]
+          type resource_type
           argument :id, !types.ID
           description model_class.name
           resolve lambda { |_obj, args, _ctx|
-            model_class.where(:id => args[:id])
+            model_class.where(:id => args[:id]).first
           }
         end
 
         connection collection, !resource_type.connection_type, "List available #{klass_names}" do
           argument :id, types.ID
-          resolve ->(_obj, args, _ctx) {
+          resolve lambda { |_obj, args, _ctx|
             args[:id] ? model_class.where(:id => args[:id]) : model_class.all
           }
         end
