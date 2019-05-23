@@ -528,14 +528,23 @@ module Api
         :container_groups, :container_images, :container_nodes, :container_projects, :container_resource_quotas, :container_templates, :containers, :flavors, :orchestration_stacks, :service_instances, :service_offering_icons, :service_offerings, :service_plans, :sources, :tags, :tasks, :vms, :volume_attachments, :volume_types, :volumes
       ].each do |collection|
 
-        klass_name    = collection.to_s.camelize.singularize
+        klass_names   = collection.to_s.camelize
+        klass_name    = klass_names.singularize
         model_class   = klass_name.constantize
-        resource_type = "Api::GraphQL::#{klass_name}Type"
-        field collection.to_sym do
-          type types[resource_type.constantize]
-          argument :id, types.String
-          description model_class.name.pluralize
+        resource_type = "Api::GraphQL::#{klass_name}Type".constantize
+
+        field collection.to_s.singularize.to_sym do
+          type types[resource_type]
+          argument :id, !types.ID
+          description model_class.name
           resolve lambda { |_obj, args, _ctx|
+            model_class.where(:id => args[:id])
+          }
+        end
+
+        connection collection, !resource_type.connection_type, "List available #{klass_names}" do
+          argument :id, types.ID
+          resolve ->(_obj, args, _ctx) {
             args[:id] ? model_class.where(:id => args[:id]) : model_class.all
           }
         end
