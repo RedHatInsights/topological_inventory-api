@@ -5,8 +5,7 @@ module Api
         name "DateTime"
         description "An ISO-8601 encoded UTC date string."
 
-        # coerce_input ->(value, _ctx) { Time.zone.parse(value) }
-        # coerce_result ->(value, _ctx) { value.utc.iso8601 }
+        coerce_input ->(value, _ctx) { Time.zone.parse(value) }
       end
     end
   end

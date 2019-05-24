@@ -3,8 +3,10 @@
 require "graphql"
 require "graphql/batch"
 require "graphql/preload"
+
 require "api/graphql/types/big_int"
 require "api/graphql/types/date_time"
+require "api/graphql/types/query_filter"
 
 module Api
   module GraphQL
@@ -544,8 +546,17 @@ module Api
 
         connection collection, !resource_type.connection_type, "List available #{klass_names}" do
           argument :id, types.ID
+          argument :filter, Types::QueryFilter, "The Query Filter"
+
           resolve lambda { |_obj, args, _ctx|
-            args[:id] ? model_class.where(:id => args[:id]) : model_class.all
+            scope = if args[:filter]
+                      ::ManageIQ::API::Common::Filter.new(model_class,
+                                                          ActionController::Parameters.new(args[:filter]),
+                                                          ::Api::Docs["1.0"].definitions[klass_name]).apply
+                    else
+                      model_class
+                    end
+            args[:id] ? scope.where(:id => args[:id]) : scope.all
           }
         end
       end

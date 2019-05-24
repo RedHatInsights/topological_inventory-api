@@ -16,12 +16,12 @@ module GraphqlGenerator
     File.read(Pathname.new(__dir__).join("../../lib/tasks/templates/#{type}.erb").to_s)
   end
 
-  def self.graphql_type(property_name, format, type)
+  def self.graphql_type(property_name, property_format, property_type)
     return "!types.ID" if property_name == "id"
 
-    case type
+    case property_type
     when "string"
-      format == "date-time" ? "Types::DateTime" : "types.String"
+      property_format == "date-time" ? "Types::DateTime" : "types.String"
     when "number"
       "types.Float"
     when "boolean"
@@ -49,7 +49,7 @@ module GraphqlGenerator
     [collection_is_associated ? true : false, collection_associations.sort]
   end
 
-  def self.generate(openapi_content)
+  def self.generate(api_version, openapi_content)
     graphql_model_types = ""
 
     resources = openapi_content["paths"].keys.sort
@@ -74,11 +74,12 @@ module GraphqlGenerator
       properties.keys.sort.each do |property_name|
         property_schema = properties[property_name]
         property_schema = openapi_content.dig(*path_parts(property_schema["$ref"])) if property_schema["$ref"]
-        format       = property_schema["format"] || ""
-        type         = property_schema["type"]
-        graphql_type = graphql_type(property_name, format, type)
-        description  = property_schema["description"]
-        model_properties << [property_name, graphql_type, description] if graphql_type
+        property_format = property_schema["format"] || ""
+        property_type   = property_schema["type"]
+        description     = property_schema["description"]
+
+        property_graphql_type = graphql_type(property_name, property_format, property_type)
+        model_properties << [property_name, property_graphql_type, description] if property_graphql_type
       end
 
       model_is_associated, model_associations = resource_associations(openapi_content, collection)
