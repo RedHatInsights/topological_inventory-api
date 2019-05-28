@@ -1,4 +1,4 @@
-require_relative "graphql_generator"
+require "manageiq/api/common/graphql/generator"
 
 class OpenapiGenerator
   require 'json'
@@ -434,7 +434,7 @@ class OpenapiGenerator
     new_content["components"]["schemas"]    = schemas.sort.each_with_object({})    { |(name, val), h| h[name] = val || openapi_contents["components"]["schemas"][name]    || {} }
     new_content["components"]["parameters"] = parameters.sort.each_with_object({}) { |(name, val), h| h[name] = val || openapi_contents["components"]["parameters"][name] || {} }
     File.write(openapi_file, JSON.pretty_generate(new_content) + "\n")
-    GraphqlGenerator.generate(api_version, new_content) if graphql
+    ManageIQ::API::Common::GraphQL::Generator.generate(api_version, new_content) if graphql
   end
 end
 
