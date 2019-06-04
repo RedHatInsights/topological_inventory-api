@@ -12,10 +12,10 @@ Rails.application.routes.draw do
     routing_helper.redirect_major_version("v1.0", prefix)
     routing_helper.redirect_major_version("v0.1", prefix)
 
-    post "graphql" => "graphql#query"
-
     namespace :v1x0, :path => "v1.0" do
       get "/openapi.json", :to => "root#openapi"
+      post "graphql" => "graphql#query"
+
       resources :containers,              :only => [:index, :show]
       resources :container_groups,        :only => [:index, :show] do
         resources :containers, :only => [:index]
