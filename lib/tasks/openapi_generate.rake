@@ -416,6 +416,16 @@ class OpenapiGenerator
       }
     }
 
+    schemas["Tenant"] = {
+      "type"       => "object",
+      "properties" => {
+        "id"              => {"type" => "string", "readOnly" => true, "format" => "uuid"},
+        "name"            => {"type" => "string", "readOnly" => true, "example" => "Sample Tenant"},
+        "description"     => {"type" => "string", "readOnly" => true, "example" => "Description of the Tenant"},
+        "external_tenant" => {"type" => "string", "readOnly" => true, "example" => "External tenant identifier"}
+      }
+    }
+
     schemas["Tagging"] = {
       "type"       => "object",
       "properties" => {
