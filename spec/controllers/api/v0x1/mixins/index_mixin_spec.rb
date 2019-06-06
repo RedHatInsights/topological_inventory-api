@@ -1,4 +1,4 @@
-describe Api::V0x1::Mixins::IndexMixin do
+describe Api::V0::Mixins::IndexMixin do
   describe Api::V0x1::SourcesController, :type => :request do
     include ::Spec::Support::TenantIdentity
 
