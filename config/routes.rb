@@ -15,6 +15,9 @@ Rails.application.routes.draw do
       get "/openapi.json", :to => "root#openapi"
       post "graphql" => "graphql#query"
 
+      resources :clusters,                :only => [:index, :show] do
+        resources :hosts, :only => [:index]
+      end
       resources :containers,              :only => [:index, :show]
       resources :container_groups,        :only => [:index, :show] do
         resources :containers, :only => [:index]
@@ -37,11 +40,13 @@ Rails.application.routes.draw do
       resources :container_templates,     :only => [:index, :show] do
         resources :tags, :only => [:index]
       end
+      resources :datastores,              :only => [:index, :show]
       resources :flavors,                 :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show]
       resources :service_offering_icons,  :only => [:index, :show] do
         get "icon_data", :to => "service_offering_icons#icon_data"
       end
+      resources :hosts,                   :only => [:index, :show]
       resources :service_offerings,       :only => [:index, :show] do
         resources :service_instances, :only => [:index]
         resources :service_plans,     :only => [:index]

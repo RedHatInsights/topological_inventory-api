@@ -7,6 +7,7 @@ module Api
     end
 
     class AvailabilitiesController              < Api::V1::AvailabilitiesController; end
+    class ClustersController                    < Api::V1::ClustersController; end
     class ContainersController                  < Api::V1::ContainersController; end
     class ContainerGroupsController             < Api::V1::ContainerGroupsController; end
     class ContainerImagesController             < Api::V1::ContainerImagesController; end
@@ -14,7 +15,9 @@ module Api
     class ContainerProjectsController           < Api::V1::ContainerProjectsController; end
     class ContainerResourceQuotasController     < Api::V1::ContainerResourceQuotasController; end
     class ContainerTemplatesController          < Api::V1::ContainerTemplatesController; end
+    class DatastoresController                  < Api::V1::DatastoresController; end
     class FlavorsController                     < Api::V1::FlavorsController; end
+    class HostsController                       < Api::V1::HostsController; end
     class OrchestrationStacksController         < Api::V1::OrchestrationStacksController; end
     class ServiceInstancesController            < Api::V1::ServiceInstancesController; end
     class ServiceOfferingIconsController        < Api::V1::ServiceOfferingIconsController; end
