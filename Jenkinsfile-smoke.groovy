@@ -14,7 +14,7 @@ if (env.CHANGE_ID) {
         // the service-set/component for this app in e2e-deploy "templates"
         ocDeployerComponentPath: "topological-inventory/topological-inventory-api",
         // the service sets to deploy into the test environment
-        ocDeployerServiceSets: "platform-mq, sources, topological-inventory",
+        ocDeployerServiceSets: "platform-mq,sources,topological-inventory",
         // the iqe plugins to install for the test
         iqePlugins: ["iqe-topology_inventory-plugin"],
         // the pytest marker to use when calling `iqe tests all`
