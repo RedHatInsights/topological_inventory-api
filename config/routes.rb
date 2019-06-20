@@ -163,6 +163,10 @@ Rails.application.routes.draw do
       resources :volume_types,       :only => [:index, :show]
       resources :volumes,            :only => [:index, :show]
     end
+
+    namespace :cfme do
+      resources :manifest, :only => [:show], :constraints => {:id => /[\d\.]+/}
+    end
   end
 
   scope :as => :internal, :module => "internal", :path => "internal" do
