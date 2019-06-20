@@ -1,0 +1,51 @@
+{
+  "cfme_version": "5.11",
+  "manifest": {
+    "core": {
+      "MiqDatabase": {
+        "guid": null
+      },
+      "Zone": {
+        "name": null
+      }
+    },
+    "by_provider_type": {
+      "ManageIQ::Providers::OpenStack::CloudManager": {
+        "id"           : null,
+        "api_version"  : null,
+        "guid"         : null,
+        "name"         : null,
+        "type"         : null,
+        "vms"          : ["id", "cpu_total_cores", "ems_ref", "name", "type", "ram_size"],
+        "miq_templates": ["id", "cpu_total_cores", "ems_ref", "name", "type", "ram_size"],
+        "hosts"        : ["id", "cpu_total_cores", "ems_ref", "name", "type", "ram_size"],
+        "ems_clusters" : ["id", "uid_ems", "name", "type"],
+        "storages"     : ["id", "location", "name", "total_space", "free_space"]
+      },
+      "ManageIQ::Providers::Redhat::InfraManager": {
+        "id"           : null,
+        "api_version"  : null,
+        "guid"         : null,
+        "name"         : null,
+        "type"         : null,
+        "vms"          : ["id", "cpu_total_cores", "ems_ref", "name", "type", "ram_size"],
+        "miq_templates": ["id", "cpu_total_cores", "ems_ref", "name", "type", "ram_size"],
+        "hosts"        : ["id", "cpu_total_cores", "ems_ref", "name", "type", "ram_size"],
+        "ems_clusters" : ["id", "uid_ems", "name", "type"],
+        "storages"     : ["id", "location", "name", "total_space", "free_space"]
+      },
+      "ManageIQ::Providers::Vmware::InfraManager": {
+        "id"           : null,
+        "api_version"  : null,
+        "guid"         : null,
+        "name"         : null,
+        "type"         : null,
+        "vms"          : ["id", "cpu_total_cores", "ems_ref", "name", "type", "ram_size"],
+        "miq_templates": ["id", "cpu_total_cores", "ems_ref", "name", "type", "ram_size"],
+        "hosts"        : ["id", "cpu_total_cores", "ems_ref", "name", "type", "ram_size"],
+        "ems_clusters" : ["id", "uid_ems", "name", "type"],
+        "storages"     : ["id", "location", "name", "total_space", "free_space"]
+      }
+    }
+  }
+}

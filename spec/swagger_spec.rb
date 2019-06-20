@@ -19,6 +19,12 @@ describe "Swagger stuff" do
     end
   end
 
+  let(:non_swagger_routes) do
+    rails_routes.select do |rails_route|
+      rails_route[:path].match(/\/api\/topological-inventory\/cfme/)
+    end
+  end
+
   describe "Routing" do
     include Rails.application.routes.url_helpers
 
@@ -45,7 +51,7 @@ describe "Swagger stuff" do
           {:path => "/internal/v0.0/tenants",             :verb => "GET"},
           {:path => "/internal/v0.0/tenants/:id",         :verb => "GET"},
         ]
-        expect(rails_routes).to match_array(swagger_routes + redirect_routes + internal_api_routes)
+        expect(rails_routes).to match_array(swagger_routes + non_swagger_routes + redirect_routes + internal_api_routes)
       end
     end
 
