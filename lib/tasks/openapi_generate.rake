@@ -425,7 +425,7 @@ class OpenapiGenerator
     }
 
     schemas["ID"] = {
-      "type"=>"string", "description"=>"ID of the resource", "pattern"=>"/^\\d+$/", "readOnly"=>true
+      "type" => "string", "description" => "ID of the resource", "pattern" => "^\\d+$", "readOnly" => true
     }
 
     new_content = openapi_contents
