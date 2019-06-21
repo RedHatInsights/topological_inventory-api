@@ -14,7 +14,7 @@ describe "Swagger stuff" do
     published_versions = rails_routes.collect do |rails_route|
       (version_match = rails_route[:path].match(/\/api\/topological-inventory\/v([\d]+\.[\d])\/openapi.json$/)) && version_match[1]
     end.compact
-    Api::Docs.routes.select do |spec_route|
+    ::ManageIQ::API::Common::OpenApi::Docs.instance.routes.select do |spec_route|
       published_versions.include?(spec_route[:path].match(/\/api\/topological-inventory\/v([\d]+\.[\d])\//)[1])
     end
   end
@@ -96,7 +96,7 @@ describe "Swagger stuff" do
   end
 
   describe "Model serialization" do
-    let(:doc) { Api::Docs[version] }
+    let(:doc) { ::ManageIQ::API::Common::OpenApi::Docs.instance[version] }
     let(:container) { Container.create!(doc.example_attributes("Container").symbolize_keys.merge(:tenant => tenant, :container_group => container_group, :container_image => container_image)) }
     let(:container_group) { ContainerGroup.create!(doc.example_attributes("ContainerGroup").symbolize_keys.merge(:tenant => tenant, :source => source, :container_node => container_node, :container_project => container_project, :source_created_at => Time.now, :source_ref => SecureRandom.uuid)) }
     let(:container_image) { ContainerImage.create!(doc.example_attributes("ContainerImage").symbolize_keys.merge(:tenant => tenant, :source => source, :source_created_at => Time.now, :source_ref => SecureRandom.uuid)) }
@@ -123,7 +123,7 @@ describe "Swagger stuff" do
 
     context "v1.0" do
       let(:version) { "1.0" }
-      Api::Docs["1.0"].definitions.each do |definition_name, schema|
+      ::ManageIQ::API::Common::OpenApi::Docs.instance["1.0"].definitions.each do |definition_name, schema|
         next if definition_name.in?(["CollectionLinks", "CollectionMetadata", "OrderParameters", "Tagging"])
         definition_name = definition_name.sub(/Collection\z/, "").singularize
 
@@ -136,7 +136,7 @@ describe "Swagger stuff" do
 
     context "v0.1" do
       let(:version) { "0.1" }
-      Api::Docs["0.1"].definitions.each do |definition_name, schema|
+      ::ManageIQ::API::Common::OpenApi::Docs.instance["0.1"].definitions.each do |definition_name, schema|
         next if definition_name.in?(["CollectionLinks", "CollectionMetadata", "OrderParameters", "Tagging"])
         definition_name = definition_name.sub(/Collection\z/, "").singularize
 

@@ -45,7 +45,7 @@ class ApplicationController < ActionController::API
   end
 
   private_class_method def self.api_doc_definition
-    @api_doc_definition ||= Api::Docs[api_version[1..-1].sub(/x/, ".")].definitions[model.name]
+    @api_doc_definition ||= ::ManageIQ::API::Common::OpenApi::Docs.instance[api_version[1..-1].sub(/x/, ".")].definitions[model.name]
   end
 
   private_class_method def self.api_version

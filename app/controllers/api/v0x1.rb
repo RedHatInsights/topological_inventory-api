@@ -2,7 +2,7 @@ module Api
   module V0x1
     class RootController < ApplicationController
       def openapi
-        render :json => Api::Docs["0.1"].to_json
+        render :json => ::ManageIQ::API::Common::OpenApi::Docs.instance["0.1"].to_json
       end
     end
 
