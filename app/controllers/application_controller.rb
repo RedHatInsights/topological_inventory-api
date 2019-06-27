@@ -28,14 +28,18 @@ class ApplicationController < ActionController::API
     ManageIQ::API::Common::Request.with_request(request) do |current|
       begin
         if Tenant.tenancy_enabled? && current.required_auth?
-          tenant = Tenant.find_or_create_by(:external_tenant => current.user.tenant) if current.user.tenant
+          raise ManageIQ::API::Common::EntitlementError unless request_is_entitled?(current.entitlement)
 
+          tenant = Tenant.find_or_create_by(:external_tenant => current.user.tenant) if current.user.tenant
           ActsAsTenant.with_tenant(tenant) { yield }
         else
           ActsAsTenant.without_tenant { yield }
         end
       rescue KeyError, ManageIQ::API::Common::IdentityError
         render :json => { :message => 'Unauthorized' }, :status => :unauthorized
+      rescue ManageIQ::API::Common::EntitlementError
+        error_document = ManageIQ::API::Common::ErrorDocument.new.add(403, 'Forbidden')
+        render :json => error_document.to_h, :status => error_document.status
       end
     end
   end
@@ -50,6 +54,11 @@ class ApplicationController < ActionController::API
 
   private_class_method def self.api_version
     @api_version ||= name.split("::")[1].downcase
+  end
+
+  def request_is_entitled?(entitlement)
+    required_entitlements = %i[hybrid_cloud? insights?]
+    required_entitlements.any? { |e| entitlement.send(e) }
   end
 
   def body_params
