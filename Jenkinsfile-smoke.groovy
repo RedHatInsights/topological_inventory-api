@@ -4,7 +4,6 @@
 
 @Library("github.com/RedHatInsights/insights-pipeline-lib") _
 
-
 // this 'if' statement makes sure this is a PR, so we don't run smoke tests again
 // after code has been merged into the stable branch.
 if (env.CHANGE_ID) {
@@ -19,5 +18,7 @@ if (env.CHANGE_ID) {
         iqePlugins: ["iqe-topology_inventory-plugin"],
         // the pytest marker to use when calling `iqe tests all`
         pytestMarker: "topology_smoke",
+        // Config file for tests
+       configFileCredentialsId: "topology-config"
     )
 }
