@@ -43,7 +43,6 @@ describe "Swagger stuff" do
 
       it "matches the routes" do
         redirect_routes = [
-          {:path => "#{path_prefix}/#{app_name}/v0/*path", :verb => "DELETE|GET|OPTIONS|PATCH|POST"},
           {:path => "#{path_prefix}/#{app_name}/v1/*path", :verb => "DELETE|GET|OPTIONS|PATCH|POST"}
         ]
         internal_api_routes = [
@@ -130,19 +129,6 @@ describe "Swagger stuff" do
         it "#{definition_name} matches the JSONSchema" do
           const = definition_name.constantize
           expect(send(definition_name.underscore).as_json(:prefixes => ["api/v1x0/#{definition_name.underscore}"])).to match_json_schema("1.0", definition_name)
-        end
-      end
-    end
-
-    context "v0.1" do
-      let(:version) { "0.1" }
-      ::ManageIQ::API::Common::OpenApi::Docs.instance["0.1"].definitions.each do |definition_name, schema|
-        next if definition_name.in?(["CollectionLinks", "CollectionMetadata", "OrderParameters", "Tagging"])
-        definition_name = definition_name.sub(/Collection\z/, "").singularize
-
-        it "#{definition_name} matches the JSONSchema" do
-          const = definition_name.constantize
-          expect(send(definition_name.underscore).as_json(:prefixes => ["api/v0x1/#{definition_name.underscore}"])).to match_json_schema("0.1", definition_name)
         end
       end
     end
