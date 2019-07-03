@@ -4074,9 +4074,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
+            "$ref": "#/components/schemas/ID"
           },
           "name": {
             "type": "string",
