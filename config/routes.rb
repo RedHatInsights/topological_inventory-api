@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
     namespace :v1x0, :path => "v1.0" do
       get "/openapi.json", :to => "root#openapi"
+      post "graphql" => "graphql#query"
+
       resources :containers,              :only => [:index, :show]
       resources :container_groups,        :only => [:index, :show] do
         resources :containers, :only => [:index]
@@ -161,12 +163,21 @@ Rails.application.routes.draw do
       resources :volume_types,       :only => [:index, :show]
       resources :volumes,            :only => [:index, :show]
     end
+
+    namespace :cfme do
+      resources :manifest, :only => [:show], :constraints => {:id => /[\d\.]+/}
+    end
   end
 
   scope :as => :internal, :module => "internal", :path => "internal" do
     routing_helper.redirect_major_version("v0.0", "internal", :via => [:get])
+    routing_helper.redirect_major_version("v1.0", "internal", :via => [:get])
 
     namespace :v0x0, :path => "v0.0" do
+      resources :tenants, :only => [:index, :show]
+    end
+
+    namespace :v1x0, :path => "v1.0" do
       resources :tenants, :only => [:index, :show]
     end
   end

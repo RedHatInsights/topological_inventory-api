@@ -1,5 +1,6 @@
 class OpenapiGenerator
   require 'json'
+  require 'manageiq/api/common/graphql'
 
   PARAMETERS_PATH = "/components/parameters".freeze
   SCHEMAS_PATH = "/components/schemas".freeze
@@ -81,7 +82,12 @@ class OpenapiGenerator
         expected_paths[sub_path][verb] =
           case verb
           when "post"
-            openapi_contents.dig("paths", sub_path, verb) || openapi_create_description(klass_name)
+            if sub_path == "/graphql" && route.action == "query"
+              schemas["GraphQLResponse"] = ::ManageIQ::API::Common::GraphQL.openapi_graphql_response
+              ::ManageIQ::API::Common::GraphQL.openapi_graphql_description
+            else
+              openapi_contents.dig("paths", sub_path, verb) || openapi_create_description(klass_name)
+            end
           when "get"
             openapi_contents.dig("paths", sub_path, verb) || openapi_show_description(klass_name)
           else
@@ -297,10 +303,7 @@ class OpenapiGenerator
           "description" => "#{klass_name} creation successful",
           "content"     => {
             "application/json" => {
-              "schema" => {
-                "type"  => "object",
-                "items" => { "$ref" => build_schema(klass_name) }
-              }
+              "schema" => { "$ref" => build_schema(klass_name) }
             }
           }
         }
@@ -334,7 +337,7 @@ class OpenapiGenerator
     }
   end
 
-  def run
+  def run(graphql)
     parameters["QueryOffset"] = {
       "in"          => "query",
       "name"        => "offset",
@@ -413,6 +416,16 @@ class OpenapiGenerator
       }
     }
 
+    schemas["Tenant"] = {
+      "type"       => "object",
+      "properties" => {
+        "id"              => {"$ref" => "##{SCHEMAS_PATH}/ID"},
+        "name"            => {"type" => "string", "readOnly" => true, "example" => "Sample Tenant"},
+        "description"     => {"type" => "string", "readOnly" => true, "example" => "Description of the Tenant"},
+        "external_tenant" => {"type" => "string", "readOnly" => true, "example" => "External tenant identifier"}
+      }
+    }
+
     schemas["Tagging"] = {
       "type"       => "object",
       "properties" => {
@@ -423,7 +436,7 @@ class OpenapiGenerator
     }
 
     schemas["ID"] = {
-      "type"=>"string", "description"=>"ID of the resource", "pattern"=>"/^\\d+$/", "readOnly"=>true
+      "type" => "string", "description" => "ID of the resource", "pattern" => "^\\d+$", "readOnly" => true
     }
 
     new_content = openapi_contents
@@ -432,6 +445,7 @@ class OpenapiGenerator
     new_content["components"]["schemas"]    = schemas.sort.each_with_object({})    { |(name, val), h| h[name] = val || openapi_contents["components"]["schemas"][name]    || {} }
     new_content["components"]["parameters"] = parameters.sort.each_with_object({}) { |(name, val), h| h[name] = val || openapi_contents["components"]["parameters"][name] || {} }
     File.write(openapi_file, JSON.pretty_generate(new_content) + "\n")
+    ManageIQ::API::Common::GraphQL::Generator.generate(api_version, new_content) if graphql
   end
 end
 
@@ -455,7 +469,8 @@ GENERATOR_IMAGE_MEDIA_TYPE_DEFINITIONS = [
 
 namespace :openapi do
   desc "Generate the openapi.json contents"
-  task :generate => :environment do
-    OpenapiGenerator.new.run
+  task :generate, [:graphql] => [:environment] do |_task, args|
+    graphql = args[:graphql] == "graphql"
+    OpenapiGenerator.new.run(graphql)
   end
 end
