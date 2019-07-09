@@ -20,6 +20,96 @@
     }
   ],
   "paths": {
+    "/clusters": {
+      "get": {
+        "summary": "List Clusters",
+        "operationId": "listClusters",
+        "description": "Returns an array of Cluster objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Clusters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clusters/{id}": {
+      "get": {
+        "summary": "Show an existing Cluster",
+        "operationId": "showCluster",
+        "description": "Returns a Cluster object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cluster info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cluster"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/clusters/{id}/hosts": {
+      "get": {
+        "summary": "List Hosts for Cluster",
+        "operationId": "listClusterHosts",
+        "description": "Returns an array of Host objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hosts collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HostsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/container_groups": {
       "get": {
         "summary": "List ContainerGroups",
@@ -749,6 +839,63 @@
         }
       }
     },
+    "/datastores": {
+      "get": {
+        "summary": "List Datastores",
+        "operationId": "listDatastores",
+        "description": "Returns an array of Datastore objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Datastores collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatastoresCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datastores/{id}": {
+      "get": {
+        "summary": "Show an existing Datastore",
+        "operationId": "showDatastore",
+        "description": "Returns a Datastore object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Datastore info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Datastore"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/flavors": {
       "get": {
         "summary": "List Flavors",
@@ -851,6 +998,63 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/hosts": {
+      "get": {
+        "summary": "List Hosts",
+        "operationId": "listHosts",
+        "description": "Returns an array of Host objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hosts collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HostsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hosts/{id}": {
+      "get": {
+        "summary": "Show an existing Host",
+        "operationId": "showHost",
+        "description": "Returns a Host object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Host info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Host"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -2717,6 +2921,74 @@
           }
         }
       },
+      "Cluster": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "uid_ems": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "ClustersCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Cluster"
+            }
+          }
+        }
+      },
       "CollectionLinks": {
         "type": "object",
         "properties": {
@@ -3336,6 +3608,86 @@
           }
         }
       },
+      "Datastore": {
+        "type": "object",
+        "properties": {
+          "accessible": {
+            "type": "boolean"
+          },
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "free_space": {
+            "type": "integer"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "total_space": {
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "DatastoresCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Datastore"
+            }
+          }
+        }
+      },
       "Flavor": {
         "type": "object",
         "properties": {
@@ -3433,6 +3785,92 @@
             "description": "Errors resulting from the GraphQL query",
             "items": {
               "type": "object"
+            }
+          }
+        }
+      },
+      "Host": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "cluster_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "cpus": {
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "memory": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "power_state": {
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "uid_ems": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "HostsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Host"
             }
           }
         }
