@@ -139,6 +139,49 @@
             }
           }
         }
+      },
+      "ems_clusters": {
+        "id": null,
+        "uid_ems": null,
+        "ems_ref": null,
+        "ha_enabled": null,
+        "drs_enabled": null,
+        "effective_cpu": null,
+        "effective_memory": null
+      },
+      "hosts": {
+        "id": null,
+        "name": null,
+        "type": null,
+        "hostname": null,
+        "ipaddress": null,
+        "power_state": null,
+        "guid": null,
+        "uid_ems": null,
+        "mac_address": null,
+        "maintenance": null,
+        "vmm_vendor": null,
+        "vmm_version": null,
+        "vmm_product": null,
+        "vmm_buildnumber": null,
+        "archived": null,
+        "cpu_cores_per_socket": null,
+        "cpu_total_cores": null,
+        "ems_cluster_id": null
+      },
+      "storages": {
+        "id": null,
+        "name": null,
+        "location": null,
+        "store_type": null,
+        "total_space": null,
+        "free_space": null,
+        "uncommitted": null,
+        "storage_domain_type": null,
+        "host_storages": {
+          "ems_ref": null,
+          "host_id": null
+        }
       }
     },
     "ManageIQ::Providers::Vmware::InfraManager": {
@@ -202,6 +245,66 @@
               }
             }
           }
+        }
+      },
+      "ems_extensions": {
+        "id": null,
+        "ems_ref": null,
+        "key": null,
+        "company": null,
+        "label": null,
+        "summary": null,
+        "version": null
+      },
+      "ems_licenses": {
+        "id": null,
+        "ems_ref": null,
+        "name": null,
+        "license_edition": null,
+        "total_licenses": null,
+        "used_licenses": null
+      },
+      "ems_clusters": {
+        "id": null,
+        "uid_ems": null,
+        "ems_ref": null,
+        "ha_enabled": null,
+        "drs_enabled": null,
+        "effective_cpu": null,
+        "effective_memory": null
+      },
+      "hosts": {
+        "id": null,
+        "name": null,
+        "type": null,
+        "hostname": null,
+        "ipaddress": null,
+        "power_state": null,
+        "guid": null,
+        "uid_ems": null,
+        "mac_address": null,
+        "maintenance": null,
+        "vmm_vendor": null,
+        "vmm_version": null,
+        "vmm_product": null,
+        "vmm_buildnumber": null,
+        "archived": null,
+        "cpu_cores_per_socket": null,
+        "cpu_total_cores": null,
+        "ems_cluster_id": null
+      },
+      "storages": {
+        "id": null,
+        "name": null,
+        "location": null,
+        "store_type": null,
+        "total_space": null,
+        "free_space": null,
+        "uncommitted": null,
+        "storage_domain_type": null,
+        "host_storages": {
+          "ems_ref": null,
+          "host_id": null
         }
       }
     }
