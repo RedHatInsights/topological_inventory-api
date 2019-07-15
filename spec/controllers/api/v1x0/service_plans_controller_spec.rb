@@ -1,4 +1,5 @@
 require "manageiq-messaging"
+require "sources-api-client"
 
 RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
   include ::Spec::Support::TenantIdentity
@@ -47,6 +48,10 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       before do
         allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
         allow(client).to receive(:publish_message)
+
+        source_type = double
+        allow(source_type).to receive(:name).and_return("openshift")
+        allow_any_instance_of(described_class).to receive(:retrieve_source_type).and_yield(source_type)
       end
 
       it "publishes a message to the messaging client" do
@@ -64,6 +69,33 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
 
         @body = JSON.parse(response.body)
         expect(@body).to have_key("task_id")
+      end
+    end
+
+    context "with an error in sources api" do
+      let(:client) { double(:client) }
+      let(:payload) do
+        {
+          "service_plan_id"             => service_plan.id.to_s,
+          "service_parameters"          => service_parameters,
+          "provider_control_parameters" => provider_control_parameters
+        }
+      end
+      let(:error_message) { "Sample error message" }
+
+      before do
+        allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
+        allow(client).to receive(:publish_message)
+
+        allow_any_instance_of(described_class).to receive(:retrieve_source_type).and_raise(SourcesApiClient::ApiError.new(error_message))
+      end
+
+      it "returns an error" do
+        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload, :headers => headers
+
+        @body = JSON.parse(response.body)
+        expect(@body).to have_key("errors")
+        expect(@body['errors'][0]['detail']).to eq(error_message)
       end
     end
 
