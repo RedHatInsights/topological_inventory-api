@@ -51,7 +51,7 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
 
         source_type = double
         allow(source_type).to receive(:name).and_return("openshift")
-        allow_any_instance_of(described_class).to receive(:retrieve_source_type).and_yield(source_type)
+        allow_any_instance_of(described_class).to receive(:retrieve_source_type).and_return(source_type)
       end
 
       it "publishes a message to the messaging client" do

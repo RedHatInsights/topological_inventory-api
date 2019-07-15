@@ -9,18 +9,16 @@ module Api
       def order
         service_plan = model.find(params_for_order[:service_plan_id].to_i)
 
-        retrieve_source_type(service_plan) do |source_type|
-          task = Task.create!(:tenant => service_plan.tenant, :state => "pending", :status => "ok")
+        source_type = retrieve_source_type(service_plan)
+        task = Task.create!(:tenant => service_plan.tenant, :state => "pending", :status => "ok")
 
-          messaging_client.publish_message(
-            :service => "platform.topological-inventory.operations-#{source_type.name}",
-            :message => "ServicePlan.order",
-            :payload => payload_for_order(task, service_plan)
-          )
+        messaging_client.publish_message(
+          :service => "platform.topological-inventory.operations-#{source_type.name}",
+          :message => "ServicePlan.order",
+          :payload => payload_for_order(task, service_plan)
+        )
 
-          render :json => {:task_id => task.id}
-        end
-
+        render :json => {:task_id => task.id}
       rescue ActiveRecord::RecordNotFound
         head :bad_request
       rescue StandardError => err
@@ -45,10 +43,7 @@ module Api
         if source.present?
           source_type = sources_api_client.show_source_type(source.source_type_id.to_s)
           if source_type.present?
-            #
-            # Process Source Type
-            #
-            yield source_type
+            source_type
           else
             raise SourcesApiClient::ApiError.new(:message => "Error retrieving Source Type (ID #{source.source_type_id.to_s})")
           end
