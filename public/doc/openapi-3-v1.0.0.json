@@ -4345,9 +4345,6 @@
           "id": {
             "$ref": "#/components/schemas/ID"
           },
-          "tenant_id": {
-            "$ref": "#/components/schemas/ID"
-          },
           "uid": {
             "readOnly": true,
             "title": "Unique ID of the inventory source installation",

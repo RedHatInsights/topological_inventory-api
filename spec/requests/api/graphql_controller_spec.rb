@@ -9,10 +9,10 @@ RSpec.describe("v1.0 - GraphQL") do
   let!(:tenant_b)   { Tenant.create!(:name => "tenant_b", :external_tenant => ext_tenant_b) }
   let!(:source_b)   { Source.create!(:tenant_id => tenant_b.id, :uid => "456") }
 
-  let!(:graphql_source_query) { { "query" => "{ sources { id tenant_id uid } }" }.to_json }
+  let!(:graphql_source_query) { { "query" => "{ sources { id uid } }" }.to_json }
 
-  def result_source_tenant_ids(response_body)
-    JSON.parse(response_body).fetch_path("data", "sources").collect { |source| source["tenant_id"].to_i }
+  def result_source_ids(response_body)
+    JSON.parse(response_body).fetch_path("data", "sources").collect { |source| source["id"].to_i }
   end
 
   context "with tenancy enforcement" do
@@ -24,7 +24,7 @@ RSpec.describe("v1.0 - GraphQL") do
       post("/api/v1.0/graphql", :headers => headers, :params => graphql_source_query)
 
       expect(response.status).to eq(200)
-      expect(result_source_tenant_ids(response.body)).to match_array([tenant_a.id])
+      expect(result_source_ids(response.body)).to match_array([source_a.id])
     end
 
     it "querying sources as tenant_b only return tenant_b's sources" do
@@ -33,7 +33,7 @@ RSpec.describe("v1.0 - GraphQL") do
       post("/api/v1.0/graphql", :headers => headers, :params => graphql_source_query)
 
       expect(response.status).to eq(200)
-      expect(result_source_tenant_ids(response.body)).to match_array([tenant_b.id])
+      expect(result_source_ids(response.body)).to match_array([source_b.id])
     end
   end
 
@@ -46,7 +46,7 @@ RSpec.describe("v1.0 - GraphQL") do
       post("/api/v1.0/graphql", :headers => headers, :params => graphql_source_query)
 
       expect(response.status).to eq(200)
-      expect(result_source_tenant_ids(response.body)).to match_array([tenant_a.id, tenant_b.id])
+      expect(result_source_ids(response.body)).to match_array([source_a.id, source_b.id])
     end
   end
 end
