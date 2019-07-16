@@ -1648,6 +1648,39 @@
         }
       }
     },
+    "/sources/{id}/clusters": {
+      "get": {
+        "summary": "List Clusters for Source",
+        "operationId": "listSourceClusters",
+        "description": "Returns an array of Cluster objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Clusters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sources/{id}/container_groups": {
       "get": {
         "summary": "List ContainerGroups for Source",
@@ -1839,6 +1872,72 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContainersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/datastores": {
+      "get": {
+        "summary": "List Datastores for Source",
+        "operationId": "listSourceDatastores",
+        "description": "Returns an array of Datastore objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Datastores collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatastoresCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/hosts": {
+      "get": {
+        "summary": "List Hosts for Source",
+        "operationId": "listSourceHosts",
+        "description": "Returns an array of Host objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hosts collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HostsCollection"
                 }
               }
             }
