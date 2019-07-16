@@ -1645,16 +1645,6 @@
               }
             ]
           },
-          "tenant_id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ID"
-              },
-              {
-                "readOnly": true
-              }
-            ]
-          },
           "name": {
             "type": "string",
             "readOnly": true,
@@ -1755,11 +1745,6 @@
             "readOnly": true,
             "format": "uuid"
           },
-          "tenant_id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
           "taggings": {
             "type": "array",
             "items": {
@@ -1778,16 +1763,6 @@
         "type": "object",
         "properties": {
           "id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ID"
-              },
-              {
-                "readOnly": true
-              }
-            ]
-          },
-          "tenant_id": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/ID"
@@ -1900,11 +1875,6 @@
             "readOnly": true,
             "format": "uuid"
           },
-          "tenant_id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
           "taggings": {
             "type": "array",
             "items": {
@@ -1943,11 +1913,6 @@
             "format": "uuid"
           },
           "source_ref": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
-          "tenant_id": {
             "type": "string",
             "readOnly": true,
             "format": "uuid"
@@ -1999,11 +1964,6 @@
             "readOnly": true,
             "format": "uuid"
           },
-          "tenant_id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
           "container_project_id": {
             "type": "string",
             "readOnly": true,
@@ -2027,16 +1987,6 @@
         "type": "object",
         "properties": {
           "id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ID"
-              },
-              {
-                "readOnly": true
-              }
-            ]
-          },
-          "tenant_id": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/ID"
@@ -2136,11 +2086,6 @@
             "readOnly": true,
             "format": "uuid"
           },
-          "tenant_id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
           "archived_at": {
             "type": "string",
             "format": "date-time",
@@ -2200,11 +2145,6 @@
             "format": "uuid"
           },
           "source_ref": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
-          "tenant_id": {
             "type": "string",
             "readOnly": true,
             "format": "uuid"
@@ -2292,11 +2232,6 @@
             "readOnly": true,
             "format": "uuid"
           },
-          "tenant_id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
           "service_offering_icon_id": {
             "type": "string",
             "readOnly": true,
@@ -2378,11 +2313,6 @@
             "readOnly": true,
             "format": "uuid"
           },
-          "tenant_id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
           "service_offering_id": {
             "type": "string",
             "readOnly": true,
@@ -2425,11 +2355,6 @@
             "type": "string",
             "readOnly": true,
             "title": "Unique ID of the inventory source installation"
-          },
-          "tenant_id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
           },
           "version": {
             "type": "string",
@@ -2545,11 +2470,6 @@
           "completed_at": {
             "type": "string",
             "format": "date-time"
-          },
-          "tenant_id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
           }
         }
       },
@@ -2618,11 +2538,6 @@
             "readOnly": true,
             "format": "uuid"
           },
-          "tenant_id": {
-            "type": "string",
-            "readOnly": true,
-            "format": "uuid"
-          },
           "uid_ems": {
             "type": "string",
             "readOnly": true,
@@ -2678,16 +2593,6 @@
         "type": "object",
         "properties": {
           "id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ID"
-              },
-              {
-                "readOnly": true
-              }
-            ]
-          },
-          "tenant_id": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/ID"
@@ -2769,16 +2674,6 @@
               }
             ]
           },
-          "tenant_id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ID"
-              },
-              {
-                "readOnly": true
-              }
-            ]
-          },
           "vm_id": {
             "allOf": [
               {
@@ -2815,16 +2710,6 @@
         "type": "object",
         "properties": {
           "id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ID"
-              },
-              {
-                "readOnly": true
-              }
-            ]
-          },
-          "tenant_id": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/ID"
