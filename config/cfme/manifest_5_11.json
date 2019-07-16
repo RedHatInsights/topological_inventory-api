@@ -142,6 +142,7 @@
       },
       "ems_clusters": {
         "id": null,
+        "name": null,
         "uid_ems": null,
         "ems_ref": null,
         "ha_enabled": null,
@@ -158,6 +159,7 @@
         "power_state": null,
         "guid": null,
         "uid_ems": null,
+        "ems_ref": null,
         "mac_address": null,
         "maintenance": null,
         "vmm_vendor": null,
@@ -167,7 +169,10 @@
         "archived": null,
         "cpu_cores_per_socket": null,
         "cpu_total_cores": null,
-        "ems_cluster_id": null
+        "ems_cluster_id": null,
+        "hardware": {
+          "memory_mb": null
+	}
       },
       "storages": {
         "id": null,
@@ -266,6 +271,7 @@
       },
       "ems_clusters": {
         "id": null,
+        "name": null,
         "uid_ems": null,
         "ems_ref": null,
         "ha_enabled": null,
@@ -282,6 +288,7 @@
         "power_state": null,
         "guid": null,
         "uid_ems": null,
+        "ems_ref": null,
         "mac_address": null,
         "maintenance": null,
         "vmm_vendor": null,
@@ -291,7 +298,10 @@
         "archived": null,
         "cpu_cores_per_socket": null,
         "cpu_total_cores": null,
-        "ems_cluster_id": null
+        "ems_cluster_id": null,
+        "hardware": {
+          "memory_mb": null
+	}
       },
       "storages": {
         "id": null,
