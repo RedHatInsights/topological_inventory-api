@@ -6,26 +6,29 @@ module Api
       end
     end
 
-    class AvailabilitiesController              < Api::V0x1::AvailabilitiesController; end
-    class ContainersController                  < Api::V0x1::ContainersController; end
-    class ContainerGroupsController             < Api::V0x1::ContainerGroupsController; end
-    class ContainerImagesController             < Api::V0x1::ContainerImagesController; end
-    class ContainerNodesController              < Api::V0x1::ContainerNodesController; end
-    class ContainerProjectsController           < Api::V0x1::ContainerProjectsController; end
-    class ContainerResourceQuotasController     < Api::V0x1::ContainerResourceQuotasController; end
-    class ContainerTemplatesController          < Api::V0x1::ContainerTemplatesController; end
-    class FlavorsController                     < Api::V0x1::FlavorsController; end
-    class OrchestrationStacksController         < Api::V0x1::OrchestrationStacksController; end
-    class ServiceInstancesController            < Api::V0x1::ServiceInstancesController; end
-    class ServiceOfferingIconsController        < Api::V0x1::ServiceOfferingIconsController; end
-    class ServiceOfferingsController            < Api::V0x1::ServiceOfferingsController; end
-    class ServicePlansController                < Api::V0x1::ServicePlansController; end
-    class SourcesController                     < Api::V0x1::SourcesController; end
-    class TagsController                        < Api::V0x1::TagsController; end
-    class TasksController                       < Api::V0x1::TasksController; end
-    class VmsController                         < Api::V0x1::VmsController; end
-    class VolumeAttachmentsController           < Api::V0x1::VolumeAttachmentsController; end
-    class VolumeTypesController                 < Api::V0x1::VolumeTypesController; end
-    class VolumesController                     < Api::V0x1::VolumesController; end
+    class AvailabilitiesController              < Api::V1::AvailabilitiesController; end
+    class ClustersController                    < Api::V1::ClustersController; end
+    class ContainersController                  < Api::V1::ContainersController; end
+    class ContainerGroupsController             < Api::V1::ContainerGroupsController; end
+    class ContainerImagesController             < Api::V1::ContainerImagesController; end
+    class ContainerNodesController              < Api::V1::ContainerNodesController; end
+    class ContainerProjectsController           < Api::V1::ContainerProjectsController; end
+    class ContainerResourceQuotasController     < Api::V1::ContainerResourceQuotasController; end
+    class ContainerTemplatesController          < Api::V1::ContainerTemplatesController; end
+    class DatastoresController                  < Api::V1::DatastoresController; end
+    class FlavorsController                     < Api::V1::FlavorsController; end
+    class HostsController                       < Api::V1::HostsController; end
+    class OrchestrationStacksController         < Api::V1::OrchestrationStacksController; end
+    class ServiceInstancesController            < Api::V1::ServiceInstancesController; end
+    class ServiceOfferingIconsController        < Api::V1::ServiceOfferingIconsController; end
+    class ServiceOfferingsController            < Api::V1::ServiceOfferingsController; end
+    class ServicePlansController                < Api::V1::ServicePlansController; end
+    class SourcesController                     < Api::V1::SourcesController; end
+    class TagsController                        < Api::V1::TagsController; end
+    class TasksController                       < Api::V1::TasksController; end
+    class VmsController                         < Api::V1::VmsController; end
+    class VolumeAttachmentsController           < Api::V1::VolumeAttachmentsController; end
+    class VolumeTypesController                 < Api::V1::VolumeTypesController; end
+    class VolumesController                     < Api::V1::VolumesController; end
   end
 end

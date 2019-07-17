@@ -168,9 +168,7 @@ class OpenapiGenerator
   def openapi_schema_properties(klass_name)
     model = klass_name.constantize
     model.columns_hash.map do |key, value|
-      unless(GENERATOR_ALLOW_BLACKLISTED_ATTRIBUTES[key.to_sym] || []).include?(klass_name)
-        next if GENERATOR_BLACKLIST_ATTRIBUTES.include?(key.to_sym)
-      end
+      next if GENERATOR_BLACKLIST_ATTRIBUTES.include?(key.to_sym)
 
       [key, openapi_schema_properties_value(klass_name, model, key, value)]
     end.compact.sort.to_h
@@ -452,9 +450,6 @@ end
 GENERATOR_BLACKLIST_ATTRIBUTES           = [
   :resource_timestamp, :resource_timestamps, :resource_timestamps_max, :tenant_id
 ].to_set.freeze
-GENERATOR_ALLOW_BLACKLISTED_ATTRIBUTES   = {
-  :tenant_id => ['Source', 'Endpoint', 'Authentication', 'Application'].to_set.freeze
-}
 GENERATOR_READ_ONLY_DEFINITIONS = [
   'Container', 'ContainerGroup', 'ContainerImage', 'ContainerNode', 'ContainerProject', 'ContainerTemplate', 'Flavor',
   'OrchestrationStack', 'ServiceInstance', 'ServiceOffering', 'ServiceOfferingIcon', 'ServicePlan', 'Tag', 'Tagging',

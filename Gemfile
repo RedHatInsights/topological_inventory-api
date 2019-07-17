@@ -17,6 +17,7 @@ gem 'rails',              '>= 5.2.2.1', '~> 5.2.2'
 
 gem 'inventory_refresh', :git => 'https://github.com/ManageIQ/inventory_refresh', :branch => 'master'
 gem 'manageiq-api-common', :git => 'https://github.com/ManageIQ/manageiq-api-common', :branch => 'master'
+gem 'sources-api-client',         :git => 'https://github.com/ManageIQ/sources-api-client-ruby', :branch => 'master'
 gem 'topological_inventory-core', :git => 'https://github.com/ManageIQ/topological_inventory-core', :branch => 'master'
 
 group :development, :test do
