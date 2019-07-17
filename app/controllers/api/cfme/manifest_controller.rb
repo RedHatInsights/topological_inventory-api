@@ -6,7 +6,7 @@ module Api
         raise ActionController::RoutingError.new('Not Found') unless version =~ /\A[\d\.]+\Z/
 
         file = TopologicalInventory::Api::CfmeManifest.find(version)
-        raise ActionController::RoutingError.new('Not Found') unless file.exist?
+        raise ActionController::RoutingError.new('Not Found') unless file&.exist?
 
         render :json => file.read
       end
