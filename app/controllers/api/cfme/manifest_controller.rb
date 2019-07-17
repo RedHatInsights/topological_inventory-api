@@ -4,9 +4,8 @@ module Api
       def show
         version = params.permit(:id)[:id]
         raise ActionController::RoutingError.new('Not Found') unless version =~ /\A[\d\.]+\Z/
-        version.gsub!(".", "_")
 
-        file = Rails.root.join("config", "cfme", "manifest_#{version}.json")
+        file = TopologicalInventory::Api::CfmeManifest.find(version)
         raise ActionController::RoutingError.new('Not Found') unless file.exist?
 
         render :json => file.read
