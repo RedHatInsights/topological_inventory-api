@@ -1,16 +1,16 @@
 module TopologicalInventory
   module Api
     class CfmeManifest
+      # Finds the manifest file that best matches the version supplied.
+      # Looks for a full match first then iteratively checks for broader
+      # and broader versions.
+      #
+      # e.g. 5.11.0.0 will check for 5_11_0_0, then 5_11_0, 5_11, then 5
       def self.find(version)
-        version.gsub!(".", "_")
+        parts = version.split(".")
 
-        # Find the manifest file that best matches the version supplied.
-        # Look for a full match first then iteratively check for broader
-        # and broader versions.
-        #
-        # E.g. 5.11.0.0 will check for 5.11.0.0, then 5.11.0, 5.11, then 5
-        until version.blank? || (manifest = manifest_by_version[version]).present?
-          version = version.split("_")[0...-1].join("_")
+        until parts.empty? || (manifest = manifest_by_version[parts.join("_")])
+          parts.pop
         end
 
         manifest
