@@ -24,14 +24,17 @@
       "vms": {
         "id": null,
         "name": null,
+        "description": null,
         "type": null,
         "ems_ref": null,
+        "uid_ems": null,
         "archived": null,
         "orphaned": null,
         "retired": null,
-        "num_cpu": null,
+        "cpu_total_cores": null,
+        "cpu_cores_per_socket": null,
+        "disks_aligned": null,
         "has_rdm_disk": null,
-        "host_id": null,
         "power_state": null,
         "ipaddresses": null,
         "hostnames": null,
@@ -40,7 +43,7 @@
         "operating_system": {
           "product_type": null,
           "product_name": null,
-          "distribution": null,
+          "distribution": null
         },
         "hardware": {
           "id": null,
@@ -54,7 +57,7 @@
             "free_space": null,
             "mode": null,
             "size": null,
-            "size_on_disk": null,
+            "size_on_disk": null
           },
           "nics": {
             "id": null,
@@ -66,19 +69,19 @@
             "network": {
               "id": null,
               "ipaddress": null,
-              "hostname": null,
+              "hostname": null
             }
           }
         },
         "files": {
           "id": null,
           "name": null,
-          "contents": null,
+          "contents": null
         },
         "system_services": {
           "id": null,
           "name": null,
-          "typename": null,
+          "typename": null
         }
       }
     },
@@ -93,14 +96,20 @@
       "vms": {
         "id": null,
         "name": null,
+        "description": null,
         "type": null,
         "ems_ref": null,
+        "uid_ems": null,
         "archived": null,
         "orphaned": null,
         "retired": null,
-        "num_cpu": null,
+        "cpu_total_cores": null,
+        "cpu_cores_per_socket": null,
+        "disks_aligned": null,
         "has_rdm_disk": null,
-        "host_id": null,
+        "host": {
+          "ems_ref": null
+        },
         "power_state": null,
         "ipaddresses": null,
         "hostnames": null,
@@ -109,7 +118,7 @@
         "operating_system": {
           "product_type": null,
           "product_name": null,
-          "distribution": null,
+          "distribution": null
         },
         "hardware": {
           "id": null,
@@ -123,7 +132,7 @@
             "free_space": null,
             "mode": null,
             "size": null,
-            "size_on_disk": null,
+            "size_on_disk": null
           },
           "nics": {
             "id": null,
@@ -135,19 +144,19 @@
             "network": {
               "id": null,
               "ipaddress": null,
-              "hostname": null,
+              "hostname": null
             }
           }
         },
         "files": {
           "id": null,
           "name": null,
-          "contents": null,
+          "contents": null
         },
         "system_services": {
           "id": null,
           "name": null,
-          "typename": null,
+          "typename": null
         }
       },
       "ems_clusters": {
@@ -214,14 +223,20 @@
       "vms": {
         "id": null,
         "name": null,
+        "description": null,
         "type": null,
         "ems_ref": null,
+        "uid_ems": null,
         "archived": null,
         "orphaned": null,
         "retired": null,
-        "num_cpu": null,
+        "cpu_total_cores": null,
+        "cpu_cores_per_socket": null,
+        "disks_aligned": null,
         "has_rdm_disk": null,
-        "host_id": null,
+        "host": {
+          "ems_ref": null
+        },
         "power_state": null,
         "ipaddresses": null,
         "hostnames": null,
@@ -230,7 +245,7 @@
         "operating_system": {
           "product_type": null,
           "product_name": null,
-          "distribution": null,
+          "distribution": null
         },
         "hardware": {
           "id": null,
@@ -244,7 +259,7 @@
             "free_space": null,
             "mode": null,
             "size": null,
-            "size_on_disk": null,
+            "size_on_disk": null
           },
           "nics": {
             "id": null,
@@ -256,19 +271,19 @@
             "network": {
               "id": null,
               "ipaddress": null,
-              "hostname": null,
+              "hostname": null
             }
           }
         },
         "files": {
           "id": null,
           "name": null,
-          "contents": null,
+          "contents": null
         },
         "system_services": {
           "id": null,
           "name": null,
-          "typename": null,
+          "typename": null
         }
       },
       "ems_extensions": {
