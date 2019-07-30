@@ -1,6 +1,7 @@
 {
   "cfme_version": "5.11",
   "manifest": {
+    "version": "1.0.0",
     "core": {
       "MiqDatabase": {
         "id": null,
