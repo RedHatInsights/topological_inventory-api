@@ -46,9 +46,6 @@ describe "Swagger stuff" do
           {:path => "#{path_prefix}/#{app_name}/v1/*path", :verb => "DELETE|GET|OPTIONS|PATCH|POST"}
         ]
         internal_api_routes = [
-          {:path => "/internal/v0/*path",                 :verb => "GET"},
-          {:path => "/internal/v0.0/tenants",             :verb => "GET"},
-          {:path => "/internal/v0.0/tenants/:id",         :verb => "GET"},
           {:path => "/internal/v1/*path",                 :verb => "GET"},
           {:path => "/internal/v1.0/tenants",             :verb => "GET"},
           {:path => "/internal/v1.0/tenants/:id",         :verb => "GET"},

@@ -102,12 +102,7 @@ Rails.application.routes.draw do
   end
 
   scope :as => :internal, :module => "internal", :path => "internal" do
-    routing_helper.redirect_major_version("v0.0", "internal", :via => [:get])
     routing_helper.redirect_major_version("v1.0", "internal", :via => [:get])
-
-    namespace :v0x0, :path => "v0.0" do
-      resources :tenants, :only => [:index, :show]
-    end
 
     namespace :v1x0, :path => "v1.0" do
       resources :tenants, :only => [:index, :show]

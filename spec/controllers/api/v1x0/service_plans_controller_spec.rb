@@ -47,7 +47,7 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
 
       before do
         allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
-        allow(client).to receive(:publish_message)
+        allow(client).to receive(:publish_topic)
 
         source_type = double
         allow(source_type).to receive(:name).and_return("openshift")
@@ -55,9 +55,9 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       end
 
       it "publishes a message to the messaging client" do
-        expect(client).to receive(:publish_message).with(
+        expect(client).to receive(:publish_topic).with(
           :service => "platform.topological-inventory.operations-openshift",
-          :message => "ServicePlan.order",
+          :event   => "ServicePlan.order",
           :payload => {:request_context => headers, :params => {:task_id => kind_of(String), :service_plan_id => service_plan.id.to_s, :order_params => payload}}
         )
 
@@ -85,7 +85,7 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
 
       before do
         allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
-        allow(client).to receive(:publish_message)
+        allow(client).to receive(:publish_topic)
 
         allow_any_instance_of(described_class).to receive(:retrieve_source_type).and_raise(SourcesApiClient::ApiError.new(error_message))
       end

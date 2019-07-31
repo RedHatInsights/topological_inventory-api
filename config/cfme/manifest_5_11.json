@@ -1,6 +1,7 @@
 {
   "cfme_version": "5.11",
   "manifest": {
+    "version": "1.0.0",
     "core": {
       "MiqDatabase": {
         "id": null,
@@ -24,56 +25,60 @@
       "vms": {
         "id": null,
         "name": null,
+        "description": null,
         "type": null,
-        "guid": null,
         "uid_ems": null,
-        "archived": null,
         "cpu_cores_per_socket": null,
         "cpu_total_cores": null,
         "disks_aligned": null,
         "ems_ref": null,
         "has_rdm_disk": null,
-        "host_id": null,
-        "linked_clone": null,
-        "orphaned": null,
         "power_state": null,
         "ram_size_in_bytes": null,
         "retired": null,
         "v_datastore_path": null,
+        "operating_system": {
+          "product_type": null,
+          "product_name": null,
+          "distribution": null
+        },
         "hardware": {
           "id": null,
+          "guest_os_full_name": null,
           "disks": {
             "id": null,
             "device_name": null,
             "device_type": null,
             "disk_type": null,
+            "filename": null,
             "free_space": null,
             "mode": null,
             "size": null,
-            "size_on_disk": null,
-            "partitions": {
+            "size_on_disk": null
+          },
+          "nics": {
+            "id": null,
+            "device_name": null,
+            "device_type": null,
+            "address": null,
+            "model": null,
+            "uid_ems": null,
+            "network": {
               "id": null,
-              "name": null,
-              "controller": null,
-              "free_space": null,
-              "partition_type": null,
-              "size": null,
-              "start_address": null,
-              "used_space": null,
-              "virtual_disk_file": null,
-              "volume_group": null,
-              "volumes": {
-                "id": null,
-                "name": null,
-                "filesystem": null,
-                "free_space": null,
-                "size": null,
-                "typ": null,
-                "used_space": null,
-                "volume_group": null
-              }
+              "ipaddress": null,
+              "hostname": null
             }
           }
+        },
+        "files": {
+          "id": null,
+          "name": null,
+          "contents": null
+        },
+        "system_services": {
+          "id": null,
+          "name": null,
+          "typename": null
         }
       }
     },
@@ -88,56 +93,63 @@
       "vms": {
         "id": null,
         "name": null,
+        "description": null,
         "type": null,
-        "guid": null,
         "uid_ems": null,
-        "archived": null,
         "cpu_cores_per_socket": null,
         "cpu_total_cores": null,
         "disks_aligned": null,
         "ems_ref": null,
         "has_rdm_disk": null,
-        "host_id": null,
-        "linked_clone": null,
-        "orphaned": null,
+        "host": {
+          "ems_ref": null
+        },
         "power_state": null,
         "ram_size_in_bytes": null,
         "retired": null,
         "v_datastore_path": null,
+        "operating_system": {
+          "product_type": null,
+          "product_name": null,
+          "distribution": null
+        },
         "hardware": {
           "id": null,
+          "guest_os_full_name": null,
           "disks": {
             "id": null,
             "device_name": null,
             "device_type": null,
             "disk_type": null,
+            "filename": null,
             "free_space": null,
             "mode": null,
             "size": null,
-            "size_on_disk": null,
-            "partitions": {
+            "size_on_disk": null
+          },
+          "nics": {
+            "id": null,
+            "device_name": null,
+            "device_type": null,
+            "address": null,
+            "model": null,
+            "uid_ems": null,
+            "network": {
               "id": null,
-              "name": null,
-              "controller": null,
-              "free_space": null,
-              "partition_type": null,
-              "size": null,
-              "start_address": null,
-              "used_space": null,
-              "virtual_disk_file": null,
-              "volume_group": null,
-              "volumes": {
-                "id": null,
-                "name": null,
-                "filesystem": null,
-                "free_space": null,
-                "size": null,
-                "typ": null,
-                "used_space": null,
-                "volume_group": null
-              }
+              "ipaddress": null,
+              "hostname": null
             }
           }
+        },
+        "files": {
+          "id": null,
+          "name": null,
+          "contents": null
+        },
+        "system_services": {
+          "id": null,
+          "name": null,
+          "typename": null
         }
       },
       "ems_clusters": {
@@ -169,10 +181,12 @@
         "archived": null,
         "cpu_cores_per_socket": null,
         "cpu_total_cores": null,
-        "ems_cluster_id": null,
+        "ems_cluster": {
+          "ems_ref": null
+        },
         "hardware": {
           "memory_mb": null
-	}
+        }
       },
       "storages": {
         "id": null,
@@ -185,7 +199,9 @@
         "storage_domain_type": null,
         "host_storages": {
           "ems_ref": null,
-          "host_id": null
+          "host": {
+            "ems_ref": null
+          }
         }
       }
     },
@@ -200,56 +216,63 @@
       "vms": {
         "id": null,
         "name": null,
+        "description": null,
         "type": null,
-        "guid": null,
         "uid_ems": null,
-        "archived": null,
         "cpu_cores_per_socket": null,
         "cpu_total_cores": null,
         "disks_aligned": null,
         "ems_ref": null,
         "has_rdm_disk": null,
-        "host_id": null,
-        "linked_clone": null,
-        "orphaned": null,
+        "host": {
+          "ems_ref": null
+        },
         "power_state": null,
         "ram_size_in_bytes": null,
         "retired": null,
         "v_datastore_path": null,
+        "operating_system": {
+          "product_type": null,
+          "product_name": null,
+          "distribution": null
+        },
         "hardware": {
           "id": null,
+          "guest_os_full_name": null,
           "disks": {
             "id": null,
             "device_name": null,
             "device_type": null,
             "disk_type": null,
+            "filename": null,
             "free_space": null,
             "mode": null,
             "size": null,
-            "size_on_disk": null,
-            "partitions": {
+            "size_on_disk": null
+          },
+          "nics": {
+            "id": null,
+            "device_name": null,
+            "device_type": null,
+            "address": null,
+            "model": null,
+            "uid_ems": null,
+            "network": {
               "id": null,
-              "name": null,
-              "controller": null,
-              "free_space": null,
-              "partition_type": null,
-              "size": null,
-              "start_address": null,
-              "used_space": null,
-              "virtual_disk_file": null,
-              "volume_group": null,
-              "volumes": {
-                "id": null,
-                "name": null,
-                "filesystem": null,
-                "free_space": null,
-                "size": null,
-                "typ": null,
-                "used_space": null,
-                "volume_group": null
-              }
+              "ipaddress": null,
+              "hostname": null
             }
           }
+        },
+        "files": {
+          "id": null,
+          "name": null,
+          "contents": null
+        },
+        "system_services": {
+          "id": null,
+          "name": null,
+          "typename": null
         }
       },
       "ems_extensions": {
@@ -298,10 +321,12 @@
         "archived": null,
         "cpu_cores_per_socket": null,
         "cpu_total_cores": null,
-        "ems_cluster_id": null,
+        "ems_cluster": {
+          "ems_ref": null
+        },
         "hardware": {
           "memory_mb": null
-	}
+        }
       },
       "storages": {
         "id": null,
@@ -314,7 +339,9 @@
         "storage_domain_type": null,
         "host_storages": {
           "ems_ref": null,
-          "host_id": null
+          "host": {
+            "ems_ref": null
+          }
         }
       }
     }
