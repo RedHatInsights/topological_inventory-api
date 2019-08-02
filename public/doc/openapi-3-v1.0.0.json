@@ -3826,7 +3826,7 @@
           },
           "extra": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -4093,7 +4093,7 @@
           "extra": {
             "description": "Extra information about this object in JSON format",
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -4203,7 +4203,7 @@
           "extra": {
             "description": "Extra information about this object in JSON format",
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -4364,7 +4364,7 @@
           "extra": {
             "description": "Extra information about this object in JSON format",
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -4659,7 +4659,7 @@
           },
           "extra": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "flavor_id": {
             "$ref": "#/components/schemas/ID"
@@ -4771,7 +4771,7 @@
           },
           "extra": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -4893,7 +4893,7 @@
           },
           "extra": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
