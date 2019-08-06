@@ -4561,7 +4561,7 @@
           "context": {
             "example": "Extra information about this task, e.g. new inventory items created by this task",
             "title": "Context",
-            "type": "string"
+            "type": "object"
           },
           "created_at": {
             "format": "date-time",
