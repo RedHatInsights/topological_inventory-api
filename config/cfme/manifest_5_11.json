@@ -13,7 +13,7 @@
         "name": null
       }
     },
-    "ManageIQ::Providers::OpenStack::CloudManager": {
+    "ManageIQ::Providers::Openstack::CloudManager": {
       "id": null,
       "name": null,
       "type": null,
