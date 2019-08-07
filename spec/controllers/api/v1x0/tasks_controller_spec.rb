@@ -15,18 +15,18 @@ RSpec.describe Api::V1x0::TasksController, :type => :request do
   end
 
   it "patch /tasks/:id updates a Task" do
-    task = Task.create!(:state => "running", :status => "ok", :context => "context1", :tenant => tenant)
+    task = Task.create!(:state => "running", :status => "ok", :context => { :message => "context1" }, :tenant => tenant)
     expect(client).to receive(:publish_topic).with(
       :service => "platform.topological-inventory.task-output-stream",
       :event   => "Task.update",
-      :payload => {"state" => "completed", "status" => "ok", "context" => "context2", "task_id" => task.id.to_s}
+      :payload => {"state" => "completed", "status" => "ok", "context" => { :message => "context2" }, "task_id" => task.id.to_s}
     )
 
-    patch(api_v1x0_task_url(task.id), :params => {:state => "completed", :status => "ok", :context => "context2"}.to_json, :headers => headers)
+    patch(api_v1x0_task_url(task.id), :params => {:state => "completed", :status => "ok", :context => { :message => "context2" }}.to_json, :headers => headers)
 
     expect(task.reload.state).to eq("completed")
     expect(task.reload.status).to eq("ok")
-    expect(task.context).to eq("context2")
+    expect(task.context).to eq("message" => "context2")
 
     expect(response.status).to eq(204)
     expect(response.parsed_body).to be_empty
