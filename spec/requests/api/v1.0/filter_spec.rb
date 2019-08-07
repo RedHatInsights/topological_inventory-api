@@ -121,7 +121,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       get("/api/v1.0/vms?filter[mac_addresses]=a", :headers => headers)
 
       expect(response.status).to eq(400)
-      expect(response.parsed_body["errors"]).to eq([{"detail"=>"unsupported attribute type for: mac_addresses", "status"=>400}])
+      expect(response.parsed_body["errors"]).to eq([{"detail" => "unsupported attribute type for: mac_addresses", "status" => 400}])
     end
 
     it "invalid attribute" do
@@ -131,7 +131,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       get("/api/v1.0/vms?filter[bogus_attribute]=a", :headers => headers)
 
       expect(response.status).to eq(400)
-      expect(response.parsed_body["errors"]).to eq([{"detail"=>"found unpermitted parameter: bogus_attribute", "status"=>400}])
+      expect(response.parsed_body["errors"]).to eq([{"detail" => "found unpermitted parameter: bogus_attribute", "status" => 400}])
     end
 
     it "multiple invalid attributes mixed with a valid attribute" do

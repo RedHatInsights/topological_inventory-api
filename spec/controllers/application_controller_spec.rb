@@ -82,7 +82,7 @@ RSpec.describe ApplicationController, :type => :request do
     end
 
     it "permits request with all the necessary entitlements" do
-      headers = {"CONTENT_TYPE"  => "application/json", "x-rh-identity" => identity_with_entitlements}
+      headers = {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity_with_entitlements}
 
       get("/api/v1.0/sources", :headers => headers)
 
@@ -90,7 +90,7 @@ RSpec.describe ApplicationController, :type => :request do
     end
 
     it "permits request with one of the necessary entitlements" do
-      entitlements["insights"]["is_entitled"]     = false
+      entitlements["insights"]["is_entitled"] = false
 
       headers = {
           "CONTENT_TYPE"  => "application/json",

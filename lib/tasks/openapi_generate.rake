@@ -453,7 +453,7 @@ class OpenapiGenerator
   end
 end
 
-GENERATOR_BLACKLIST_ATTRIBUTES           = [
+GENERATOR_BLACKLIST_ATTRIBUTES = [
   :resource_timestamp, :resource_timestamps, :resource_timestamps_max, :tenant_id
 ].to_set.freeze
 GENERATOR_READ_ONLY_DEFINITIONS = [
