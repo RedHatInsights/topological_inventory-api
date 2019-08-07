@@ -8,7 +8,7 @@ module Api
         raise_unless_primary_instance_exists
         service_offering_icon = model.find(params[:service_offering_icon_id].to_i)
 
-        send_data(service_offering_icon.data, 
+        send_data(service_offering_icon.data,
                   :type        => MimeMagic.by_magic(service_offering_icon.data).type,
                   :disposition => 'inline')
       end
