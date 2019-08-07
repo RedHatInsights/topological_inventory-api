@@ -1,10 +1,10 @@
 RSpec.describe("v1.0 - GraphQL") do
-  let!(:ext_tenant_a)   { rand(1000).to_s }
+  let!(:ext_tenant_a) { rand(1000).to_s }
   let!(:identity_a) { Base64.encode64({'identity' => {'account_number' => ext_tenant_a}}.to_json) }
   let!(:tenant_a)   { Tenant.create!(:name => "tenant_a", :external_tenant => ext_tenant_a) }
   let!(:source_a)   { Source.create!(:tenant_id => tenant_a.id, :uid => "123") }
 
-  let!(:ext_tenant_b)   { rand(1000).to_s }
+  let!(:ext_tenant_b) { rand(1000).to_s }
   let!(:identity_b) { Base64.encode64({'identity' => {'account_number' => ext_tenant_b}}.to_json) }
   let!(:tenant_b)   { Tenant.create!(:name => "tenant_b", :external_tenant => ext_tenant_b) }
   let!(:source_b)   { Source.create!(:tenant_id => tenant_b.id, :uid => "456") }

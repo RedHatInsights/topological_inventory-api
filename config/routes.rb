@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get "/openapi.json", :to => "root#openapi"
       post "graphql" => "graphql#query"
 
-      resources :clusters,                :only => [:index, :show] do
+      resources :clusters, :only => [:index, :show] do
         resources :hosts, :only => [:index]
       end
       resources :containers,              :only => [:index, :show]
@@ -23,21 +23,21 @@ Rails.application.routes.draw do
         resources :containers, :only => [:index]
         resources :tags,       :only => [:index]
       end
-      resources :container_images,        :only => [:index, :show] do
+      resources :container_images, :only => [:index, :show] do
         resources :tags, :only => [:index]
       end
-      resources :container_nodes,         :only => [:index, :show] do
+      resources :container_nodes, :only => [:index, :show] do
         resources :container_groups, :only => [:index]
         resources :tags,             :only => [:index]
       end
-      resources :container_projects,      :only => [:index, :show] do
+      resources :container_projects, :only => [:index, :show] do
         resources :container_groups,          :only => [:index]
         resources :container_resource_quotas, :only => [:index]
         resources :container_templates,       :only => [:index]
         resources :tags,                      :only => [:index]
       end
       resources :container_resource_quotas, :only => [:index, :show]
-      resources :container_templates,     :only => [:index, :show] do
+      resources :container_templates, :only => [:index, :show] do
         resources :tags, :only => [:index]
       end
       resources :datastores,              :only => [:index, :show]
@@ -57,7 +57,7 @@ Rails.application.routes.draw do
         post "order", :to => "service_plans#order"
         resources :service_instances, :only => [:index]
       end
-      resources :sources,                 :only => [:index, :show] do
+      resources :sources, :only => [:index, :show] do
         resources :availabilities,          :only => [:index]
         resources :clusters,                :only => [:index]
         resources :containers,              :only => [:index]

@@ -1,6 +1,6 @@
 RSpec.describe ApplicationController, :type => :request do
   include ::Spec::Support::TenantIdentity
-  let!(:source)     { Source.create!(:tenant_id => tenant.id , :uid => "123") }
+  let!(:source) { Source.create!(:tenant_id => tenant.id , :uid => "123") }
 
   context "with tenancy enforcement" do
     before { stub_const("ENV", "BYPASS_TENANCY" => nil) }
