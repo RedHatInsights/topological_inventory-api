@@ -9,7 +9,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         expect(response).to have_attributes(
           :status      => 200,
           :parsed_body => paginated_response(0, [])
-                            )
+        )
       end
 
       it "success: non-empty collection" do
@@ -20,7 +20,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         expect(response).to have_attributes(
           :status      => 200,
           :parsed_body => paginated_response(1, [a_hash_including(attributes.except("tenant_id"))])
-                            )
+        )
       end
     end
   end
@@ -39,7 +39,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         expect(response).to have_attributes(
           :status      => 200,
           :parsed_body => a_hash_including(attributes.merge("id" => instance.id.to_s).except("tenant_id"))
-                            )
+        )
       end
 
       it "failure: with an invalid id" do
@@ -51,7 +51,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         expect(response).to have_attributes(
           :status      => 404,
           :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
-                            )
+        )
       end
 
       it "failure: with an invalid non-numeric id" do
@@ -60,7 +60,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         expect(response).to have_attributes(
           :status      => 404,
           :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
-                            )
+        )
       end
     end
   end
@@ -83,7 +83,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
             expect(response).to have_attributes(
               :status      => 200,
               :parsed_body => paginated_response(0, [])
-                                )
+            )
           end
 
           it "failure: with an invalid id" do
@@ -96,7 +96,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
             expect(response).to have_attributes(
               :status      => 404,
               :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
-                                )
+            )
           end
 
           it "failure: with an invalid non-numeric id" do
@@ -105,7 +105,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
             expect(response).to have_attributes(
               :status      => 404,
               :parsed_body => {"errors" => [{"detail" => /Record not found/, "status" => 404}]}
-                                )
+            )
           end
         end
       end

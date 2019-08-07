@@ -45,7 +45,7 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
           :status       => 200,
           :parsed_body  => data,
           :content_type => "image/svg+xml"
-                              )
+        )
       end
 
       it "failure: with an invalid id" do
@@ -58,7 +58,7 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
         expect(response).to have_attributes(
           :status      => 404,
           :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]}
-                            )
+        )
       end
 
       it "failure: with an invalid non-numeric id" do
@@ -67,7 +67,7 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
         expect(response).to have_attributes(
           :status      => 404,
           :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]}
-                            )
+        )
       end
     end
   end
