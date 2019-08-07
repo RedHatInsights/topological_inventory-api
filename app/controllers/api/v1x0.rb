@@ -18,12 +18,19 @@ module Api
     class DatastoresController                  < Api::V1::DatastoresController; end
     class FlavorsController                     < Api::V1::FlavorsController; end
     class HostsController                       < Api::V1::HostsController; end
+    class IpaddressesController                 < Api::V1::IpaddressesController; end
+    class NetworkAdaptersController             < Api::V1::NetworkAdaptersController; end
+    class NetworksController                    < Api::V1::NetworksController; end
     class OrchestrationStacksController         < Api::V1::OrchestrationStacksController; end
+    class SecurityGroupsController              < Api::V1::SecurityGroupsController; end
     class ServiceInstancesController            < Api::V1::ServiceInstancesController; end
     class ServiceOfferingIconsController        < Api::V1::ServiceOfferingIconsController; end
     class ServiceOfferingsController            < Api::V1::ServiceOfferingsController; end
     class ServicePlansController                < Api::V1::ServicePlansController; end
+    class SourceRegionsController               < Api::V1::SourceRegionsController; end
     class SourcesController                     < Api::V1::SourcesController; end
+    class SubnetsController                     < Api::V1::SubnetsController; end
+    class SubscriptionsController               < Api::V1::SubscriptionsController; end
     class TagsController                        < Api::V1::TagsController; end
     class TasksController                       < Api::V1::TasksController; end
     class VmsController                         < Api::V1::VmsController; end
