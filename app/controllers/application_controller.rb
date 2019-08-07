@@ -100,6 +100,7 @@ class ApplicationController < ActionController::API
     return {} unless subcollection?
     return {} unless reflection = primary_collection_model&.reflect_on_association(request_path_parts["subcollection_name"])
     return {} unless as = reflection.options[:as]
+
     {"#{as}_type" => primary_collection_model.name, "#{as}_id" => request_path_parts["primary_collection_id"]}
   end
 

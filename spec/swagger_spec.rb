@@ -124,6 +124,7 @@ describe "Swagger stuff" do
       let(:version) { "1.0" }
       ::ManageIQ::API::Common::OpenApi::Docs.instance["1.0"].definitions.each do |definition_name, schema|
         next if definition_name.in?(["CollectionLinks", "CollectionMetadata", "OrderParameters", "Tagging"])
+
         definition_name = definition_name.sub(/Collection\z/, "").singularize
 
         it "#{definition_name} matches the JSONSchema" do
