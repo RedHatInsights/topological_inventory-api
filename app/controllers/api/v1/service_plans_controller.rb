@@ -31,7 +31,7 @@ module Api
       def sources_api_client
         @sources_api_client ||=
           begin
-            identity = { 'x-rh-identity' => request.headers.fetch('x-rh-identity') }
+            identity = {'x-rh-identity' => request.headers.fetch('x-rh-identity')}
             api_client = SourcesApiClient::ApiClient.new
             api_client.default_headers.merge!(identity)
             SourcesApiClient::DefaultApi.new(api_client)

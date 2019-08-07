@@ -12,7 +12,7 @@ module OptionRedirectEnhancements
       "Content-Length" => body.length.to_s
     }
 
-    [ status, headers, [body] ]
+    [status, headers, [body]]
   end
 end
 

@@ -122,22 +122,22 @@ class OpenapiGenerator
       "operationId" => "list#{primary_collection}#{klass_name.pluralize}",
       "description" => "Returns an array of #{klass_name} objects",
       "parameters"  => [
-        { "$ref" => "##{PARAMETERS_PATH}/QueryLimit"  },
-        { "$ref" => "##{PARAMETERS_PATH}/QueryOffset" },
-        { "$ref" => "##{PARAMETERS_PATH}/QueryFilter" }
+        {"$ref" => "##{PARAMETERS_PATH}/QueryLimit"},
+        {"$ref" => "##{PARAMETERS_PATH}/QueryOffset"},
+        {"$ref" => "##{PARAMETERS_PATH}/QueryFilter"}
       ],
       "responses"   => {
         "200" => {
           "description" => "#{klass_name.pluralize} collection",
           "content"     => {
             "application/json" => {
-              "schema" => { "$ref" => build_collection_schema(klass_name) }
+              "schema" => {"$ref" => build_collection_schema(klass_name)}
             }
           }
         }
       }
     }.tap do |h|
-      h["parameters"] << { "$ref" => build_parameter("ID") } if primary_collection
+      h["parameters"] << {"$ref" => build_parameter("ID")} if primary_collection
     end
   end
 
@@ -146,11 +146,11 @@ class OpenapiGenerator
     schemas[collection_name] = {
       "type"       => "object",
       "properties" => {
-        "meta"  => { "$ref" => "##{SCHEMAS_PATH}/CollectionMetadata" },
-        "links" => { "$ref" => "##{SCHEMAS_PATH}/CollectionLinks"    },
+        "meta"  => {"$ref" => "##{SCHEMAS_PATH}/CollectionMetadata"},
+        "links" => {"$ref" => "##{SCHEMAS_PATH}/CollectionLinks"},
         "data"  => {
           "type"  => "array",
-          "items" => { "$ref" => build_schema(klass_name) }
+          "items" => {"$ref" => build_schema(klass_name)}
         }
       }
     }
@@ -230,13 +230,13 @@ class OpenapiGenerator
       "summary"     => "Show an existing #{klass_name}",
       "operationId" => "show#{klass_name}",
       "description" => "Returns a #{klass_name} object",
-      "parameters"  => [{ "$ref" => build_parameter("ID") }],
+      "parameters"  => [{"$ref" => build_parameter("ID")}],
       "responses"   => {
         "200" => {
           "description" => "#{klass_name} info",
           "content"     => {
             "application/json" => {
-              "schema" => { "$ref" => build_schema(klass_name) }
+              "schema" => {"$ref" => build_schema(klass_name)}
             }
           }
         },
@@ -251,7 +251,7 @@ class OpenapiGenerator
       "summary"     => "Show an existing #{primary_collection} #{klass_name}",
       "operationId" => "show#{primary_collection}#{klass_name}",
       "description" => "Returns a #{primary_collection} #{klass_name}",
-      "parameters"  => [{ "$ref" => build_parameter("ID") }],
+      "parameters"  => [{"$ref" => build_parameter("ID")}],
       "responses"   => {
         "200" => {
           "description" => "#{primary_collection} #{klass_name}",
@@ -274,10 +274,10 @@ class OpenapiGenerator
       "summary"     => "Delete an existing #{klass_name}",
       "operationId" => "delete#{klass_name}",
       "description" => "Deletes a #{klass_name} object",
-      "parameters"  => [{ "$ref" => build_parameter("ID") }],
+      "parameters"  => [{"$ref" => build_parameter("ID")}],
       "responses"   => {
-        "204" => { "description" => "#{klass_name} deleted" },
-        "404" => { "description" => "Not found"             }
+        "204" => {"description" => "#{klass_name} deleted"},
+        "404" => {"description" => "Not found"}
       }
     }
   end
@@ -290,7 +290,7 @@ class OpenapiGenerator
       "requestBody" => {
         "content"     => {
           "application/json" => {
-            "schema" => { "$ref" => build_schema(klass_name) }
+            "schema" => {"$ref" => build_schema(klass_name)}
           }
         },
         "description" => "#{klass_name} attributes to create",
@@ -301,7 +301,7 @@ class OpenapiGenerator
           "description" => "#{klass_name} creation successful",
           "content"     => {
             "application/json" => {
-              "schema" => { "$ref" => build_schema(klass_name) }
+              "schema" => {"$ref" => build_schema(klass_name)}
             }
           }
         }
@@ -316,21 +316,21 @@ class OpenapiGenerator
       "operationId" => "#{action.downcase}#{klass_name}",
       "description" => "#{action}s a #{klass_name} object",
       "parameters"  => [
-        { "$ref" => build_parameter("ID") }
+        {"$ref" => build_parameter("ID")}
       ],
       "requestBody" => {
         "content"     => {
           "application/json" => {
-            "schema" => { "$ref" => build_schema(klass_name) }
+            "schema" => {"$ref" => build_schema(klass_name)}
           }
         },
         "description" => "#{klass_name} attributes to update",
         "required"    => true
       },
       "responses"   => {
-        "204" => { "description" => "Updated, no content" },
-        "400" => { "description" => "Bad request"         },
-        "404" => { "description" => "Not found"           }
+        "204" => {"description" => "Updated, no content"},
+        "400" => {"description" => "Bad request"},
+        "404" => {"description" => "Not found"}
       }
     }
   end

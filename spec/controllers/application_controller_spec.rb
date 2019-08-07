@@ -6,7 +6,7 @@ RSpec.describe ApplicationController, :type => :request do
     before { stub_const("ENV", "BYPASS_TENANCY" => nil) }
 
     it "get /source with tenant" do
-      headers = { "CONTENT_TYPE" => "application/json", "x-rh-identity" => identity }
+      headers = {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity}
 
       get("/api/v1.0/sources/#{source.id}", :headers => headers)
 
@@ -15,7 +15,7 @@ RSpec.describe ApplicationController, :type => :request do
     end
 
     it "get /source with unknown tenant" do
-      headers = { "CONTENT_TYPE" => "application/json", "x-rh-identity" => unknown_identity }
+      headers = {"CONTENT_TYPE" => "application/json", "x-rh-identity" => unknown_identity}
 
       get("/api/v1.0/sources/#{source.id}", :headers => headers)
 
@@ -24,7 +24,7 @@ RSpec.describe ApplicationController, :type => :request do
     end
 
     it "get /sources with tenant" do
-      headers = { "CONTENT_TYPE" => "application/json", "x-rh-identity" => identity }
+      headers = {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity}
 
       get("/api/v1.0/sources", :headers => headers)
 
@@ -32,7 +32,7 @@ RSpec.describe ApplicationController, :type => :request do
     end
 
     it "get /sources with unknown tenant" do
-      headers = { "CONTENT_TYPE" => "application/json", "x-rh-identity" => unknown_identity }
+      headers = {"CONTENT_TYPE" => "application/json", "x-rh-identity" => unknown_identity}
 
       get("/api/v1.0/sources", :headers => headers)
 
@@ -41,7 +41,7 @@ RSpec.describe ApplicationController, :type => :request do
     end
 
     it "get /sources with no identity" do
-      headers = { "CONTENT_TYPE" => "application/json" }
+      headers = {"CONTENT_TYPE" => "application/json"}
 
       get("/api/v1.0/sources", :headers => headers)
 
@@ -53,7 +53,7 @@ RSpec.describe ApplicationController, :type => :request do
     before { stub_const("ENV", "BYPASS_TENANCY" => "true") }
 
     it "get /sources without identity" do
-      headers = { "CONTENT_TYPE" => "application/json" }
+      headers = {"CONTENT_TYPE" => "application/json"}
 
       get("/api/v1.0/sources", :headers => headers)
 
@@ -61,7 +61,7 @@ RSpec.describe ApplicationController, :type => :request do
     end
 
     it "get /sources with unknown identity" do
-      headers = { "CONTENT_TYPE" => "application/json", "x-rh-identity" => unknown_identity }
+      headers = {"CONTENT_TYPE" => "application/json", "x-rh-identity" => unknown_identity}
 
       get("/api/v1.0/sources", :headers => headers)
 
@@ -82,7 +82,7 @@ RSpec.describe ApplicationController, :type => :request do
     end
 
     it "permits request with all the necessary entitlements" do
-      headers = { "CONTENT_TYPE"  => "application/json", "x-rh-identity" => identity_with_entitlements }
+      headers = {"CONTENT_TYPE"  => "application/json", "x-rh-identity" => identity_with_entitlements}
 
       get("/api/v1.0/sources", :headers => headers)
 
@@ -95,7 +95,7 @@ RSpec.describe ApplicationController, :type => :request do
       headers = {
           "CONTENT_TYPE"  => "application/json",
           "x-rh-identity" => Base64.encode64(
-              {'identity' => { 'account_number' => external_tenant}, :entitlements => entitlements}.to_json
+              {'identity' => {'account_number' => external_tenant}, :entitlements => entitlements}.to_json
           )
       }
 
@@ -111,7 +111,7 @@ RSpec.describe ApplicationController, :type => :request do
       headers = {
           "CONTENT_TYPE"  => "application/json",
           "x-rh-identity" => Base64.encode64(
-              {'identity' => { 'account_number' => external_tenant}, :entitlements => entitlements}.to_json
+              {'identity' => {'account_number' => external_tenant}, :entitlements => entitlements}.to_json
           )
       }
 
