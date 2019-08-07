@@ -73,10 +73,10 @@ RSpec.describe ApplicationController, :type => :request do
     let(:entitlements) do
       {
         "hybrid_cloud" => {
-            "is_entitled" => true
+          "is_entitled" => true
         },
         "insights"     => {
-            "is_entitled" => true
+          "is_entitled" => true
         }
       }
     end
@@ -93,8 +93,8 @@ RSpec.describe ApplicationController, :type => :request do
       entitlements["insights"]["is_entitled"] = false
 
       headers = {
-          "CONTENT_TYPE"  => "application/json",
-          "x-rh-identity" => Base64.encode64(
+        "CONTENT_TYPE"  => "application/json",
+        "x-rh-identity" => Base64.encode64(
             {'identity' => {'account_number' => external_tenant}, :entitlements => entitlements}.to_json
           )
       }
@@ -109,8 +109,8 @@ RSpec.describe ApplicationController, :type => :request do
       entitlements["hybrid_cloud"]["is_entitled"] = false
 
       headers = {
-          "CONTENT_TYPE"  => "application/json",
-          "x-rh-identity" => Base64.encode64(
+        "CONTENT_TYPE"  => "application/json",
+        "x-rh-identity" => Base64.encode64(
             {'identity' => {'account_number' => external_tenant}, :entitlements => entitlements}.to_json
           )
       }

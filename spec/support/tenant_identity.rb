@@ -12,12 +12,12 @@ module Spec
 
         let!(:entitlements) do
           {
-              "hybrid_cloud" => {
-                  "is_entitled" => true
-              },
-              "insights"     => {
-                  "is_entitled" => true
-              }
+            "hybrid_cloud" => {
+              "is_entitled" => true
+            },
+            "insights"     => {
+              "is_entitled" => true
+            }
           }
         end
 
