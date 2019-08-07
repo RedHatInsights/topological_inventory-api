@@ -17,6 +17,6 @@ RSpec.describe("v1.0 - ContainerProject") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "container_projects",
-    ["tags", "container_groups", "container_templates"],
+    ["tags", "container_groups", "container_templates"]
   )
 end

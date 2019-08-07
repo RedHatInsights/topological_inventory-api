@@ -22,6 +22,6 @@ RSpec.describe("v1.0 - Container") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "containers",
-    [],
+    []
   )
 end

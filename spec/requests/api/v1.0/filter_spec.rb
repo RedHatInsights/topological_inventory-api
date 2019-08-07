@@ -7,7 +7,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       attrs.merge(
         :state  => "pending",
         :status => "ok",
-        :tenant => tenant,
+        :tenant => tenant
       )
     )
   end
@@ -19,7 +19,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       :parsed_body => {
         "errors" => errors.collect { |e| {"detail" => e, "status" => 400} }
       },
-      :status      => 400,
+      :status      => 400
     )
   end
 
@@ -28,7 +28,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
 
     expect(response).to have_attributes(
       :parsed_body => paginated_response(results.length, results.collect { |i| a_hash_including("id" => i.id.to_s) }),
-      :status      => 200,
+      :status      => 200
     )
   end
 

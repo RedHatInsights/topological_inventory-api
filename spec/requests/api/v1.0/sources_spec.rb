@@ -24,6 +24,6 @@ RSpec.describe("v1.0 - Sources") do
       "vms",
       "volume_types",
       "volumes",
-    ],
+    ]
   )
 end

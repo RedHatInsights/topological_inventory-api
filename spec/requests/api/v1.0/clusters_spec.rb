@@ -17,6 +17,6 @@ RSpec.describe("v1.0 - Cluster") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "clusters",
-    ["hosts"],
+    ["hosts"]
   )
 end

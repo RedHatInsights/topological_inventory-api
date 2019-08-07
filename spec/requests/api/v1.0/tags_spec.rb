@@ -16,6 +16,6 @@ RSpec.describe("v1.0 - ContainerGroup") do
     "v1x0_test_index_and_subcollections",
     "tags",
     ["container_groups", "container_images", "container_nodes", "container_projects", "container_templates",
-     "service_offerings", "vms"],
+     "service_offerings", "vms"]
   )
 end

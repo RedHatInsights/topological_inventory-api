@@ -21,6 +21,6 @@ RSpec.describe("v1.0 - ContainerGroup") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "container_groups",
-    ["tags", "containers"],
+    ["tags", "containers"]
   )
 end

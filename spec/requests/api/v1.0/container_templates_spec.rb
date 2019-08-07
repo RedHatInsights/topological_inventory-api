@@ -20,6 +20,6 @@ RSpec.describe("v1.0 - ContainerTemplate") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "container_templates",
-    ["tags"],
+    ["tags"]
   )
 end

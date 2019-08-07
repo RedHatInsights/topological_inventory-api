@@ -23,7 +23,7 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "service_offering_icons",
-    [],
+    []
   )
 
   describe("/api/v1.0/service_offering_icons/:id/icon_data") do
@@ -57,7 +57,7 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
 
         expect(response).to have_attributes(
           :status      => 404,
-          :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]},
+          :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]}
                             )
       end
 
@@ -66,7 +66,7 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
 
         expect(response).to have_attributes(
           :status      => 404,
-          :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]},
+          :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]}
                             )
       end
     end

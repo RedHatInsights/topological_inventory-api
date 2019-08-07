@@ -19,6 +19,6 @@ RSpec.describe("v1.0 - VolumeAttachment") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "volume_attachments",
-    [],
+    []
   )
 end

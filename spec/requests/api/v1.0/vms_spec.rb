@@ -17,6 +17,6 @@ RSpec.describe("v1.0 - Vm") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "vms",
-    ["tags", "volume_attachments", "volumes"],
+    ["tags", "volume_attachments", "volumes"]
   )
 end

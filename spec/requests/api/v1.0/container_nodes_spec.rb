@@ -17,6 +17,6 @@ RSpec.describe("v1.0 - ContainerNode") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "container_nodes",
-    ["tags", "container_groups"],
+    ["tags", "container_groups"]
   )
 end

@@ -8,8 +8,8 @@ RSpec.describe("v1.0 - ServiceInstance") do
   let(:source_region) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid") }
   let(:subscription) { Subscription.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }
   let(:source_region) { SourceRegion.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }
-  let(:service_offering) { ServiceOffering.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_region_id" => source_region.id, "subscription_id" => subscription.id, "source_ref" => SecureRandom.uuid,) }
-  let(:service_plan) { ServicePlan.create!("source_id" => source.id, "tenant_id" => tenant.id, "service_offering_id" => service_offering.id, "source_region_id" => source_region.id, "subscription_id" => subscription.id, "source_ref" => SecureRandom.uuid,) }
+  let(:service_offering) { ServiceOffering.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_region_id" => source_region.id, "subscription_id" => subscription.id, "source_ref" => SecureRandom.uuid) }
+  let(:service_plan) { ServicePlan.create!("source_id" => source.id, "tenant_id" => tenant.id, "service_offering_id" => service_offering.id, "source_region_id" => source_region.id, "subscription_id" => subscription.id, "source_ref" => SecureRandom.uuid) }
 
   let(:attributes) do
     {
@@ -26,6 +26,6 @@ RSpec.describe("v1.0 - ServiceInstance") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "service_instances",
-    [],
+    []
   )
 end

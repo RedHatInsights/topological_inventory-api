@@ -17,6 +17,6 @@ RSpec.describe("v1.0 - Task") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "tasks",
-    [],
+    []
   )
 end

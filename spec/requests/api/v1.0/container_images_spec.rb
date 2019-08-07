@@ -17,6 +17,6 @@ RSpec.describe("v1.0 - ContainerImage") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "container_images",
-    ["tags"],
+    ["tags"]
   )
 end
