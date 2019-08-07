@@ -42,9 +42,9 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
         get(subcollection_path(instance.id), :headers => headers)
 
         expect(response).to have_attributes(
-                              :status       => 200,
-                              :parsed_body  => data,
-                              :content_type => "image/svg+xml"
+          :status       => 200,
+          :parsed_body  => data,
+          :content_type => "image/svg+xml"
                               )
       end
 
@@ -56,8 +56,8 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
         get(subcollection_path(missing_id), :headers => headers)
 
         expect(response).to have_attributes(
-                              :status      => 404,
-                              :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]},
+          :status      => 404,
+          :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]},
                             )
       end
 
@@ -65,8 +65,8 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
         get(subcollection_path("non_numeric_id"), :headers => headers)
 
         expect(response).to have_attributes(
-                              :status      => 404,
-                              :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]},
+          :status      => 404,
+          :parsed_body => {"errors"=>[{"detail" => "Record not found", "status" => 404}]},
                             )
       end
     end

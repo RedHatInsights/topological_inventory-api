@@ -7,8 +7,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         get(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
-                              :status      => 200,
-                              :parsed_body => paginated_response(0, [])
+          :status      => 200,
+          :parsed_body => paginated_response(0, [])
                             )
       end
 
@@ -18,8 +18,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         get(collection_path, :headers => headers)
 
         expect(response).to have_attributes(
-                              :status      => 200,
-                              :parsed_body => paginated_response(1, [a_hash_including(attributes.except("tenant_id"))])
+          :status      => 200,
+          :parsed_body => paginated_response(1, [a_hash_including(attributes.except("tenant_id"))])
                             )
       end
     end
@@ -37,8 +37,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         get(instance_path(instance.id), :headers => headers)
 
         expect(response).to have_attributes(
-                              :status      => 200,
-                              :parsed_body => a_hash_including(attributes.merge("id" => instance.id.to_s).except("tenant_id"))
+          :status      => 200,
+          :parsed_body => a_hash_including(attributes.merge("id" => instance.id.to_s).except("tenant_id"))
                             )
       end
 
@@ -49,8 +49,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         get(instance_path(missing_id), :headers => headers)
 
         expect(response).to have_attributes(
-                              :status      => 404,
-                              :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
+          :status      => 404,
+          :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
                             )
       end
 
@@ -58,8 +58,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         get(instance_path("non_numeric_id"), :headers => headers)
 
         expect(response).to have_attributes(
-                              :status      => 404,
-                              :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
+          :status      => 404,
+          :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
                             )
       end
     end
@@ -81,8 +81,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
             get(subcollection_path(instance.id), :headers => headers)
 
             expect(response).to have_attributes(
-                                  :status      => 200,
-                                  :parsed_body => paginated_response(0, [])
+              :status      => 200,
+              :parsed_body => paginated_response(0, [])
                                 )
           end
 
@@ -94,8 +94,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
             get(subcollection_path(missing_id), :headers => headers)
 
             expect(response).to have_attributes(
-                                  :status      => 404,
-                                  :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
+              :status      => 404,
+              :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
                                 )
           end
 
@@ -103,8 +103,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
             get(subcollection_path("non_numeric_id"), :headers => headers)
 
             expect(response).to have_attributes(
-                                  :status      => 404,
-                                  :parsed_body => {"errors" => [{"detail" => /Record not found/, "status" => 404}]}
+              :status      => 404,
+              :parsed_body => {"errors" => [{"detail" => /Record not found/, "status" => 404}]}
                                 )
           end
         end

@@ -23,7 +23,7 @@ module Spec
 
         let!(:identity_with_entitlements) do
           Base64.encode64(
-              {'identity' => {'account_number' => external_tenant}, :entitlements => entitlements}.to_json
+            {'identity' => {'account_number' => external_tenant}, :entitlements => entitlements}.to_json
           )
         end
       end
