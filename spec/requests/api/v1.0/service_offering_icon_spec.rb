@@ -13,10 +13,10 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
 
   let(:attributes) do
     {
-      "source_id"            => source.id.to_s,
-      "tenant_id"            => tenant.id.to_s,
-      "source_ref"           => SecureRandom.uuid,
-      "data"                 => data
+      "source_id"  => source.id.to_s,
+      "tenant_id"  => tenant.id.to_s,
+      "source_ref" => SecureRandom.uuid,
+      "data"       => data
     }
   end
 

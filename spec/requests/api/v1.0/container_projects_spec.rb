@@ -8,9 +8,9 @@ RSpec.describe("v1.0 - ContainerProject") do
 
   let(:attributes) do
     {
-      "source_id"            => source.id.to_s,
-      "tenant_id"            => tenant.id.to_s,
-      "source_ref"           => SecureRandom.uuid
+      "source_id"  => source.id.to_s,
+      "tenant_id"  => tenant.id.to_s,
+      "source_ref" => SecureRandom.uuid
     }
   end
 

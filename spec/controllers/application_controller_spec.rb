@@ -72,10 +72,10 @@ RSpec.describe ApplicationController, :type => :request do
   context "with entitlement" do
     let(:entitlements) do
       {
-        "hybrid_cloud"     => {
+        "hybrid_cloud" => {
             "is_entitled" => true
         },
-        "insights"         => {
+        "insights"     => {
             "is_entitled" => true
         }
       }

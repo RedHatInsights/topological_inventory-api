@@ -7,10 +7,10 @@ RSpec.describe("v1.0 - Task") do
 
   let(:attributes) do
     {
-      "name"               => "name",
-      "state"              => "pending",
-      "status"             => "ok",
-      "tenant_id"          => tenant.id.to_s
+      "name"      => "name",
+      "state"     => "pending",
+      "status"    => "ok",
+      "tenant_id" => tenant.id.to_s
     }
   end
 

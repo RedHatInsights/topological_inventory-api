@@ -1,8 +1,8 @@
 def paginated_response(count, data)
   {
     "meta"  => {
-      "count" => count,
-      "limit" => kind_of(Integer),
+      "count"  => count,
+      "limit"  => kind_of(Integer),
       "offset" => kind_of(Integer)
     },
     "links" => a_hash_including(

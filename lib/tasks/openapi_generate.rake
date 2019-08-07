@@ -374,7 +374,7 @@ class OpenapiGenerator
     }
 
     schemas["CollectionLinks"] = {
-      "type" => "object",
+      "type"       => "object",
       "properties" => {
         "first" => {
           "type" => "string"
@@ -407,14 +407,14 @@ class OpenapiGenerator
     }
 
     schemas["OrderParameters"] = {
-      "type" => "object",
+      "type"       => "object",
       "properties" => {
-        "service_parameters" => {
-          "type" => "object",
+        "service_parameters"          => {
+          "type"        => "object",
           "description" => "JSON object with provisioning parameters"
         },
         "provider_control_parameters" => {
-          "type" => "object",
+          "type"        => "object",
           "description" => "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
         }
       }
