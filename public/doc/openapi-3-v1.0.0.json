@@ -6996,6 +6996,9 @@
           "id": {
             "$ref": "#/components/schemas/ID"
           },
+          "refresh_status": {
+            "type": "string"
+          },
           "uid": {
             "readOnly": true,
             "title": "Unique ID of the inventory source installation",

@@ -177,6 +177,7 @@ Rails.application.routes.draw do
     routing_helper.redirect_major_version("v1.0", "internal", :via => [:get])
 
     namespace :v1x0, :path => "v1.0" do
+      resources :sources, :only => [:update]
       resources :tenants, :only => [:index, :show]
     end
   end
