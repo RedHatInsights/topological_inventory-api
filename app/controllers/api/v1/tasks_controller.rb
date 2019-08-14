@@ -15,6 +15,17 @@ module Api
 
         head :no_content
       end
+
+      private
+
+      def params_for_update
+        permitted = api_doc_definition.all_attributes - api_doc_definition.read_only_attributes
+        if body_params['context'].present?
+          permitted.delete('context')
+          permitted << {'context'=>{}}
+        end
+        body_params.permit(*permitted)
+      end
     end
   end
 end

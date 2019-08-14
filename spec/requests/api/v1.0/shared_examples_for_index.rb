@@ -67,8 +67,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
 
   describe("subcollections") do
     subcollections.each do |subcollection|
-      describe("/api/v1.0/#{primary_collection}/:id/#{subcollection}") do
-        let(:subcollection) { subcollection }
+      describe("/api/v1.0/#{primary_collection}/:id/#{subcollection.to_s}") do
+        let(:subcollection) { subcollection.to_s }
 
         def subcollection_path(id)
           File.join(collection_path, id.to_s, subcollection)

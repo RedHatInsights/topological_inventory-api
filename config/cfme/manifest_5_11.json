@@ -14,7 +14,7 @@
         "name": null
       }
     },
-    "ManageIQ::Providers::OpenStack::CloudManager": {
+    "ManageIQ::Providers::Openstack::CloudManager": {
       "id": null,
       "name": null,
       "type": null,
@@ -160,7 +160,8 @@
         "ha_enabled": null,
         "drs_enabled": null,
         "effective_cpu": null,
-        "effective_memory": null
+        "effective_memory": null,
+        "v_parent_datacenter": null
       },
       "hosts": {
         "id": null,
@@ -300,7 +301,8 @@
         "ha_enabled": null,
         "drs_enabled": null,
         "effective_cpu": null,
-        "effective_memory": null
+        "effective_memory": null,
+        "v_parent_datacenter": null
       },
       "hosts": {
         "id": null,

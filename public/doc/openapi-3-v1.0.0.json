@@ -1059,6 +1059,342 @@
         }
       }
     },
+    "/ipaddresses": {
+      "get": {
+        "summary": "List Ipaddresses",
+        "operationId": "listIpaddresses",
+        "description": "Returns an array of Ipaddress objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ipaddresses collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ipaddresses/{id}": {
+      "get": {
+        "summary": "Show an existing Ipaddress",
+        "operationId": "showIpaddress",
+        "description": "Returns a Ipaddress object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ipaddress info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ipaddress"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/ipaddresses/{id}/tags": {
+      "get": {
+        "summary": "List Tags for Ipaddress",
+        "operationId": "listIpaddressTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/network_adapters": {
+      "get": {
+        "summary": "List NetworkAdapters",
+        "operationId": "listNetworkAdapters",
+        "description": "Returns an array of NetworkAdapter objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NetworkAdapters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/network_adapters/{id}": {
+      "get": {
+        "summary": "Show an existing NetworkAdapter",
+        "operationId": "showNetworkAdapter",
+        "description": "Returns a NetworkAdapter object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NetworkAdapter info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkAdapter"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/network_adapters/{id}/ipaddresses": {
+      "get": {
+        "summary": "List Ipaddresses for NetworkAdapter",
+        "operationId": "listNetworkAdapterIpaddresses",
+        "description": "Returns an array of Ipaddress objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ipaddresses collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/network_adapters/{id}/tags": {
+      "get": {
+        "summary": "List Tags for NetworkAdapter",
+        "operationId": "listNetworkAdapterTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/networks": {
+      "get": {
+        "summary": "List Networks",
+        "operationId": "listNetworks",
+        "description": "Returns an array of Network objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Networks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/networks/{id}": {
+      "get": {
+        "summary": "Show an existing Network",
+        "operationId": "showNetwork",
+        "description": "Returns a Network object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Network info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Network"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/networks/{id}/subnets": {
+      "get": {
+        "summary": "List Subnets for Network",
+        "operationId": "listNetworkSubnets",
+        "description": "Returns an array of Subnet objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subnets collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/networks/{id}/tags": {
+      "get": {
+        "summary": "List Tags for Network",
+        "operationId": "listNetworkTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/openapi.json": {
       "get": {
         "summary": "Return this API document in JSON format",
@@ -1123,6 +1459,360 @@
           },
           "404": {
             "description": "Not found"
+          }
+        }
+      }
+    },
+    "/orchestration_stacks/{id}/ipaddresses": {
+      "get": {
+        "summary": "List Ipaddresses for OrchestrationStack",
+        "operationId": "listOrchestrationStackIpaddresses",
+        "description": "Returns an array of Ipaddress objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ipaddresses collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orchestration_stacks/{id}/network_adapters": {
+      "get": {
+        "summary": "List NetworkAdapters for OrchestrationStack",
+        "operationId": "listOrchestrationStackNetworkAdapters",
+        "description": "Returns an array of NetworkAdapter objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NetworkAdapters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orchestration_stacks/{id}/networks": {
+      "get": {
+        "summary": "List Networks for OrchestrationStack",
+        "operationId": "listOrchestrationStackNetworks",
+        "description": "Returns an array of Network objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Networks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orchestration_stacks/{id}/security_groups": {
+      "get": {
+        "summary": "List SecurityGroups for OrchestrationStack",
+        "operationId": "listOrchestrationStackSecurityGroups",
+        "description": "Returns an array of SecurityGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SecurityGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orchestration_stacks/{id}/subnets": {
+      "get": {
+        "summary": "List Subnets for OrchestrationStack",
+        "operationId": "listOrchestrationStackSubnets",
+        "description": "Returns an array of Subnet objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subnets collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orchestration_stacks/{id}/vms": {
+      "get": {
+        "summary": "List Vms for OrchestrationStack",
+        "operationId": "listOrchestrationStackVms",
+        "description": "Returns an array of Vm objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vms collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orchestration_stacks/{id}/volumes": {
+      "get": {
+        "summary": "List Volumes for OrchestrationStack",
+        "operationId": "listOrchestrationStackVolumes",
+        "description": "Returns an array of Volume objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volumes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security_groups": {
+      "get": {
+        "summary": "List SecurityGroups",
+        "operationId": "listSecurityGroups",
+        "description": "Returns an array of SecurityGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SecurityGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security_groups/{id}": {
+      "get": {
+        "summary": "Show an existing SecurityGroup",
+        "operationId": "showSecurityGroup",
+        "description": "Returns a SecurityGroup object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SecurityGroup info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityGroup"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/security_groups/{id}/tags": {
+      "get": {
+        "summary": "List Tags for SecurityGroup",
+        "operationId": "listSecurityGroupTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security_groups/{id}/vms": {
+      "get": {
+        "summary": "List Vms for SecurityGroup",
+        "operationId": "listSecurityGroupVms",
+        "description": "Returns an array of Vm objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vms collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
           }
         }
       }
@@ -1558,6 +2248,426 @@
         }
       }
     },
+    "/source_regions": {
+      "get": {
+        "summary": "List SourceRegions",
+        "operationId": "listSourceRegions",
+        "description": "Returns an array of SourceRegion objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SourceRegions collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceRegionsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}": {
+      "get": {
+        "summary": "Show an existing SourceRegion",
+        "operationId": "showSourceRegion",
+        "description": "Returns a SourceRegion object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SourceRegion info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceRegion"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/ipaddresses": {
+      "get": {
+        "summary": "List Ipaddresses for SourceRegion",
+        "operationId": "listSourceRegionIpaddresses",
+        "description": "Returns an array of Ipaddress objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ipaddresses collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/network_adapters": {
+      "get": {
+        "summary": "List NetworkAdapters for SourceRegion",
+        "operationId": "listSourceRegionNetworkAdapters",
+        "description": "Returns an array of NetworkAdapter objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NetworkAdapters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/networks": {
+      "get": {
+        "summary": "List Networks for SourceRegion",
+        "operationId": "listSourceRegionNetworks",
+        "description": "Returns an array of Network objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Networks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/orchestration_stacks": {
+      "get": {
+        "summary": "List OrchestrationStacks for SourceRegion",
+        "operationId": "listSourceRegionOrchestrationStacks",
+        "description": "Returns an array of OrchestrationStack objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OrchestrationStacks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrchestrationStacksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/security_groups": {
+      "get": {
+        "summary": "List SecurityGroups for SourceRegion",
+        "operationId": "listSourceRegionSecurityGroups",
+        "description": "Returns an array of SecurityGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SecurityGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/service_instances": {
+      "get": {
+        "summary": "List ServiceInstances for SourceRegion",
+        "operationId": "listSourceRegionServiceInstances",
+        "description": "Returns an array of ServiceInstance objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstances collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/service_offerings": {
+      "get": {
+        "summary": "List ServiceOfferings for SourceRegion",
+        "operationId": "listSourceRegionServiceOfferings",
+        "description": "Returns an array of ServiceOffering objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferings collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/service_plans": {
+      "get": {
+        "summary": "List ServicePlans for SourceRegion",
+        "operationId": "listSourceRegionServicePlans",
+        "description": "Returns an array of ServicePlan objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServicePlans collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlansCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/subnets": {
+      "get": {
+        "summary": "List Subnets for SourceRegion",
+        "operationId": "listSourceRegionSubnets",
+        "description": "Returns an array of Subnet objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subnets collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/vms": {
+      "get": {
+        "summary": "List Vms for SourceRegion",
+        "operationId": "listSourceRegionVms",
+        "description": "Returns an array of Vm objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vms collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/source_regions/{id}/volumes": {
+      "get": {
+        "summary": "List Volumes for SourceRegion",
+        "operationId": "listSourceRegionVolumes",
+        "description": "Returns an array of Volume objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volumes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sources": {
       "get": {
         "summary": "List Sources",
@@ -1945,6 +3055,105 @@
         }
       }
     },
+    "/sources/{id}/ipaddresses": {
+      "get": {
+        "summary": "List Ipaddresses for Source",
+        "operationId": "listSourceIpaddresses",
+        "description": "Returns an array of Ipaddress objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ipaddresses collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/network_adapters": {
+      "get": {
+        "summary": "List NetworkAdapters for Source",
+        "operationId": "listSourceNetworkAdapters",
+        "description": "Returns an array of NetworkAdapter objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NetworkAdapters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/networks": {
+      "get": {
+        "summary": "List Networks for Source",
+        "operationId": "listSourceNetworks",
+        "description": "Returns an array of Network objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Networks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sources/{id}/orchestration_stacks": {
       "get": {
         "summary": "List OrchestrationStacks for Source",
@@ -1971,6 +3180,39 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/OrchestrationStacksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/security_groups": {
+      "get": {
+        "summary": "List SecurityGroups for Source",
+        "operationId": "listSourceSecurityGroups",
+        "description": "Returns an array of SecurityGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SecurityGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityGroupsCollection"
                 }
               }
             }
@@ -2077,6 +3319,105 @@
         }
       }
     },
+    "/sources/{id}/source_regions": {
+      "get": {
+        "summary": "List SourceRegions for Source",
+        "operationId": "listSourceSourceRegions",
+        "description": "Returns an array of SourceRegion objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SourceRegions collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceRegionsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/subnets": {
+      "get": {
+        "summary": "List Subnets for Source",
+        "operationId": "listSourceSubnets",
+        "description": "Returns an array of Subnet objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subnets collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/subscriptions": {
+      "get": {
+        "summary": "List Subscriptions for Source",
+        "operationId": "listSourceSubscriptions",
+        "description": "Returns an array of Subscription objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscriptions collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sources/{id}/vms": {
       "get": {
         "summary": "List Vms for Source",
@@ -2147,6 +3488,582 @@
       "get": {
         "summary": "List Volumes for Source",
         "operationId": "listSourceVolumes",
+        "description": "Returns an array of Volume objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volumes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subnets": {
+      "get": {
+        "summary": "List Subnets",
+        "operationId": "listSubnets",
+        "description": "Returns an array of Subnet objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subnets collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subnets/{id}": {
+      "get": {
+        "summary": "Show an existing Subnet",
+        "operationId": "showSubnet",
+        "description": "Returns a Subnet object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subnet info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subnet"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/subnets/{id}/ipaddresses": {
+      "get": {
+        "summary": "List Ipaddresses for Subnet",
+        "operationId": "listSubnetIpaddresses",
+        "description": "Returns an array of Ipaddress objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ipaddresses collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subnets/{id}/network_adapters": {
+      "get": {
+        "summary": "List NetworkAdapters for Subnet",
+        "operationId": "listSubnetNetworkAdapters",
+        "description": "Returns an array of NetworkAdapter objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NetworkAdapters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subnets/{id}/tags": {
+      "get": {
+        "summary": "List Tags for Subnet",
+        "operationId": "listSubnetTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions": {
+      "get": {
+        "summary": "List Subscriptions",
+        "operationId": "listSubscriptions",
+        "description": "Returns an array of Subscription objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscriptions collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}": {
+      "get": {
+        "summary": "Show an existing Subscription",
+        "operationId": "showSubscription",
+        "description": "Returns a Subscription object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subscription"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/ipaddresses": {
+      "get": {
+        "summary": "List Ipaddresses for Subscription",
+        "operationId": "listSubscriptionIpaddresses",
+        "description": "Returns an array of Ipaddress objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ipaddresses collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/network_adapters": {
+      "get": {
+        "summary": "List NetworkAdapters for Subscription",
+        "operationId": "listSubscriptionNetworkAdapters",
+        "description": "Returns an array of NetworkAdapter objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NetworkAdapters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/networks": {
+      "get": {
+        "summary": "List Networks for Subscription",
+        "operationId": "listSubscriptionNetworks",
+        "description": "Returns an array of Network objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Networks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/orchestration_stacks": {
+      "get": {
+        "summary": "List OrchestrationStacks for Subscription",
+        "operationId": "listSubscriptionOrchestrationStacks",
+        "description": "Returns an array of OrchestrationStack objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OrchestrationStacks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrchestrationStacksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/security_groups": {
+      "get": {
+        "summary": "List SecurityGroups for Subscription",
+        "operationId": "listSubscriptionSecurityGroups",
+        "description": "Returns an array of SecurityGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SecurityGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/service_instances": {
+      "get": {
+        "summary": "List ServiceInstances for Subscription",
+        "operationId": "listSubscriptionServiceInstances",
+        "description": "Returns an array of ServiceInstance objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstances collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/service_offerings": {
+      "get": {
+        "summary": "List ServiceOfferings for Subscription",
+        "operationId": "listSubscriptionServiceOfferings",
+        "description": "Returns an array of ServiceOffering objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferings collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/service_plans": {
+      "get": {
+        "summary": "List ServicePlans for Subscription",
+        "operationId": "listSubscriptionServicePlans",
+        "description": "Returns an array of ServicePlan objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServicePlans collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePlansCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/subnets": {
+      "get": {
+        "summary": "List Subnets for Subscription",
+        "operationId": "listSubscriptionSubnets",
+        "description": "Returns an array of Subnet objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subnets collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/vms": {
+      "get": {
+        "summary": "List Vms for Subscription",
+        "operationId": "listSubscriptionVms",
+        "description": "Returns an array of Vm objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vms collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{id}/volumes": {
+      "get": {
+        "summary": "List Volumes for Subscription",
+        "operationId": "listSubscriptionVolumes",
         "description": "Returns an array of Volume objects",
         "parameters": [
           {
@@ -2398,6 +4315,138 @@
         }
       }
     },
+    "/tags/{id}/ipaddresses": {
+      "get": {
+        "summary": "List Ipaddresses for Tag",
+        "operationId": "listTagIpaddresses",
+        "description": "Returns an array of Ipaddress objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ipaddresses collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/network_adapters": {
+      "get": {
+        "summary": "List NetworkAdapters for Tag",
+        "operationId": "listTagNetworkAdapters",
+        "description": "Returns an array of NetworkAdapter objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NetworkAdapters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/networks": {
+      "get": {
+        "summary": "List Networks for Tag",
+        "operationId": "listTagNetworks",
+        "description": "Returns an array of Network objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Networks collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/security_groups": {
+      "get": {
+        "summary": "List SecurityGroups for Tag",
+        "operationId": "listTagSecurityGroups",
+        "description": "Returns an array of SecurityGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SecurityGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/tags/{id}/service_offerings": {
       "get": {
         "summary": "List ServiceOfferings for Tag",
@@ -2424,6 +4473,39 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}/subnets": {
+      "get": {
+        "summary": "List Subnets for Tag",
+        "operationId": "listTagSubnets",
+        "description": "Returns an array of Subnet objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subnets collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubnetsCollection"
                 }
               }
             }
@@ -2606,6 +4688,72 @@
           },
           "404": {
             "description": "Not found"
+          }
+        }
+      }
+    },
+    "/vms/{id}/network_adapters": {
+      "get": {
+        "summary": "List NetworkAdapters for Vm",
+        "operationId": "listVmNetworkAdapters",
+        "description": "Returns an array of NetworkAdapter objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NetworkAdapters collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vms/{id}/security_groups": {
+      "get": {
+        "summary": "List SecurityGroups for Vm",
+        "operationId": "listVmSecurityGroups",
+        "description": "Returns an array of SecurityGroup objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SecurityGroups collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
           }
         }
       }
@@ -2823,6 +4971,39 @@
         }
       }
     },
+    "/volume_types/{id}/volumes": {
+      "get": {
+        "summary": "List Volumes for VolumeType",
+        "operationId": "listVolumeTypeVolumes",
+        "description": "Returns an array of Volume objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Volumes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/volumes": {
       "get": {
         "summary": "List Volumes",
@@ -2876,6 +5057,39 @@
           },
           "404": {
             "description": "Not found"
+          }
+        }
+      }
+    },
+    "/volumes/{id}/vms": {
+      "get": {
+        "summary": "List Vms for Volume",
+        "operationId": "listVolumeVms",
+        "description": "Returns an array of Vm objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vms collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
           }
         }
       }
@@ -3109,6 +5323,12 @@
         "type": "object",
         "properties": {
           "count": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "limit": {
             "type": "integer"
           }
         }
@@ -3820,7 +6040,7 @@
           },
           "extra": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -3980,6 +6200,249 @@
         "pattern": "^\\d+$",
         "readOnly": true
       },
+      "Ipaddress": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "ipaddress": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "network_adapter_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subnet_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "IpaddressesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Ipaddress"
+            }
+          }
+        }
+      },
+      "Network": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "cidr": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "status": {
+            "type": "string"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "NetworkAdapter": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "device_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "device_type": {
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "NetworkAdaptersCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NetworkAdapter"
+            }
+          }
+        }
+      },
+      "NetworksCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Network"
+            }
+          }
+        }
+      },
       "OrchestrationStack": {
         "type": "object",
         "properties": {
@@ -4012,6 +6475,9 @@
             "title": "Name",
             "type": "string"
           },
+          "parent_orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "readOnly": true,
@@ -4029,6 +6495,12 @@
             "format": "uuid",
             "readOnly": true,
             "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "updated_at": {
             "format": "date-time",
@@ -4067,6 +6539,86 @@
           }
         }
       },
+      "SecurityGroup": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "network_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "SecurityGroupsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SecurityGroup"
+            }
+          }
+        }
+      },
       "ServiceInstance": {
         "type": "object",
         "properties": {
@@ -4087,7 +6639,7 @@
           "extra": {
             "description": "Extra information about this object in JSON format",
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -4197,7 +6749,7 @@
           "extra": {
             "description": "Extra information about this object in JSON format",
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -4358,7 +6910,7 @@
           "extra": {
             "description": "Extra information about this object in JSON format",
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -4444,6 +6996,9 @@
           "id": {
             "$ref": "#/components/schemas/ID"
           },
+          "refresh_status": {
+            "type": "string"
+          },
           "uid": {
             "readOnly": true,
             "title": "Unique ID of the inventory source installation",
@@ -4453,6 +7008,63 @@
             "format": "date-time",
             "readOnly": true,
             "type": "string"
+          }
+        }
+      },
+      "SourceRegion": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "endpoint": {
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "SourceRegionsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SourceRegion"
+            }
           }
         }
       },
@@ -4469,6 +7081,143 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Source"
+            }
+          }
+        }
+      },
+      "Subnet": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "cidr": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "network_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "status": {
+            "type": "string"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "SubnetsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Subnet"
+            }
+          }
+        }
+      },
+      "Subscription": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "SubscriptionsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Subscription"
             }
           }
         }
@@ -4555,7 +7304,7 @@
           "context": {
             "example": "Extra information about this task, e.g. new inventory items created by this task",
             "title": "Context",
-            "type": "string"
+            "type": "object"
           },
           "created_at": {
             "format": "date-time",
@@ -4653,7 +7402,7 @@
           },
           "extra": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "flavor_id": {
             "$ref": "#/components/schemas/ID"
@@ -4721,6 +7470,12 @@
             "readOnly": true,
             "type": "string"
           },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "uid_ems": {
             "description": "Cross-Source Unique Reference",
             "readOnly": true,
@@ -4765,7 +7520,7 @@
           },
           "extra": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"
@@ -4779,6 +7534,9 @@
             "example": "vol-00627bf31217a7bc0",
             "readOnly": true,
             "type": "string"
+          },
+          "orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "size": {
             "description": "Size of the volume in bytes",
@@ -4810,6 +7568,9 @@
             "example": "in-use",
             "readOnly": true,
             "type": "string"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "updated_at": {
             "format": "date-time",
@@ -4887,7 +7648,7 @@
           },
           "extra": {
             "readOnly": true,
-            "type": "string"
+            "type": "object"
           },
           "id": {
             "$ref": "#/components/schemas/ID"

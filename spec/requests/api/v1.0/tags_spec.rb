@@ -1,6 +1,6 @@
 require_relative "shared_examples_for_index"
 
-RSpec.describe("v1.0 - ContainerGroup") do
+RSpec.describe("v1.0 - Tag") do
   include ::Spec::Support::TenantIdentity
 
   let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
@@ -15,7 +15,19 @@ RSpec.describe("v1.0 - ContainerGroup") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "tags",
-    ["container_groups", "container_images", "container_nodes", "container_projects", "container_templates",
-     "service_offerings", "vms"],
+    [
+      :container_groups,
+      :container_images,
+      :container_nodes,
+      :container_projects,
+      :container_templates,
+      :ipaddresses,
+      :network_adapters,
+      :networks,
+      :security_groups,
+      :service_offerings,
+      :subnets,
+      :vms,
+    ],
   )
 end

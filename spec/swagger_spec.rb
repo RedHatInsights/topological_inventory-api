@@ -47,6 +47,7 @@ describe "Swagger stuff" do
         ]
         internal_api_routes = [
           {:path => "/internal/v1/*path",                 :verb => "GET"},
+          {:path => "/internal/v1.0/sources/:id",         :verb => "PATCH"},
           {:path => "/internal/v1.0/tenants",             :verb => "GET"},
           {:path => "/internal/v1.0/tenants/:id",         :verb => "GET"},
         ]

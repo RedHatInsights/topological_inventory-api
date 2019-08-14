@@ -47,53 +47,125 @@ Rails.application.routes.draw do
         get "icon_data", :to => "service_offering_icons#icon_data"
       end
       resources :hosts,                   :only => [:index, :show]
+      resources :security_groups,         :only => [:index, :show] do
+        resources :tags, :only => [:index]
+        resources :vms,  :only => [:index]
+      end
+      resources :ipaddresses,             :only => [:index, :show] do
+        resources :tags, :only => [:index]
+      end
+      resources :network_adapters,        :only => [:index, :show] do
+        resources :ipaddresses, :only => [:index]
+        resources :tags,        :only => [:index]
+      end
+      resources :subnets,                 :only => [:index, :show] do
+        resources :ipaddresses,      :only => [:index]
+        resources :network_adapters, :only => [:index]
+        resources :tags,             :only => [:index]
+      end
+      resources :networks,                :only => [:index, :show] do
+        resources :subnets, :only => [:index]
+        resources :tags,    :only => [:index]
+      end
       resources :service_offerings,       :only => [:index, :show] do
         resources :service_instances, :only => [:index]
         resources :service_plans,     :only => [:index]
         resources :tags,              :only => [:index]
       end
-      resources :orchestration_stacks, :only => [:index, :show]
+      resources :subscriptions, :only => [:index, :show] do
+        resources :ipaddresses,           :only => [:index]
+        resources :network_adapters,      :only => [:index]
+        resources :networks,              :only => [:index]
+        resources :orchestration_stacks,  :only => [:index]
+        resources :security_groups,       :only => [:index]
+        resources :service_instances,     :only => [:index]
+        resources :service_offerings,     :only => [:index]
+        resources :service_plans,         :only => [:index]
+        resources :subnets,               :only => [:index]
+        resources :vms,                   :only => [:index]
+        resources :volumes,               :only => [:index]
+      end
+      resources :source_regions, :only => [:index, :show] do
+        resources :ipaddresses,           :only => [:index]
+        resources :network_adapters,      :only => [:index]
+        resources :networks,              :only => [:index]
+        resources :orchestration_stacks,  :only => [:index]
+        resources :security_groups,       :only => [:index]
+        resources :service_instances,     :only => [:index]
+        resources :service_offerings,     :only => [:index]
+        resources :service_plans,         :only => [:index]
+        resources :subnets,               :only => [:index]
+        resources :vms,                   :only => [:index]
+        resources :volumes,               :only => [:index]
+      end
+      resources :orchestration_stacks, :only => [:index, :show] do
+        resources :ipaddresses,       :only => [:index]
+        resources :network_adapters,  :only => [:index]
+        resources :networks,          :only => [:index]
+        resources :security_groups,   :only => [:index]
+        resources :subnets,           :only => [:index]
+        resources :vms,               :only => [:index]
+        resources :volumes,           :only => [:index]
+      end
       resources :service_plans, :only => [:index, :show] do
         post "order", :to => "service_plans#order"
         resources :service_instances, :only => [:index]
       end
       resources :sources,                 :only => [:index, :show] do
-        resources :availabilities,          :only => [:index]
-        resources :clusters,                :only => [:index]
-        resources :containers,              :only => [:index]
-        resources :container_groups,        :only => [:index]
-        resources :container_images,        :only => [:index]
-        resources :container_nodes,         :only => [:index]
-        resources :container_projects,      :only => [:index]
-        resources :container_templates,     :only => [:index]
-        resources :datastores,              :only => [:index]
-        resources :hosts,                   :only => [:index]
-        resources :orchestration_stacks,    :only => [:index]
-        resources :service_instances,       :only => [:index]
-        resources :service_offerings,       :only => [:index]
-        resources :service_plans,           :only => [:index]
-        resources :vms,                     :only => [:index]
-        resources :volume_types,            :only => [:index]
-        resources :volumes,                 :only => [:index]
+        resources :availabilities,       :only => [:index]
+        resources :clusters,             :only => [:index]
+        resources :containers,           :only => [:index]
+        resources :container_groups,     :only => [:index]
+        resources :container_images,     :only => [:index]
+        resources :container_nodes,      :only => [:index]
+        resources :container_projects,   :only => [:index]
+        resources :container_templates,  :only => [:index]
+        resources :datastores,           :only => [:index]
+        resources :hosts,                :only => [:index]
+        resources :ipaddresses,          :only => [:index]
+        resources :network_adapters,     :only => [:index]
+        resources :networks,             :only => [:index]
+        resources :orchestration_stacks, :only => [:index]
+        resources :security_groups,      :only => [:index]
+        resources :service_instances,    :only => [:index]
+        resources :service_offerings,    :only => [:index]
+        resources :service_plans,        :only => [:index]
+        resources :source_regions,       :only => [:index]
+        resources :subnets,              :only => [:index]
+        resources :subscriptions,        :only => [:index]
+        resources :vms,                  :only => [:index]
+        resources :volume_types,         :only => [:index]
+        resources :volumes,              :only => [:index]
       end
       resources :tags, :only => [:index, :show] do
-        resources :container_groups, :only => [:index]
-        resources :container_images, :only => [:index]
-        resources :container_nodes, :only => [:index]
-        resources :container_projects, :only => [:index]
+        resources :container_groups,    :only => [:index]
+        resources :container_images,    :only => [:index]
+        resources :container_nodes,     :only => [:index]
+        resources :container_projects,  :only => [:index]
         resources :container_templates, :only => [:index]
-        resources :service_offerings, :only => [:index]
-        resources :vms, :only => [:index]
+        resources :ipaddresses,         :only => [:index]
+        resources :network_adapters,    :only => [:index]
+        resources :networks,            :only => [:index]
+        resources :security_groups,     :only => [:index]
+        resources :service_offerings,   :only => [:index]
+        resources :subnets,             :only => [:index]
+        resources :vms,                 :only => [:index]
       end
       resources :tasks, :only => [:index, :show, :update]
       resources :vms, :only => [:index, :show] do
+        resources :network_adapters,   :only => [:index]
+        resources :security_groups,    :only => [:index]
+        resources :tags,               :only => [:index]
         resources :volume_attachments, :only => [:index]
         resources :volumes,            :only => [:index]
-        resources :tags, :only => [:index]
       end
       resources :volume_attachments, :only => [:index, :show]
-      resources :volume_types,       :only => [:index, :show]
-      resources :volumes,            :only => [:index, :show]
+      resources :volume_types,       :only => [:index, :show] do
+        resources :volumes, :only => [:index]
+      end
+      resources :volumes,            :only => [:index, :show] do
+        resources :vms, :only => [:index]
+      end
     end
 
     namespace :cfme do
@@ -105,6 +177,7 @@ Rails.application.routes.draw do
     routing_helper.redirect_major_version("v1.0", "internal", :via => [:get])
 
     namespace :v1x0, :path => "v1.0" do
+      resources :sources, :only => [:update]
       resources :tenants, :only => [:index, :show]
     end
   end
