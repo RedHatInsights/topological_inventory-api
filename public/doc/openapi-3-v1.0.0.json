@@ -2016,6 +2016,36 @@
         }
       }
     },
+    "/service_offerings/{id}/order": {
+      "post": {
+        "summary": "Create a new ServiceOffering",
+        "operationId": "createServiceOffering",
+        "description": "Creates a ServiceOffering object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceOffering"
+              }
+            }
+          },
+          "description": "ServiceOffering attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "ServiceOffering creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOffering"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/service_offerings/{id}/service_instances": {
       "get": {
         "summary": "List ServiceInstances for ServiceOffering",
@@ -6396,12 +6426,6 @@
           "source_ref": {
             "type": "string"
           },
-          "source_region_id": {
-            "$ref": "#/components/schemas/ID"
-          },
-          "subscription_id": {
-            "$ref": "#/components/schemas/ID"
-          },
           "updated_at": {
             "format": "date-time",
             "readOnly": true,
@@ -6475,9 +6499,6 @@
             "title": "Name",
             "type": "string"
           },
-          "parent_orchestration_stack_id": {
-            "$ref": "#/components/schemas/ID"
-          },
           "source_created_at": {
             "format": "date-time",
             "readOnly": true,
@@ -6495,12 +6516,6 @@
             "format": "uuid",
             "readOnly": true,
             "type": "string"
-          },
-          "source_region_id": {
-            "$ref": "#/components/schemas/ID"
-          },
-          "subscription_id": {
-            "$ref": "#/components/schemas/ID"
           },
           "updated_at": {
             "format": "date-time",
@@ -6996,9 +7011,6 @@
           "id": {
             "$ref": "#/components/schemas/ID"
           },
-          "refresh_status": {
-            "type": "string"
-          },
           "uid": {
             "readOnly": true,
             "title": "Unique ID of the inventory source installation",
@@ -7470,12 +7482,6 @@
             "readOnly": true,
             "type": "string"
           },
-          "source_region_id": {
-            "$ref": "#/components/schemas/ID"
-          },
-          "subscription_id": {
-            "$ref": "#/components/schemas/ID"
-          },
           "uid_ems": {
             "description": "Cross-Source Unique Reference",
             "readOnly": true,
@@ -7535,9 +7541,6 @@
             "readOnly": true,
             "type": "string"
           },
-          "orchestration_stack_id": {
-            "$ref": "#/components/schemas/ID"
-          },
           "size": {
             "description": "Size of the volume in bytes",
             "example": 8589934592,
@@ -7568,9 +7571,6 @@
             "example": "in-use",
             "readOnly": true,
             "type": "string"
-          },
-          "subscription_id": {
-            "$ref": "#/components/schemas/ID"
           },
           "updated_at": {
             "format": "date-time",
