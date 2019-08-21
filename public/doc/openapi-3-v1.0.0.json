@@ -6426,6 +6426,12 @@
           "source_ref": {
             "type": "string"
           },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "updated_at": {
             "format": "date-time",
             "readOnly": true,
@@ -6499,6 +6505,9 @@
             "title": "Name",
             "type": "string"
           },
+          "parent_orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "readOnly": true,
@@ -6516,6 +6525,12 @@
             "format": "uuid",
             "readOnly": true,
             "type": "string"
+          },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "updated_at": {
             "format": "date-time",
@@ -7011,6 +7026,9 @@
           "id": {
             "$ref": "#/components/schemas/ID"
           },
+          "refresh_status": {
+            "type": "string"
+          },
           "uid": {
             "readOnly": true,
             "title": "Unique ID of the inventory source installation",
@@ -7482,6 +7500,12 @@
             "readOnly": true,
             "type": "string"
           },
+          "source_region_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "uid_ems": {
             "description": "Cross-Source Unique Reference",
             "readOnly": true,
@@ -7541,6 +7565,9 @@
             "readOnly": true,
             "type": "string"
           },
+          "orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "size": {
             "description": "Size of the volume in bytes",
             "example": 8589934592,
@@ -7571,6 +7598,9 @@
             "example": "in-use",
             "readOnly": true,
             "type": "string"
+          },
+          "subscription_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "updated_at": {
             "format": "date-time",
