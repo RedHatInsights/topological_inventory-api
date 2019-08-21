@@ -2018,30 +2018,43 @@
     },
     "/service_offerings/{id}/order": {
       "post": {
-        "summary": "Create a new ServiceOffering",
-        "operationId": "createServiceOffering",
-        "description": "Creates a ServiceOffering object",
+        "summary": "Order an existing ServiceOffering",
+        "operationId": "orderServiceOffering",
+        "description": "Returns a Task id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServiceOffering"
+                "$ref": "#/components/schemas/OrderParameters"
               }
             }
           },
-          "description": "ServiceOffering attributes to create",
+          "description": "Order parameters defining the service and provider control",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "ServiceOffering creation successful",
+          "200": {
+            "description": "Returns a task ID for the order",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ServiceOffering"
+                  "type": "object",
+                  "properties": {
+                    "task_id": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
+          },
+          "400": {
+            "description": "BadRequest"
           }
         }
       }
