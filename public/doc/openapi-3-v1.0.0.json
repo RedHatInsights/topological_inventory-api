@@ -2016,6 +2016,49 @@
         }
       }
     },
+    "/service_offerings/{id}/order": {
+      "post": {
+        "summary": "Order an existing ServiceOffering",
+        "operationId": "orderServiceOffering",
+        "description": "Returns a Task id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderParameters"
+              }
+            }
+          },
+          "description": "Order parameters defining the service and provider control",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns a task ID for the order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "task_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        }
+      }
+    },
     "/service_offerings/{id}/service_instances": {
       "get": {
         "summary": "List ServiceInstances for ServiceOffering",

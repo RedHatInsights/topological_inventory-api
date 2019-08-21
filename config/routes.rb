@@ -68,6 +68,7 @@ Rails.application.routes.draw do
         resources :tags,    :only => [:index]
       end
       resources :service_offerings,       :only => [:index, :show] do
+        post "order", :to => "service_offerings#order"
         resources :service_instances, :only => [:index]
         resources :service_plans,     :only => [:index]
         resources :tags,              :only => [:index]
