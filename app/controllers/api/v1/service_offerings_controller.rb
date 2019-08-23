@@ -30,13 +30,14 @@ module Api
       def params_for_order
         @params_for_order ||= params.permit(
           :service_offering_id,
+          :service_plan_id,
           :service_parameters          => {},
           :provider_control_parameters => {}
         ).to_h
       end
 
       def payload_for_order(task, service_offering)
-        {
+        payload = {
           :request_context => ManageIQ::API::Common::Request.current_forwardable,
           :params          => {
             :order_params        => params_for_order,
@@ -44,6 +45,8 @@ module Api
             :task_id             => task.id.to_s,
           }
         }
+        payload[:params][:service_plan_id] = params_for_order[:service_plan_id].to_s if params_for_order[:service_plan_id].present?
+        payload
       end
     end
   end
