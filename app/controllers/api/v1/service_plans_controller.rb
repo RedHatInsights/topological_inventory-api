@@ -5,6 +5,7 @@ module Api
     class ServicePlansController < ApplicationController
       include Api::V1::Mixins::IndexMixin
       include Api::V1::Mixins::ShowMixin
+      include Api::V1::Mixins::SourcesApiMixin
 
       def order
         service_plan = model.find(params_for_order[:service_plan_id].to_i)
@@ -27,34 +28,6 @@ module Api
       end
 
       private
-
-      def sources_api_client
-        @sources_api_client ||=
-          begin
-            identity = { 'x-rh-identity' => request.headers.fetch('x-rh-identity') }
-            api_client = SourcesApiClient::ApiClient.new
-            api_client.default_headers.merge!(identity)
-            SourcesApiClient::DefaultApi.new(api_client)
-          end
-      end
-
-      def retrieve_source_type(service_plan)
-        source = sources_api_client.show_source(service_plan.source_id.to_s)
-        if source.present?
-          source_type = sources_api_client.show_source_type(source.source_type_id.to_s)
-          if source_type.present?
-            source_type
-          else
-            raise SourcesApiClient::ApiError.new(:message => "Error retrieving Source Type (ID #{source.source_type_id.to_s})")
-          end
-        else
-          raise SourcesApiClient::ApiError.new(:message => "Error retrieving Source (ID #{service_plan.source_id.to_s})")
-        end
-
-      # Add Sources API message prefix
-      rescue SourcesApiClient::ApiError => err
-        raise SourcesApiClient::ApiError.new(:message => "Sources API: #{err.message} (code #{err.code})")
-      end
 
       def params_for_order
         @params_for_order ||= params.permit(
