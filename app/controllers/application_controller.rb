@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   ActionController::Parameters.action_on_unpermitted_parameters = :raise
 
+  include ManageIQ::API::Common::ApplicationControllerMixins::ApiDoc
   include ManageIQ::API::Common::ApplicationControllerMixins::Common
   include ManageIQ::API::Common::ApplicationControllerMixins::RequestPath
 
@@ -46,14 +47,6 @@ class ApplicationController < ActionController::API
         render :json => error_document.to_h, :status => error_document.status
       end
     end
-  end
-
-  private_class_method def self.api_doc_definition
-    @api_doc_definition ||= ::ManageIQ::API::Common::OpenApi::Docs.instance[api_version[1..-1].sub(/x/, ".")].definitions[model.name]
-  end
-
-  private_class_method def self.api_version
-    @api_version ||= name.split("::")[1].downcase
   end
 
   def request_is_entitled?(entitlement)
@@ -163,9 +156,6 @@ class ApplicationController < ActionController::API
     body_params.permit(*api_doc_definition.all_attributes - api_doc_definition.read_only_attributes)
   end
 
-  def api_doc_definition
-    self.class.send(:api_doc_definition)
-  end
 
   def messaging_client
     require "manageiq-messaging"
