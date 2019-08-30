@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   ActionController::Parameters.action_on_unpermitted_parameters = :raise
 
+  include ManageIQ::API::Common::ApplicationControllerMixins::Common
   include ManageIQ::API::Common::ApplicationControllerMixins::RequestPath
 
   around_action :with_current_request
@@ -45,10 +46,6 @@ class ApplicationController < ActionController::API
         render :json => error_document.to_h, :status => error_document.status
       end
     end
-  end
-
-  private_class_method def self.model
-    @model ||= controller_name.classify.constantize
   end
 
   private_class_method def self.api_doc_definition
@@ -179,9 +176,5 @@ class ApplicationController < ActionController::API
       :port     => ENV["QUEUE_PORT"] || "9092",
       :encoding => "json"
     })
-  end
-
-  def model
-    self.class.send(:model)
   end
 end
