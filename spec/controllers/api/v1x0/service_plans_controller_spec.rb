@@ -61,11 +61,11 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
           :payload => {:request_context => headers, :params => {:task_id => kind_of(String), :service_plan_id => service_plan.id.to_s, :order_params => payload}}
         )
 
-        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload, :headers => headers
+        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload.to_json, :headers => headers
       end
 
       it "returns json with the task id" do
-        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload, :headers => headers
+        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload.to_json, :headers => headers
 
         @body = JSON.parse(response.body)
         expect(@body).to have_key("task_id")
@@ -91,7 +91,7 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       end
 
       it "returns an error" do
-        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload, :headers => headers
+        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload.to_json, :headers => headers
 
         @body = JSON.parse(response.body)
         expect(@body).to have_key("errors")
