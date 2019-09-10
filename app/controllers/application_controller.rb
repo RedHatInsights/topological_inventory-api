@@ -1,16 +1,10 @@
 class ApplicationController < ActionController::API
-  ActionController::Parameters.action_on_unpermitted_parameters = :raise
-
   include ManageIQ::API::Common::ApplicationControllerMixins::ApiDoc
   include ManageIQ::API::Common::ApplicationControllerMixins::Common
+  include ManageIQ::API::Common::ApplicationControllerMixins::RequestBodyValidation
   include ManageIQ::API::Common::ApplicationControllerMixins::RequestPath
 
   around_action :with_current_request
-
-  rescue_from ActionController::UnpermittedParameters do |exception|
-    error_document = ManageIQ::API::Common::ErrorDocument.new.add(exception.message)
-    render :json => error_document.to_h, :status => error_document.status
-  end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     error_document = ManageIQ::API::Common::ErrorDocument.new.add(404, "Record not found")
@@ -19,11 +13,6 @@ class ApplicationController < ActionController::API
 
   rescue_from ManageIQ::API::Common::Filter::Error do |exception|
     render :json => exception.error_document.to_h, :status => exception.error_document.status
-  end
-
-  rescue_from TopologicalInventory::Api::BodyParseError do |exception|
-    error_document = ManageIQ::API::Common::ErrorDocument.new.add("Failed to parse POST body, expected JSON")
-    render :json => error_document.to_h, :status => error_document.status
   end
 
   private
@@ -52,16 +41,6 @@ class ApplicationController < ActionController::API
   def request_is_entitled?(entitlement)
     required_entitlements = %i[hybrid_cloud? insights?]
     required_entitlements.any? { |e| entitlement.send(e) }
-  end
-
-  def body_params
-    @body_params ||= begin
-      raw_body = request.body.read
-      parsed_body = JSON.parse(raw_body)
-      ActionController::Parameters.new(parsed_body)
-    rescue JSON::ParserError
-      raise TopologicalInventory::Api::BodyParseError
-    end
   end
 
   def instance_link(instance)
@@ -155,7 +134,6 @@ class ApplicationController < ActionController::API
   def params_for_update
     body_params.permit(*api_doc_definition.all_attributes - api_doc_definition.read_only_attributes)
   end
-
 
   def messaging_client
     require "manageiq-messaging"
