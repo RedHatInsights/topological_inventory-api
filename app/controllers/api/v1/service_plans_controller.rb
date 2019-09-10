@@ -28,19 +28,11 @@ module Api
 
       private
 
-      def params_for_order
-        @params_for_order ||= params.permit(
-          :service_plan_id,
-          :service_parameters          => {},
-          :provider_control_parameters => {}
-        ).to_h
-      end
-
       def payload_for_order(task, service_plan)
         {
           :request_context => ManageIQ::API::Common::Request.current_forwardable,
           :params          => {
-            :order_params    => params_for_order,
+            :order_params    => body_params,
             :service_plan_id => service_plan.id.to_s,
             :task_id         => task.id.to_s,
           }
