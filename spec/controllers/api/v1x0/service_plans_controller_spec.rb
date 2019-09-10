@@ -32,14 +32,13 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       )
     end
 
-    let(:service_parameters) { {"DB_NAME" => "TEST_DB", "namespace" => "TEST_DB_NAMESPACE"} }
-    let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test"} }
+    let(:service_parameters) { {"DB_NAME" => "TEST_DB", "namespace" => "TEST_DB_NAMESPACE", "nested" => {"deep" => "things"}} }
+    let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test", "nested" => {"deep" => "things"}} }
 
     context "with a well formed service plan id" do
       let(:client) { double(:client) }
       let(:payload) do
         {
-          "service_plan_id"             => service_plan.id.to_s,
           "service_parameters"          => service_parameters,
           "provider_control_parameters" => provider_control_parameters
         }
@@ -76,7 +75,6 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       let(:client) { double(:client) }
       let(:payload) do
         {
-          "service_plan_id"             => service_plan.id.to_s,
           "service_parameters"          => service_parameters,
           "provider_control_parameters" => provider_control_parameters
         }
