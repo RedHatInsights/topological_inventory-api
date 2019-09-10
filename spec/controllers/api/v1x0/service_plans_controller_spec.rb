@@ -95,7 +95,7 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
 
         @body = JSON.parse(response.body)
         expect(@body).to have_key("errors")
-        expect(@body['errors'][0]['detail']).to eq(error_message)
+        expect(@body['errors'][0]['detail']).to eq("Error message: the server returns an error")
       end
     end
 
