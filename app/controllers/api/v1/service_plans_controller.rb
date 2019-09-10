@@ -8,10 +8,9 @@ module Api
       include Api::V1::Mixins::SourcesApiMixin
 
       def order
-        service_plan = model.find(params_for_order[:service_plan_id].to_i)
-
-        source_type = retrieve_source_type(service_plan)
-        task = Task.create!(:tenant => service_plan.tenant, :state => "pending", :status => "ok")
+        service_plan = model.find(request_path_parts["primary_collection_id"].to_i)
+        source_type  = retrieve_source_type(service_plan)
+        task         = Task.create!(:tenant => service_plan.tenant, :state => "pending", :status => "ok")
 
         messaging_client.publish_topic(
           :service => "platform.topological-inventory.operations-#{source_type.name}",
