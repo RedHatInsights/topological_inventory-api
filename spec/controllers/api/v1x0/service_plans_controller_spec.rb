@@ -32,14 +32,13 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       )
     end
 
-    let(:service_parameters) { {"DB_NAME" => "TEST_DB", "namespace" => "TEST_DB_NAMESPACE"} }
-    let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test"} }
+    let(:service_parameters) { {"DB_NAME" => "TEST_DB", "namespace" => "TEST_DB_NAMESPACE", "nested" => {"deep" => "things"}} }
+    let(:provider_control_parameters) { {"namespace" => "test_project", "OpenShift_param1" => "test", "nested" => {"deep" => "things"}} }
 
     context "with a well formed service plan id" do
       let(:client) { double(:client) }
       let(:payload) do
         {
-          "service_plan_id"             => service_plan.id.to_s,
           "service_parameters"          => service_parameters,
           "provider_control_parameters" => provider_control_parameters
         }
@@ -61,11 +60,11 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
           :payload => {:request_context => headers, :params => {:task_id => kind_of(String), :service_plan_id => service_plan.id.to_s, :order_params => payload}}
         )
 
-        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload, :headers => headers
+        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload.to_json, :headers => headers
       end
 
       it "returns json with the task id" do
-        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload, :headers => headers
+        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload.to_json, :headers => headers
 
         @body = JSON.parse(response.body)
         expect(@body).to have_key("task_id")
@@ -76,7 +75,6 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       let(:client) { double(:client) }
       let(:payload) do
         {
-          "service_plan_id"             => service_plan.id.to_s,
           "service_parameters"          => service_parameters,
           "provider_control_parameters" => provider_control_parameters
         }
@@ -91,11 +89,11 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       end
 
       it "returns an error" do
-        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload, :headers => headers
+        post "/api/v1.0/service_plans/#{service_plan.id}/order", :params => payload.to_json, :headers => headers
 
         @body = JSON.parse(response.body)
         expect(@body).to have_key("errors")
-        expect(@body['errors'][0]['detail']).to eq(error_message)
+        expect(@body['errors'][0]['detail']).to eq("Error message: the server returns an error")
       end
     end
 
