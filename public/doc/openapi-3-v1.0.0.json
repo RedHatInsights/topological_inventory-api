@@ -6587,6 +6587,7 @@
       },
       "OrderParametersServiceOffering": {
         "type": "object",
+        "additionalProperties": false,
         "properties": {
           "service_parameters": {
             "type": "object",
