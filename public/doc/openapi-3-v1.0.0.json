@@ -5354,10 +5354,10 @@
           "last": {
             "type": "string"
           },
-          "prev": {
+          "next": {
             "type": "string"
           },
-          "next": {
+          "prev": {
             "type": "string"
           }
         }
@@ -5368,10 +5368,10 @@
           "count": {
             "type": "integer"
           },
-          "offset": {
+          "limit": {
             "type": "integer"
           },
-          "limit": {
+          "offset": {
             "type": "integer"
           }
         }
