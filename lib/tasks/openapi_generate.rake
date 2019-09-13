@@ -418,7 +418,7 @@ class OpenapiGenerator
           "type"        => "object",
           "description" => "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
         },
-        "service_plan_id"             => {
+        "service_plan_id" => {
           "$ref" => "##{SCHEMAS_PATH}/ID"
         }
       }
@@ -435,7 +435,7 @@ class OpenapiGenerator
         "provider_control_parameters" => {
           "type"        => "object",
           "description" => "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
-        }
+        },
       }
     }
 
