@@ -191,6 +191,7 @@
       },
       "storages": {
         "id": null,
+        "ems_ref": null,
         "name": null,
         "location": null,
         "store_type": null,
@@ -332,6 +333,7 @@
       },
       "storages": {
         "id": null,
+        "ems_ref": null,
         "name": null,
         "location": null,
         "store_type": null,
