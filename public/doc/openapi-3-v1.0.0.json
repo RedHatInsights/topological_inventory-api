@@ -2030,7 +2030,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderParameters"
+                "$ref": "#/components/schemas/OrderParametersServiceOffering"
               }
             }
           },
@@ -2229,7 +2229,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderParameters"
+                "$ref": "#/components/schemas/OrderParametersServicePlan"
               }
             }
           },
@@ -6569,7 +6569,7 @@
           }
         }
       },
-      "OrderParameters": {
+      "OrderParametersServiceOffering": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -6580,6 +6580,32 @@
           "provider_control_parameters": {
             "type": "object",
             "description": "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
+          },
+          "service_offering_id": {
+            "$ref": "#/components/schemas/ID",
+            "required": true
+          },
+          "service_plan_id": {
+            "$ref": "#/components/schemas/ID",
+            "required": false
+          }
+        }
+      },
+      "OrderParametersServicePlan": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "service_parameters": {
+            "type": "object",
+            "description": "JSON object with provisioning parameters"
+          },
+          "provider_control_parameters": {
+            "type": "object",
+            "description": "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
+          },
+          "service_plan_id": {
+            "$ref": "#/components/schemas/ID",
+            "required": true
           }
         }
       },
