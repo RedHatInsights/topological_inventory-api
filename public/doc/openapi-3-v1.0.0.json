@@ -6581,13 +6581,8 @@
             "type": "object",
             "description": "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
           },
-          "service_offering_id": {
-            "$ref": "#/components/schemas/ID",
-            "required": true
-          },
           "service_plan_id": {
-            "$ref": "#/components/schemas/ID",
-            "required": false
+            "$ref": "#/components/schemas/ID"
           }
         }
       },
@@ -6602,10 +6597,6 @@
           "provider_control_parameters": {
             "type": "object",
             "description": "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
-          },
-          "service_plan_id": {
-            "$ref": "#/components/schemas/ID",
-            "required": true
           }
         }
       },
