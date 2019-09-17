@@ -43,15 +43,6 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
     end
   end
 
-  def openapi_schema_properties(klass_name)
-    model = klass_name.constantize
-    model.columns_hash.map do |key, value|
-      next if GENERATOR_BLACKLIST_ATTRIBUTES.include?(key.to_sym)
-
-      [key, openapi_schema_properties_value(klass_name, model, key, value)]
-    end.compact.sort.to_h
-  end
-
   def openapi_show_image_media_type_description(klass_name, primary_collection)
     primary_collection = nil if primary_collection == klass_name
     {
@@ -132,9 +123,6 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
   end
 end
 
-GENERATOR_BLACKLIST_ATTRIBUTES           = [
-  :resource_timestamp, :resource_timestamps, :resource_timestamps_max, :tenant_id
-].to_set.freeze
 GENERATOR_READ_ONLY_DEFINITIONS = [
   'Container', 'ContainerGroup', 'ContainerImage', 'ContainerNode', 'ContainerProject', 'ContainerTemplate', 'Flavor',
   'OrchestrationStack', 'ServiceInstance', 'ServiceOffering', 'ServiceOfferingIcon', 'ServicePlan', 'Tag', 'Tagging',
