@@ -406,15 +406,34 @@ class OpenapiGenerator
       }
     }
 
-    schemas["OrderParameters"] = {
-      "type" => "object",
-      "properties" => {
-        "service_parameters" => {
-          "type" => "object",
+    schemas["OrderParametersServiceOffering"] = {
+      "type"                 => "object",
+      "additionalProperties" => false,
+      "properties"           => {
+        "service_parameters"          => {
+          "type"        => "object",
           "description" => "JSON object with provisioning parameters"
         },
         "provider_control_parameters" => {
-          "type" => "object",
+          "type"        => "object",
+          "description" => "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
+        },
+        "service_plan_id"             => {
+          "$ref" => "##{SCHEMAS_PATH}/ID"
+        }
+      }
+    }
+
+    schemas["OrderParametersServicePlan"] = {
+      "type"                 => "object",
+      "additionalProperties" => false,
+      "properties"           => {
+        "service_parameters"          => {
+          "type"        => "object",
+          "description" => "JSON object with provisioning parameters"
+        },
+        "provider_control_parameters" => {
+          "type"        => "object",
           "description" => "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
         }
       }
