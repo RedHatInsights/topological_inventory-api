@@ -121,16 +121,32 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
       )
     end
   end
+
+  def generator_read_only_definitions
+    @generator_read_only_definitions ||= [
+      'Container',
+      'ContainerGroup',
+      'ContainerImage',
+      'ContainerNode',
+      'ContainerProject',
+      'ContainerResourceQuota',
+      'ContainerTemplate',
+      'Flavor',
+      'OrchestrationStack',
+      'ServiceInstance',
+      'ServiceOffering',
+      'ServiceOfferingIcon',
+      'ServicePlan',
+      'Tag',
+      'Tagging',
+      'Vm',
+      'Volume',
+      'VolumeAttachment',
+      'VolumeType',
+    ].to_set.freeze
+  end
 end
 
-GENERATOR_READ_ONLY_DEFINITIONS = [
-  'Container', 'ContainerGroup', 'ContainerImage', 'ContainerNode', 'ContainerProject', 'ContainerTemplate', 'Flavor',
-  'OrchestrationStack', 'ServiceInstance', 'ServiceOffering', 'ServiceOfferingIcon', 'ServicePlan', 'Tag', 'Tagging',
-  'Vm', 'Volume', 'VolumeAttachment', 'VolumeType', 'ContainerResourceQuota'
-].to_set.freeze
-GENERATOR_READ_ONLY_ATTRIBUTES = [
-  :created_at, :updated_at, :archived_at, :last_seen_at
-].to_set.freeze
 GENERATOR_IMAGE_MEDIA_TYPE_DEFINITIONS = [
   'IconData'
 ].to_set.freeze
