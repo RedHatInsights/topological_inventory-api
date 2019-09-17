@@ -45,16 +45,16 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
               "type"        => "object",
               "description" => "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
             },
-            "service_plan_id" => {
+            "service_plan_id"             => {
               "$ref" => "##{SCHEMAS_PATH}/ID"
             }
           }
         },
-        "OrderParametersServicePlan" => {
+        "OrderParametersServicePlan"     => {
           "type"                 => "object",
           "additionalProperties" => false,
           "properties"           => {
-            "service_parameters" => {
+            "service_parameters"          => {
               "type"        => "object",
               "description" => "JSON object with provisioning parameters"
             },
@@ -64,7 +64,7 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
             },
           }
         },
-        "Tagging" => {
+        "Tagging"                        => {
           "type"       => "object",
           "properties" => {
             "tag_id" => {"$ref" => "##{SCHEMAS_PATH}/ID"},
@@ -72,7 +72,7 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
             "value"  => {"type" => "string", "readOnly" => true, "example" => "x86_64"}
           }
         },
-        "Tenant" => {
+        "Tenant"                         => {
           "type"       => "object",
           "properties" => {
             "id"              => {"$ref" => "##{SCHEMAS_PATH}/ID"},
@@ -80,7 +80,7 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
             "description"     => {"type" => "string", "readOnly" => true, "example" => "Description of the Tenant"},
             "external_tenant" => {"type" => "string", "readOnly" => true, "example" => "External tenant identifier"}
           }
-        },
+        }
       )
     end
   end
