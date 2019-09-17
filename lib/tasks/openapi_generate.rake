@@ -16,10 +16,7 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
           when "destroy" then openapi_destroy_description(klass_name)
           when "create"  then openapi_create_description(klass_name)
           when "update"  then openapi_update_description(klass_name, verb)
-          else
-            if verb == "get" && GENERATOR_IMAGE_MEDIA_TYPE_DEFINITIONS.include?(route.action.camelize)
-              openapi_show_image_media_type_description(route.action.camelize, primary_collection)
-            end
+          else                handle_custom_route_action(route.action.camelize, verb, primary_collection)
         end
 
       unless expected_paths[sub_path][verb]
@@ -40,6 +37,12 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
             openapi_contents.dig("paths", sub_path, verb)
           end
       end
+    end
+  end
+
+  def handle_custom_route_action(route_action, verb, primary_collection)
+    if route_action == 'IconData' && verb == "get"
+      openapi_show_image_media_type_description(route_action, primary_collection)
     end
   end
 
@@ -146,10 +149,6 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
     ].to_set.freeze
   end
 end
-
-GENERATOR_IMAGE_MEDIA_TYPE_DEFINITIONS = [
-  'IconData'
-].to_set.freeze
 
 namespace :openapi do
   desc "Generate the openapi.json contents"
