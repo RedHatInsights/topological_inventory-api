@@ -58,8 +58,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
         get(instance_path("non_numeric_id"), :headers => headers)
 
         expect(response).to have_attributes(
-                              :status      => 404,
-                              :parsed_body => {"errors" => [{"detail" => "Record not found", "status" => 404}]}
+                              :status      => 400,
+                              :parsed_body => {"errors" => [{"detail" => "ID is invalid", "status" => 400}]}
                             )
       end
     end
@@ -103,8 +103,8 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
             get(subcollection_path("non_numeric_id"), :headers => headers)
 
             expect(response).to have_attributes(
-                                  :status      => 404,
-                                  :parsed_body => {"errors" => [{"detail" => /Record not found/, "status" => 404}]}
+                                  :status      => 400,
+                                  :parsed_body => {"errors" => [{"detail" => "ID is invalid", "status" => 400}]}
                                 )
           end
         end
