@@ -976,7 +976,8 @@
                   },
                   "variables": {
                     "type": "object",
-                    "description": "Optional Query variables"
+                    "description": "Optional Query variables",
+                    "nullable": true
                   }
                 },
                 "required": [
@@ -5275,7 +5276,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Cluster": {
         "type": "object",
@@ -5326,7 +5328,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ClustersCollection": {
         "type": "object",
@@ -5354,10 +5357,10 @@
           "last": {
             "type": "string"
           },
-          "prev": {
+          "next": {
             "type": "string"
           },
-          "next": {
+          "prev": {
             "type": "string"
           }
         }
@@ -5368,10 +5371,10 @@
           "count": {
             "type": "integer"
           },
-          "offset": {
+          "limit": {
             "type": "integer"
           },
-          "limit": {
+          "offset": {
             "type": "integer"
           }
         }
@@ -5431,7 +5434,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ContainerGroup": {
         "type": "object",
@@ -5499,7 +5503,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ContainerGroupsCollection": {
         "type": "object",
@@ -5575,7 +5580,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ContainerImagesCollection": {
         "type": "object",
@@ -5694,7 +5700,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ContainerNodesCollection": {
         "type": "object",
@@ -5777,7 +5784,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ContainerProjectsCollection": {
         "type": "object",
@@ -5858,7 +5866,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ContainerResourceQuotaCollection": {
         "type": "object",
@@ -5934,7 +5943,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ContainerTemplatesCollection": {
         "type": "object",
@@ -6031,7 +6041,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "DatastoresCollection": {
         "type": "object",
@@ -6116,7 +6127,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FlavorsCollection": {
         "type": "object",
@@ -6218,7 +6230,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "HostsCollection": {
         "type": "object",
@@ -6307,7 +6320,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "IpaddressesCollection": {
         "type": "object",
@@ -6387,7 +6401,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "NetworkAdapter": {
         "type": "object",
@@ -6450,7 +6465,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "NetworkAdaptersCollection": {
         "type": "object",
@@ -6550,7 +6566,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "OrchestrationStacksCollection": {
         "type": "object",
@@ -6581,13 +6598,8 @@
             "type": "object",
             "description": "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
           },
-          "service_offering_id": {
-            "$ref": "#/components/schemas/ID",
-            "required": true
-          },
           "service_plan_id": {
-            "$ref": "#/components/schemas/ID",
-            "required": false
+            "$ref": "#/components/schemas/ID"
           }
         }
       },
@@ -6602,10 +6614,6 @@
           "provider_control_parameters": {
             "type": "object",
             "description": "The provider specific parameters needed to provision this service. This might include namespaces, special keys"
-          },
-          "service_plan_id": {
-            "$ref": "#/components/schemas/ID",
-            "required": true
           }
         }
       },
@@ -6670,7 +6678,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SecurityGroupsCollection": {
         "type": "object",
@@ -6760,7 +6769,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ServiceInstancesCollection": {
         "type": "object",
@@ -6881,7 +6891,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ServiceOfferingIcon": {
         "type": "object",
@@ -6918,7 +6929,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ServiceOfferingIconsCollection": {
         "type": "object",
@@ -7036,7 +7048,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ServicePlansCollection": {
         "type": "object",
@@ -7079,7 +7092,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SourceRegion": {
         "type": "object",
@@ -7119,7 +7133,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SourceRegionsCollection": {
         "type": "object",
@@ -7219,7 +7234,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SubnetsCollection": {
         "type": "object",
@@ -7273,7 +7289,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SubscriptionsCollection": {
         "type": "object",
@@ -7327,7 +7344,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Tagging": {
         "type": "object",
@@ -7404,7 +7422,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "TasksCollection": {
         "type": "object",
@@ -7556,7 +7575,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "VmsCollection": {
         "type": "object",
@@ -7650,7 +7670,8 @@
           "volume_type_id": {
             "$ref": "#/components/schemas/ID"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "VolumeAttachment": {
         "type": "object",
@@ -7679,7 +7700,8 @@
           "volume_id": {
             "$ref": "#/components/schemas/ID"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "VolumeAttachmentsCollection": {
         "type": "object",
@@ -7745,7 +7767,8 @@
             "readOnly": true,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "VolumeTypesCollection": {
         "type": "object",

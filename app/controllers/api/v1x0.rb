@@ -17,6 +17,7 @@ module Api
     class ContainerTemplatesController          < Api::V1::ContainerTemplatesController; end
     class DatastoresController                  < Api::V1::DatastoresController; end
     class FlavorsController                     < Api::V1::FlavorsController; end
+    class GraphqlController                     < Api::V1::GraphqlController; end
     class HostsController                       < Api::V1::HostsController; end
     class IpaddressesController                 < Api::V1::IpaddressesController; end
     class NetworkAdaptersController             < Api::V1::NetworkAdaptersController; end
