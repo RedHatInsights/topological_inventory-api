@@ -1875,6 +1875,63 @@
         }
       }
     },
+    "/service_inventories": {
+      "get": {
+        "summary": "List ServiceInventories",
+        "operationId": "listServiceInventories",
+        "description": "Returns an array of ServiceInventory objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInventories collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInventoriesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_inventories/{id}": {
+      "get": {
+        "summary": "Show an existing ServiceInventory",
+        "operationId": "showServiceInventory",
+        "description": "Returns a ServiceInventory object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInventory info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInventory"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/service_offering_icons": {
       "get": {
         "summary": "List ServiceOfferingIcons",
@@ -3290,6 +3347,39 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/service_inventories": {
+      "get": {
+        "summary": "List ServiceInventories for Source",
+        "operationId": "listSourceServiceInventories",
+        "description": "Returns an array of ServiceInventory objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInventories collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInventoriesCollection"
                 }
               }
             }
@@ -6788,6 +6878,85 @@
             }
           }
         }
+      },
+      "ServiceInventoriesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceInventory"
+            }
+          }
+        }
+      },
+      "ServiceInventory": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "readOnly": true,
+            "type": "object"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "inventory_type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       },
       "ServiceOffering": {
         "type": "object",

@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       resources :datastores,              :only => [:index, :show]
       resources :flavors,                 :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show]
+      resources :service_inventories,     :only => [:index, :show]
       resources :service_offering_icons,  :only => [:index, :show] do
         get "icon_data", :to => "service_offering_icons#icon_data"
       end
@@ -129,6 +130,7 @@ Rails.application.routes.draw do
         resources :orchestration_stacks, :only => [:index]
         resources :security_groups,      :only => [:index]
         resources :service_instances,    :only => [:index]
+        resources :service_inventories,  :only => [:index]
         resources :service_offerings,    :only => [:index]
         resources :service_plans,        :only => [:index]
         resources :source_regions,       :only => [:index]

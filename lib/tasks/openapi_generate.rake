@@ -97,6 +97,7 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
       'Flavor',
       'OrchestrationStack',
       'ServiceInstance',
+      "ServiceInventory",
       'ServiceOffering',
       'ServiceOfferingIcon',
       'ServicePlan',

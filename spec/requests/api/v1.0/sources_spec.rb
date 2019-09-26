@@ -27,6 +27,7 @@ RSpec.describe("v1.0 - Sources") do
       :orchestration_stacks,
       :security_groups,
       :service_instances,
+      :service_inventories,
       :service_offerings,
       :service_plans,
       :source_regions,
