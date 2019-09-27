@@ -44,7 +44,7 @@ Rails.application.routes.draw do
       resources :flavors,                 :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show]
       resources :service_inventories,     :only => [:index, :show] do
-         resources :tags, :only => [:index]
+        resources :tags, :only => [:index]
       end
       resources :service_offering_icons,  :only => [:index, :show] do
         get "icon_data", :to => "service_offering_icons#icon_data"
