@@ -43,7 +43,9 @@ Rails.application.routes.draw do
       resources :datastores,              :only => [:index, :show]
       resources :flavors,                 :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show]
-      resources :service_inventories,     :only => [:index, :show]
+      resources :service_inventories,     :only => [:index, :show] do
+         resources :tags, :only => [:index]
+      end
       resources :service_offering_icons,  :only => [:index, :show] do
         get "icon_data", :to => "service_offering_icons#icon_data"
       end
@@ -150,6 +152,7 @@ Rails.application.routes.draw do
         resources :network_adapters,    :only => [:index]
         resources :networks,            :only => [:index]
         resources :security_groups,     :only => [:index]
+        resources :service_inventories, :only => [:index]
         resources :service_offerings,   :only => [:index]
         resources :subnets,             :only => [:index]
         resources :vms,                 :only => [:index]

@@ -1932,6 +1932,39 @@
         }
       }
     },
+    "/service_inventories/{id}/tags": {
+      "get": {
+        "summary": "List Tags for ServiceInventory",
+        "operationId": "listServiceInventoryTags",
+        "description": "Returns an array of Tag objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/service_offering_icons": {
       "get": {
         "summary": "List ServiceOfferingIcons",
@@ -4581,6 +4614,39 @@
         }
       }
     },
+    "/tags/{id}/service_inventories": {
+      "get": {
+        "summary": "List ServiceInventories for Tag",
+        "operationId": "listTagServiceInventories",
+        "description": "Returns an array of ServiceInventory objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInventories collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInventoriesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/tags/{id}/service_offerings": {
       "get": {
         "summary": "List ServiceOfferings for Tag",
@@ -6919,10 +6985,6 @@
           },
           "id": {
             "$ref": "#/components/schemas/ID"
-          },
-          "inventory_type": {
-            "readOnly": true,
-            "type": "string"
           },
           "last_seen_at": {
             "format": "date-time",
