@@ -25,6 +25,7 @@ module Api
     class OrchestrationStacksController         < Api::V1::OrchestrationStacksController; end
     class SecurityGroupsController              < Api::V1::SecurityGroupsController; end
     class ServiceInstancesController            < Api::V1::ServiceInstancesController; end
+    class ServiceInventoriesController          < Api::V1::ServiceInventoriesController; end
     class ServiceOfferingIconsController        < Api::V1::ServiceOfferingIconsController; end
     class ServiceOfferingsController            < Api::V1::ServiceOfferingsController; end
     class ServicePlansController                < Api::V1::ServicePlansController; end

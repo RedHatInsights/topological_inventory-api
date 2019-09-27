@@ -25,6 +25,7 @@ RSpec.describe("v1.0 - Tag") do
       :network_adapters,
       :networks,
       :security_groups,
+      :service_inventories,
       :service_offerings,
       :subnets,
       :vms,
