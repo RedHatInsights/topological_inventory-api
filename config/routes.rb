@@ -43,7 +43,6 @@ Rails.application.routes.draw do
       resources :datastores,              :only => [:index, :show]
       resources :flavors,                 :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show] do
-        resources :child_service_instance_nodes, :only => [:index]
         resources :service_instance_nodes,       :only => [:index]
       end
       resources :service_instance_nodes,  :only => [:index, :show]
@@ -77,7 +76,6 @@ Rails.application.routes.draw do
       end
       resources :service_offerings,       :only => [:index, :show] do
         post "order", :to => "service_offerings#order"
-        resources :child_service_offering_nodes, :only => [:index]
         resources :service_instances,            :only => [:index]
         resources :service_offering_nodes,       :only => [:index]
         resources :service_plans,                :only => [:index]
