@@ -1805,6 +1805,63 @@
         }
       }
     },
+    "/service_instance_nodes": {
+      "get": {
+        "summary": "List ServiceInstanceNodes",
+        "operationId": "listServiceInstanceNodes",
+        "description": "Returns an array of ServiceInstanceNode objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstanceNodes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstanceNodesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_instance_nodes/{id}": {
+      "get": {
+        "summary": "Show an existing ServiceInstanceNode",
+        "operationId": "showServiceInstanceNode",
+        "description": "Returns a ServiceInstanceNode object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstanceNode info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstanceNode"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/service_instances": {
       "get": {
         "summary": "List ServiceInstances",
@@ -1858,6 +1915,39 @@
           },
           "404": {
             "description": "Not found"
+          }
+        }
+      }
+    },
+    "/service_instances/{id}/service_instance_nodes": {
+      "get": {
+        "summary": "List ServiceInstanceNodes for ServiceInstance",
+        "operationId": "listServiceInstanceServiceInstanceNodes",
+        "description": "Returns an array of ServiceInstanceNode objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstanceNodes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstanceNodesCollection"
+                }
+              }
+            }
           }
         }
       }
@@ -2037,6 +2127,63 @@
         }
       }
     },
+    "/service_offering_nodes": {
+      "get": {
+        "summary": "List ServiceOfferingNodes",
+        "operationId": "listServiceOfferingNodes",
+        "description": "Returns an array of ServiceOfferingNode objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferingNodes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingNodesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_offering_nodes/{id}": {
+      "get": {
+        "summary": "Show an existing ServiceOfferingNode",
+        "operationId": "showServiceOfferingNode",
+        "description": "Returns a ServiceOfferingNode object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferingNode info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingNode"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/service_offerings": {
       "get": {
         "summary": "List ServiceOfferings",
@@ -2163,6 +2310,39 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_offerings/{id}/service_offering_nodes": {
+      "get": {
+        "summary": "List ServiceOfferingNodes for ServiceOffering",
+        "operationId": "listServiceOfferingServiceOfferingNodes",
+        "description": "Returns an array of ServiceOfferingNode objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferingNodes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingNodesCollection"
                 }
               }
             }
@@ -3341,6 +3521,39 @@
         }
       }
     },
+    "/sources/{id}/service_instance_nodes": {
+      "get": {
+        "summary": "List ServiceInstanceNodes for Source",
+        "operationId": "listSourceServiceInstanceNodes",
+        "description": "Returns an array of ServiceInstanceNode objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceInstanceNodes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceInstanceNodesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sources/{id}/service_instances": {
       "get": {
         "summary": "List ServiceInstances for Source",
@@ -3400,6 +3613,39 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceInventoriesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sources/{id}/service_offering_nodes": {
+      "get": {
+        "summary": "List ServiceOfferingNodes for Source",
+        "operationId": "listSourceServiceOfferingNodes",
+        "description": "Returns an array of ServiceOfferingNode objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceOfferingNodes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceOfferingNodesCollection"
                 }
               }
             }
@@ -6900,6 +7146,12 @@
             "title": "Name",
             "type": "string"
           },
+          "root_service_instance_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "service_inventory_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "service_offering_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -6937,6 +7189,81 @@
           }
         },
         "additionalProperties": false
+      },
+      "ServiceInstanceNode": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "root_service_instance_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "service_instance_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "service_inventory_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "source_updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServiceInstanceNodesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceInstanceNode"
+            }
+          }
+        }
       },
       "ServiceInstancesCollection": {
         "type": "object",
@@ -7092,6 +7419,9 @@
             "title": "Name",
             "type": "string"
           },
+          "service_inventory_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "service_offering_icon_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -7186,6 +7516,81 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ServiceOfferingIcon"
+            }
+          }
+        }
+      },
+      "ServiceOfferingNode": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "root_service_offering_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "service_inventory_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "service_offering_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "source_updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServiceOfferingNodesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceOfferingNode"
             }
           }
         }
