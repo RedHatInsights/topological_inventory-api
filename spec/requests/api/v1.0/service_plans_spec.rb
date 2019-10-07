@@ -8,7 +8,8 @@ RSpec.describe("v1.0 - ServicePlan") do
   let(:source_region) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
   let(:subscription) { Subscription.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }
   let(:source_region) { SourceRegion.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }
-  let(:service_offering) { ServiceOffering.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_region_id" => source_region.id, "subscription_id" => subscription.id, "source_ref" => SecureRandom.uuid,) }
+  let(:service_inventory) { ServiceInventory.create!(:source => source, :tenant => tenant, :source_ref => "something?") }
+  let(:service_offering) { ServiceOffering.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_region_id" => source_region.id, "subscription_id" => subscription.id, "source_ref" => SecureRandom.uuid, "service_inventory_id" => service_inventory.id) }
 
   let(:attributes) do
     {

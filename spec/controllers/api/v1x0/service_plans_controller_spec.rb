@@ -22,13 +22,15 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
     let(:source_region) { SourceRegion.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
     let(:source) { Source.create!(:tenant => tenant, :uid => SecureRandom.uuid) }
     let(:subscription) { Subscription.create!(:tenant => tenant, :source => source, :source_ref => SecureRandom.uuid) }
+    let(:service_inventory) { ServiceInventory.create!(:tenant => tenant, :source => source, :source_ref => "something?") }
     let(:service_offering) do
       ServiceOffering.create!(
-        :source        => source,
-        :tenant        => tenant,
-        :source_region => source_region,
-        :subscription  => subscription,
-        :source_ref    => SecureRandom.uuid
+        :service_inventory => service_inventory,
+        :source            => source,
+        :source_ref        => SecureRandom.uuid,
+        :source_region     => source_region,
+        :subscription      => subscription,
+        :tenant            => tenant,
       )
     end
 
