@@ -6900,6 +6900,12 @@
             "title": "Name",
             "type": "string"
           },
+          "root_service_instance_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "service_inventory_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "service_offering_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -7091,6 +7097,9 @@
             "readOnly": true,
             "title": "Name",
             "type": "string"
+          },
+          "service_inventory_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "service_offering_icon_id": {
             "$ref": "#/components/schemas/ID"
