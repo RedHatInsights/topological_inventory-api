@@ -5,7 +5,6 @@ RSpec.describe("v1.0 - ServiceOffering") do
 
   let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
   let(:source) { Source.create!(:tenant => tenant) }
-  let(:source_region) { Tenant.find_or_create_by!(:name => "default", :external_tenant => "external_tenant_uuid")}
   let(:subscription) { Subscription.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }
   let(:source_region) { SourceRegion.create!("source_id" => source.id, "tenant_id" => tenant.id, "source_ref" => SecureRandom.uuid) }
 
@@ -22,6 +21,6 @@ RSpec.describe("v1.0 - ServiceOffering") do
   include_examples(
     "v1x0_test_index_and_subcollections",
     "service_offerings",
-    ["tags", "service_instances", "service_plans"],
+    ["tags", "service_instances", "service_plans", "service_offering_nodes"],
   )
 end
