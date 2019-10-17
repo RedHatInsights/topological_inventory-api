@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   include ManageIQ::API::Common::ApplicationControllerMixins::ApiDoc
   include ManageIQ::API::Common::ApplicationControllerMixins::Common
+  include ManageIQ::API::Common::ApplicationControllerMixins::ExceptionHandling
   include ManageIQ::API::Common::ApplicationControllerMixins::RequestBodyValidation
   include ManageIQ::API::Common::ApplicationControllerMixins::RequestPath
 
@@ -9,10 +10,6 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound do |exception|
     error_document = ManageIQ::API::Common::ErrorDocument.new.add(404, "Record not found")
     render :json => error_document.to_h, :status => :not_found
-  end
-
-  rescue_from ManageIQ::API::Common::Filter::Error do |exception|
-    render :json => exception.error_document.to_h, :status => exception.error_document.status
   end
 
   private
