@@ -72,9 +72,9 @@ module Api
         {
           :request_context => ManageIQ::API::Common::Request.current_forwardable,
           :params          => {
-            :inventory_params => params_for_approval_inventories,
+            :inventory_params    => params_for_approval_inventories,
             :service_offering_id => service_offering.id.to_s,
-            :task_id => task.id.to_s
+            :task_id             => task.id.to_s
           }
         }
       end
