@@ -75,7 +75,7 @@ Rails.application.routes.draw do
         resources :tags,    :only => [:index]
       end
       resources :service_offerings,       :only => [:index, :show] do
-        post "approval_inventories", :to => "service_offerings#approval_inventories"
+        post "applied_inventories", :to => "service_offerings#applied_inventories"
         post "order", :to => "service_offerings#order"
         resources :service_instances,      :only => [:index]
         resources :service_offering_nodes, :only => [:index]

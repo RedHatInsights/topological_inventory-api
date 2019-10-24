@@ -2284,10 +2284,10 @@
         }
       }
     },
-    "/service_offerings/{id}/approval_inventories": {
+    "/service_offerings/{id}/applied_inventories": {
       "post": {
         "summary": "Invokes computing of ServiceInventories for given ServiceOffering",
-        "operationId": "approvalInventoriesForServiceOffering",
+        "operationId": "appliedInventoriesForServiceOffering",
         "description": "Returns a Task id",
         "parameters": [
           {
@@ -2298,7 +2298,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ApprovalInventoriesParametersServicePlan"
+                "$ref": "#/components/schemas/AppliedInventoriesParametersServicePlan"
               }
             }
           },
@@ -7059,7 +7059,7 @@
           }
         }
       },
-      "ApprovalInventoriesParametersServicePlan": {
+      "AppliedInventoriesParametersServicePlan": {
         "type": "object",
         "additionalProperties": false,
         "properties": {

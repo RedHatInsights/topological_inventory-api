@@ -10,8 +10,8 @@ module Api
       end
 
       # POST
-      def approval_inventories
-        send_message_and_generate_task_for(:approval_inventories)
+      def applied_inventories
+        send_message_and_generate_task_for(:applied_inventories)
       end
 
       private
@@ -48,8 +48,8 @@ module Api
         ).to_h
       end
 
-      def params_for_approval_inventories
-        @params_for_approval_inventories ||= params.permit(
+      def params_for_applied_inventories
+        @params_for_applied_inventories ||= params.permit(
           :service_offering_id,
           :service_parameters => {}
         ).to_h
@@ -68,11 +68,11 @@ module Api
         payload
       end
 
-      def payload_for_approval_inventories(task, service_offering)
+      def payload_for_applied_inventories(task, service_offering)
         {
           :request_context => ManageIQ::API::Common::Request.current_forwardable,
           :params          => {
-            :inventory_params    => params_for_approval_inventories,
+            :inventory_params    => params_for_applied_inventories,
             :service_offering_id => service_offering.id.to_s,
             :task_id             => task.id.to_s
           }
