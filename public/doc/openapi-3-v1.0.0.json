@@ -2708,6 +2708,50 @@
         }
       }
     },
+    "/service_offerings/{id}/applied_inventories": {
+      "post": {
+        "summary": "Invokes computing of ServiceInventories for given ServiceOffering",
+        "operationId": "appliedInventoriesForServiceOffering",
+        "description": "Returns a Task id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppliedInventoriesParametersServicePlan"
+              }
+            }
+          },
+          "description": "Parameters defining input data for computing inventories",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns a task ID for the computing result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "task_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        }
+      }
+    },
+
     "/service_offerings/{id}/service_instances": {
       "get": {
         "summary": "List ServiceInstances for ServiceOffering",
@@ -8311,6 +8355,16 @@
           },
           "service_plan_id": {
             "$ref": "#/components/schemas/ID"
+          }
+        }
+      },
+      "AppliedInventoriesParametersServicePlan": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "service_parameters": {
+            "type": "object",
+            "description": "The provider specific parameters needed to compute list of used service inventories"
           }
         }
       },
