@@ -72,7 +72,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -103,6 +110,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HostsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -162,7 +179,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -196,6 +220,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -226,6 +260,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -285,7 +329,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -316,6 +367,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -375,7 +436,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -409,6 +477,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -439,6 +517,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -498,7 +586,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -529,6 +624,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -565,6 +670,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -598,6 +713,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -628,6 +753,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -687,7 +822,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -744,7 +886,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -775,6 +924,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -834,7 +993,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -891,7 +1057,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -948,7 +1121,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1035,7 +1215,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1092,7 +1279,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1123,6 +1317,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -1182,7 +1386,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1216,6 +1427,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1246,6 +1467,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -1305,7 +1536,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1339,6 +1577,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1369,6 +1617,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -1446,7 +1704,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1477,6 +1742,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -1513,6 +1788,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1543,6 +1828,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -1579,6 +1874,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1609,6 +1914,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -1645,6 +1960,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1675,6 +2000,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -1734,7 +2069,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1768,6 +2110,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1798,6 +2150,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -1857,7 +2219,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1914,7 +2283,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -1945,6 +2321,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceInstanceNodesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -2004,7 +2390,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2035,6 +2428,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -2094,7 +2497,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2179,7 +2589,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2236,7 +2653,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2284,6 +2708,50 @@
         }
       }
     },
+    "/service_offerings/{id}/applied_inventories": {
+      "post": {
+        "summary": "Invokes computing of ServiceInventories for given ServiceOffering",
+        "operationId": "appliedInventoriesForServiceOffering",
+        "description": "Returns a Task id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppliedInventoriesParametersServicePlan"
+              }
+            }
+          },
+          "description": "Parameters defining input data for computing inventories",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns a task ID for the computing result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "task_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        }
+      }
+    },
+
     "/service_offerings/{id}/service_instances": {
       "get": {
         "summary": "List ServiceInstances for ServiceOffering",
@@ -2310,6 +2778,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -2346,6 +2824,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2379,6 +2867,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2409,6 +2907,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -2468,7 +2976,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2545,6 +3060,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2601,7 +3126,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2632,6 +3164,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -2668,6 +3210,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2698,6 +3250,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -2734,6 +3296,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2764,6 +3336,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -2800,6 +3382,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2830,6 +3422,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -2866,6 +3468,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2896,6 +3508,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -2932,6 +3554,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -2962,6 +3594,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3021,7 +3663,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3052,6 +3701,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AvailabilitiesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3088,6 +3747,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3118,6 +3787,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3154,6 +3833,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3184,6 +3873,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContainerNodesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3220,6 +3919,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3250,6 +3959,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3286,6 +4005,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3316,6 +4045,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DatastoresCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3352,6 +4091,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3382,6 +4131,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3418,6 +4177,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3448,6 +4217,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3484,6 +4263,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3514,6 +4303,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3550,6 +4349,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3580,6 +4389,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceInstancesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3616,6 +4435,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3646,6 +4475,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceOfferingNodesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3682,6 +4521,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3712,6 +4561,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServicePlansCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3748,6 +4607,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3778,6 +4647,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3814,6 +4693,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3844,6 +4733,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3880,6 +4779,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -3910,6 +4819,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -3969,7 +4888,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4000,6 +4926,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4036,6 +4972,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4066,6 +5012,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4125,7 +5081,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4156,6 +5119,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/IpaddressesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4192,6 +5165,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4222,6 +5205,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/NetworksCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4258,6 +5251,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4288,6 +5291,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4324,6 +5337,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4354,6 +5377,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4390,6 +5423,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4420,6 +5463,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SubnetsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4456,6 +5509,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4486,6 +5549,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4545,7 +5618,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4576,6 +5656,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContainerGroupsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4612,6 +5702,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4642,6 +5742,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContainerNodesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4678,6 +5788,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4708,6 +5828,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContainerTemplatesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4744,6 +5874,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4774,6 +5914,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4810,6 +5960,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4840,6 +6000,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SecurityGroupsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4876,6 +6046,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4906,6 +6086,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceOfferingsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -4942,6 +6132,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -4972,6 +6172,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -5031,7 +6241,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       },
@@ -5063,7 +6280,14 @@
             "description": "Bad request"
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -5120,7 +6344,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -5151,6 +6382,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/NetworkAdaptersCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -5187,6 +6428,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -5217,6 +6468,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TagsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -5253,6 +6514,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -5283,6 +6554,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -5342,7 +6623,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -5399,7 +6687,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -5430,6 +6725,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VolumesCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -5489,7 +6794,14 @@
             }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -5520,6 +6832,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VmsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
                 }
               }
             }
@@ -6450,6 +7772,27 @@
           }
         }
       },
+      "ErrorNotFound": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 404
+                },
+                "detail": {
+                  "type": "string",
+                  "example": "Record not found"
+                }
+              }
+            }
+          }
+        }
+      },
       "Flavor": {
         "type": "object",
         "properties": {
@@ -7012,6 +8355,16 @@
           },
           "service_plan_id": {
             "$ref": "#/components/schemas/ID"
+          }
+        }
+      },
+      "AppliedInventoriesParametersServicePlan": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "service_parameters": {
+            "type": "object",
+            "description": "The provider specific parameters needed to compute list of used service inventories"
           }
         }
       },
