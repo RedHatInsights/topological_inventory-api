@@ -22,7 +22,7 @@ module Api
       rescue ActiveRecord::RecordNotFound
         head :bad_request
       rescue StandardError => err
-        error_document = ManageIQ::API::Common::ErrorDocument.new.add(err.message)
+        error_document = Insights::API::Common::ErrorDocument.new.add(err.message)
         render :json => error_document.to_h, :status => error_document.status
       end
 
@@ -30,7 +30,7 @@ module Api
 
       def payload_for_order(task, service_plan)
         {
-          :request_context => ManageIQ::API::Common::Request.current_forwardable,
+          :request_context => Insights::API::Common::Request.current_forwardable,
           :params          => {
             :order_params    => body_params,
             :service_plan_id => service_plan.id.to_s,

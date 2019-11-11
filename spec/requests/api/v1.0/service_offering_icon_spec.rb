@@ -66,7 +66,7 @@ RSpec.describe("v1.0 - ServiceOfferingIcon") do
 
         expect(response).to have_attributes(
                               :status      => 400,
-                              :parsed_body => {"errors"=>[{"detail"=>"ManageIQ::API::Common::ApplicationControllerMixins::RequestPath::RequestPathError: ID is invalid", "status"=>400}]},
+                              :parsed_body => {"errors"=>[{"detail"=>"Insights::API::Common::ApplicationControllerMixins::RequestPath::RequestPathError: ID is invalid", "status"=>400}]},
                             )
       end
     end

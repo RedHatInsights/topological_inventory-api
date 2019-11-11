@@ -59,7 +59,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
 
         expect(response).to have_attributes(
                               :status      => 400,
-                              :parsed_body => {"errors" => [{"detail" => "ManageIQ::API::Common::ApplicationControllerMixins::RequestPath::RequestPathError: ID is invalid", "status" => 400}]}
+                              :parsed_body => {"errors" => [{"detail" => "Insights::API::Common::ApplicationControllerMixins::RequestPath::RequestPathError: ID is invalid", "status" => 400}]}
                             )
       end
     end
@@ -104,7 +104,7 @@ RSpec.shared_examples "v1x0_test_index_and_subcollections" do |primary_collectio
 
             expect(response).to have_attributes(
                                   :status      => 400,
-                                  :parsed_body => {"errors" => [{"detail" => "ManageIQ::API::Common::ApplicationControllerMixins::RequestPath::RequestPathError: ID is invalid", "status" => 400}]}
+                                  :parsed_body => {"errors" => [{"detail" => "Insights::API::Common::ApplicationControllerMixins::RequestPath::RequestPathError: ID is invalid", "status" => 400}]}
                                 )
           end
         end

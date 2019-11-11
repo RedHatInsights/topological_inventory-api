@@ -1,5 +1,5 @@
-require 'manageiq/api/common/open_api/generator'
-class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
+require 'insights/api/common/open_api/generator'
+class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
   def handle_custom_route_action(route_action, verb, primary_collection)
     if route_action == 'IconData' && verb == "get"
       openapi_show_image_media_type_description(route_action, primary_collection)
