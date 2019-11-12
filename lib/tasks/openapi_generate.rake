@@ -33,7 +33,17 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
   def schemas
     @schemas ||= begin
       super.merge(
-        "OrderParametersServiceOffering" => {
+        "AppliedInventoriesParametersServicePlan" => {
+          "type"                 => "object",
+          "additionalProperties" => false,
+          "properties"           => {
+            "service_parameters" => {
+              "type"        => "object",
+              "description" => "The provider specific parameters needed to compute list of used service inventories"
+            }
+          }
+        },
+        "OrderParametersServiceOffering"          => {
           "type"                 => "object",
           "additionalProperties" => false,
           "properties"           => {
@@ -50,7 +60,7 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
             }
           }
         },
-        "OrderParametersServicePlan"     => {
+        "OrderParametersServicePlan"              => {
           "type"                 => "object",
           "additionalProperties" => false,
           "properties"           => {
@@ -64,7 +74,7 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
             },
           }
         },
-        "Tagging"                        => {
+        "Tagging"                                 => {
           "type"       => "object",
           "properties" => {
             "tag_id" => {"$ref" => "##{SCHEMAS_PATH}/ID"},
@@ -72,7 +82,7 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
             "value"  => {"type" => "string", "readOnly" => true, "example" => "x86_64"}
           }
         },
-        "Tenant"                         => {
+        "Tenant"                                  => {
           "type"       => "object",
           "properties" => {
             "id"              => {"$ref" => "##{SCHEMAS_PATH}/ID"},
