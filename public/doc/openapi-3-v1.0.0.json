@@ -34,6 +34,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -100,6 +103,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -141,6 +147,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -207,6 +216,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -250,6 +262,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -291,6 +306,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -357,6 +375,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -398,6 +419,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -464,6 +488,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -507,6 +534,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -548,6 +578,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -614,6 +647,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -655,6 +691,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -700,6 +739,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -743,6 +785,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -784,6 +829,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -848,6 +896,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -914,6 +965,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -955,6 +1009,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -1019,6 +1076,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -1083,6 +1143,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -1177,6 +1240,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -1241,6 +1307,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -1307,6 +1376,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -1348,6 +1420,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -1414,6 +1489,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -1457,6 +1535,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -1498,6 +1579,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -1564,6 +1648,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -1605,6 +1692,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -1666,6 +1756,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -1732,6 +1825,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -1773,6 +1869,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -1818,6 +1917,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -1859,6 +1961,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -1904,6 +2009,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -1945,6 +2053,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -1990,6 +2101,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -2031,6 +2145,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -2097,6 +2214,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -2140,6 +2260,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -2181,6 +2304,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -2245,6 +2371,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -2311,6 +2440,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -2352,6 +2484,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -2418,6 +2553,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -2459,6 +2597,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -2551,6 +2692,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -2615,6 +2759,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -2665,49 +2812,6 @@
         }
       }
     },
-    "/service_offerings/{id}/order": {
-      "post": {
-        "summary": "Order an existing ServiceOffering",
-        "operationId": "orderServiceOffering",
-        "description": "Returns a Task id",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ID"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderParametersServiceOffering"
-              }
-            }
-          },
-          "description": "Order parameters defining the service and provider control",
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Returns a task ID for the order",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "task_id": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "BadRequest"
-          }
-        }
-      }
-    },
     "/service_offerings/{id}/applied_inventories": {
       "post": {
         "summary": "Invokes computing of ServiceInventories for given ServiceOffering",
@@ -2751,7 +2855,49 @@
         }
       }
     },
-
+    "/service_offerings/{id}/order": {
+      "post": {
+        "summary": "Order an existing ServiceOffering",
+        "operationId": "orderServiceOffering",
+        "description": "Returns a Task id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderParametersServiceOffering"
+              }
+            }
+          },
+          "description": "Order parameters defining the service and provider control",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns a task ID for the order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "task_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        }
+      }
+    },
     "/service_offerings/{id}/service_instances": {
       "get": {
         "summary": "List ServiceInstances for ServiceOffering",
@@ -2766,6 +2912,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -2811,6 +2960,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -2852,6 +3004,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -2897,6 +3052,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -2938,6 +3096,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -3047,6 +3208,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3088,6 +3252,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -3154,6 +3321,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3195,6 +3365,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -3240,6 +3413,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3281,6 +3457,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -3326,6 +3505,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3367,6 +3549,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -3412,6 +3597,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3453,6 +3641,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -3498,6 +3689,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3539,6 +3733,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -3584,6 +3781,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3625,6 +3825,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -3691,6 +3894,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3732,6 +3938,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -3777,6 +3986,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3818,6 +4030,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -3863,6 +4078,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3904,6 +4122,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -3949,6 +4170,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -3990,6 +4214,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4035,6 +4262,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4076,6 +4306,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4121,6 +4354,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4162,6 +4398,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4207,6 +4446,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4248,6 +4490,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4293,6 +4538,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4334,6 +4582,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4379,6 +4630,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4420,6 +4674,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4465,6 +4722,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4506,6 +4766,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4551,6 +4814,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4592,6 +4858,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4637,6 +4906,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4678,6 +4950,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4723,6 +4998,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4764,6 +5042,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -4809,6 +5090,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4850,6 +5134,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -4916,6 +5203,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -4957,6 +5247,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5002,6 +5295,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5043,6 +5339,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -5109,6 +5408,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5150,6 +5452,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5195,6 +5500,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5236,6 +5544,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5281,6 +5592,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5322,6 +5636,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5367,6 +5684,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5408,6 +5728,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5453,6 +5776,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5494,6 +5820,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5539,6 +5868,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5580,6 +5912,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -5646,6 +5981,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5687,6 +6025,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5732,6 +6073,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5773,6 +6117,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5818,6 +6165,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5859,6 +6209,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5904,6 +6257,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -5945,6 +6301,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -5990,6 +6349,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -6031,6 +6393,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -6076,6 +6441,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -6117,6 +6485,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -6162,6 +6533,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -6203,6 +6577,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -6306,6 +6683,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -6372,6 +6752,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -6413,6 +6796,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -6458,6 +6844,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -6499,6 +6888,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -6544,6 +6936,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -6585,6 +6980,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -6649,6 +7047,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -6715,6 +7116,9 @@
             "$ref": "#/components/parameters/QueryFilter"
           },
           {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
             "$ref": "#/components/parameters/ID"
           }
         ],
@@ -6756,6 +7160,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           }
         ],
         "responses": {
@@ -6820,6 +7227,9 @@
           },
           {
             "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
           },
           {
             "$ref": "#/components/parameters/ID"
@@ -6918,6 +7328,25 @@
           "minimum": 0,
           "default": 0
         }
+      },
+      "QuerySortBy": {
+        "in": "query",
+        "name": "sort_by",
+        "description": "The list of attribute and order to sort the result set by.",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/SortByAttribute"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SortByAttribute"
+              }
+            }
+          ]
+        }
       }
     },
     "securitySchemes": {
@@ -6927,6 +7356,16 @@
       }
     },
     "schemas": {
+      "AppliedInventoriesParametersServicePlan": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "service_parameters": {
+            "type": "object",
+            "description": "The provider specific parameters needed to compute list of used service inventories"
+          }
+        }
+      },
       "AvailabilitiesCollection": {
         "type": "object",
         "properties": {
@@ -8358,16 +8797,6 @@
           }
         }
       },
-      "AppliedInventoriesParametersServicePlan": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "service_parameters": {
-            "type": "object",
-            "description": "The provider specific parameters needed to compute list of used service inventories"
-          }
-        }
-      },
       "OrderParametersServicePlan": {
         "type": "object",
         "additionalProperties": false,
@@ -9066,6 +9495,11 @@
             }
           }
         }
+      },
+      "SortByAttribute": {
+        "type": "string",
+        "description": "Attribute with optional order to sort the result set by.",
+        "pattern": "^[a-z\\-_]+(:asc|:desc)?$"
       },
       "Source": {
         "type": "object",
