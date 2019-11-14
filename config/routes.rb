@@ -21,39 +21,39 @@ Rails.application.routes.draw do
       end
       resources :container_groups,        :only => [:index, :show] do
         resources :containers, :only => [:index]
-        resources :tags,       :only => [:index], :controller => :taggings
+        resources :tags,       :only => [:create, :index], :controller => :taggings
       end
       resources :container_images,        :only => [:index, :show] do
-        resources :tags, :only => [:index], :controller => :taggings
+        resources :tags, :only => [:create, :index], :controller => :taggings
       end
       resources :container_nodes,         :only => [:index, :show] do
         resources :container_groups, :only => [:index]
-        resources :tags,             :only => [:index], :controller => :taggings
+        resources :tags,             :only => [:create, :index], :controller => :taggings
       end
       resources :container_projects,      :only => [:index, :show] do
         resources :container_groups,          :only => [:index]
         resources :container_resource_quotas, :only => [:index]
         resources :container_templates,       :only => [:index]
-        resources :tags,                      :only => [:index], :controller => :taggings
+        resources :tags,                      :only => [:create, :index], :controller => :taggings
       end
       resources :container_resource_quotas, :only => [:index, :show]
       resources :container_templates,     :only => [:index, :show] do
-        resources :tags, :only => [:index], :controller => :taggings
+        resources :tags, :only => [:create, :index], :controller => :taggings
       end
       resources :containers,              :only => [:index, :show]
       resources :datastores,              :only => [:index, :show]
       resources :flavors,                 :only => [:index, :show]
       resources :hosts,                   :only => [:index, :show]
       resources :ipaddresses,             :only => [:index, :show] do
-        resources :tags, :only => [:index], :controller => :taggings
+        resources :tags, :only => [:create, :index], :controller => :taggings
       end
       resources :network_adapters,        :only => [:index, :show] do
         resources :ipaddresses, :only => [:index]
-        resources :tags,        :only => [:index], :controller => :taggings
+        resources :tags,        :only => [:create, :index], :controller => :taggings
       end
       resources :networks,                :only => [:index, :show] do
         resources :subnets, :only => [:index]
-        resources :tags,    :only => [:index], :controller => :taggings
+        resources :tags,    :only => [:create, :index], :controller => :taggings
       end
       resources :orchestration_stacks, :only => [:index, :show] do
         resources :ipaddresses,       :only => [:index]
@@ -65,7 +65,7 @@ Rails.application.routes.draw do
         resources :volumes,           :only => [:index]
       end
       resources :security_groups,         :only => [:index, :show] do
-        resources :tags, :only => [:index], :controller => :taggings
+        resources :tags, :only => [:create, :index], :controller => :taggings
         resources :vms,  :only => [:index]
       end
       resources :service_instance_nodes,  :only => [:index, :show]
@@ -73,7 +73,7 @@ Rails.application.routes.draw do
         resources :service_instance_nodes, :only => [:index]
       end
       resources :service_inventories,     :only => [:index, :show] do
-        resources :tags, :only => [:index], :controller => :taggings
+        resources :tags, :only => [:create, :index], :controller => :taggings
       end
       resources :service_offering_icons,  :only => [:index, :show] do
         get "icon_data", :to => "service_offering_icons#icon_data"
@@ -85,7 +85,7 @@ Rails.application.routes.draw do
         resources :service_instances,      :only => [:index]
         resources :service_offering_nodes, :only => [:index]
         resources :service_plans,          :only => [:index]
-        resources :tags,                   :only => [:index], :controller => :taggings
+        resources :tags,                   :only => [:create, :index], :controller => :taggings
       end
       resources :service_plans, :only => [:index, :show] do
         post "order", :to => "service_plans#order"
@@ -136,7 +136,7 @@ Rails.application.routes.draw do
       resources :subnets,                 :only => [:index, :show] do
         resources :ipaddresses,      :only => [:index]
         resources :network_adapters, :only => [:index]
-        resources :tags,             :only => [:index], :controller => :taggings
+        resources :tags,             :only => [:create, :index], :controller => :taggings
       end
       resources :subscriptions, :only => [:index, :show] do
         resources :ipaddresses,           :only => [:index]
@@ -170,7 +170,7 @@ Rails.application.routes.draw do
       resources :vms, :only => [:index, :show] do
         resources :network_adapters,   :only => [:index]
         resources :security_groups,    :only => [:index]
-        resources :tags,               :only => [:index], :controller => :taggings
+        resources :tags,               :only => [:create, :index], :controller => :taggings
         resources :volume_attachments, :only => [:index]
         resources :volumes,            :only => [:index]
       end

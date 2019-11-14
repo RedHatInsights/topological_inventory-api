@@ -290,6 +290,34 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/container_images": {
@@ -398,6 +426,34 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -557,6 +613,34 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -813,6 +897,34 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/container_resource_quotas": {
@@ -988,6 +1100,34 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -1404,6 +1544,34 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/network_adapters": {
@@ -1563,6 +1731,34 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/networks": {
@@ -1717,6 +1913,34 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -2242,6 +2466,34 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/security_groups/{id}/vms": {
@@ -2576,6 +2828,34 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -3075,6 +3355,34 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -5323,6 +5631,34 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/subscriptions": {
@@ -6867,6 +7203,34 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "operationId": "createTag",
+        "description": "Creates a Tag object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to create",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tag creation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }

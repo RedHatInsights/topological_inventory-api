@@ -56,6 +56,14 @@ module Api
         "Tag".freeze
       end
 
+      def create
+        primary_instance = primary_collection_model.find(request_path_parts["primary_collection_id"])
+        tag = Tag.find_or_create_by!(Tag.parse(params_for_create["tag"]))
+        primary_instance.tags << tag
+
+        render :json => tag, :status => :created, :location => "#{instance_link(primary_instance)}/tags"
+      end
+
       private
 
       def model
