@@ -247,6 +247,42 @@
       }
     },
     "/container_groups/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for ContainerGroup",
         "operationId": "listContainerGroupTags",
@@ -388,6 +424,42 @@
       }
     },
     "/container_images/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for ContainerImage",
         "operationId": "listContainerImageTags",
@@ -575,6 +647,42 @@
       }
     },
     "/container_nodes/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for ContainerNode",
         "operationId": "listContainerNodeTags",
@@ -854,6 +962,42 @@
       }
     },
     "/container_projects/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for ContainerProject",
         "operationId": "listContainerProjectTags",
@@ -1062,6 +1206,42 @@
       }
     },
     "/container_templates/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for ContainerTemplate",
         "operationId": "listContainerTemplateTags",
@@ -1501,6 +1681,42 @@
       }
     },
     "/ipaddresses/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for Ipaddress",
         "operationId": "listIpaddressTags",
@@ -1688,6 +1904,42 @@
       }
     },
     "/network_adapters/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for NetworkAdapter",
         "operationId": "listNetworkAdapterTags",
@@ -1875,6 +2127,42 @@
       }
     },
     "/networks/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for Network",
         "operationId": "listNetworkTags",
@@ -2423,6 +2711,42 @@
       }
     },
     "/security_groups/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for SecurityGroup",
         "operationId": "listSecurityGroupTags",
@@ -2790,6 +3114,42 @@
       }
     },
     "/service_inventories/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for ServiceInventory",
         "operationId": "listServiceInventoryTags",
@@ -3317,6 +3677,42 @@
       }
     },
     "/service_offerings/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for ServiceOffering",
         "operationId": "listServiceOfferingTags",
@@ -5588,6 +5984,42 @@
       }
     },
     "/subnets/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for Subnet",
         "operationId": "listSubnetTags",
@@ -7165,6 +7597,42 @@
       }
     },
     "/vms/{id}/tags": {
+      "delete": {
+        "summary": "Delete an existing Tag",
+        "operationId": "deleteTag",
+        "description": "Deletes a Tag object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        },
+        "request_body": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          },
+          "description": "Tag attributes to delete",
+          "required": true
+        }
+      },
       "get": {
         "summary": "List Tags for Vm",
         "operationId": "listVmTags",

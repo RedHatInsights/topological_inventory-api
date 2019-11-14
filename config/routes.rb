@@ -16,44 +16,41 @@ Rails.application.routes.draw do
       get "/openapi.json", :to => "root#openapi"
       post "graphql" => "graphql#query"
 
+      concern :taggable do
+        resources :tags,             :only => [:create, :index], :controller => :taggings do
+          collection do
+            delete "", :action => :destroy
+          end
+        end
+      end
+
       resources :clusters,                :only => [:index, :show] do
         resources :hosts, :only => [:index]
       end
-      resources :container_groups,        :only => [:index, :show] do
+      resources :container_groups,        :only => [:index, :show], :concerns => [:taggable] do
         resources :containers, :only => [:index]
-        resources :tags,       :only => [:create, :index], :controller => :taggings
       end
-      resources :container_images,        :only => [:index, :show] do
-        resources :tags, :only => [:create, :index], :controller => :taggings
-      end
-      resources :container_nodes,         :only => [:index, :show] do
+      resources :container_images,        :only => [:index, :show], :concerns => [:taggable]
+      resources :container_nodes,         :only => [:index, :show], :concerns => [:taggable] do
         resources :container_groups, :only => [:index]
-        resources :tags,             :only => [:create, :index], :controller => :taggings
       end
-      resources :container_projects,      :only => [:index, :show] do
+      resources :container_projects,      :only => [:index, :show], :concerns => [:taggable] do
         resources :container_groups,          :only => [:index]
         resources :container_resource_quotas, :only => [:index]
         resources :container_templates,       :only => [:index]
-        resources :tags,                      :only => [:create, :index], :controller => :taggings
       end
       resources :container_resource_quotas, :only => [:index, :show]
-      resources :container_templates,     :only => [:index, :show] do
-        resources :tags, :only => [:create, :index], :controller => :taggings
-      end
+      resources :container_templates,     :only => [:index, :show], :concerns => [:taggable]
       resources :containers,              :only => [:index, :show]
       resources :datastores,              :only => [:index, :show]
       resources :flavors,                 :only => [:index, :show]
       resources :hosts,                   :only => [:index, :show]
-      resources :ipaddresses,             :only => [:index, :show] do
-        resources :tags, :only => [:create, :index], :controller => :taggings
-      end
-      resources :network_adapters,        :only => [:index, :show] do
+      resources :ipaddresses,             :only => [:index, :show], :concerns => [:taggable]
+      resources :network_adapters,        :only => [:index, :show], :concerns => [:taggable] do
         resources :ipaddresses, :only => [:index]
-        resources :tags,        :only => [:create, :index], :controller => :taggings
       end
-      resources :networks,                :only => [:index, :show] do
+      resources :networks,                :only => [:index, :show], :concerns => [:taggable] do
         resources :subnets, :only => [:index]
-        resources :tags,    :only => [:create, :index], :controller => :taggings
       end
       resources :orchestration_stacks, :only => [:index, :show] do
         resources :ipaddresses,       :only => [:index]
@@ -64,28 +61,24 @@ Rails.application.routes.draw do
         resources :vms,               :only => [:index]
         resources :volumes,           :only => [:index]
       end
-      resources :security_groups,         :only => [:index, :show] do
-        resources :tags, :only => [:create, :index], :controller => :taggings
+      resources :security_groups,         :only => [:index, :show], :concerns => [:taggable] do
         resources :vms,  :only => [:index]
       end
       resources :service_instance_nodes,  :only => [:index, :show]
       resources :service_instances,       :only => [:index, :show] do
         resources :service_instance_nodes, :only => [:index]
       end
-      resources :service_inventories,     :only => [:index, :show] do
-        resources :tags, :only => [:create, :index], :controller => :taggings
-      end
+      resources :service_inventories,     :only => [:index, :show], :concerns => [:taggable]
       resources :service_offering_icons,  :only => [:index, :show] do
         get "icon_data", :to => "service_offering_icons#icon_data"
       end
       resources :service_offering_nodes,  :only => [:index, :show]
-      resources :service_offerings,       :only => [:index, :show] do
+      resources :service_offerings,       :only => [:index, :show], :concerns => [:taggable] do
         post "applied_inventories", :to => "service_offerings#applied_inventories"
         post "order", :to => "service_offerings#order"
         resources :service_instances,      :only => [:index]
         resources :service_offering_nodes, :only => [:index]
         resources :service_plans,          :only => [:index]
-        resources :tags,                   :only => [:create, :index], :controller => :taggings
       end
       resources :service_plans, :only => [:index, :show] do
         post "order", :to => "service_plans#order"
@@ -133,10 +126,9 @@ Rails.application.routes.draw do
         resources :volume_types,           :only => [:index]
         resources :volumes,                :only => [:index]
       end
-      resources :subnets,                 :only => [:index, :show] do
+      resources :subnets,                 :only => [:index, :show], :concerns => [:taggable] do
         resources :ipaddresses,      :only => [:index]
         resources :network_adapters, :only => [:index]
-        resources :tags,             :only => [:create, :index], :controller => :taggings
       end
       resources :subscriptions, :only => [:index, :show] do
         resources :ipaddresses,           :only => [:index]
@@ -167,10 +159,9 @@ Rails.application.routes.draw do
         resources :vms,                 :only => [:index]
       end
       resources :tasks, :only => [:index, :show, :update]
-      resources :vms, :only => [:index, :show] do
+      resources :vms, :only => [:index, :show], :concerns => [:taggable] do
         resources :network_adapters,   :only => [:index]
         resources :security_groups,    :only => [:index]
-        resources :tags,               :only => [:create, :index], :controller => :taggings
         resources :volume_attachments, :only => [:index]
         resources :volumes,            :only => [:index]
       end

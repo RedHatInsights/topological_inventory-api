@@ -64,6 +64,14 @@ module Api
         render :json => tag, :status => :created, :location => "#{instance_link(primary_instance)}/tags"
       end
 
+      def destroy
+        primary_instance = primary_collection_model.find(request_path_parts["primary_collection_id"])
+        tag = Tag.find_by!(Tag.parse(body_params["tag"]))
+        primary_instance.tags.destroy(tag)
+
+        head :no_content, :location => "#{instance_link(primary_instance)}/tags"
+      end
+
       private
 
       def model

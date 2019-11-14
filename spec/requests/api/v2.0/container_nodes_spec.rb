@@ -59,5 +59,27 @@ RSpec.describe("v2.0 - ContainerNode") do
         )
       end
     end
+
+    context "delete" do
+      it "works" do
+        payload = {"tag" => "/a/b/c=d"}
+        tag_1 = Tag.create!(:tag => "/a/b/c=d", :tenant_id => tenant.id)
+        tag_2 = Tag.create!(:tag => "/x/y=z",   :tenant_id => tenant.id)
+        instance.tags << tag_1
+        instance.tags << tag_2
+
+        expect(instance.tags.reload).to match_array([tag_1, tag_2])
+
+        delete(tags_subcollection, :params => payload.to_json, :headers => headers)
+
+        expect(response).to have_attributes(
+          :status => 204,
+          :location => "http://www.example.com/api/v2.0/container_nodes/#{instance.id}/tags",
+          :parsed_body => payload
+        )
+
+        expect(instance.tags.reload).to match_array([tag_2])
+      end
+    end
   end
 end
