@@ -1,4 +1,5 @@
 require_relative "shared_examples_for_index"
+require_relative "shared_examples_for_tags"
 
 RSpec.describe("v2.0 - Vm") do
   include ::Spec::Support::TenantIdentity
@@ -20,9 +21,10 @@ RSpec.describe("v2.0 - Vm") do
     [
       :network_adapters,
       :security_groups,
-      :tags,
       :volume_attachments,
       :volumes,
     ],
   )
+
+  include_examples("v2x0_test_tags_subcollection", "vms")
 end

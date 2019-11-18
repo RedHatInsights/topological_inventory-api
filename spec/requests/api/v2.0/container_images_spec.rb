@@ -1,4 +1,5 @@
 require_relative "shared_examples_for_index"
+require_relative "shared_examples_for_tags"
 
 RSpec.describe("v2.0 - ContainerImage") do
   include ::Spec::Support::TenantIdentity
@@ -17,6 +18,8 @@ RSpec.describe("v2.0 - ContainerImage") do
   include_examples(
     "v2x0_test_index_and_subcollections",
     "container_images",
-    ["tags"],
+    [],
   )
+
+  include_examples("v2x0_test_tags_subcollection", "container_images")
 end
