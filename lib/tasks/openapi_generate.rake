@@ -1,5 +1,5 @@
-require 'manageiq/api/common/open_api/generator'
-class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
+require 'insights/api/common/open_api/generator'
+class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
   def handle_custom_route_action(route_action, verb, primary_collection)
     if route_action == 'IconData' && verb == "get"
       openapi_show_image_media_type_description(route_action, primary_collection)
@@ -33,7 +33,17 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
   def schemas
     @schemas ||= begin
       super.merge(
-        "OrderParametersServiceOffering" => {
+        "AppliedInventoriesParametersServicePlan" => {
+          "type"                 => "object",
+          "additionalProperties" => false,
+          "properties"           => {
+            "service_parameters" => {
+              "type"        => "object",
+              "description" => "The provider specific parameters needed to compute list of used service inventories"
+            }
+          }
+        },
+        "OrderParametersServiceOffering"          => {
           "type"                 => "object",
           "additionalProperties" => false,
           "properties"           => {
@@ -50,7 +60,7 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
             }
           }
         },
-        "OrderParametersServicePlan"     => {
+        "OrderParametersServicePlan"              => {
           "type"                 => "object",
           "additionalProperties" => false,
           "properties"           => {
@@ -64,7 +74,7 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
             },
           }
         },
-        "Tagging"                        => {
+        "Tagging"                                 => {
           "type"       => "object",
           "properties" => {
             "tag_id" => {"$ref" => "##{SCHEMAS_PATH}/ID"},
@@ -72,7 +82,7 @@ class OpenapiGenerator < ManageIQ::API::Common::OpenApi::Generator
             "value"  => {"type" => "string", "readOnly" => true, "example" => "x86_64"}
           }
         },
-        "Tenant"                         => {
+        "Tenant"                                  => {
           "type"       => "object",
           "properties" => {
             "id"              => {"$ref" => "##{SCHEMAS_PATH}/ID"},

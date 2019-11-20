@@ -1,4 +1,4 @@
-RSpec.describe("::ManageIQ::API::Common::Filter") do
+RSpec.describe("::Insights::API::Common::Filter") do
   include ::Spec::Support::TenantIdentity
   let(:headers) { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
 
@@ -106,12 +106,12 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
 
   context "error cases" do
     it("empty filter")      { expect_failure("filter", "ActionController::UnpermittedParameters: found unpermitted parameter: :filter") }
-    it("unknown attribute") { expect_failure("filter[xxx]", "ManageIQ::API::Common::Filter::Error: found unpermitted parameter: xxx") }
+    it("unknown attribute") { expect_failure("filter[xxx]", "Insights::API::Common::Filter::Error: found unpermitted parameter: xxx") }
 
     context "unsupported comparator" do
-      it("on an integer")  { expect_failure("filter[id][xxx]=4", "ManageIQ::API::Common::Filter::Error: unsupported integer comparator: xxx") }
-      it("on a string")    { expect_failure("filter[name][xxx]=4", "ManageIQ::API::Common::Filter::Error: unsupported string comparator: xxx") }
-      it("on a timestamp") { expect_failure("filter[created_at][xxx]=4", "ManageIQ::API::Common::Filter::Error: unsupported timestamp comparator: xxx") }
+      it("on an integer")  { expect_failure("filter[id][xxx]=4", "Insights::API::Common::Filter::Error: unsupported integer comparator: xxx") }
+      it("on a string")    { expect_failure("filter[name][xxx]=4", "Insights::API::Common::Filter::Error: unsupported string comparator: xxx") }
+      it("on a timestamp") { expect_failure("filter[created_at][xxx]=4", "Insights::API::Common::Filter::Error: unsupported timestamp comparator: xxx") }
     end
 
     it "unsupported attribute type" do
@@ -121,7 +121,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       get("/api/v1.0/vms?filter[mac_addresses]=a", :headers => headers)
 
       expect(response.status).to eq(400)
-      expect(response.parsed_body["errors"]).to eq([{"detail"=>"ManageIQ::API::Common::Filter::Error: unsupported attribute type for: mac_addresses", "status"=>400}])
+      expect(response.parsed_body["errors"]).to eq([{"detail"=>"Insights::API::Common::Filter::Error: unsupported attribute type for: mac_addresses", "status"=>400}])
     end
 
     it "invalid attribute" do
@@ -131,7 +131,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       get("/api/v1.0/vms?filter[bogus_attribute]=a", :headers => headers)
 
       expect(response.status).to eq(400)
-      expect(response.parsed_body["errors"]).to eq([{"detail"=>"ManageIQ::API::Common::Filter::Error: found unpermitted parameter: bogus_attribute", "status"=>400}])
+      expect(response.parsed_body["errors"]).to eq([{"detail"=>"Insights::API::Common::Filter::Error: found unpermitted parameter: bogus_attribute", "status"=>400}])
     end
 
     it "multiple invalid attributes mixed with a valid attribute" do
@@ -143,7 +143,7 @@ RSpec.describe("::ManageIQ::API::Common::Filter") do
       expect(response.status).to eq(400)
       expect(response.parsed_body["errors"]).to eq(
         [
-          {"detail" => "ManageIQ::API::Common::Filter::Error: unsupported attribute type for: mac_addresses, found unpermitted parameter: bogus_attribute", "status" => 400}
+          {"detail" => "Insights::API::Common::Filter::Error: unsupported attribute type for: mac_addresses, found unpermitted parameter: bogus_attribute", "status" => 400}
         ]
       )
     end

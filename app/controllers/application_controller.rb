@@ -1,35 +1,35 @@
 class ApplicationController < ActionController::API
-  include ManageIQ::API::Common::ApplicationControllerMixins::ApiDoc
-  include ManageIQ::API::Common::ApplicationControllerMixins::Common
-  include ManageIQ::API::Common::ApplicationControllerMixins::ExceptionHandling
-  include ManageIQ::API::Common::ApplicationControllerMixins::RequestBodyValidation
-  include ManageIQ::API::Common::ApplicationControllerMixins::RequestPath
+  include Insights::API::Common::ApplicationControllerMixins::ApiDoc
+  include Insights::API::Common::ApplicationControllerMixins::Common
+  include Insights::API::Common::ApplicationControllerMixins::ExceptionHandling
+  include Insights::API::Common::ApplicationControllerMixins::RequestBodyValidation
+  include Insights::API::Common::ApplicationControllerMixins::RequestPath
 
   around_action :with_current_request
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    error_document = ManageIQ::API::Common::ErrorDocument.new.add(404, "Record not found")
+    error_document = Insights::API::Common::ErrorDocument.new.add(404, "Record not found")
     render :json => error_document.to_h, :status => :not_found
   end
 
   private
 
   def with_current_request
-    ManageIQ::API::Common::Request.with_request(request) do |current|
+    Insights::API::Common::Request.with_request(request) do |current|
       begin
         if Tenant.tenancy_enabled? && current.required_auth?
-          raise ManageIQ::API::Common::EntitlementError unless request_is_entitled?(current.entitlement)
+          raise Insights::API::Common::EntitlementError unless request_is_entitled?(current.entitlement)
 
           tenant = Tenant.find_or_create_by(:external_tenant => current.user.tenant) if current.user.tenant
           ActsAsTenant.with_tenant(tenant) { yield }
         else
           ActsAsTenant.without_tenant { yield }
         end
-      rescue KeyError, ManageIQ::API::Common::IdentityError
-        error_document = ManageIQ::API::Common::ErrorDocument.new.add(401, 'Unauthorized')
+      rescue KeyError, Insights::API::Common::IdentityError
+        error_document = Insights::API::Common::ErrorDocument.new.add(401, 'Unauthorized')
         render :json => error_document.to_h, :status => error_document.status
-      rescue ManageIQ::API::Common::EntitlementError
-        error_document = ManageIQ::API::Common::ErrorDocument.new.add(403, 'Forbidden')
+      rescue Insights::API::Common::EntitlementError
+        error_document = Insights::API::Common::ErrorDocument.new.add(403, 'Forbidden')
         render :json => error_document.to_h, :status => error_document.status
       end
     end
@@ -117,7 +117,7 @@ class ApplicationController < ActionController::API
   end
 
   def filtered
-    ManageIQ::API::Common::Filter.new(model, safe_params_for_list[:filter], api_doc_definition).apply
+    Insights::API::Common::Filter.new(model, safe_params_for_list[:filter], api_doc_definition).apply
   end
 
   def pagination_limit
