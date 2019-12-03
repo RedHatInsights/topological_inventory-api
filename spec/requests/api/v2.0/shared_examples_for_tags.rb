@@ -30,7 +30,7 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
       end
 
       context "post" do
-        it "works" do
+        it "not yet tagged" do
           payload = {"tag" => "/a/b/c=d"}
           post(tags_subcollection, :params => payload.to_json, :headers => headers)
 
@@ -38,6 +38,19 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
             :status => 201,
             :location => "http://www.example.com/api/v2.0/#{primary_collection}/#{instance.id}/tags",
             :parsed_body => payload
+          )
+        end
+
+        it "already tagged" do
+          instance.tags << Tag.create!(:namespace => "a", :name => "b/c", :value => "d", :tenant => tenant)
+
+          payload = {"tag" => "/a/b/c=d"}
+          post(tags_subcollection, :params => payload.to_json, :headers => headers)
+
+          expect(response).to have_attributes(
+            :status => 304,
+            :location => "http://www.example.com/api/v2.0/#{primary_collection}/#{instance.id}/tags",
+            :parsed_body => ""
           )
         end
       end
