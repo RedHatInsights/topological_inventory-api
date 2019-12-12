@@ -29,10 +29,12 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
         end
       end
 
-      context "post" do
+      context "tag" do
+        let(:instance_tag_url) { "/api/v2.0/#{primary_collection}/#{instance.id}/tag" }
+
         it "not yet tagged" do
           payload = {"tag" => "/a/b/c=d"}
-          post(tags_subcollection, :params => payload.to_json, :headers => headers)
+          post(instance_tag_url, :params => payload.to_json, :headers => headers)
 
           expect(response).to have_attributes(
             :status => 201,
@@ -45,7 +47,7 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
           instance.tags << Tag.create!(:namespace => "a", :name => "b/c", :value => "d", :tenant => tenant)
 
           payload = {"tag" => "/a/b/c=d"}
-          post(tags_subcollection, :params => payload.to_json, :headers => headers)
+          post(instance_tag_url, :params => payload.to_json, :headers => headers)
 
           expect(response).to have_attributes(
             :status => 304,
@@ -55,7 +57,7 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
         end
       end
 
-      context "delete" do
+      context "untag" do
         it "works" do
           payload = {"tag" => "/a/b/c=d"}
           tag_1 = Tag.create!(:tag => "/a/b/c=d", :tenant_id => tenant.id)
@@ -65,7 +67,7 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
 
           expect(instance.tags.reload).to match_array([tag_1, tag_2])
 
-          delete(tags_subcollection, :params => payload.to_json, :headers => headers)
+          post("/api/v2.0/#{primary_collection}/#{instance.id}/untag", :params => payload.to_json, :headers => headers)
 
           expect(response).to have_attributes(
             :status => 204,
@@ -74,6 +76,7 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
           )
 
           expect(instance.tags.reload).to match_array([tag_2])
+          expect(Tag.exists?(tag_1.id)).to eq(true)
         end
       end
     end

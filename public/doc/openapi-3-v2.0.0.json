@@ -246,32 +246,17 @@
         }
       }
     },
-    "/container_groups/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/container_groups/{id}/tag": {
+      "post": {
+        "summary": "Tag a ContainerGroup",
+        "operationId": "tagContainerGroup",
+        "description": "Tags a ContainerGroup object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -279,10 +264,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "ContainerGroup tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/container_groups/{id}/tags": {
       "get": {
         "summary": "List Tags for ContainerGroup",
         "operationId": "listContainerGroupTags",
@@ -326,11 +328,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/container_groups/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a ContainerGroup",
+        "operationId": "untagContainerGroup",
+        "description": "Untags a ContainerGroup object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -339,19 +348,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "ContainerGroup untagged successfully"
           }
         }
       }
@@ -423,32 +425,17 @@
         }
       }
     },
-    "/container_images/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/container_images/{id}/tag": {
+      "post": {
+        "summary": "Tag a ContainerImage",
+        "operationId": "tagContainerImage",
+        "description": "Tags a ContainerImage object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -456,10 +443,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "ContainerImage tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/container_images/{id}/tags": {
       "get": {
         "summary": "List Tags for ContainerImage",
         "operationId": "listContainerImageTags",
@@ -503,11 +507,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/container_images/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a ContainerImage",
+        "operationId": "untagContainerImage",
+        "description": "Untags a ContainerImage object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -516,19 +527,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "ContainerImage untagged successfully"
           }
         }
       }
@@ -646,32 +650,17 @@
         }
       }
     },
-    "/container_nodes/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/container_nodes/{id}/tag": {
+      "post": {
+        "summary": "Tag a ContainerNode",
+        "operationId": "tagContainerNode",
+        "description": "Tags a ContainerNode object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -679,10 +668,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "ContainerNode tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/container_nodes/{id}/tags": {
       "get": {
         "summary": "List Tags for ContainerNode",
         "operationId": "listContainerNodeTags",
@@ -726,11 +732,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/container_nodes/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a ContainerNode",
+        "operationId": "untagContainerNode",
+        "description": "Untags a ContainerNode object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -739,19 +752,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "ContainerNode untagged successfully"
           }
         }
       }
@@ -961,32 +967,17 @@
         }
       }
     },
-    "/container_projects/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/container_projects/{id}/tag": {
+      "post": {
+        "summary": "Tag a ContainerProject",
+        "operationId": "tagContainerProject",
+        "description": "Tags a ContainerProject object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -994,10 +985,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "ContainerProject tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/container_projects/{id}/tags": {
       "get": {
         "summary": "List Tags for ContainerProject",
         "operationId": "listContainerProjectTags",
@@ -1041,11 +1049,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/container_projects/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a ContainerProject",
+        "operationId": "untagContainerProject",
+        "description": "Untags a ContainerProject object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1054,19 +1069,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "ContainerProject untagged successfully"
           }
         }
       }
@@ -1205,32 +1213,17 @@
         }
       }
     },
-    "/container_templates/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/container_templates/{id}/tag": {
+      "post": {
+        "summary": "Tag a ContainerTemplate",
+        "operationId": "tagContainerTemplate",
+        "description": "Tags a ContainerTemplate object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -1238,10 +1231,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "ContainerTemplate tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/container_templates/{id}/tags": {
       "get": {
         "summary": "List Tags for ContainerTemplate",
         "operationId": "listContainerTemplateTags",
@@ -1285,11 +1295,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/container_templates/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a ContainerTemplate",
+        "operationId": "untagContainerTemplate",
+        "description": "Untags a ContainerTemplate object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1298,19 +1315,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "ContainerTemplate untagged successfully"
           }
         }
       }
@@ -1680,32 +1690,17 @@
         }
       }
     },
-    "/ipaddresses/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/ipaddresses/{id}/tag": {
+      "post": {
+        "summary": "Tag a Ipaddress",
+        "operationId": "tagIpaddress",
+        "description": "Tags a Ipaddress object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -1713,10 +1708,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Ipaddress tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/ipaddresses/{id}/tags": {
       "get": {
         "summary": "List Tags for Ipaddress",
         "operationId": "listIpaddressTags",
@@ -1760,11 +1772,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/ipaddresses/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a Ipaddress",
+        "operationId": "untagIpaddress",
+        "description": "Untags a Ipaddress object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1773,19 +1792,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "Ipaddress untagged successfully"
           }
         }
       }
@@ -1903,32 +1915,17 @@
         }
       }
     },
-    "/network_adapters/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/network_adapters/{id}/tag": {
+      "post": {
+        "summary": "Tag a NetworkAdapter",
+        "operationId": "tagNetworkAdapter",
+        "description": "Tags a NetworkAdapter object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -1936,10 +1933,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "NetworkAdapter tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/network_adapters/{id}/tags": {
       "get": {
         "summary": "List Tags for NetworkAdapter",
         "operationId": "listNetworkAdapterTags",
@@ -1983,11 +1997,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/network_adapters/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a NetworkAdapter",
+        "operationId": "untagNetworkAdapter",
+        "description": "Untags a NetworkAdapter object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1996,19 +2017,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "NetworkAdapter untagged successfully"
           }
         }
       }
@@ -2126,32 +2140,17 @@
         }
       }
     },
-    "/networks/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/networks/{id}/tag": {
+      "post": {
+        "summary": "Tag a Network",
+        "operationId": "tagNetwork",
+        "description": "Tags a Network object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -2159,10 +2158,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Network tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/networks/{id}/tags": {
       "get": {
         "summary": "List Tags for Network",
         "operationId": "listNetworkTags",
@@ -2206,11 +2222,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/networks/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a Network",
+        "operationId": "untagNetwork",
+        "description": "Untags a Network object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2219,19 +2242,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "Network untagged successfully"
           }
         }
       }
@@ -2710,32 +2726,17 @@
         }
       }
     },
-    "/security_groups/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/security_groups/{id}/tag": {
+      "post": {
+        "summary": "Tag a SecurityGroup",
+        "operationId": "tagSecurityGroup",
+        "description": "Tags a SecurityGroup object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -2743,10 +2744,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "SecurityGroup tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/security_groups/{id}/tags": {
       "get": {
         "summary": "List Tags for SecurityGroup",
         "operationId": "listSecurityGroupTags",
@@ -2790,11 +2808,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/security_groups/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a SecurityGroup",
+        "operationId": "untagSecurityGroup",
+        "description": "Untags a SecurityGroup object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2803,19 +2828,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "SecurityGroup untagged successfully"
           }
         }
       }
@@ -3113,32 +3131,17 @@
         }
       }
     },
-    "/service_inventories/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/service_inventories/{id}/tag": {
+      "post": {
+        "summary": "Tag a ServiceInventory",
+        "operationId": "tagServiceInventory",
+        "description": "Tags a ServiceInventory object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -3146,10 +3149,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "ServiceInventory tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/service_inventories/{id}/tags": {
       "get": {
         "summary": "List Tags for ServiceInventory",
         "operationId": "listServiceInventoryTags",
@@ -3193,11 +3213,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/service_inventories/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a ServiceInventory",
+        "operationId": "untagServiceInventory",
+        "description": "Untags a ServiceInventory object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3206,19 +3233,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "ServiceInventory untagged successfully"
           }
         }
       }
@@ -3676,32 +3696,17 @@
         }
       }
     },
-    "/service_offerings/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/service_offerings/{id}/tag": {
+      "post": {
+        "summary": "Tag a ServiceOffering",
+        "operationId": "tagServiceOffering",
+        "description": "Tags a ServiceOffering object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -3709,10 +3714,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "ServiceOffering tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/service_offerings/{id}/tags": {
       "get": {
         "summary": "List Tags for ServiceOffering",
         "operationId": "listServiceOfferingTags",
@@ -3756,11 +3778,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/service_offerings/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a ServiceOffering",
+        "operationId": "untagServiceOffering",
+        "description": "Untags a ServiceOffering object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3769,19 +3798,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "ServiceOffering untagged successfully"
           }
         }
       }
@@ -5983,32 +6005,17 @@
         }
       }
     },
-    "/subnets/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/subnets/{id}/tag": {
+      "post": {
+        "summary": "Tag a Subnet",
+        "operationId": "tagSubnet",
+        "description": "Tags a Subnet object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -6016,10 +6023,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Subnet tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/subnets/{id}/tags": {
       "get": {
         "summary": "List Tags for Subnet",
         "operationId": "listSubnetTags",
@@ -6063,11 +6087,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/subnets/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a Subnet",
+        "operationId": "untagSubnet",
+        "description": "Untags a Subnet object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6076,19 +6107,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "Subnet untagged successfully"
           }
         }
       }
@@ -7596,32 +7620,17 @@
         }
       }
     },
-    "/vms/{id}/tags": {
-      "delete": {
-        "summary": "Delete an existing Tag",
-        "operationId": "deleteTag",
-        "description": "Deletes a Tag object",
+    "/vms/{id}/tag": {
+      "post": {
+        "summary": "Tag a Vm",
+        "operationId": "tagVm",
+        "description": "Tags a Vm object",
         "parameters": [
           {
             "$ref": "#/components/parameters/ID"
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Tag deleted"
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorNotFound"
-                }
-              }
-            }
-          }
-        },
-        "request_body": {
+        "requestBody": {
           "content": {
             "application/json": {
               "schema": {
@@ -7629,10 +7638,27 @@
               }
             }
           },
-          "description": "Tag attributes to delete",
+          "description": "Tag attributes to add",
           "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Vm tagged successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          }
         }
-      },
+      }
+    },
+    "/vms/{id}/tags": {
       "get": {
         "summary": "List Tags for Vm",
         "operationId": "listVmTags",
@@ -7676,11 +7702,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/vms/{id}/untag": {
       "post": {
-        "summary": "Create a new Tag",
-        "operationId": "createTag",
-        "description": "Creates a Tag object",
+        "summary": "Untag a Vm",
+        "operationId": "untagVm",
+        "description": "Untags a Vm object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -7689,19 +7722,12 @@
               }
             }
           },
-          "description": "Tag attributes to create",
+          "description": "Tag attributes to removed",
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "Tag creation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
+          "204": {
+            "description": "Vm untagged successfully"
           }
         }
       }
@@ -9763,6 +9789,9 @@
           "root_service_instance_id": {
             "$ref": "#/components/schemas/ID"
           },
+          "service_credential_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "service_inventory_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -9832,6 +9861,9 @@
             "type": "string"
           },
           "root_service_instance_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "service_credential_id": {
             "$ref": "#/components/schemas/ID"
           },
           "service_instance_id": {
@@ -10033,6 +10065,9 @@
             "title": "Name",
             "type": "string"
           },
+          "service_credential_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "service_inventory_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -10162,6 +10197,9 @@
             "type": "string"
           },
           "root_service_offering_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "service_credential_id": {
             "$ref": "#/components/schemas/ID"
           },
           "service_inventory_id": {
@@ -10714,6 +10752,9 @@
             "type": "object"
           },
           "flavor_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "host_id": {
             "$ref": "#/components/schemas/ID"
           },
           "host_inventory_uuid": {

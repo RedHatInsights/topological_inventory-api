@@ -12,7 +12,7 @@ module Api
         "Tag".freeze
       end
 
-      def create
+      def tag
         primary_instance = primary_collection_model.find(request_path_parts["primary_collection_id"])
         tag = Tag.find_or_create_by!(Tag.parse(params_for_create["tag"]))
 
@@ -22,7 +22,7 @@ module Api
         render :json => tag, :status => :created, :location => "#{instance_link(primary_instance)}/tags"
       end
 
-      def destroy
+      def untag
         primary_instance = primary_collection_model.find(request_path_parts["primary_collection_id"])
         tag = Tag.find_by!(Tag.parse(body_params["tag"]))
         primary_instance.tags.destroy(tag)

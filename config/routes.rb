@@ -17,11 +17,9 @@ Rails.application.routes.draw do
       post "graphql" => "graphql#query"
 
       concern :taggable do
-        resources :tags,             :only => [:create, :index], :controller => :taggings do
-          collection do
-            delete "", :action => :destroy
-          end
-        end
+        post      :tag,   :controller => :taggings
+        post      :untag, :controller => :taggings
+        resources :tags,  :controller => :taggings, :only => [:index]
       end
 
       resources :clusters,                :only => [:index, :show] do
