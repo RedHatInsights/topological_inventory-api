@@ -94,7 +94,6 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
         "properties" => {
           "tag" => {
             "example"  => "/namespace/architecture=x86_64",
-            "readOnly" => true,
             "type"     => "string"
           }
         },
