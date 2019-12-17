@@ -260,7 +260,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -344,7 +347,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -439,7 +445,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -523,7 +532,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -664,7 +676,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -748,7 +763,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -981,7 +999,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -1065,7 +1086,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -1227,7 +1251,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -1311,7 +1338,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -1704,7 +1734,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -1788,7 +1821,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -1929,7 +1965,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -2013,7 +2052,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -2154,7 +2196,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -2238,7 +2283,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -2740,7 +2788,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -2824,7 +2875,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -3145,7 +3199,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -3229,7 +3286,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -3710,7 +3770,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -3794,7 +3857,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -6019,7 +6085,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -6103,7 +6172,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -7634,7 +7706,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },
@@ -7718,7 +7793,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
               }
             }
           },

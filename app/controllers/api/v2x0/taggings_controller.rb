@@ -14,18 +14,28 @@ module Api
 
       def tag
         primary_instance = primary_collection_model.find(request_path_parts["primary_collection_id"])
-        tag = Tag.find_or_create_by!(Tag.parse(params_for_create["tag"]))
 
-        return head(:not_modified, :location => "#{instance_link(primary_instance)}/tags") if primary_instance.tags.include?(tag)
+        applied_tags = parsed_body.collect do |i|
+          begin
+            tag = Tag.find_or_create_by!(Tag.parse(i["tag"]))
+            primary_instance.tags << tag
+            i
+          rescue ActiveRecord::RecordNotUnique
+          end
+        end.compact
 
-        primary_instance.tags << tag
-        render :json => tag, :status => :created, :location => "#{instance_link(primary_instance)}/tags"
+        return head(:not_modified, :location => "#{instance_link(primary_instance)}/tags") if applied_tags.empty?
+
+        render :json => parsed_body, :status => :created, :location => "#{instance_link(primary_instance)}/tags"
       end
 
       def untag
         primary_instance = primary_collection_model.find(request_path_parts["primary_collection_id"])
-        tag = Tag.find_by!(Tag.parse(body_params["tag"]))
-        primary_instance.tags.destroy(tag)
+
+        parsed_body.each do |i|
+          tag = Tag.find_by!(Tag.parse(i["tag"]))
+          primary_instance.tags.destroy(tag)
+        end
 
         head :no_content, :location => "#{instance_link(primary_instance)}/tags"
       end

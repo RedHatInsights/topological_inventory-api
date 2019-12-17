@@ -33,7 +33,7 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
         let(:instance_tag_url) { "/api/v2.0/#{primary_collection}/#{instance.id}/tag" }
 
         it "not yet tagged" do
-          payload = {"tag" => "/a/b/c=d"}
+          payload = [{"tag" => "/a/b/c=d"}]
           post(instance_tag_url, :params => payload.to_json, :headers => headers)
 
           expect(response).to have_attributes(
@@ -46,7 +46,7 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
         it "already tagged" do
           instance.tags << Tag.create!(:namespace => "a", :name => "b/c", :value => "d", :tenant => tenant)
 
-          payload = {"tag" => "/a/b/c=d"}
+          payload = [{"tag" => "/a/b/c=d"}]
           post(instance_tag_url, :params => payload.to_json, :headers => headers)
 
           expect(response).to have_attributes(
@@ -55,11 +55,24 @@ RSpec.shared_examples "v2x0_test_tags_subcollection" do |primary_collection|
             :parsed_body => ""
           )
         end
+
+        it "already tagged and new tag" do
+          instance.tags << Tag.create!(:namespace => "a", :name => "b/c", :value => "d", :tenant => tenant)
+
+          payload = [{"tag" => "/a/b/c=d"}, {"tag" => "/x/y/z=1"}]
+          post(instance_tag_url, :params => payload.to_json, :headers => headers)
+
+          expect(response).to have_attributes(
+            :status => 201,
+            :location => "http://www.example.com/api/v2.0/#{primary_collection}/#{instance.id}/tags",
+            :parsed_body => [{"tag" => "/a/b/c=d"}, {"tag" => "/x/y/z=1"}]
+          )
+        end
       end
 
       context "untag" do
         it "works" do
-          payload = {"tag" => "/a/b/c=d"}
+          payload = [{"tag" => "/a/b/c=d"}]
           tag_1 = Tag.create!(:tag => "/a/b/c=d", :tenant_id => tenant.id)
           tag_2 = Tag.create!(:tag => "/x/y=z",   :tenant_id => tenant.id)
           instance.tags << tag_1
