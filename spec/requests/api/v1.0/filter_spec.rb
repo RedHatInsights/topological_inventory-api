@@ -104,6 +104,28 @@ RSpec.describe("::Insights::API::Common::Filter") do
     it("key:not_nil")        { expect_success("filter[completed_at][not_nil]", task_2, task_3, task_4) }
   end
 
+  context "sorted results via sort_by" do
+    before do
+      source = Source.create!(:tenant => tenant)
+      Vm.create!(:name => "sort_by_vm_a", :source => source, :tenant => tenant, :source_ref => "vm_a")
+      Vm.create!(:name => "sort_by_vm_b", :source => source, :tenant => tenant, :source_ref => "vm_b")
+    end
+
+    it "available for vms with default order" do
+      get("/api/v1.0/vms?filter[name][starts_with]=sort_by_vm&sort_by=name", :headers => headers)
+
+      expect(response.status).to eq(200)
+      expect(response.parsed_body["data"].collect { |vm| vm["name"] }).to eq(%w[sort_by_vm_a sort_by_vm_b])
+    end
+
+    it "available for vms with desc order" do
+      get("/api/v1.0/vms?filter[name][starts_with]=sort_by_vm&sort_by=name:desc", :headers => headers)
+
+      expect(response.status).to eq(200)
+      expect(response.parsed_body["data"].collect { |vm| vm["name"] }).to eq(%w[sort_by_vm_b sort_by_vm_a])
+    end
+  end
+
   context "error cases" do
     it("empty filter")      { expect_failure("filter", "ActionController::UnpermittedParameters: found unpermitted parameter: :filter") }
     it("unknown attribute") { expect_failure("filter[xxx]", "Insights::API::Common::Filter::Error: found unpermitted parameter: xxx") }
