@@ -13,7 +13,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
   end
 
   def expect_failure(query, *errors)
-    get(URI.escape("/api/v1.0/tasks?#{query}"), :headers => headers)
+    get(URI.escape("/api/v2.0/tasks?#{query}"), :headers => headers)
 
     expect(response).to have_attributes(
       :parsed_body => {
@@ -24,7 +24,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
   end
 
   def expect_success(query, *results)
-    get(URI.escape("/api/v1.0/tasks?#{query}"), :headers => headers)
+    get(URI.escape("/api/v2.0/tasks?#{query}"), :headers => headers)
 
     expect(response).to have_attributes(
       :parsed_body => paginated_response(results.length, results.collect { |i| a_hash_including("id" => i.id.to_s) }),
@@ -112,14 +112,14 @@ RSpec.describe("::Insights::API::Common::Filter") do
     end
 
     it "available for vms with default order" do
-      get("/api/v1.0/vms?filter[name][starts_with]=sort_by_vm&sort_by=name", :headers => headers)
+      get("/api/v2.0/vms?filter[name][starts_with]=sort_by_vm&sort_by=name", :headers => headers)
 
       expect(response.status).to eq(200)
       expect(response.parsed_body["data"].collect { |vm| vm["name"] }).to eq(%w[sort_by_vm_a sort_by_vm_b])
     end
 
     it "available for vms with desc order" do
-      get("/api/v1.0/vms?filter[name][starts_with]=sort_by_vm&sort_by=name:desc", :headers => headers)
+      get("/api/v2.0/vms?filter[name][starts_with]=sort_by_vm&sort_by=name:desc", :headers => headers)
 
       expect(response.status).to eq(200)
       expect(response.parsed_body["data"].collect { |vm| vm["name"] }).to eq(%w[sort_by_vm_b sort_by_vm_a])
@@ -140,7 +140,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
       source = Source.create!(:tenant => tenant)
       Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
 
-      get("/api/v1.0/vms?filter[mac_addresses]=a", :headers => headers)
+      get("/api/v2.0/vms?filter[mac_addresses]=a", :headers => headers)
 
       expect(response.status).to eq(400)
       expect(response.parsed_body["errors"]).to eq([{"detail"=>"Insights::API::Common::Filter::Error: unsupported attribute type for: mac_addresses", "status"=>400}])
@@ -150,7 +150,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
       source = Source.create!(:tenant => tenant)
       Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
 
-      get("/api/v1.0/vms?filter[bogus_attribute]=a", :headers => headers)
+      get("/api/v2.0/vms?filter[bogus_attribute]=a", :headers => headers)
 
       expect(response.status).to eq(400)
       expect(response.parsed_body["errors"]).to eq([{"detail"=>"Insights::API::Common::Filter::Error: found unpermitted parameter: bogus_attribute", "status"=>400}])
@@ -160,7 +160,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
       source = Source.create!(:tenant => tenant)
       Vm.create!(:source => source, :tenant => tenant, :source_ref => "a")
 
-      get("/api/v1.0/vms?filter[mac_addresses]=a&filter[name]=a&filter[bogus_attribute]=b", :headers => headers)
+      get("/api/v2.0/vms?filter[mac_addresses]=a&filter[name]=a&filter[bogus_attribute]=b", :headers => headers)
 
       expect(response.status).to eq(400)
       expect(response.parsed_body["errors"]).to eq(

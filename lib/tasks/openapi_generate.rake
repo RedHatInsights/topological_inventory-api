@@ -74,14 +74,6 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
             },
           }
         },
-        "Tagging"                                 => {
-          "type"       => "object",
-          "properties" => {
-            "tag_id" => {"$ref" => "##{SCHEMAS_PATH}/ID"},
-            "name"   => {"type" => "string", "readOnly" => true, "example" => "architecture"},
-            "value"  => {"type" => "string", "readOnly" => true, "example" => "x86_64"}
-          }
-        },
         "Tenant"                                  => {
           "type"       => "object",
           "properties" => {
@@ -93,6 +85,21 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
         }
       )
     end
+  end
+
+  def schema_overrides
+    super.merge(
+      "Tag" => {
+        "type"       => "object",
+        "properties" => {
+          "tag" => {
+            "example"  => "/namespace/architecture=x86_64",
+            "type"     => "string"
+          }
+        },
+        "additionalProperties" => false
+      },
+    )
   end
 
   def generator_read_only_definitions
@@ -107,12 +114,10 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
       'Flavor',
       'OrchestrationStack',
       'ServiceInstance',
-      "ServiceInventory",
+      'ServiceInventory',
       'ServiceOffering',
       'ServiceOfferingIcon',
       'ServicePlan',
-      'Tag',
-      'Tagging',
       'Vm',
       'Volume',
       'VolumeAttachment',
