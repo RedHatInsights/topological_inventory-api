@@ -7,11 +7,14 @@ module Api
       def update
         model.update(params.require(:id), params_for_update)
 
-        messaging_client.publish_topic(
-          :service => "platform.topological-inventory.task-output-stream",
-          :event   => "Task.update",
-          :payload => params_for_update.to_h.merge("task_id" => params.require(:id))
-        )
+        if ENV['NO_KAFKA'].blank?
+          messaging_client.publish_topic(
+            :service => "platform.topological-inventory.task-output-stream",
+            :event   => "Task.update",
+            :payload => params_for_update.to_h.merge("task_id" => params.require(:id)),
+            :headers => Insights::API::Common::Request.current_forwardable
+          )
+        end
 
         head :no_content
       end

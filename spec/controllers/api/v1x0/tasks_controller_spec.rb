@@ -19,7 +19,8 @@ RSpec.describe Api::V1x0::TasksController, :type => :request do
     expect(client).to receive(:publish_topic).with(
       :service => "platform.topological-inventory.task-output-stream",
       :event   => "Task.update",
-      :payload => {"state" => "completed", "status" => "ok", "context" => { :message => "context2" }, "task_id" => task.id.to_s}
+      :payload => {"state" => "completed", "status" => "ok", "context" => { :message => "context2" }, "task_id" => task.id.to_s},
+      :headers => {"x-rh-identity" => identity}
     )
 
     patch(api_v1x0_task_url(task.id), :params => {:state => "completed", :status => "ok", :context => { :message => "context2" }}.to_json, :headers => headers)
