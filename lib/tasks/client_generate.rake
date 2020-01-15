@@ -43,11 +43,11 @@ class ClientGenerator
   end
 
   def openapi_file
-    @openapi_file ||= Pathname.new(Rails.root.join("public/doc/openapi-3-v#{api_version}.0.json")).to_s
+    @openapi_file ||= Pathname.new(Rails.root.join("public/doc/openapi-3-v#{api_version}.json")).to_s
   end
 
   def openapi_yaml_file
-    @openapi_yaml_file ||= Pathname.new(Rails.root.join("public/doc/openapi-3-v#{api_version}.0.generator.yaml")).to_s
+    @openapi_yaml_file ||= Pathname.new(Rails.root.join("public/doc/openapi-3-v#{api_version}.generator.yaml")).to_s
   end
 
   def generate_yaml_file(json_spec, yaml_spec)
