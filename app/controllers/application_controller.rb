@@ -120,7 +120,7 @@ class ApplicationController < ActionController::API
   end
 
   def filtered
-    Insights::API::Common::Filter.new(base_query, safe_params_for_list[:filter], api_doc_definition).apply
+    Insights::API::Common::Filter.new(base_query, safe_params_for_list[:filter], api_doc_definition, extra_filter_attributes).apply
   end
 
   def base_query
@@ -144,6 +144,10 @@ class ApplicationController < ActionController::API
     return unless subcollection?
 
     primary_instance
+  end
+
+  def extra_filter_attributes
+    {}
   end
 
   def pagination_limit
