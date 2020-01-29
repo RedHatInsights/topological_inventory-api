@@ -12,7 +12,7 @@ gem 'manageiq-password',   '~> 0.2', ">= 0.2.1"
 gem 'mimemagic',           '~> 0.3.3'
 gem 'more_core_extensions'
 gem 'pg',                  '~> 1.0', :require => false
-gem 'puma',                '~> 3.0'
+gem 'puma',                '~> 3.12.2'
 gem 'rack-cors',           '>= 1.0.4', '~> 1.0'
 gem 'rails',               '>= 5.2.2.1', '~> 5.2.2'
 
