@@ -211,7 +211,6 @@
         "uncommitted": null,
         "storage_domain_type": null,
         "host_storages": {
-          "ems_ref": null,
           "host": {
             "ems_ref": null
           }
@@ -357,7 +356,6 @@
         "uncommitted": null,
         "storage_domain_type": null,
         "host_storages": {
-          "ems_ref": null,
           "host": {
             "ems_ref": null
           }
