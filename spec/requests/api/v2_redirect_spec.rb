@@ -1,7 +1,7 @@
 RSpec.describe("v2 redirects") do
   include ::Spec::Support::TenantIdentity
 
-  let(:expected_version) { "v2.0" }
+  let(:expected_version) { "v2.1" }
   let(:major_version)    { expected_version.match(/^(v[\d]+)\.[\d]+$/)[1] }
   let(:headers)          { {"CONTENT_TYPE" => "application/json", "x-rh-identity" => identity} }
 

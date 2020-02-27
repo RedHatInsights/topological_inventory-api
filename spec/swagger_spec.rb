@@ -6,7 +6,10 @@ describe "Swagger stuff" do
       next if r.engine? # Don't care right now...
       next if r.action == "invalid_url_error"
 
-      array << {:verb => r.verb, :path => r.path.split("(").first.sub(/:[_a-z]*id/, ":id")}
+      hash_route = {:verb => r.verb, :path => r.path.split("(").first.sub(/:[_a-z]*id/, ":id")}
+
+      hash_route[:redirect_to] = r.endpoint.scan(/path\:\ (.*),/).flatten.first.gsub("%{path}", "*path") if r.app.app.kind_of?(ActionDispatch::Routing::Redirect)
+      array << hash_route
     end
   end
 
@@ -43,14 +46,22 @@ describe "Swagger stuff" do
 
       it "matches the routes" do
         redirect_routes = [
-          {:path => "#{path_prefix}/#{app_name}/v1/*path", :verb => "DELETE|GET|OPTIONS|PATCH|POST"},
-          {:path => "#{path_prefix}/#{app_name}/v2/*path", :verb => "DELETE|GET|OPTIONS|PATCH|POST"},
+          {:path        => "#{path_prefix}/#{app_name}/v1/*path",
+           :redirect_to => "/api/topological-inventory/v1.0/*path",
+           :verb        => "DELETE|GET|OPTIONS|PATCH|POST"},
+          {:path        => "#{path_prefix}/#{app_name}/v2/*path",
+           :redirect_to => "/api/topological-inventory/v2.0/*path",
+           :verb        => "DELETE|GET|OPTIONS|PATCH|POST"},
+          {:path        => "#{path_prefix}/#{app_name}/v2/*path",
+           :redirect_to => "/api/topological-inventory/v2.1/*path",
+           :verb        => "DELETE|GET|OPTIONS|PATCH|POST"},
         ]
+
         internal_api_routes = [
-          {:path => "/internal/v1/*path",                 :verb => "GET"},
-          {:path => "/internal/v1.0/sources/:id",         :verb => "PATCH"},
-          {:path => "/internal/v1.0/tenants",             :verb => "GET"},
-          {:path => "/internal/v1.0/tenants/:id",         :verb => "GET"},
+          {:path => "/internal/v1/*path", :verb => "GET", :redirect_to => "/internal/v1.0/*path"},
+          {:path => "/internal/v1.0/sources/:id", :verb => "PATCH"},
+          {:path => "/internal/v1.0/tenants",     :verb => "GET"},
+          {:path => "/internal/v1.0/tenants/:id", :verb => "GET"},
         ]
         health_check_routes = [
           {:path => "/health", :verb => "GET"}
