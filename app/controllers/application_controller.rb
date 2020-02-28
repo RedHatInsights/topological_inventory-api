@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
         if Tenant.tenancy_enabled? && current.required_auth?
           raise Insights::API::Common::EntitlementError unless request_is_entitled?(current.entitlement)
 
-          tenant = Tenant.find_or_create_by(:external_tenant => current.user.tenant) if current.user.tenant
+          tenant = Tenant.find_or_create_by(:external_tenant => current.tenant) if current.tenant
           ActsAsTenant.with_tenant(tenant) { yield }
         else
           ActsAsTenant.without_tenant { yield }
