@@ -117,7 +117,16 @@ class ApplicationController < ActionController::API
   end
 
   def filtered
-    Insights::API::Common::Filter.new(model, safe_params_for_list[:filter], api_doc_definition).apply
+    Insights::API::Common::Filter.new(base_query, safe_params_for_list[:filter], api_doc_definition).apply
+  end
+
+  def base_query
+    subcollection? ? primary_instance.send(request_path_parts["subcollection_name"]) : model
+  end
+
+  def primary_instance
+    klass = request_path_parts["primary_collection_name"].singularize.camelize.safe_constantize
+    klass.find(request_path_parts["primary_collection_id"].to_i)
   end
 
   def pagination_limit
