@@ -18,12 +18,20 @@ module Api
 
       def send_message_and_generate_task_for(operation_type)
         operation_params = send("params_for_#{operation_type}".to_sym)
+
+        logger.info("Entering method send_message_and_generate_task_for operation #{operation_type} with params #{operation_params.inspect}")
+
         service_offering = model.find(operation_params[:service_offering_id].to_i)
 
         source_type = retrieve_source_type(service_offering)
+        logger.info("Retrieved SourceType(id: #{source_type.id}, name: #{source_type.name}), ServiceOffice(id: #{service_offering.source.id})")
+
         task = Task.create!(:tenant => service_offering.tenant, :state => "pending", :status => "ok")
+        logger.info("Task(id: #{task.id}) created.")
 
         payload = send("payload_for_#{operation_type}".to_sym, task, service_offering)
+
+        logger.info("Task(id: #{task.id}): Publishing event(ServiceOffering.#{operation_type}) to kafka")
 
         messaging_client.publish_topic(
           :service => "platform.topological-inventory.operations-#{source_type.name}",
@@ -31,10 +39,14 @@ module Api
           :payload => payload
         )
 
+        logger.info("Task(id: #{task.id}): event(ServiceOffering.#{operation_type}) published to kafka.")
+
         render :json => {:task_id => task.id}
-      rescue ActiveRecord::RecordNotFound
+      rescue ActiveRecord::RecordNotFound => err
+        logger.error("#{err.message}")
         head :bad_request
       rescue StandardError => err
+        logger.error("#{task ? "Task(id: #{task.id}):" : ""} #{err.message} (#{err.class})")
         error_document = Insights::API::Common::ErrorDocument.new.add(err.message)
         render :json => error_document.to_h, :status => error_document.status
       end
