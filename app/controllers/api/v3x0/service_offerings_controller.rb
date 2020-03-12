@@ -1,6 +1,6 @@
 module Api
   module V3x0
-    class ServiceOfferingsController < Api::V1::ServiceOfferingsController
+    class ServiceOfferingsController < Api::V2x0::ServiceOfferingsController
       include Mixins::IndexMixin
     end
   end
