@@ -6,7 +6,7 @@ class ClientGenerator
   require 'json'
   require 'uri'
 
-  VERSION = "4.2.1".freeze
+  VERSION = "4.2.3".freeze
   SOURCE_URL = "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli".freeze
 
   def msg(message)

@@ -127,9 +127,23 @@ class ApplicationController < ActionController::API
     subcollection? ? primary_instance.send(request_path_parts["subcollection_name"]) : model
   end
 
+  def scoped(relation)
+    if through_relation_klass
+      relation = relation.joins(through_relation_name)
+    end
+
+    relation
+  end
+
   def primary_instance
     klass = request_path_parts["primary_collection_name"].singularize.camelize.safe_constantize
     klass.find(request_path_parts["primary_collection_id"].to_i)
+  end
+
+  def raise_unless_primary_instance_exists
+    return unless subcollection?
+
+    primary_instance
   end
 
   def pagination_limit

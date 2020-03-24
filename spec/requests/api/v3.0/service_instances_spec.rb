@@ -25,6 +25,6 @@ RSpec.describe("v3.0 - ServiceInstance") do
   include_examples(
     "v3x0_test_index_and_subcollections",
     "service_instances",
-    ["service_instance_nodes"],
+    ["service_instance_nodes", "service_credentials"],
   )
 end

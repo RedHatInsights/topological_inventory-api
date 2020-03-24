@@ -2965,6 +2965,140 @@
         }
       }
     },
+    "/service_credential_types": {
+      "get": {
+        "summary": "List ServiceCredentialTypes",
+        "operationId": "listServiceCredentialTypes",
+        "description": "Returns an array of ServiceCredentialType objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceCredentialTypes collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceCredentialTypesCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_credential_types/{id}": {
+      "get": {
+        "summary": "Show an existing ServiceCredentialType",
+        "operationId": "showServiceCredentialType",
+        "description": "Returns a ServiceCredentialType object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceCredentialType info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceCredentialType"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_credentials": {
+      "get": {
+        "summary": "List ServiceCredentials",
+        "operationId": "listServiceCredentials",
+        "description": "Returns an array of ServiceCredential objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceCredentials collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceCredentialsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_credentials/{id}": {
+      "get": {
+        "summary": "Show an existing ServiceCredential",
+        "operationId": "showServiceCredential",
+        "description": "Returns a ServiceCredential object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceCredential info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceCredential"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/service_instance_nodes": {
       "get": {
         "summary": "List ServiceInstanceNodes",
@@ -3032,6 +3166,52 @@
         }
       }
     },
+    "/service_instance_nodes/{id}/service_credentials": {
+      "get": {
+        "summary": "List ServiceCredentials for ServiceInstanceNode",
+        "operationId": "listServiceInstanceNodeServiceCredentials",
+        "description": "Returns an array of ServiceCredential objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceCredentials collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceCredentialsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/service_instances": {
       "get": {
         "summary": "List ServiceInstances",
@@ -3082,6 +3262,52 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceInstance"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service_instances/{id}/service_credentials": {
+      "get": {
+        "summary": "List ServiceCredentials for ServiceInstance",
+        "operationId": "listServiceInstanceServiceCredentials",
+        "description": "Returns an array of ServiceCredential objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceCredentials collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceCredentialsCollection"
                 }
               }
             }
@@ -3495,6 +3721,52 @@
         }
       }
     },
+    "/service_offering_nodes/{id}/service_credentials": {
+      "get": {
+        "summary": "List ServiceCredentials for ServiceOfferingNode",
+        "operationId": "listServiceOfferingNodeServiceCredentials",
+        "description": "Returns an array of ServiceCredential objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceCredentials collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceCredentialsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/service_offerings": {
       "get": {
         "summary": "List ServiceOfferings",
@@ -3644,6 +3916,52 @@
           },
           "400": {
             "description": "BadRequest"
+          }
+        }
+      }
+    },
+    "/service_offerings/{id}/service_credentials": {
+      "get": {
+        "summary": "List ServiceCredentials for ServiceOffering",
+        "operationId": "listServiceOfferingServiceCredentials",
+        "description": "Returns an array of ServiceCredential objects",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QueryLimit"
+          },
+          {
+            "$ref": "#/components/parameters/QueryOffset"
+          },
+          {
+            "$ref": "#/components/parameters/QueryFilter"
+          },
+          {
+            "$ref": "#/components/parameters/QuerySortBy"
+          },
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ServiceCredentials collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceCredentialsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorNotFound"
+                }
+              }
+            }
           }
         }
       }
@@ -9855,6 +10173,163 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SecurityGroup"
+            }
+          }
+        }
+      },
+      "ServiceCredential": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "service_credential_type_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "type_name": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServiceCredentialType": {
+        "type": "object",
+        "properties": {
+          "archived_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "kind": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "namespace": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_created_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_deleted_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "source_ref": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServiceCredentialTypesCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceCredentialType"
+            }
+          }
+        }
+      },
+      "ServiceCredentialsCollection": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/CollectionMetadata"
+          },
+          "links": {
+            "$ref": "#/components/schemas/CollectionLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceCredential"
             }
           }
         }
