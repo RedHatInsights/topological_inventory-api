@@ -62,21 +62,36 @@ Rails.application.routes.draw do
         resources :vms,               :only => [:index]
         resources :volumes,           :only => [:index]
       end
-      resources :security_groups,         :only => [:index, :show], :concerns => [:taggable] do
-        resources :vms,  :only => [:index]
+
+      resources :security_groups, :only => [:index, :show], :concerns => [:taggable] do
+        resources :vms, :only => [:index]
       end
-      resources :service_instance_nodes,  :only => [:index, :show]
-      resources :service_instances,       :only => [:index, :show] do
+
+      resources :service_credentials, :only => [:index, :show]
+      resources :service_credential_types, :only => [:index, :show]
+
+      resources :service_instance_nodes, :only => [:index, :show] do
+        resources :service_credentials, :only => [:index]
+      end
+
+      resources :service_instances, :only => [:index, :show] do
+        resources :service_credentials, :only => [:index]
         resources :service_instance_nodes, :only => [:index]
       end
-      resources :service_inventories,     :only => [:index, :show], :concerns => [:taggable]
-      resources :service_offering_icons,  :only => [:index, :show] do
+
+      resources :service_inventories, :only => [:index, :show], :concerns => [:taggable]
+      resources :service_offering_icons, :only => [:index, :show] do
         get "icon_data", :to => "service_offering_icons#icon_data"
       end
-      resources :service_offering_nodes,  :only => [:index, :show]
-      resources :service_offerings,       :only => [:index, :show], :concerns => [:taggable] do
+
+      resources :service_offering_nodes, :only => [:index, :show] do
+        resources :service_credentials, :only => [:index]
+      end
+
+      resources :service_offerings, :only => [:index, :show], :concerns => [:taggable] do
         post "applied_inventories", :to => "service_offerings#applied_inventories"
         post "order", :to => "service_offerings#order"
+        resources :service_credentials,    :only => [:index]
         resources :service_instances,      :only => [:index]
         resources :service_offering_nodes, :only => [:index]
         resources :service_plans,          :only => [:index]

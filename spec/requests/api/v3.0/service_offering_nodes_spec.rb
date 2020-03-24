@@ -17,6 +17,6 @@ RSpec.describe("v3.0 - ServiceOfferingNode") do
   include_examples(
     "v3x0_test_index_and_subcollections",
     "service_offering_nodes",
-    [],
+    ["service_credentials"],
   )
 end
