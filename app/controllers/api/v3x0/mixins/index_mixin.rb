@@ -1,10 +1,10 @@
 module Api
-  module V1
+  module V3x0
     module Mixins
       module IndexMixin
         def index
           raise_unless_primary_instance_exists
-          render :json => Insights::API::Common::PaginatedResponse.new(
+          render :json => Insights::API::Common::PaginatedResponseV2.new(
             :base_query => scoped(filtered.where(params_for_list)),
             :request    => request,
             :limit      => pagination_limit,

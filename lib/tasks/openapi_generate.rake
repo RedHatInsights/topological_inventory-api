@@ -113,6 +113,8 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
       'ContainerTemplate',
       'Flavor',
       'OrchestrationStack',
+      'ServiceCredential',
+      'ServiceCredentialType',
       'ServiceInstance',
       'ServiceInventory',
       'ServiceOffering',

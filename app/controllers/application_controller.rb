@@ -53,7 +53,10 @@ class ApplicationController < ActionController::API
 
   def safe_params_for_list
     # :limit & :offset can be passed in for pagination purposes, but shouldn't show up as params for filtering purposes
-    @safe_params_for_list ||= params.merge(params_for_polymorphic_subcollection).permit(*permitted_params, :filter => {}, :sort_by => [])
+    @safe_params_for_list ||= begin
+      sort_by_default = (params[:sort_by].kind_of?(String) || params[:sort_by].kind_of?(Array)) ? [] : {}
+      params.merge(params_for_polymorphic_subcollection).permit(*permitted_params, :filter => {}, :sort_by => sort_by_default)
+    end
   end
 
   def permitted_params
@@ -124,9 +127,23 @@ class ApplicationController < ActionController::API
     subcollection? ? primary_instance.send(request_path_parts["subcollection_name"]) : model
   end
 
+  def scoped(relation)
+    if through_relation_klass
+      relation = relation.joins(through_relation_name)
+    end
+
+    relation
+  end
+
   def primary_instance
     klass = request_path_parts["primary_collection_name"].singularize.camelize.safe_constantize
     klass.find(request_path_parts["primary_collection_id"].to_i)
+  end
+
+  def raise_unless_primary_instance_exists
+    return unless subcollection?
+
+    primary_instance
   end
 
   def pagination_limit
