@@ -13,7 +13,11 @@ RSpec.describe("::Insights::API::Common::Filter") do
   end
 
   def expect_failure(query, *errors)
-    get(URI.escape("/api/v3.0/tasks?#{query}"), :headers => headers)
+    expect_collection_query_failure("tasks", query, *errors)
+  end
+
+  def expect_collection_query_failure(collection, query, *errors)
+    get(URI.escape("/api/v3.0/#{collection}?#{query}"), :headers => headers)
 
     expect(response).to have_attributes(
       :parsed_body => {
@@ -138,12 +142,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
   context "error cases" do
     it("empty filter")      { expect_failure("filter", "ActionController::UnpermittedParameters: found unpermitted parameter: :filter") }
     it("unknown attribute") { expect_failure("filter[xxx]", "Insights::API::Common::Filter::Error: found unpermitted parameter: xxx") }
-
-    context "unsupported comparator" do
-      it("on an integer")  { expect_failure("filter[id][xxx]=4", "Insights::API::Common::Filter::Error: found unpermitted parameter: id.xxx") }
-      it("on a string")    { expect_failure("filter[name][xxx]=4", "Insights::API::Common::Filter::Error: found unpermitted parameter: name.xxx") }
-      it("on a timestamp") { expect_failure("filter[created_at][xxx]=4", "Insights::API::Common::Filter::Error: found unpermitted parameter: created_at.xxx") }
-    end
+    it("unknown association attribute") { expect_collection_query_failure("container_groups", "filter[containers][xxx]=4", "Insights::API::Common::Filter::Error: found unpermitted parameter: containers.xxx") }
 
     it "unsupported attribute type" do
       source = Source.create!(:tenant => tenant)
