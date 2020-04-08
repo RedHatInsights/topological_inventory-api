@@ -27,6 +27,9 @@ module TagPresentation
       klass = tagging_relation_name.to_s.singularize.classify.safe_constantize
       klass.singleton_class.prepend(TagPresentation::PresentationNameMethod)
       klass.prepend(TagPresentation::TaggingAsJson)
+      klass.virtual_delegate(:name,      :type => :string, :to => :tag)
+      klass.virtual_delegate(:namespace, :type => :string, :to => :tag)
+      klass.virtual_delegate(:value,     :type => :string, :to => :tag)
     end
   end
 end
