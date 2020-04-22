@@ -8741,6 +8741,9 @@
           "name": {
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "type": "string"
@@ -8864,6 +8867,9 @@
             "readOnly": true,
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "updated_at": {
             "format": "date-time",
             "readOnly": true,
@@ -8910,6 +8916,9 @@
             "readOnly": true,
             "title": "Name",
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "resource_version": {
             "readOnly": true,
@@ -8983,6 +8992,9 @@
             "example": "openshift3/postgresql-92-rhel7",
             "readOnly": true,
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "resource_version": {
             "readOnly": true,
@@ -9108,6 +9120,9 @@
             "readOnly": true,
             "type": "integer"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "resource_version": {
             "readOnly": true,
             "type": "string"
@@ -9188,6 +9203,9 @@
             "title": "Name",
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "resource_version": {
             "readOnly": true,
             "type": "string"
@@ -9266,6 +9284,9 @@
           "name": {
             "readOnly": true,
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "resource_version": {
             "readOnly": true,
@@ -9350,6 +9371,9 @@
             "readOnly": true,
             "title": "Name",
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "resource_version": {
             "readOnly": true,
@@ -9450,6 +9474,9 @@
           },
           "name": {
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "source_created_at": {
             "format": "date-time",
@@ -9570,6 +9597,9 @@
             "readOnly": true,
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -9687,6 +9717,9 @@
           "power_state": {
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "type": "string"
@@ -9771,6 +9804,9 @@
           "orchestration_stack_id": {
             "$ref": "#/components/schemas/ID"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "type": "string"
@@ -9852,6 +9888,9 @@
           "orchestration_stack_id": {
             "$ref": "#/components/schemas/ID"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "type": "string"
@@ -9917,6 +9956,9 @@
             "type": "string"
           },
           "orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "refresh_state_part_id": {
             "$ref": "#/components/schemas/ID"
           },
           "source_created_at": {
@@ -10014,6 +10056,9 @@
             "type": "string"
           },
           "parent_orchestration_stack_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "refresh_state_part_id": {
             "$ref": "#/components/schemas/ID"
           },
           "source_created_at": {
@@ -10132,6 +10177,9 @@
           "orchestration_stack_id": {
             "$ref": "#/components/schemas/ID"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "type": "string"
@@ -10206,6 +10254,9 @@
             "readOnly": true,
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "service_credential_type_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -10274,6 +10325,9 @@
           "namespace": {
             "readOnly": true,
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "source_created_at": {
             "format": "date-time",
@@ -10370,6 +10424,9 @@
             "title": "Name",
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "root_service_instance_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -10440,6 +10497,9 @@
           },
           "name": {
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "root_service_instance_id": {
             "$ref": "#/components/schemas/ID"
@@ -10556,6 +10616,9 @@
             "readOnly": true,
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "readOnly": true,
@@ -10643,6 +10706,9 @@
             "title": "Name",
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "service_inventory_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -10711,6 +10777,9 @@
             "readOnly": true,
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -10770,6 +10839,9 @@
           },
           "name": {
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "root_service_offering_id": {
             "$ref": "#/components/schemas/ID"
@@ -10877,6 +10949,9 @@
             "readOnly": true,
             "title": "Name",
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "resource_version": {
             "readOnly": true,
@@ -10992,6 +11067,9 @@
           "name": {
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_id": {
             "$ref": "#/components/schemas/ID"
           },
@@ -11076,6 +11154,9 @@
           "orchestration_stack_id": {
             "$ref": "#/components/schemas/ID"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "type": "string"
@@ -11147,6 +11228,9 @@
           },
           "name": {
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "source_id": {
             "$ref": "#/components/schemas/ID"
@@ -11231,6 +11315,9 @@
             "title": "Name",
             "type": "string"
           },
+          "source_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "state": {
             "example": "Running",
             "title": "State",
@@ -11239,6 +11326,12 @@
           "status": {
             "example": "Error",
             "title": "Status",
+            "type": "string"
+          },
+          "target_source_ref": {
+            "type": "string"
+          },
+          "target_type": {
             "type": "string"
           },
           "updated_at": {
@@ -11368,6 +11461,9 @@
             "readOnly": true,
             "type": "string"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "source_created_at": {
             "format": "date-time",
             "readOnly": true,
@@ -11455,6 +11551,9 @@
           "orchestration_stack_id": {
             "$ref": "#/components/schemas/ID"
           },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "size": {
             "description": "Size of the volume in bytes",
             "example": 8589934592,
@@ -11515,6 +11614,9 @@
             "format": "date-time",
             "readOnly": true,
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "state": {
             "example": "attached",
@@ -11581,6 +11683,9 @@
             "example": "standard",
             "readOnly": true,
             "type": "string"
+          },
+          "refresh_state_part_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "source_id": {
             "$ref": "#/components/schemas/ID"

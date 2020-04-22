@@ -27,6 +27,7 @@ module Api
           permitted.delete('context')
           permitted << {'context'=>{}}
         end
+        permitted << 'source_id'
         body_params.permit(*permitted)
       end
     end
