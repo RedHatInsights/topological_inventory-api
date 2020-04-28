@@ -11338,6 +11338,9 @@
             "format": "date-time",
             "readOnly": true,
             "type": "string"
+          },
+          "x_rh_insights_request": {
+            "type": "string"
           }
         },
         "additionalProperties": false

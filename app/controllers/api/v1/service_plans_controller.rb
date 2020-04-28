@@ -10,7 +10,7 @@ module Api
       def order
         service_plan = model.find(request_path_parts["primary_collection_id"].to_i)
         source_type  = retrieve_source_type(service_plan)
-        task         = Task.create!(:name => "ServicePlan#order", :tenant => service_plan.tenant, :state => "pending", :status => "ok")
+        task         = Task.create!(:name => "ServicePlan#order", :x_rh_insights_request => Insights::API::Common::Request.current_forwardable["x-rh-insights-request-id"], :tenant => service_plan.tenant, :state => "pending", :status => "ok")
 
         messaging_client.publish_topic(
           :service => "platform.topological-inventory.operations-#{source_type.name}",
