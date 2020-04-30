@@ -11,7 +11,7 @@ module Api
           messaging_client.publish_topic(
             :service => "platform.topological-inventory.task-output-stream",
             :event   => "Task.update",
-            :payload => params_for_update.to_h.merge("task_id" => params.require(:id)),
+            :payload => params_for_update.to_h.merge("id" => params.require(:id)),
             :headers => Insights::API::Common::Request.current_forwardable
           )
         end
