@@ -25,8 +25,7 @@ module Api
 
         source_type = retrieve_source_type(service_offering)
         logger.info("ServiceOffering##{operation_type}: Retrieved SourceType(id: #{source_type.id}, name: #{source_type.name}), ServiceOffering(id: #{service_offering.id}, source_ref: #{service_offering.source_ref})")
-
-        task = Task.create!(:name => "ServiceOffering##{operation_type}", :tenant => service_offering.tenant, :state => "pending", :status => "ok")
+        task = Task.create!(:name => "ServiceOffering##{operation_type}", :forwardable_headers => Insights::API::Common::Request.current_forwardable, :tenant => service_offering.tenant, :state => "pending", :status => "ok")
         logger.info("ServiceOffering##{operation_type}: ServiceOffering(id: #{service_offering.id}, source_ref: #{service_offering.source_ref}): Task(id: #{task.id}) created.")
 
         payload = send("payload_for_#{operation_type}".to_sym, task, service_offering)
