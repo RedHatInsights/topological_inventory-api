@@ -11307,10 +11307,6 @@
             "readOnly": true,
             "type": "string"
           },
-          "forwardable_headers": {
-            "example": "Insights::API::Common::Request.current_forwardable for later usage",
-            "type": "object"
-          },
           "id": {
             "$ref": "#/components/schemas/ID"
           },
