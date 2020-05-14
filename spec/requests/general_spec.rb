@@ -9,7 +9,7 @@ RSpec.shared_examples "invalid_url_requests" do |request_type, invalid_url|
 
       expect(response).to have_attributes(
         :status      => 404,
-        :parsed_body => {"errors" => [{"detail" => "Invalid URL #{invalid_url} specified.", "status" => 404}]}
+        :parsed_body => {"errors" => [{"detail" => "Invalid URL #{invalid_url} specified.", "status" => "404"}]}
       )
     end
   end

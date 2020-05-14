@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
   around_action :with_current_request
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    error_document = Insights::API::Common::ErrorDocument.new.add(404, "Record not found")
+    error_document = Insights::API::Common::ErrorDocument.new.add("404", "Record not found")
     render :json => error_document.to_h, :status => :not_found
   end
 
@@ -26,10 +26,10 @@ class ApplicationController < ActionController::API
           ActsAsTenant.without_tenant { yield }
         end
       rescue KeyError, Insights::API::Common::IdentityError
-        error_document = Insights::API::Common::ErrorDocument.new.add(401, 'Unauthorized')
+        error_document = Insights::API::Common::ErrorDocument.new.add('401', 'Unauthorized')
         render :json => error_document.to_h, :status => error_document.status
       rescue Insights::API::Common::EntitlementError
-        error_document = Insights::API::Common::ErrorDocument.new.add(403, 'Forbidden')
+        error_document = Insights::API::Common::ErrorDocument.new.add('403', 'Forbidden')
         render :json => error_document.to_h, :status => error_document.status
       end
     end
