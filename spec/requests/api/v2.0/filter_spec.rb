@@ -17,7 +17,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
 
     expect(response).to have_attributes(
       :parsed_body => {
-        "errors" => errors.collect { |e| {"detail" => e, "status" => 400} }
+        "errors" => errors.collect { |e| {"detail" => e, "status" => "400"} }
       },
       :status      => 400,
     )
@@ -131,9 +131,9 @@ RSpec.describe("::Insights::API::Common::Filter") do
     it("unknown attribute") { expect_failure("filter[xxx]", "Insights::API::Common::Filter::Error: found unpermitted parameter: xxx") }
 
     context "unsupported comparator" do
-      it("on an integer")  { expect_failure("filter[id][xxx]=4", "Insights::API::Common::Filter::Error: unsupported integer comparator: xxx") }
-      it("on a string")    { expect_failure("filter[name][xxx]=4", "Insights::API::Common::Filter::Error: unsupported string comparator: xxx") }
-      it("on a timestamp") { expect_failure("filter[created_at][xxx]=4", "Insights::API::Common::Filter::Error: unsupported timestamp comparator: xxx") }
+      it("on an integer")  { expect_failure("filter[id][xxx]=4", "Insights::API::Common::Filter::Error: found unpermitted parameter: id.xxx") }
+      it("on a string")    { expect_failure("filter[name][xxx]=4", "Insights::API::Common::Filter::Error: found unpermitted parameter: name.xxx") }
+      it("on a timestamp") { expect_failure("filter[created_at][xxx]=4", "Insights::API::Common::Filter::Error: found unpermitted parameter: created_at.xxx") }
     end
 
     it "unsupported attribute type" do
@@ -143,7 +143,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
       get("/api/v2.0/vms?filter[mac_addresses]=a", :headers => headers)
 
       expect(response.status).to eq(400)
-      expect(response.parsed_body["errors"]).to eq([{"detail"=>"Insights::API::Common::Filter::Error: unsupported attribute type for: mac_addresses", "status"=>400}])
+      expect(response.parsed_body["errors"]).to eq([{"detail"=>"Insights::API::Common::Filter::Error: unsupported attribute type for: mac_addresses", "status"=>"400"}])
     end
 
     it "invalid attribute" do
@@ -153,7 +153,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
       get("/api/v2.0/vms?filter[bogus_attribute]=a", :headers => headers)
 
       expect(response.status).to eq(400)
-      expect(response.parsed_body["errors"]).to eq([{"detail"=>"Insights::API::Common::Filter::Error: found unpermitted parameter: bogus_attribute", "status"=>400}])
+      expect(response.parsed_body["errors"]).to eq([{"detail"=>"Insights::API::Common::Filter::Error: found unpermitted parameter: bogus_attribute", "status"=>"400"}])
     end
 
     it "multiple invalid attributes mixed with a valid attribute" do
@@ -165,7 +165,7 @@ RSpec.describe("::Insights::API::Common::Filter") do
       expect(response.status).to eq(400)
       expect(response.parsed_body["errors"]).to eq(
         [
-          {"detail" => "Insights::API::Common::Filter::Error: unsupported attribute type for: mac_addresses, found unpermitted parameter: bogus_attribute", "status" => 400}
+          {"detail" => "Insights::API::Common::Filter::Error: unsupported attribute type for: mac_addresses, found unpermitted parameter: bogus_attribute", "status" => "400"}
         ]
       )
     end
