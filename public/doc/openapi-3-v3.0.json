@@ -9532,8 +9532,8 @@
               "type": "object",
               "properties": {
                 "status": {
-                  "type": "integer",
-                  "example": 404
+                  "type": "string",
+                  "example": "404"
                 },
                 "detail": {
                   "type": "string",
@@ -11579,6 +11579,11 @@
           },
           "source_region_id": {
             "$ref": "#/components/schemas/ID"
+          },
+          "source_updated_at": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
           },
           "state": {
             "example": "in-use",
