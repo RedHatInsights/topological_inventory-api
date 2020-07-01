@@ -126,6 +126,10 @@ class OpenapiGenerator < Insights::API::Common::OpenApi::Generator
       'VolumeType',
     ].to_set.freeze
   end
+
+  def generator_blacklist_allowed_attributes
+    super.merge(:forwardable_headers => true)
+  end
 end
 
 namespace :openapi do
