@@ -44,6 +44,8 @@ module TopologicalInventory
 
     config.log_level = (ENV['RAILS_LOG_LEVEL'] || 'debug').downcase.to_sym
     Insights::API::Common::Logging.activate(config)
+    # TODO: add an option to disable web_server_metrics
+    # TODO: it's almost the same like PrometheusExporter::Middleware but with less data
     Insights::API::Common::Metrics.activate(config, "topological_inventory_api")
   end
 end
