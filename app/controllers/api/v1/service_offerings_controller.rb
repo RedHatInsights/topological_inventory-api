@@ -32,7 +32,7 @@ module Api
 
         logger.info("ServiceOffering##{operation_type}: Task(id: #{task.id}), ServiceOffering(id: #{service_offering.id}, source_ref: #{service_offering.source_ref}): Publishing event(ServiceOffering.#{operation_type}) to kafka")
 
-        messaging_client.publish_topic(
+        TopologicalInventory::Api::Messaging.client.publish_topic(
           :service => "platform.topological-inventory.operations-#{source_type.name}",
           :event   => "ServiceOffering.#{operation_type}",
           :payload => payload

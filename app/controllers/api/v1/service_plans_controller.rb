@@ -12,7 +12,7 @@ module Api
         source_type  = retrieve_source_type(service_plan)
         task         = Task.create!(:name => "ServicePlan#order", :source_id => service_plan.source_id, :forwardable_headers => Insights::API::Common::Request.current_forwardable, :tenant => service_plan.tenant, :state => "pending", :status => "ok")
 
-        messaging_client.publish_topic(
+        TopologicalInventory::Api::Messaging.client.publish_topic(
           :service => "platform.topological-inventory.operations-#{source_type.name}",
           :event   => "ServicePlan.order",
           :payload => payload_for_order(task, service_plan)
