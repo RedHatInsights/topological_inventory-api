@@ -10,7 +10,7 @@ RSpec.describe Api::V1x0::TasksController, :type => :request do
   let(:client)  { instance_double("ManageIQ::Messaging::Client") }
 
   before do
-    allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
+    allow(TopologicalInventory::Api::Messaging).to receive(:client).and_return(client)
     allow(client).to receive(:publish_topic)
   end
 
