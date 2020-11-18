@@ -45,7 +45,7 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       end
 
       before do
-        allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
+        allow(TopologicalInventory::Api::Messaging).to receive(:client).and_return(client)
         allow(client).to receive(:publish_topic)
 
         source_type = double
@@ -82,7 +82,7 @@ RSpec.describe Api::V1x0::ServicePlansController, :type => :request do
       let(:error_message) { "Sample error message" }
 
       before do
-        allow(ManageIQ::Messaging::Client).to receive(:open).and_return(client)
+        allow(TopologicalInventory::Api::Messaging).to receive(:client).and_return(client)
         allow(client).to receive(:publish_topic)
 
         allow_any_instance_of(described_class).to receive(:retrieve_source_type).and_raise(SourcesApiClient::ApiError.new(error_message))

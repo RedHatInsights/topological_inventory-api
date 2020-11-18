@@ -8,7 +8,7 @@ module Api
         model.update(params.require(:id), params_for_update)
 
         if ENV['NO_KAFKA'].blank?
-          messaging_client.publish_topic(
+          TopologicalInventory::Api::Messaging.client.publish_topic(
             :service => "platform.topological-inventory.task-output-stream",
             :event   => "Task.update",
             :payload => params_for_update.to_h.merge("id" => params.require(:id)),

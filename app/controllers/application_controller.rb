@@ -169,15 +169,4 @@ class ApplicationController < ActionController::API
   def params_for_update
     body_params.permit(*api_doc_definition.all_attributes - api_doc_definition.read_only_attributes)
   end
-
-  def messaging_client
-    require "manageiq-messaging"
-
-    @messaging_client ||= ManageIQ::Messaging::Client.open({
-      :protocol => :Kafka,
-      :host     => ENV["QUEUE_HOST"] || "localhost",
-      :port     => ENV["QUEUE_PORT"] || "9092",
-      :encoding => "json"
-    })
-  end
 end
