@@ -1919,9 +1919,13 @@ data:
       "timezone": "",
       "title": "Topological Inventory general",
       "uid": "MnHGlz5Mk",
-      "version": 2
+      "version": 27
     }
 kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: grafana-dashboard-insights-topological-inventory-general
+  labels:
+    grafana_dashboard: "true"
+  annotations:
+    grafana-folder: /grafana-dashboard-definitions/Insights
