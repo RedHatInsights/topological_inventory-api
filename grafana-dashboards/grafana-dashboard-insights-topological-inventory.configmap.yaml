@@ -18,11 +18,11 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "iteration": 1606131954728,
+      "iteration": 1606218773704,
       "links": [],
       "panels": [
         {
-          "collapsed": true,
+          "collapsed": false,
           "datasource": null,
           "gridPos": {
             "h": 1,
@@ -30,22 +30,1120 @@ data:
             "x": 0,
             "y": 0
           },
-          "id": 141,
-          "panels": [
+          "id": 122,
+          "panels": [],
+          "title": "General",
+          "type": "row"
+        },
+        {
+          "content": "\n\n",
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 1,
+            "w": 12,
+            "x": 0,
+            "y": 1
+          },
+          "id": 118,
+          "mode": "markdown",
+          "options": {
+            "content": "\n\n",
+            "mode": "markdown"
+          },
+          "pluginVersion": "7.1.0",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Pods Up",
+          "type": "text"
+        },
+        {
+          "content": "\n\n",
+          "datasource": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 1,
+            "w": 12,
+            "x": 12,
+            "y": 1
+          },
+          "id": 117,
+          "mode": "markdown",
+          "options": {
+            "content": "\n\n",
+            "mode": "markdown"
+          },
+          "pluginVersion": "7.1.0",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Restarts count / chosen range",
+          "type": "text"
+        },
+        {
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 0,
+            "y": 2
+          },
+          "id": 106,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
             {
-              "datasource": null,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 1,
-                "y": 14
+              "expr": "sum(up{service=\"topological-inventory-api\"})",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "API",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [
+                {
+                  "id": 0,
+                  "op": "=",
+                  "text": "N/A",
+                  "type": 1,
+                  "value": "null"
+                }
+              ],
+              "nullValueMode": "connected",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
+                  }
+                ]
               },
-              "id": 142,
-              "title": "Panel Title",
-              "type": "add-panel"
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 2,
+            "y": 2
+          },
+          "id": 108,
+          "links": [],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "last"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "sum(up{service=\"topological-inventory-ingress-api\"})",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Ingress API",
+          "type": "stat"
+        },
+        {
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 4,
+            "y": 2
+          },
+          "id": 109,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "sum(up{service=\"topological-inventory-orchestrator\"})",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Orchestrator",
+          "type": "stat"
+        },
+        {
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 1
+                  },
+                  {
+                    "color": "green",
+                    "value": 3
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 6,
+            "y": 2
+          },
+          "id": 107,
+          "interval": "",
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "sum(up{service=\"topological-inventory-persister\"})",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Persister",
+          "type": "stat"
+        },
+        {
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 8,
+            "y": 2
+          },
+          "id": 110,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "sum(up{service=\"topological-inventory-sources-sync\"})",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Sources Sync",
+          "type": "stat"
+        },
+        {
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 10,
+            "y": 2
+          },
+          "id": 112,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "sum(up{service=\"topological-inventory-host-inventory-sync\"})",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Host Inv. Sync",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [
+                {
+                  "id": 0,
+                  "op": "=",
+                  "text": "N/A",
+                  "type": 1,
+                  "value": "null"
+                }
+              ],
+              "nullValueMode": "connected",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 1
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 12,
+            "y": 2
+          },
+          "id": 128,
+          "interval": "",
+          "links": [],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-api\"}[$__range])))",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "API",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [
+                {
+                  "id": 0,
+                  "op": "=",
+                  "text": "N/A",
+                  "type": 1,
+                  "value": "null"
+                }
+              ],
+              "nullValueMode": "connected",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 1
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 14,
+            "y": 2
+          },
+          "id": 127,
+          "interval": "",
+          "links": [],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-ingress-api\"}[$__range])))",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Ingress API",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [
+                {
+                  "id": 0,
+                  "op": "=",
+                  "text": "N/A",
+                  "type": 1,
+                  "value": "null"
+                }
+              ],
+              "nullValueMode": "connected",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 1
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 16,
+            "y": 2
+          },
+          "id": 129,
+          "interval": "",
+          "links": [],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-orchestrator\"}[$__range])))",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Orchestrator",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [
+                {
+                  "id": 0,
+                  "op": "=",
+                  "text": "N/A",
+                  "type": 1,
+                  "value": "null"
+                }
+              ],
+              "nullValueMode": "connected",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 1
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 18,
+            "y": 2
+          },
+          "id": 130,
+          "interval": "",
+          "links": [],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-persister\"}[$__range])))",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Persister",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [
+                {
+                  "id": 0,
+                  "op": "=",
+                  "text": "N/A",
+                  "type": 1,
+                  "value": "null"
+                }
+              ],
+              "nullValueMode": "connected",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 1
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 20,
+            "y": 2
+          },
+          "id": 131,
+          "interval": "",
+          "links": [],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-sources-sync\"}[$__range])))",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Sources Sync",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [
+                {
+                  "id": 0,
+                  "op": "=",
+                  "text": "N/A",
+                  "type": 1,
+                  "value": "null"
+                }
+              ],
+              "nullValueMode": "connected",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 1
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 22,
+            "y": 2
+          },
+          "id": 132,
+          "interval": "",
+          "links": [],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-host-inventory-sync\"}[$__range])))",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Host Inv. Sync",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 1,
+            "w": 12,
+            "x": 12,
+            "y": 5
+          },
+          "id": 139,
+          "options": {
+            "content": "",
+            "mode": "html"
+          },
+          "pluginVersion": "7.1.0",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Alert: 10 restarts/h [TODO]",
+          "type": "text"
+        },
+        {
+          "collapsed": false,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 6
+          },
+          "id": 102,
+          "panels": [],
+          "title": "Kafka lag",
+          "type": "row"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 7
+          },
+          "hiddenSeries": false,
+          "id": 98,
+          "interval": "",
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(kafka_consumergroup_group_lag{topic=~'platform.topological-inventory.operations-.*'}) by (group, topic)",
+              "legendFormat": "{{topic}}/{{group}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Kafka lag - Operations ",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
             },
             {
-              "datasource": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 7
+          },
+          "hiddenSeries": false,
+          "id": 100,
+          "interval": "",
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(kafka_consumergroup_group_lag{topic=~'platform.topological-inventory..*',topic!~'platform.topological-inventory.operations.*'}) by (group, topic)",
+              "legendFormat": "{{topic}}/{{group}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Kafka lag - !Operations",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 15
+          },
+          "id": 175,
+          "panels": [],
+          "title": "Host Inventory Sync [TODO]",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 16
+          },
+          "id": 167,
+          "panels": [
+            {
+              "datasource": "$Datasource",
+              "description": "",
               "fieldConfig": {
                 "defaults": {
                   "custom": {},
@@ -67,12 +1165,184 @@ data:
                 "overrides": []
               },
               "gridPos": {
-                "h": 3,
-                "w": 2,
+                "h": 11,
+                "w": 11,
                 "x": 0,
-                "y": 22
+                "y": 4
               },
-              "id": 144,
+              "id": 171,
+              "options": {
+                "displayMode": "gradient",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "increase(topological_inventory_orchestrator_events_count[$__range])",
+                  "interval": "",
+                  "legendFormat": "{{event_name}}",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Events count",
+              "type": "bargauge"
+            },
+            {
+              "cacheTimeout": null,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 11,
+                "w": 6,
+                "x": 11,
+                "y": 4
+              },
+              "id": 169,
+              "interval": null,
+              "links": [],
+              "options": {
+                "displayMode": "gradient",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "topological_inventory_orchestrator_config_maps",
+                  "interval": "",
+                  "legendFormat": "{{source_type}}-ConfigMap",
+                  "refId": "A"
+                },
+                {
+                  "expr": "topological_inventory_orchestrator_deployment_configs",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "{{source_type}}-DC",
+                  "refId": "B"
+                },
+                {
+                  "expr": "topological_inventory_orchestrator_secrets",
+                  "interval": "",
+                  "legendFormat": "{{source_type}}-Secret",
+                  "refId": "C"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Collectors' OpenShift Resources",
+              "type": "bargauge"
+            }
+          ],
+          "title": "Orchestrator",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 17
+          },
+          "id": 146,
+          "panels": [
+            {
+              "datasource": null,
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 1,
+                "w": 12,
+                "x": 0,
+                "y": 5
+              },
+              "id": 165,
+              "options": {
+                "content": "",
+                "mode": "html"
+              },
+              "pluginVersion": "7.1.0",
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Related to chosen range",
+              "type": "text"
+            },
+            {
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 10
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 3,
+                "w": 4,
+                "x": 0,
+                "y": 6
+              },
+              "id": 148,
               "options": {
                 "colorMode": "value",
                 "graphMode": "area",
@@ -88,498 +1358,9 @@ data:
                 "textMode": "auto"
               },
               "pluginVersion": "7.2.1",
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "XXX",
-              "type": "stat"
-            }
-          ],
-          "title": "Work in progress",
-          "type": "row"
-        },
-        {
-          "collapsed": true,
-          "datasource": null,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 1
-          },
-          "id": 122,
-          "panels": [
-            {
-              "content": "\n\n",
-              "datasource": null,
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 1,
-                "w": 12,
-                "x": 0,
-                "y": 22
-              },
-              "id": 118,
-              "mode": "markdown",
-              "options": {
-                "content": "\n\n",
-                "mode": "markdown"
-              },
-              "pluginVersion": "7.1.0",
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Pods Up",
-              "type": "text"
-            },
-            {
-              "content": "\n\n",
-              "datasource": null,
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 1,
-                "w": 12,
-                "x": 12,
-                "y": 22
-              },
-              "id": 117,
-              "mode": "markdown",
-              "options": {
-                "content": "\n\n",
-                "mode": "markdown"
-              },
-              "pluginVersion": "7.1.0",
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Restarts count",
-              "type": "text"
-            },
-            {
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "red",
-                        "value": null
-                      },
-                      {
-                        "color": "green",
-                        "value": 1
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 0,
-                "y": 23
-              },
-              "id": 106,
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
               "targets": [
                 {
-                  "expr": "sum(up{service=\"topological-inventory-api\"})",
-                  "refId": "A"
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "API",
-              "type": "stat"
-            },
-            {
-              "cacheTimeout": null,
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [
-                    {
-                      "id": 0,
-                      "op": "=",
-                      "text": "N/A",
-                      "type": 1,
-                      "value": "null"
-                    }
-                  ],
-                  "nullValueMode": "connected",
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "red",
-                        "value": null
-                      },
-                      {
-                        "color": "green",
-                        "value": 1
-                      }
-                    ]
-                  },
-                  "unit": "none"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 2,
-                "y": 23
-              },
-              "id": 108,
-              "links": [],
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                  "calcs": [
-                    "last"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
-              "targets": [
-                {
-                  "expr": "sum(up{service=\"topological-inventory-ingress-api\"})",
-                  "refId": "A"
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Ingress API",
-              "type": "stat"
-            },
-            {
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "red",
-                        "value": null
-                      },
-                      {
-                        "color": "green",
-                        "value": 1
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 4,
-                "y": 23
-              },
-              "id": 109,
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
-              "targets": [
-                {
-                  "expr": "sum(up{service=\"topological-inventory-orchestrator\"})",
-                  "refId": "A"
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Orchestrator",
-              "type": "stat"
-            },
-            {
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "red",
-                        "value": null
-                      },
-                      {
-                        "color": "yellow",
-                        "value": 1
-                      },
-                      {
-                        "color": "green",
-                        "value": 3
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 6,
-                "y": 23
-              },
-              "id": 107,
-              "interval": "",
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
-              "targets": [
-                {
-                  "expr": "sum(up{service=\"topological-inventory-persister\"})",
-                  "refId": "A"
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Persister",
-              "type": "stat"
-            },
-            {
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "red",
-                        "value": null
-                      },
-                      {
-                        "color": "green",
-                        "value": 1
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 8,
-                "y": 23
-              },
-              "id": 110,
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
-              "targets": [
-                {
-                  "expr": "sum(up{service=\"topological-inventory-sources-sync\"})",
-                  "refId": "A"
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Sources Sync",
-              "type": "stat"
-            },
-            {
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "red",
-                        "value": null
-                      },
-                      {
-                        "color": "green",
-                        "value": 1
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 10,
-                "y": 23
-              },
-              "id": 112,
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
-              "targets": [
-                {
-                  "expr": "sum(up{service=\"topological-inventory-host-inventory-sync\"})",
-                  "refId": "A"
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Host Inv. Sync",
-              "type": "stat"
-            },
-            {
-              "cacheTimeout": null,
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [
-                    {
-                      "id": 0,
-                      "op": "=",
-                      "text": "N/A",
-                      "type": 1,
-                      "value": "null"
-                    }
-                  ],
-                  "nullValueMode": "connected",
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": null
-                      },
-                      {
-                        "color": "orange",
-                        "value": 1
-                      },
-                      {
-                        "color": "red",
-                        "value": 10
-                      }
-                    ]
-                  },
-                  "unit": "none"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 12,
-                "y": 23
-              },
-              "id": 128,
-              "interval": "",
-              "links": [],
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
-              "targets": [
-                {
-                  "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-api\"}[$__range])))",
+                  "expr": "sum(increase(topological_inventory_sources_sync_errors_total[$__range]))",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
@@ -587,64 +1368,47 @@ data:
               ],
               "timeFrom": null,
               "timeShift": null,
-              "title": "API",
+              "title": "Errors",
               "type": "stat"
             },
             {
-              "cacheTimeout": null,
               "datasource": "$Datasource",
               "description": "",
               "fieldConfig": {
                 "defaults": {
                   "custom": {},
-                  "mappings": [
-                    {
-                      "id": 0,
-                      "op": "=",
-                      "text": "N/A",
-                      "type": 1,
-                      "value": "null"
-                    }
-                  ],
-                  "nullValueMode": "connected",
+                  "mappings": [],
                   "thresholds": {
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "green",
+                        "color": "dark-blue",
                         "value": null
                       },
                       {
-                        "color": "orange",
+                        "color": "dark-green",
                         "value": 1
-                      },
-                      {
-                        "color": "red",
-                        "value": 10
                       }
                     ]
-                  },
-                  "unit": "none"
+                  }
                 },
                 "overrides": []
               },
               "gridPos": {
                 "h": 3,
-                "w": 2,
-                "x": 14,
-                "y": 23
+                "w": 4,
+                "x": 4,
+                "y": 6
               },
-              "id": 127,
-              "interval": "",
-              "links": [],
+              "id": 162,
               "options": {
                 "colorMode": "value",
                 "graphMode": "area",
                 "justifyMode": "auto",
-                "orientation": "horizontal",
+                "orientation": "auto",
                 "reduceOptions": {
                   "calcs": [
-                    "lastNotNull"
+                    "mean"
                   ],
                   "fields": "",
                   "values": false
@@ -654,70 +1418,55 @@ data:
               "pluginVersion": "7.2.1",
               "targets": [
                 {
-                  "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-ingress-api\"}[$__range])))",
+                  "expr": "sum(increase(topological_inventory_sources_sync_sources_created[$__range]))",
+                  "interval": "",
+                  "legendFormat": "",
                   "refId": "A"
                 }
               ],
               "timeFrom": null,
               "timeShift": null,
-              "title": "Ingress API",
+              "title": "Sources Created ",
               "type": "stat"
             },
             {
-              "cacheTimeout": null,
               "datasource": "$Datasource",
               "description": "",
               "fieldConfig": {
                 "defaults": {
                   "custom": {},
-                  "mappings": [
-                    {
-                      "id": 0,
-                      "op": "=",
-                      "text": "N/A",
-                      "type": 1,
-                      "value": "null"
-                    }
-                  ],
-                  "nullValueMode": "connected",
+                  "mappings": [],
                   "thresholds": {
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "green",
+                        "color": "dark-blue",
                         "value": null
                       },
                       {
-                        "color": "orange",
+                        "color": "dark-purple",
                         "value": 1
-                      },
-                      {
-                        "color": "red",
-                        "value": 10
                       }
                     ]
-                  },
-                  "unit": "none"
+                  }
                 },
                 "overrides": []
               },
               "gridPos": {
                 "h": 3,
-                "w": 2,
-                "x": 16,
-                "y": 23
+                "w": 4,
+                "x": 8,
+                "y": 6
               },
-              "id": 129,
-              "interval": "",
-              "links": [],
+              "id": 163,
               "options": {
                 "colorMode": "value",
                 "graphMode": "area",
                 "justifyMode": "auto",
-                "orientation": "horizontal",
+                "orientation": "auto",
                 "reduceOptions": {
                   "calcs": [
-                    "lastNotNull"
+                    "mean"
                   ],
                   "fields": "",
                   "values": false
@@ -727,262 +1476,19 @@ data:
               "pluginVersion": "7.2.1",
               "targets": [
                 {
-                  "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-orchestrator\"}[$__range])))",
+                  "expr": "sum(increase(topological_inventory_sources_sync_sources_destroyed[$__range]))",
+                  "interval": "",
+                  "legendFormat": "",
                   "refId": "A"
                 }
               ],
               "timeFrom": null,
               "timeShift": null,
-              "title": "Orchestrator",
+              "title": "Sources Deleted",
               "type": "stat"
-            },
-            {
-              "cacheTimeout": null,
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [
-                    {
-                      "id": 0,
-                      "op": "=",
-                      "text": "N/A",
-                      "type": 1,
-                      "value": "null"
-                    }
-                  ],
-                  "nullValueMode": "connected",
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": null
-                      },
-                      {
-                        "color": "orange",
-                        "value": 1
-                      },
-                      {
-                        "color": "red",
-                        "value": 10
-                      }
-                    ]
-                  },
-                  "unit": "none"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 18,
-                "y": 23
-              },
-              "id": 130,
-              "interval": "",
-              "links": [],
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
-              "targets": [
-                {
-                  "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-persister\"}[$__range])))",
-                  "refId": "A"
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Persister",
-              "type": "stat"
-            },
-            {
-              "cacheTimeout": null,
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [
-                    {
-                      "id": 0,
-                      "op": "=",
-                      "text": "N/A",
-                      "type": 1,
-                      "value": "null"
-                    }
-                  ],
-                  "nullValueMode": "connected",
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": null
-                      },
-                      {
-                        "color": "orange",
-                        "value": 1
-                      },
-                      {
-                        "color": "red",
-                        "value": 10
-                      }
-                    ]
-                  },
-                  "unit": "none"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 20,
-                "y": 23
-              },
-              "id": 131,
-              "interval": "",
-              "links": [],
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
-              "targets": [
-                {
-                  "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-sources-sync\"}[$__range])))",
-                  "refId": "A"
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Sources Sync",
-              "type": "stat"
-            },
-            {
-              "cacheTimeout": null,
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [
-                    {
-                      "id": 0,
-                      "op": "=",
-                      "text": "N/A",
-                      "type": 1,
-                      "value": "null"
-                    }
-                  ],
-                  "nullValueMode": "connected",
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": null
-                      },
-                      {
-                        "color": "orange",
-                        "value": 1
-                      },
-                      {
-                        "color": "red",
-                        "value": 10
-                      }
-                    ]
-                  },
-                  "unit": "none"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 2,
-                "x": 22,
-                "y": 23
-              },
-              "id": 132,
-              "interval": "",
-              "links": [],
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "textMode": "auto"
-              },
-              "pluginVersion": "7.2.1",
-              "targets": [
-                {
-                  "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-host-inventory-sync\"}[$__range])))",
-                  "refId": "A"
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "Host Inv. Sync",
-              "type": "stat"
-            },
-            {
-              "datasource": null,
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 1,
-                "w": 2,
-                "x": 12,
-                "y": 26
-              },
-              "id": 139,
-              "options": {
-                "content": "",
-                "mode": "html"
-              },
-              "pluginVersion": "7.1.0",
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "A: 10 restarts/h",
-              "type": "text"
             }
           ],
-          "title": "General",
+          "title": "Sources Sync",
           "type": "row"
         },
         {
@@ -992,7 +1498,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 2
+            "y": 18
           },
           "id": 124,
           "panels": [
@@ -1022,8 +1528,8 @@ data:
               "gridPos": {
                 "h": 3,
                 "w": 2,
-                "x": 0,
-                "y": 12
+                "x": 5,
+                "y": 6
               },
               "id": 150,
               "options": {
@@ -1076,8 +1582,8 @@ data:
               "gridPos": {
                 "h": 3,
                 "w": 2,
-                "x": 2,
-                "y": 12
+                "x": 17,
+                "y": 6
               },
               "id": 152,
               "interval": null,
@@ -1099,7 +1605,7 @@ data:
               "pluginVersion": "7.2.1",
               "targets": [
                 {
-                  "expr": "sum(rate(topological_inventory_api_http_requests_total{controller!=\"status\"}[60m]) * 60 * 60)",
+                  "expr": "sum(rate(topological_inventory_api_http_requests_total{controller!=\"status\",controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[60m]) * 60 * 60)",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
@@ -1116,10 +1622,27 @@ data:
               "dashLength": 10,
               "dashes": false,
               "datasource": "$Datasource",
+              "description": "",
               "fieldConfig": {
                 "defaults": {
-                  "custom": {},
-                  "links": []
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
                 },
                 "overrides": []
               },
@@ -1128,11 +1651,11 @@ data:
               "gridPos": {
                 "h": 8,
                 "w": 12,
-                "x": 12,
-                "y": 12
+                "x": 0,
+                "y": 9
               },
               "hiddenSeries": false,
-              "id": 137,
+              "id": 154,
               "legend": {
                 "avg": false,
                 "current": false,
@@ -1159,7 +1682,9 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "sum(rate(api_3scale_gateway_api_status{exported_service=\"topological-inventory\"}[1m]))",
+                  "expr": "rate(topological_inventory_api_http_duration_seconds_sum{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) / rate(topological_inventory_api_http_duration_seconds_count{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) * 1000 > 0",
+                  "interval": "",
+                  "legendFormat": "{{controller}}/{{action}}",
                   "refId": "A"
                 }
               ],
@@ -1167,7 +1692,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "TODO Requests (3scale)",
+              "title": "Request duration",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1183,7 +1708,8 @@ data:
               },
               "yaxes": [
                 {
-                  "format": "short",
+                  "$$hashKey": "object:497",
+                  "format": "ms",
                   "label": null,
                   "logBase": 1,
                   "max": null,
@@ -1191,6 +1717,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:498",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1210,6 +1737,108 @@ data:
               "dashLength": 10,
               "dashes": false,
               "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "links": []
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 9
+              },
+              "hiddenSeries": false,
+              "id": 137,
+              "legend": {
+                "alignAsTable": false,
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "rightSide": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "rate(topological_inventory_api_http_duration_seconds_count{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) > 0",
+                  "interval": "",
+                  "legendFormat": "{{controller}}/{{action}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Requests count / s",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "$$hashKey": "object:294",
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "$$hashKey": "object:295",
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
               "fieldConfig": {
                 "defaults": {
                   "custom": {},
@@ -1223,7 +1852,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 15
+                "y": 17
               },
               "hiddenSeries": false,
               "id": 126,
@@ -1253,15 +1882,23 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "sum(rate(api_3scale_gateway_api_status{exported_service=\"topological-inventory\",status=\"5xx\"}[1m]))",
+                  "expr": "max(rate(topological_inventory_api_http_duration_seconds_sum{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) / rate(topological_inventory_api_http_duration_seconds_count{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) > 0)",
+                  "interval": "",
+                  "legendFormat": "Max Request",
                   "refId": "A"
+                },
+                {
+                  "expr": "max(rate(topological_inventory_api_http_sql_duration_seconds_sum{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) / rate(topological_inventory_api_http_sql_duration_seconds_count{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) > 0)",
+                  "interval": "",
+                  "legendFormat": "Max SQL",
+                  "refId": "B"
                 }
               ],
               "thresholds": [],
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "5xx Errors (3scale)",
+              "title": "Max Request Duration",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1277,14 +1914,17 @@ data:
               },
               "yaxes": [
                 {
-                  "format": "short",
-                  "label": null,
+                  "$$hashKey": "object:429",
+                  "decimals": null,
+                  "format": "s",
+                  "label": "",
                   "logBase": 1,
                   "max": null,
-                  "min": null,
+                  "min": "0",
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:430",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1306,8 +1946,7 @@ data:
               "datasource": "$Datasource",
               "fieldConfig": {
                 "defaults": {
-                  "custom": {},
-                  "links": []
+                  "custom": {}
                 },
                 "overrides": []
               },
@@ -1317,11 +1956,10 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 20
+                "y": 17
               },
               "hiddenSeries": false,
-              "id": 136,
-              "interval": "",
+              "id": 156,
               "legend": {
                 "avg": false,
                 "current": false,
@@ -1348,8 +1986,9 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "sum (container_memory_working_set_bytes{container=\"topological-inventory-api\"}) by (pod)",
-                  "legendFormat": "{{ pod }}",
+                  "expr": "sum(rate(topological_inventory_api_http_requests_total{status=~\"^[23].*\",controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m])) by (status) > 0",
+                  "interval": "",
+                  "legendFormat": "{{status}}",
                   "refId": "A"
                 }
               ],
@@ -1357,7 +1996,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Memory Usage",
+              "title": "Successful Requests / s",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1373,6 +2012,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:557",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1381,6 +2021,208 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:558",
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 25
+              },
+              "hiddenSeries": false,
+              "id": 158,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "avg(rate(topological_inventory_api_http_duration_seconds_sum{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) / rate(topological_inventory_api_http_duration_seconds_count{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) > 0)",
+                  "interval": "",
+                  "legendFormat": "Avg Request",
+                  "refId": "A"
+                },
+                {
+                  "expr": "avg(rate(topological_inventory_api_http_sql_duration_seconds_sum{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) / rate(topological_inventory_api_http_sql_duration_seconds_count{controller!=\"status\",controller=~\"$controller\",action=~\"$action\"}[5m]) > 0)",
+                  "interval": "",
+                  "legendFormat": "Avg SQL",
+                  "refId": "B"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Avg Requests Duration",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "$$hashKey": "object:617",
+                  "format": "s",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "$$hashKey": "object:618",
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 25
+              },
+              "hiddenSeries": false,
+              "id": 160,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "sum(rate(topological_inventory_api_http_requests_total{status=~\"^[45].*\",controller=~\"$controller\",action=~\"$action\"}[5m])) by (status) > 0",
+                  "interval": "",
+                  "legendFormat": "{{status}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Error Requests / s",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "$$hashKey": "object:677",
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "$$hashKey": "object:678",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1413,7 +2255,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 23
+                "y": 33
               },
               "hiddenSeries": false,
               "id": 134,
@@ -1489,117 +2331,6 @@ data:
                 "align": false,
                 "alignLevel": null
               }
-            }
-          ],
-          "title": "Topological API",
-          "type": "row"
-        },
-        {
-          "collapsed": true,
-          "datasource": null,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 3
-          },
-          "id": 102,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "$Datasource",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "links": []
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 21
-              },
-              "hiddenSeries": false,
-              "id": 98,
-              "interval": "",
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "sum(kafka_consumergroup_group_lag{topic=~'platform.topological-inventory.operations-.*'}) by (group, topic)",
-                  "legendFormat": "{{topic}}/{{group}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Kafka lag - Operations ",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
             },
             {
               "aliasColors": {},
@@ -1607,7 +2338,6 @@ data:
               "dashLength": 10,
               "dashes": false,
               "datasource": "$Datasource",
-              "description": "",
               "fieldConfig": {
                 "defaults": {
                   "custom": {},
@@ -1621,10 +2351,10 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 21
+                "y": 33
               },
               "hiddenSeries": false,
-              "id": 100,
+              "id": 136,
               "interval": "",
               "legend": {
                 "avg": false,
@@ -1652,8 +2382,8 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "sum(kafka_consumergroup_group_lag{topic=~'platform.topological-inventory..*',topic!~'platform.topological-inventory.operations.*'}) by (group, topic)",
-                  "legendFormat": "{{topic}}/{{group}}",
+                  "expr": "sum (container_memory_working_set_bytes{container=\"topological-inventory-api\"}) by (pod)",
+                  "legendFormat": "{{ pod }}",
                   "refId": "A"
                 }
               ],
@@ -1661,7 +2391,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Kafka lag - !Operations",
+              "title": "Memory Usage",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1699,131 +2429,7 @@ data:
               }
             }
           ],
-          "title": "Kafka lag",
-          "type": "row"
-        },
-        {
-          "collapsed": true,
-          "datasource": null,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 4
-          },
-          "id": 146,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "$Datasource",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "mappings": [],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": null
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 5
-              },
-              "hiddenSeries": false,
-              "id": 148,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "sum(increase(topological_inventory_sources_sync_errors_total[$__range]))",
-                  "interval": "",
-                  "legendFormat": "Sync errors",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Errors cnt",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            }
-          ],
-          "title": "Sources Sync",
+          "title": "Topological API",
           "type": "row"
         }
       ],
@@ -1854,7 +2460,11 @@ data:
           },
           {
             "allValue": ".*",
-            "current": {},
+            "current": {
+              "selected": false,
+              "text": "All",
+              "value": "$__all"
+            },
             "datasource": "$Datasource",
             "definition": "",
             "hide": 0,
@@ -1876,7 +2486,11 @@ data:
           },
           {
             "allValue": ".*",
-            "current": {},
+            "current": {
+              "selected": false,
+              "text": "All",
+              "value": "$__all"
+            },
             "datasource": "$Datasource",
             "definition": "",
             "hide": 0,
@@ -1919,7 +2533,7 @@ data:
       "timezone": "",
       "title": "Topological Inventory general",
       "uid": "MnHGlz5Mk",
-      "version": 27
+      "version": 3
     }
 kind: ConfigMap
 metadata:
