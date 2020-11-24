@@ -1855,7 +1855,7 @@ data:
           {
             "allValue": ".*",
             "current": {},
-            "datasource": "$datasource",
+            "datasource": "$Datasource",
             "definition": "",
             "hide": 0,
             "includeAll": true,
@@ -1877,7 +1877,7 @@ data:
           {
             "allValue": ".*",
             "current": {},
-            "datasource": "$datasource",
+            "datasource": "$Datasource",
             "definition": "",
             "hide": 0,
             "includeAll": true,
