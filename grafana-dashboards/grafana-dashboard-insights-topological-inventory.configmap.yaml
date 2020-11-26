@@ -1186,7 +1186,7 @@ data:
               "pluginVersion": "7.2.1",
               "targets": [
                 {
-                  "expr": "increase(topological_inventory_orchestrator_events_count[$__range])",
+                  "expr": "sum(increase(topological_inventory_orchestrator_events_count[$__range])) by (event_name)",
                   "interval": "",
                   "legendFormat": "{{event_name}}",
                   "refId": "A"
