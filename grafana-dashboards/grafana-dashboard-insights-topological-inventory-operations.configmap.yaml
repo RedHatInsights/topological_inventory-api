@@ -1528,8 +1528,8 @@ data:
           {
             "current": {
               "selected": false,
-              "text": "crc-stg-01-prometheus",
-              "value": "crc-stg-01-prometheus"
+              "text": "crcp01ue1-prometheus",
+              "value": "crcp01ue1-prometheus"
             },
             "hide": 0,
             "includeAll": false,
@@ -1540,7 +1540,7 @@ data:
             "query": "prometheus",
             "queryValue": "",
             "refresh": 1,
-            "regex": "/(crcp01ue1|crc-stg-01)-prometheus/",
+            "regex": "/(crcp01ue1|crcs02ue1)-prometheus/",
             "skipUrlSync": false,
             "type": "datasource"
           },
@@ -1606,7 +1606,7 @@ data:
       "timezone": "",
       "title": "Topological Inventory - Collectors & Operations",
       "uid": "aanIgg0Mz",
-      "version": 44611
+      "version": 44612
     }
 kind: ConfigMap
 metadata:
