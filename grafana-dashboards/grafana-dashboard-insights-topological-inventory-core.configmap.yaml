@@ -2189,56 +2189,52 @@ data:
             "type": "datasource"
           },
           {
-            "allValue": ".*",
             "current": {
-              "selected": false,
-              "text": "All",
-              "value": "$__all"
+              "selected": true,
+              "text": "app-sre-prod-01-prometheus",
+              "value": "app-sre-prod-01-prometheus"
             },
-            "datasource": "$Datasource",
-            "definition": "",
             "hide": 0,
-            "includeAll": true,
-            "label": "Controller (Topo API)",
+            "includeAll": false,
+            "label": "Datasource (RDS)",
             "multi": false,
-            "name": "controller",
+            "name": "DatasourceRDS",
             "options": [],
-            "query": "label_values(topological_inventory_api_http_requests_total,controller)",
+            "query": "prometheus",
+            "queryValue": "",
             "refresh": 1,
-            "regex": "",
+            "regex": "app-sre-stage-01-prometheus|app-sre-prod-01-prometheus",
             "skipUrlSync": false,
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
+            "type": "datasource"
           },
           {
-            "allValue": ".*",
+            "allValue": null,
             "current": {
-              "selected": false,
-              "text": "All",
-              "value": "$__all"
+              "selected": true,
+              "text": "topological-inventory-prod",
+              "value": "topological-inventory-prod"
             },
-            "datasource": "$Datasource",
-            "definition": "",
             "hide": 0,
-            "includeAll": true,
-            "label": "Action (Topo API)",
+            "includeAll": false,
+            "label": "namespace (RDS)",
             "multi": false,
-            "name": "action",
-            "options": [],
-            "query": "label_values(topological_inventory_api_http_requests_total{controller=~\"$controller\"},action)",
-            "refresh": 1,
-            "regex": "",
+            "name": "namespace",
+            "options": [
+              {
+                "selected": false,
+                "text": "topological-inventory-stage",
+                "value": "topological-inventory-stage"
+              },
+              {
+                "selected": true,
+                "text": "topological-inventory-prod",
+                "value": "topological-inventory-prod"
+              }
+            ],
+            "query": "topological-inventory-stage,topological-inventory-prod",
+            "queryValue": "",
             "skipUrlSync": false,
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
+            "type": "custom"
           }
         ]
       },
@@ -2263,7 +2259,7 @@ data:
       "timezone": "",
       "title": "Topological Inventory - Core",
       "uid": "MnHGlz5Mk",
-      "version": 3
+      "version": 4
     }
 kind: ConfigMap
 metadata:
