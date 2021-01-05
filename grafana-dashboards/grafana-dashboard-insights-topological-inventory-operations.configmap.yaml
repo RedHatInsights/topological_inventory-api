@@ -1,0 +1,2539 @@
+apiVersion: v1
+data:
+  grafana-dashboard-insights-topological-inventory-operations.json: |-
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "gnetId": null,
+      "graphTooltip": 0,
+      "iteration": 1608023499527,
+      "links": [],
+      "panels": [
+        {
+          "collapsed": false,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          },
+          "id": 2,
+          "panels": [],
+          "title": "General",
+          "type": "row"
+        },
+        {
+          "datasource": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 1,
+            "w": 11,
+            "x": 0,
+            "y": 1
+          },
+          "id": 6,
+          "options": {
+            "content": " ",
+            "mode": "markdown"
+          },
+          "pluginVersion": "7.1.0",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Operations - Up",
+          "type": "text"
+        },
+        {
+          "datasource": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 1,
+            "x": 11,
+            "y": 1
+          },
+          "id": 125,
+          "options": {
+            "content": "|",
+            "mode": "markdown"
+          },
+          "pluginVersion": "7.1.0",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "",
+          "type": "text"
+        },
+        {
+          "datasource": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 1,
+            "w": 8,
+            "x": 12,
+            "y": 1
+          },
+          "id": 11,
+          "options": {
+            "content": " ",
+            "mode": "markdown"
+          },
+          "pluginVersion": "7.1.0",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Collectors - Up",
+          "type": "text"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": null,
+                "filterable": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "dark-green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 11,
+            "x": 0,
+            "y": 2
+          },
+          "id": 23,
+          "interval": null,
+          "links": [],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "center",
+            "orientation": "vertical",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "sum(up{service=~\"topological-inventory.*operations\"}) by (job)",
+              "hide": true,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            },
+            {
+              "expr": "sum(up{service=~\"topological-inventory.amazon-operations\"})",
+              "interval": "",
+              "legendFormat": "Amazon",
+              "refId": "B"
+            },
+            {
+              "expr": "sum(up{service=~\"topological-inventory.ansible-tower-operations\"})",
+              "interval": "",
+              "legendFormat": "Ansible Tower",
+              "refId": "C"
+            },
+            {
+              "expr": "sum(up{service=~\"topological-inventory.azure-operations\"})",
+              "interval": "",
+              "legendFormat": "Azure",
+              "refId": "D"
+            },
+            {
+              "expr": "sum(up{service=~\"topological-inventory.openshift-operations\"})",
+              "interval": "",
+              "legendFormat": "OpenShift",
+              "refId": "E"
+            },
+            {
+              "expr": "sum(up{service=~\"topological-inventory.satellite-operations\"})",
+              "interval": "",
+              "legendFormat": "Satellite",
+              "refId": "F"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "",
+          "type": "stat"
+        },
+        {
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "dark-green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 8,
+            "x": 12,
+            "y": 2
+          },
+          "id": 20,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "center",
+            "orientation": "vertical",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "sum(up{service=~\"service-amazon.*\",pod=~\"collector-amazon-.*\"})",
+              "interval": "",
+              "legendFormat": "Amazon",
+              "refId": "A"
+            },
+            {
+              "expr": "sum(up{service=~\"service-ansible-tower.*\",pod=~\"collector-ansible-tower-.*\"})",
+              "interval": "",
+              "legendFormat": "Ansible Tower",
+              "refId": "B"
+            },
+            {
+              "expr": "sum(up{service=\"topological-ansible-tower-targeted-collector\"})",
+              "interval": "",
+              "legendFormat": "Targeted Tower",
+              "refId": "D"
+            },
+            {
+              "expr": "sum(up{service=~\"service-azure.*\",pod=~\"collector-azure-.*\"})",
+              "interval": "",
+              "legendFormat": "Azure",
+              "refId": "C"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 1,
+            "w": 11,
+            "x": 0,
+            "y": 5
+          },
+          "id": 59,
+          "options": {
+            "content": "",
+            "mode": "html"
+          },
+          "pluginVersion": "7.1.0",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Operations - Restarts Count",
+          "type": "text"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 1,
+            "w": 8,
+            "x": 12,
+            "y": 5
+          },
+          "id": 123,
+          "options": {
+            "content": "",
+            "mode": "html"
+          },
+          "pluginVersion": "7.1.0",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Collectors - Restarts Count",
+          "type": "text"
+        },
+        {
+          "datasource": "$Datasource",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 1
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 11,
+            "x": 0,
+            "y": 6
+          },
+          "id": 31,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "center",
+            "orientation": "vertical",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-amazon-operations\"}[$__range]))",
+              "interval": "",
+              "legendFormat": "Amazon",
+              "refId": "B"
+            },
+            {
+              "expr": "sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-ansible-tower-operations\"}[$__range]))",
+              "interval": "",
+              "legendFormat": "Ansible Tower",
+              "refId": "C"
+            },
+            {
+              "expr": "sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-azure-operations\"}[$__range]))",
+              "interval": "",
+              "legendFormat": "Azure",
+              "refId": "D"
+            },
+            {
+              "expr": "sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-openshift-operations\"}[$__range]))",
+              "interval": "",
+              "legendFormat": "OpenShift",
+              "refId": "E"
+            },
+            {
+              "expr": "sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-satellite-operations\"}[$__range]))",
+              "interval": "",
+              "legendFormat": "Satellite",
+              "refId": "F"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "",
+          "type": "stat"
+        },
+        {
+          "datasource": "$Datasource",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 1
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 8,
+            "x": 12,
+            "y": 6
+          },
+          "id": 122,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "center",
+            "orientation": "vertical",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=~\"collector-amazon-.*\", namespace=~\"topological-inventory-.*\"}[$__range])))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Amazon",
+              "refId": "A"
+            },
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=~\"collector-ansible-tower-.*\", namespace=~\"topological-inventory-.*\"}[$__range])))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Ansible Tower",
+              "refId": "B"
+            },
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-ansible-tower-targeted-collector\"}[$__range])))",
+              "interval": "",
+              "legendFormat": "Targeted Tower",
+              "refId": "D"
+            },
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=~\"collector-azure-.*\", namespace=~\"topological-inventory-.*\"}[$__range])))",
+              "interval": "",
+              "legendFormat": "Azure",
+              "refId": "C"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "",
+          "type": "stat"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 9
+          },
+          "id": 116,
+          "panels": [
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "unit": "none"
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 10
+              },
+              "hiddenSeries": false,
+              "id": 113,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "rightSide": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "rate (container_cpu_usage_seconds_total{container=~\"topological-inventory-.*-operations\"}[1m])",
+                  "interval": "",
+                  "legendFormat": "{{pod}}",
+                  "refId": "A"
+                },
+                {
+                  "expr": "rate (container_cpu_usage_seconds_total{container=~\"collector-.*-.*\"}[1m])",
+                  "interval": "",
+                  "legendFormat": "{{pod}}",
+                  "refId": "B"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "CPU Usage",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "$$hashKey": "object:434",
+                  "format": "none",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "$$hashKey": "object:435",
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 10
+              },
+              "hiddenSeries": false,
+              "id": 114,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "sum (container_memory_working_set_bytes{container=~\"topological-inventory-.*-operations\"}) by (pod)",
+                  "interval": "",
+                  "legendFormat": "{{pod}}",
+                  "refId": "A"
+                },
+                {
+                  "expr": "sum (container_memory_working_set_bytes{container=~\"collector-.*-.*\"}) by (pod)",
+                  "interval": "",
+                  "legendFormat": "{{pod}}",
+                  "refId": "B"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Memory Usage",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "$$hashKey": "object:718",
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "$$hashKey": "object:719",
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            }
+          ],
+          "title": "CPU & Memory",
+          "type": "row"
+        },
+        {
+          "collapsed": false,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 10
+          },
+          "id": 79,
+          "panels": [],
+          "title": "Collectors - Amazon",
+          "type": "row"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 0,
+            "y": 11
+          },
+          "hiddenSeries": false,
+          "id": 83,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "max(rate(topological_inventory_amazon_collector_refresh_time_sum[5m]) / rate(topological_inventory_amazon_collector_refresh_time_count[5m]) > 0)",
+              "interval": "",
+              "legendFormat": "Max Request",
+              "refId": "A"
+            },
+            {
+              "expr": "avg(rate(topological_inventory_amazon_collector_refresh_time_sum[5m]) / rate(topological_inventory_amazon_collector_refresh_time_count[5m]) > 0)",
+              "interval": "",
+              "legendFormat": "Avg Request",
+              "refId": "C"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Avg / Max Request Duration",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "s",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": null,
+                "filterable": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 10,
+            "x": 8,
+            "y": 11
+          },
+          "hiddenSeries": false,
+          "id": 81,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(topological_inventory_amazon_collector_refresh_time_sum[5m]) / rate(topological_inventory_amazon_collector_refresh_time_count[5m]) * 1000",
+              "interval": "",
+              "legendFormat": "{{entity_type}} / {{pod}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Refresh Duration by Entity Type",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "datasource": "$Datasource",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 18,
+            "y": 11
+          },
+          "id": 80,
+          "options": {
+            "displayMode": "gradient",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true
+          },
+          "pluginVersion": "7.2.1",
+          "targets": [
+            {
+              "expr": "sum(increase(topological_inventory_amazon_collector_errors_total[$__range])) by (type)",
+              "interval": "",
+              "legendFormat": "{{type}}",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Errors",
+          "type": "bargauge"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 17
+          },
+          "id": 85,
+          "panels": [
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "links": []
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 10
+              },
+              "hiddenSeries": false,
+              "id": 86,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "max(rate(topological_inventory_azure_collector_refresh_time_sum[5m]) / rate(topological_inventory_azure_collector_refresh_time_count[5m]) > 0)",
+                  "interval": "",
+                  "legendFormat": "Max Request",
+                  "refId": "A"
+                },
+                {
+                  "expr": "avg(rate(topological_inventory_azure_collector_refresh_time_sum[5m]) / rate(topological_inventory_azure_collector_refresh_time_count[5m]) > 0)",
+                  "interval": "",
+                  "legendFormat": "Avg Request",
+                  "refId": "C"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Avg / Max Request Duration",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "decimals": null,
+                  "format": "s",
+                  "label": "",
+                  "logBase": 1,
+                  "max": null,
+                  "min": "0",
+                  "show": true
+                },
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 6,
+                "w": 10,
+                "x": 8,
+                "y": 10
+              },
+              "hiddenSeries": false,
+              "id": 87,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "rate(topological_inventory_azure_collector_refresh_time_sum[5m]) / rate(topological_inventory_azure_collector_refresh_time_count[5m]) * 1000",
+                  "interval": "",
+                  "legendFormat": "{{entity_type}} / {{pod}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Refresh duration by entity type",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "format": "ms",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 18,
+                "y": 10
+              },
+              "id": 88,
+              "options": {
+                "displayMode": "gradient",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_azure_collector_errors_total[$__range])) by (type)",
+                  "interval": "",
+                  "legendFormat": "{{type}}",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Errors",
+              "type": "bargauge"
+            }
+          ],
+          "title": "Collectors - Azure",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 18
+          },
+          "id": 18,
+          "panels": [
+            {
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 13
+              },
+              "id": 16,
+              "options": {
+                "displayMode": "basic",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_amazon_operations_status_counter[$__range])) by (name, status)",
+                  "interval": "",
+                  "legendFormat": "{{name}} [{{status}}]",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations statuses",
+              "type": "bargauge"
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 6,
+                "w": 10,
+                "x": 8,
+                "y": 13
+              },
+              "hiddenSeries": false,
+              "id": 61,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "rate(topological_inventory_amazon_operations_duration_seconds_sum[5m]) / rate(topological_inventory_amazon_operations_duration_seconds_count[5m]) * 1000",
+                  "interval": "",
+                  "legendFormat": "{{name}} / {{pod}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Operation duration",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "format": "ms",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 18,
+                "y": 13
+              },
+              "id": 71,
+              "options": {
+                "displayMode": "gradient",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_amazon_operations_errors_total[$__range])) by (type)",
+                  "interval": "",
+                  "legendFormat": "{{type}}",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations Errors",
+              "type": "bargauge"
+            }
+          ],
+          "title": "Operations - Amazon",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 19
+          },
+          "id": 73,
+          "panels": [
+            {
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 5
+              },
+              "id": 75,
+              "options": {
+                "displayMode": "basic",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_ansible_tower_operations_status_counter[$__range])) by (name, status)",
+                  "interval": "",
+                  "legendFormat": "{{name}} [{{status}}]",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations statuses",
+              "type": "bargauge"
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 6,
+                "w": 10,
+                "x": 8,
+                "y": 5
+              },
+              "hiddenSeries": false,
+              "id": 76,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "rate(topological_inventory_ansible_tower_operations_duration_seconds_sum[5m]) / rate(topological_inventory_ansible_tower_operations_duration_seconds_count[5m]) * 1000",
+                  "interval": "",
+                  "legendFormat": "{{name}} / {{pod}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Operation duration",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "format": "ms",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 18,
+                "y": 5
+              },
+              "id": 77,
+              "options": {
+                "displayMode": "gradient",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_ansible_tower_operations_errors_total[$__range])) by (type)",
+                  "interval": "",
+                  "legendFormat": "{{type}}",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations Errors",
+              "type": "bargauge"
+            }
+          ],
+          "title": "Operations - Ansible Tower",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 20
+          },
+          "id": 63,
+          "panels": [
+            {
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 16
+              },
+              "id": 65,
+              "options": {
+                "displayMode": "basic",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_azure_operations_status_counter[$__range])) by (name, status)",
+                  "interval": "",
+                  "legendFormat": "{{name}} [{{status}}]",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations statuses",
+              "type": "bargauge"
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 6,
+                "w": 10,
+                "x": 8,
+                "y": 16
+              },
+              "hiddenSeries": false,
+              "id": 67,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "rate(topological_inventory_azure_operations_duration_seconds_sum[5m]) / rate(topological_inventory_azure_operations_duration_seconds_count[5m]) * 1000",
+                  "interval": "",
+                  "legendFormat": "{{name}} / {{pod}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Operation duration",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "format": "ms",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 18,
+                "y": 16
+              },
+              "id": 69,
+              "options": {
+                "displayMode": "gradient",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_azure_operations_errors_total[$__range])) by (type)",
+                  "interval": "",
+                  "legendFormat": "{{type}}",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations Errors",
+              "type": "bargauge"
+            }
+          ],
+          "title": "Operations - Azure",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 21
+          },
+          "id": 118,
+          "panels": [
+            {
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 9
+              },
+              "id": 119,
+              "options": {
+                "displayMode": "basic",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_openshift_operations_status_counter[$__range])) by (name, status)",
+                  "interval": "",
+                  "legendFormat": "{{name}} [{{status}}]",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations statuses",
+              "type": "bargauge"
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 6,
+                "w": 10,
+                "x": 8,
+                "y": 9
+              },
+              "hiddenSeries": false,
+              "id": 120,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "rate(topological_inventory_openshift_operations_duration_seconds_sum[5m]) / rate(topological_inventory_openshift_operations_duration_seconds_count[5m]) * 1000",
+                  "interval": "",
+                  "legendFormat": "{{name}} / {{pod}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Operation duration",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "format": "ms",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 18,
+                "y": 9
+              },
+              "id": 121,
+              "options": {
+                "displayMode": "gradient",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_openshift_operations_errors_total[$__range])) by (type)",
+                  "interval": "",
+                  "legendFormat": "{{type}}",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations Errors",
+              "type": "bargauge"
+            }
+          ],
+          "title": "Operations - OpenShift",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 22
+          },
+          "id": 109,
+          "panels": [
+            {
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 19
+              },
+              "id": 110,
+              "options": {
+                "displayMode": "basic",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_satellite_operations_status_counter[$__range])) by (name, status)",
+                  "interval": "",
+                  "legendFormat": "{{name}} [{{status}}]",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations statuses",
+              "type": "bargauge"
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 6,
+                "w": 10,
+                "x": 8,
+                "y": 19
+              },
+              "hiddenSeries": false,
+              "id": 111,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "rate(topological_inventory_satellite_operations_duration_seconds_sum[5m]) / rate(topological_inventory_satellite_operations_duration_seconds_count[5m]) * 1000",
+                  "interval": "",
+                  "legendFormat": "{{name}} / {{pod}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Operation duration",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "format": "ms",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 18,
+                "y": 19
+              },
+              "id": 112,
+              "options": {
+                "displayMode": "gradient",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_satellite_operations_errors_total[$__range])) by (type)",
+                  "interval": "",
+                  "legendFormat": "{{type}}",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations Errors",
+              "type": "bargauge"
+            }
+          ],
+          "title": "Operations - Satellite",
+          "type": "row"
+        }
+      ],
+      "refresh": "30s",
+      "schemaVersion": 26,
+      "style": "dark",
+      "tags": [],
+      "templating": {
+        "list": [
+          {
+            "current": {
+              "selected": false,
+              "text": "crcp01ue1-prometheus",
+              "value": "crcp01ue1-prometheus"
+            },
+            "hide": 0,
+            "includeAll": false,
+            "label": "Datasource",
+            "multi": false,
+            "name": "Datasource",
+            "options": [],
+            "query": "prometheus",
+            "queryValue": "",
+            "refresh": 1,
+            "regex": "/(crcp01ue1|crcs02ue1)-prometheus/",
+            "skipUrlSync": false,
+            "type": "datasource"
+          }
+        ]
+      },
+      "time": {
+        "from": "now-30m",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "Topological Inventory - Collectors & Operations",
+      "uid": "aanIgg0Mz",
+      "version": 2
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: grafana-dashboard-insights-topological-inventory-operations
+  labels:
+    grafana_dashboard: "true"
+  annotations:
+    grafana-folder: /grafana-dashboard-definitions/Insights
