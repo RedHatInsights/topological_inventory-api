@@ -18,7 +18,7 @@ gem 'puma',                            '~> 4.3.5', '>= 4.3.5'
 gem 'rack-cors',                       '>= 1.0.4'
 gem 'rails',                           '>= 5.2.2.1', '~> 5.2.2'
 gem 'sources-api-client',              '~> 1.0'
-gem 'topological_inventory-core',      '~> 1.2.0'
+gem 'topological_inventory-core',      '~> 1.2.1'
 
 group :development, :test do
   gem "rubocop",             "~> 1.0.0", :require => false
