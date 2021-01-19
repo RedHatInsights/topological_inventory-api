@@ -11413,6 +11413,10 @@
           "flavor_id": {
             "$ref": "#/components/schemas/ID"
           },
+          "guest_info": {
+            "readOnly": true,
+            "type": "string"
+          },
           "host_id": {
             "$ref": "#/components/schemas/ID"
           },
