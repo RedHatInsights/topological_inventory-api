@@ -18,7 +18,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "iteration": 1611064506771,
+      "iteration": 1611138931058,
       "links": [],
       "panels": [
         {
@@ -46,7 +46,7 @@ data:
           },
           "gridPos": {
             "h": 1,
-            "w": 11,
+            "w": 13,
             "x": 0,
             "y": 1
           },
@@ -73,7 +73,7 @@ data:
           "gridPos": {
             "h": 12,
             "w": 1,
-            "x": 11,
+            "x": 13,
             "y": 1
           },
           "id": 125,
@@ -99,7 +99,7 @@ data:
           "gridPos": {
             "h": 1,
             "w": 8,
-            "x": 12,
+            "x": 14,
             "y": 1
           },
           "id": 11,
@@ -142,7 +142,7 @@ data:
           },
           "gridPos": {
             "h": 3,
-            "w": 11,
+            "w": 13,
             "x": 0,
             "y": 2
           },
@@ -166,13 +166,6 @@ data:
           "pluginVersion": "7.2.1",
           "targets": [
             {
-              "expr": "sum(up{service=~\"topological-inventory.*operations\"}) by (job)",
-              "hide": true,
-              "interval": "",
-              "legendFormat": "{{job}}",
-              "refId": "A"
-            },
-            {
               "expr": "sum(up{service=~\"topological-inventory.amazon-operations\"})",
               "interval": "",
               "legendFormat": "Amazon",
@@ -189,6 +182,12 @@ data:
               "interval": "",
               "legendFormat": "Azure",
               "refId": "D"
+            },
+            {
+              "expr": "sum(up{service=~\"topological-inventory.google-operations\"})",
+              "interval": "",
+              "legendFormat": "Google",
+              "refId": "G"
             },
             {
               "expr": "sum(up{service=~\"topological-inventory.openshift-operations\"})",
@@ -234,7 +233,7 @@ data:
           "gridPos": {
             "h": 3,
             "w": 8,
-            "x": 12,
+            "x": 14,
             "y": 2
           },
           "id": 20,
@@ -295,7 +294,7 @@ data:
           },
           "gridPos": {
             "h": 1,
-            "w": 11,
+            "w": 13,
             "x": 0,
             "y": 5
           },
@@ -321,7 +320,7 @@ data:
           "gridPos": {
             "h": 1,
             "w": 8,
-            "x": 12,
+            "x": 14,
             "y": 5
           },
           "id": 123,
@@ -364,7 +363,7 @@ data:
           },
           "gridPos": {
             "h": 3,
-            "w": 11,
+            "w": 13,
             "x": 0,
             "y": 6
           },
@@ -402,6 +401,12 @@ data:
               "interval": "",
               "legendFormat": "Azure",
               "refId": "D"
+            },
+            {
+              "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-google-operations\"}[$__range])))",
+              "interval": "",
+              "legendFormat": "Google",
+              "refId": "A"
             },
             {
               "expr": "round(sum(increase(kube_pod_container_status_restarts_total{container=\"topological-inventory-openshift-operations\"}[$__range])))",
@@ -451,7 +456,7 @@ data:
           "gridPos": {
             "h": 3,
             "w": 8,
-            "x": 12,
+            "x": 14,
             "y": 6
           },
           "id": 122,
@@ -513,7 +518,7 @@ data:
           },
           "gridPos": {
             "h": 1,
-            "w": 11,
+            "w": 13,
             "x": 0,
             "y": 9
           },
@@ -539,7 +544,7 @@ data:
           "gridPos": {
             "h": 1,
             "w": 8,
-            "x": 12,
+            "x": 14,
             "y": 9
           },
           "id": 134,
@@ -582,7 +587,7 @@ data:
           },
           "gridPos": {
             "h": 3,
-            "w": 11,
+            "w": 13,
             "x": 0,
             "y": 10
           },
@@ -620,6 +625,12 @@ data:
               "interval": "",
               "legendFormat": "Azure",
               "refId": "D"
+            },
+            {
+              "expr": "round(sum(increase(topological_inventory_google_operations_errors_total[$__range])))+round(sum(increase(topological_inventory_google_operations_status_counter{status=\"error\"}[$__range])))",
+              "interval": "",
+              "legendFormat": "Google",
+              "refId": "A"
             },
             {
               "expr": "round(sum(increase(topological_inventory_openshift_operations_errors_total[$__range])))+round(sum(increase(topological_inventory_openshift_operations_status_counter{status=\"error\"}[$__range])))",
@@ -662,7 +673,7 @@ data:
           "gridPos": {
             "h": 3,
             "w": 8,
-            "x": 12,
+            "x": 14,
             "y": 10
           },
           "id": 136,
@@ -966,7 +977,7 @@ data:
                 "h": 6,
                 "w": 8,
                 "x": 0,
-                "y": 23
+                "y": 3
               },
               "hiddenSeries": false,
               "id": 83,
@@ -1012,7 +1023,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Avg / Max Request Duration",
+              "title": "Avg / Max Refresh Duration",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1086,7 +1097,7 @@ data:
                 "h": 6,
                 "w": 10,
                 "x": 8,
-                "y": 23
+                "y": 3
               },
               "hiddenSeries": false,
               "id": 81,
@@ -1189,7 +1200,7 @@ data:
                 "h": 6,
                 "w": 6,
                 "x": 18,
-                "y": 23
+                "y": 3
               },
               "id": 80,
               "options": {
@@ -1260,7 +1271,7 @@ data:
                 "h": 7,
                 "w": 9,
                 "x": 0,
-                "y": 24
+                "y": 4
               },
               "id": 129,
               "options": {
@@ -1316,7 +1327,7 @@ data:
                 "h": 7,
                 "w": 8,
                 "x": 9,
-                "y": 24
+                "y": 4
               },
               "id": 130,
               "options": {
@@ -1346,7 +1357,7 @@ data:
               "type": "bargauge"
             }
           ],
-          "title": "Collectors - Ansible Tower (full + targeted refrsh)",
+          "title": "Collectors - Ansible Tower (full + targeted refresh)",
           "type": "row"
         },
         {
@@ -1380,7 +1391,7 @@ data:
                 "h": 6,
                 "w": 8,
                 "x": 0,
-                "y": 25
+                "y": 5
               },
               "hiddenSeries": false,
               "id": 86,
@@ -1426,7 +1437,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Avg / Max Request Duration",
+              "title": "Avg / Max Refresh Duration",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1500,7 +1511,7 @@ data:
                 "h": 6,
                 "w": 10,
                 "x": 8,
-                "y": 25
+                "y": 5
               },
               "hiddenSeries": false,
               "id": 87,
@@ -1603,7 +1614,7 @@ data:
                 "h": 6,
                 "w": 6,
                 "x": 18,
-                "y": 25
+                "y": 5
               },
               "id": 88,
               "options": {
@@ -2149,7 +2160,7 @@ data:
                 "h": 6,
                 "w": 8,
                 "x": 0,
-                "y": 28
+                "y": 8
               },
               "id": 65,
               "options": {
@@ -2214,7 +2225,7 @@ data:
                 "h": 6,
                 "w": 10,
                 "x": 8,
-                "y": 28
+                "y": 8
               },
               "hiddenSeries": false,
               "id": 67,
@@ -2321,7 +2332,7 @@ data:
                 "h": 6,
                 "w": 6,
                 "x": 18,
-                "y": 28
+                "y": 8
               },
               "id": 69,
               "options": {
@@ -2362,6 +2373,245 @@ data:
             "w": 24,
             "x": 0,
             "y": 28
+          },
+          "id": 138,
+          "panels": [
+            {
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "dark-blue",
+                        "value": null
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 15
+              },
+              "id": 140,
+              "options": {
+                "displayMode": "basic",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "round(sum(increase(topological_inventory_google_operations_status_counter[$__range])) by (name, status))",
+                  "interval": "",
+                  "legendFormat": "{{name}} [{{status}}]",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations statuses",
+              "type": "bargauge"
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$Datasource",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 6,
+                "w": 10,
+                "x": 8,
+                "y": 15
+              },
+              "hiddenSeries": false,
+              "id": 142,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "rate(topological_inventory_google_operations_duration_seconds_sum[5m]) / rate(topological_inventory_google_operations_duration_seconds_count[5m]) * 1000",
+                  "interval": "",
+                  "legendFormat": "{{name}} / {{pod}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Operation duration",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "format": "ms",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "datasource": "$Datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "orange",
+                        "value": 1
+                      },
+                      {
+                        "color": "red",
+                        "value": 10
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 18,
+                "y": 15
+              },
+              "id": 144,
+              "options": {
+                "displayMode": "gradient",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true
+              },
+              "pluginVersion": "7.2.1",
+              "targets": [
+                {
+                  "expr": "sum(increase(topological_inventory_google_operations_errors_total[$__range])) by (type)",
+                  "interval": "",
+                  "legendFormat": "{{type}}",
+                  "refId": "A"
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "Operations Errors",
+              "type": "bargauge"
+            }
+          ],
+          "title": "Operations - Google",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 29
           },
           "id": 118,
           "panels": [
@@ -2601,7 +2851,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 29
+            "y": 30
           },
           "id": 109,
           "panels": [
