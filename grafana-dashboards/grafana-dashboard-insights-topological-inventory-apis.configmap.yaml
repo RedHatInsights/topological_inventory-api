@@ -18,7 +18,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "iteration": 1610091285004,
+      "iteration": 1610544022678,
       "links": [],
       "panels": [
         {
@@ -102,7 +102,7 @@ data:
           },
           "gridPos": {
             "h": 1,
-            "w": 5,
+            "w": 4,
             "x": 10,
             "y": 1
           },
@@ -120,7 +120,7 @@ data:
         },
         {
           "datasource": "$Datasource",
-          "description": "",
+          "description": "Alert: Down for 2 mins",
           "fieldConfig": {
             "defaults": {
               "custom": {},
@@ -150,7 +150,7 @@ data:
           "id": 4,
           "options": {
             "colorMode": "value",
-            "graphMode": "area",
+            "graphMode": "none",
             "justifyMode": "auto",
             "orientation": "auto",
             "reduceOptions": {
@@ -177,7 +177,7 @@ data:
         {
           "cacheTimeout": null,
           "datasource": "$Datasource",
-          "description": "",
+          "description": "Alert: Down for 2 mins",
           "fieldConfig": {
             "defaults": {
               "custom": {},
@@ -218,7 +218,7 @@ data:
           "links": [],
           "options": {
             "colorMode": "value",
-            "graphMode": "area",
+            "graphMode": "none",
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
@@ -245,7 +245,7 @@ data:
         {
           "cacheTimeout": null,
           "datasource": "$Datasource",
-          "description": "",
+          "description": "Alert: > 5 restarts in 1h for 30 minutes",
           "fieldConfig": {
             "defaults": {
               "custom": {},
@@ -291,7 +291,7 @@ data:
           "links": [],
           "options": {
             "colorMode": "value",
-            "graphMode": "area",
+            "graphMode": "none",
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
@@ -320,7 +320,7 @@ data:
         {
           "cacheTimeout": null,
           "datasource": "$Datasource",
-          "description": "",
+          "description": "Alert: > 5 restarts in 1h for 30 minutes",
           "fieldConfig": {
             "defaults": {
               "custom": {},
@@ -366,7 +366,7 @@ data:
           "links": [],
           "options": {
             "colorMode": "value",
-            "graphMode": "area",
+            "graphMode": "none",
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
@@ -392,7 +392,7 @@ data:
         },
         {
           "datasource": "$Datasource",
-          "description": "",
+          "description": "Alert: > 50 errors in 5mins for 10 minutes",
           "fieldConfig": {
             "defaults": {
               "custom": {},
@@ -455,7 +455,7 @@ data:
         },
         {
           "datasource": "$Datasource",
-          "description": "",
+          "description": "Alert: > 50 errors in 5mins for 10 minutes",
           "fieldConfig": {
             "defaults": {
               "custom": {},
@@ -536,7 +536,7 @@ data:
           "dashLength": 10,
           "dashes": false,
           "datasource": "$Datasource",
-          "description": "",
+          "description": "Alert: Avg request > 500ms [5m] for 10 minutes",
           "fieldConfig": {
             "defaults": {
               "custom": {},
@@ -604,7 +604,17 @@ data:
               "refId": "D"
             }
           ],
-          "thresholds": [],
+          "thresholds": [
+            {
+              "$$hashKey": "object:27",
+              "colorMode": "critical",
+              "fill": false,
+              "line": true,
+              "op": "gt",
+              "value": 0.5,
+              "yaxis": "left"
+            }
+          ],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
@@ -1178,7 +1188,7 @@ data:
           "type": "row"
         },
         {
-          "collapsed": true,
+          "collapsed": false,
           "datasource": null,
           "gridPos": {
             "h": 1,
@@ -1187,227 +1197,236 @@ data:
             "y": 16
           },
           "id": 30,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {},
-                  "links": []
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 17
-              },
-              "hiddenSeries": false,
-              "id": 34,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "max(rate(topological_inventory_ingress_api_http_duration_seconds_sum{controller!=\"status\"}[5m]) / rate(topological_inventory_ingress_api_http_duration_seconds_count{controller!=\"status\"}[5m]) > 0)",
-                  "interval": "",
-                  "legendFormat": "Max Request",
-                  "refId": "A"
-                },
-                {
-                  "expr": "avg(rate(topological_inventory_ingress_api_http_duration_seconds_sum{controller!=\"status\"}[5m]) / rate(topological_inventory_ingress_api_http_duration_seconds_count{controller!=\"status\"}[5m]) > 0)",
-                  "interval": "",
-                  "legendFormat": "Avg Request",
-                  "refId": "C"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Avg / Max Request Duration",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "decimals": null,
-                  "format": "s",
-                  "label": "",
-                  "logBase": 1,
-                  "max": null,
-                  "min": "0",
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "$Datasource",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {
-                    "align": null,
-                    "filterable": false
-                  },
-                  "mappings": [],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": null
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 17
-              },
-              "hiddenSeries": false,
-              "id": 36,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "rate(topological_inventory_ingress_api_http_duration_seconds_sum{controller!=\"status\"}[5m]) / rate(topological_inventory_ingress_api_http_duration_seconds_count{controller!=\"status\"}[5m]) * 1000 > 0",
-                  "interval": "",
-                  "legendFormat": "{{controller}}/{{action}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Request duration",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "ms",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            }
-          ],
+          "panels": [],
           "title": "Ingress API Request Duration",
           "type": "row"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "description": "Alert: Avg request > 500ms [5m] for 10 minutes",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 17
+          },
+          "hiddenSeries": false,
+          "id": 34,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "max(rate(topological_inventory_ingress_api_http_duration_seconds_sum{controller!=\"status\"}[5m]) / rate(topological_inventory_ingress_api_http_duration_seconds_count{controller!=\"status\"}[5m]) > 0)",
+              "interval": "",
+              "legendFormat": "Max Request",
+              "refId": "A"
+            },
+            {
+              "expr": "avg(rate(topological_inventory_ingress_api_http_duration_seconds_sum{controller!=\"status\"}[5m]) / rate(topological_inventory_ingress_api_http_duration_seconds_count{controller!=\"status\"}[5m]) > 0)",
+              "interval": "",
+              "legendFormat": "Avg Request",
+              "refId": "C"
+            }
+          ],
+          "thresholds": [
+            {
+              "$$hashKey": "object:49",
+              "colorMode": "critical",
+              "fill": false,
+              "line": true,
+              "op": "gt",
+              "value": 0.5,
+              "yaxis": "left"
+            }
+          ],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Avg / Max Request Duration",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "s",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$Datasource",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": null,
+                "filterable": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 17
+          },
+          "hiddenSeries": false,
+          "id": 36,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(topological_inventory_ingress_api_http_duration_seconds_sum{controller!=\"status\"}[5m]) / rate(topological_inventory_ingress_api_http_duration_seconds_count{controller!=\"status\"}[5m]) * 1000 > 0",
+              "interval": "",
+              "legendFormat": "{{controller}}/{{action}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Request duration",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         },
         {
           "collapsed": true,
@@ -1416,7 +1435,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 17
+            "y": 25
           },
           "id": 32,
           "panels": [
@@ -1625,7 +1644,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 18
+            "y": 26
           },
           "id": 49,
           "panels": [
@@ -1835,7 +1854,7 @@ data:
         "list": [
           {
             "current": {
-              "selected": false,
+              "selected": true,
               "text": "crcp01ue1-prometheus",
               "value": "crcp01ue1-prometheus"
             },
@@ -1914,7 +1933,7 @@ data:
       "timezone": "",
       "title": "Topological Inventory - APIs",
       "uid": "qRvAZLAMk",
-      "version": 7
+      "version": 8
     }
 kind: ConfigMap
 metadata:
