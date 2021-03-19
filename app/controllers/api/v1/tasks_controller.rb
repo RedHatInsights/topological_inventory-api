@@ -1,3 +1,5 @@
+require 'topological_inventory/api/clowder_config'
+
 module Api
   module V1
     class TasksController < ApplicationController
@@ -9,7 +11,7 @@ module Api
 
         if ENV['NO_KAFKA'].blank?
           TopologicalInventory::Api::Messaging.client.publish_topic(
-            :service => "platform.topological-inventory.task-output-stream",
+            :service => TopologicalInventory::Api::ClowderConfig.kafka_topic("platform.topological-inventory.task-output-stream"),
             :event   => "Task.update",
             :payload => params_for_update.to_h.merge("id" => params.require(:id)),
             :headers => Insights::API::Common::Request.current_forwardable
