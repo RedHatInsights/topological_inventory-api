@@ -1,4 +1,5 @@
 #!/bin/bash
+# build_deploy.sh pushes new Quay image + tags after PR is merged
 
 set -exv
 
