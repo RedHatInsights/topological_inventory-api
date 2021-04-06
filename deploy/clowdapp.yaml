@@ -8,7 +8,7 @@ objects:
   metadata:
     name: topological-inventory-api-secrets
     labels:
-      app: topo-api
+      app: topological-inventory
   stringData:
     encryption-key: "${ENCRYPTION_KEY}"
     secret-key: "${SECRET_KEY}"
@@ -16,6 +16,9 @@ objects:
   kind: ClowdApp
   metadata:
     name: topo-api
+    labels:
+      app: topological-inventory
+      clowdapp: topo-api
   spec:
     envName: ${ENV_NAME}
     deployments:
@@ -81,7 +84,7 @@ objects:
   metadata:
     name: topo-api-transitional
     labels:
-      app: topo-api
+      app: topological-inventory
       pod: topo-api-svc
   spec:
     ports:
