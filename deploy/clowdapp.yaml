@@ -16,9 +16,6 @@ objects:
   kind: ClowdApp
   metadata:
     name: topo-api
-    labels:
-      app: topological-inventory
-      clowdapp: topo-api
   spec:
     envName: ${ENV_NAME}
     deployments:
