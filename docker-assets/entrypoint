@@ -4,10 +4,40 @@ function urlescape() {
   PAYLOAD="$1" ruby -rcgi -e "puts CGI.escape(ENV['PAYLOAD'])"
 }
 
+if [[ -z $ACG_CONFIG ]]; then
+  DATABASE_NAME="topological_inventory_production"
+  export WEB_PORT=3000
+else
+  export DATABASE_HOST=`cat $ACG_CONFIG | jq -r '.database.hostname'`
+  export DATABASE_PORT=`cat $ACG_CONFIG | jq -r '.database.port'`
+  DATABASE_USER=`cat $ACG_CONFIG | jq -r '.database.username'`
+  DATABASE_PASSWORD=`cat $ACG_CONFIG | jq -r '.database.password'`
+  DATABASE_NAME=`cat $ACG_CONFIG | jq -r '.database.name'`
+
+  sslMode=`cat $ACG_CONFIG | jq -r '.database.sslMode'`
+  if [[ $sslMode != "null" ]]; then
+    export PGSSLMODE=$sslMode
+  fi
+
+  certString=`cat $ACG_CONFIG | jq -r '.database.rdsCa'`
+
+  certPath="/opt/rdsca.crt"
+  echo "RDS Cert Path: $certPath"
+  if [[ $certString != "null" ]]; then
+    echo "$certString" > $certPath
+
+    export PGSSLROOTCERT=$certPath
+  else
+    echo "42" > $certPath
+  fi
+
+  export WEB_PORT=`cat $ACG_CONFIG | jq -r '.webPort'`
+fi
+
 safeuser=$(urlescape ${DATABASE_USER})
 safepass=$(urlescape ${DATABASE_PASSWORD})
 
 export RAILS_ENV=production
-export DATABASE_URL="postgresql://${safeuser}:${safepass}@${DATABASE_HOST}:${DATABASE_PORT}/topological_inventory_production?encoding=utf8&pool=${DB_POOL_SIZE:-5}&wait_timeout=5"
+export DATABASE_URL="postgresql://${safeuser}:${safepass}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?encoding=utf8&pool=${DB_POOL_SIZE:-5}&wait_timeout=5"
 
 exec ${@}

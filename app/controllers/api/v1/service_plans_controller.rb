@@ -1,4 +1,5 @@
 require "sources-api-client"
+require 'topological_inventory/api/clowder_config'
 
 module Api
   module V1
@@ -13,7 +14,7 @@ module Api
         task         = Task.create!(:name => "ServicePlan#order", :source_id => service_plan.source_id, :forwardable_headers => Insights::API::Common::Request.current_forwardable, :tenant => service_plan.tenant, :state => "pending", :status => "ok")
 
         TopologicalInventory::Api::Messaging.client.publish_topic(
-          :service => "platform.topological-inventory.operations-#{source_type.name}",
+          :service => TopologicalInventory::Api::ClowderConfig.kafka_topic("platform.topological-inventory.operations-#{source_type.name}"),
           :event   => "ServicePlan.order",
           :payload => payload_for_order(task, service_plan)
         )

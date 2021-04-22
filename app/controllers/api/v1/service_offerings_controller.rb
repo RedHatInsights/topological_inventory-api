@@ -1,3 +1,5 @@
+require 'topological_inventory/api/clowder_config'
+
 module Api
   module V1
     class ServiceOfferingsController < ApplicationController
@@ -33,7 +35,7 @@ module Api
         logger.info("ServiceOffering##{operation_type}: Task(id: #{task.id}), ServiceOffering(id: #{service_offering.id}, source_ref: #{service_offering.source_ref}): Publishing event(ServiceOffering.#{operation_type}) to kafka")
 
         TopologicalInventory::Api::Messaging.client.publish_topic(
-          :service => "platform.topological-inventory.operations-#{source_type.name}",
+          :service => TopologicalInventory::Api::ClowderConfig.kafka_topic("platform.topological-inventory.operations-#{source_type.name}"),
           :event   => "ServiceOffering.#{operation_type}",
           :payload => payload
         )
