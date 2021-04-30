@@ -60,7 +60,7 @@ class ApplicationController < ActionController::API
   end
 
   def permitted_params
-    api_doc_definition.all_attributes + [:limit, :offset, :sort_by] + [subcollection_foreign_key]
+    api_doc_definition.all_attributes + [:limit, :offset, :sort_by] + [:test] + [subcollection_foreign_key]
   end
 
   def subcollection_foreign_key
