@@ -51,5 +51,4 @@ RUN chgrp -R 0 $WORKDIR && \
     chmod 755 /usr/bin/haberdasher
 
 ENTRYPOINT ["/usr/bin/haberdasher"]
-
-CMD ["run_rails_server"]
+CMD ["entrypoint", "run_rails_server"]
