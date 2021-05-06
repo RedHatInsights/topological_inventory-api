@@ -9,12 +9,12 @@ gem 'jbuilder',                        '~> 2.0'
 gem 'json-schema',                     '~> 2.8'
 gem 'manageiq-messaging',              '~> 1.0.0'
 gem 'manageiq-password',               '~> 0.2', ">= 0.2.1"
-gem 'mimemagic',                       '~> 0.3.3'
+gem 'mimemagic',                       '~> 0.4.3'
 gem 'more_core_extensions'
 gem 'pg',                              '~> 1.0', :require => false
 gem 'puma',                            '~> 4.3.5', '>= 4.3.5'
 gem 'rack-cors',                       '>= 1.0.4'
-gem 'rails',                           '>= 5.2.2.1', '~> 5.2.2'
+gem 'rails',                           '>= 5.2.4.3', '~> 5.2.5'
 gem 'sources-api-client',              '~> 3.0'
 gem 'topological_inventory-core',      '~> 1.2.1'
 
