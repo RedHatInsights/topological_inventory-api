@@ -43,7 +43,7 @@ module TopologicalInventory
     config.autoload_paths << Rails.root.join("lib").to_s
 
     config.log_level = (ENV['RAILS_LOG_LEVEL'] || 'debug').downcase.to_sym
-    Insights::API::Common::Logging.activate(config)
+    Insights::API::Common::Logging.activate(config, "topological_inventory_api")
     # TODO: add an option to disable web_server_metrics
     # TODO: it's almost the same like PrometheusExporter::Middleware but with less data
     Insights::API::Common::Metrics.activate(config, "topological_inventory_api")

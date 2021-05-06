@@ -42,5 +42,12 @@ RUN chgrp -R 0 $WORKDIR && \
 
 EXPOSE 3000
 
-ENTRYPOINT ["entrypoint"]
+RUN chgrp -R 0 $WORKDIR && \
+    chmod -R g=u $WORKDIR && \
+    curl -L -o /usr/bin/haberdasher \
+    https://github.com/RedHatInsights/haberdasher/releases/latest/download/haberdasher_linux_amd64 && \
+    chmod 755 /usr/bin/haberdasher
+
+ENTRYPOINT ["/usr/bin/haberdasher"]
+
 CMD ["run_rails_server"]
